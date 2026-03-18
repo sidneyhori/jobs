@@ -124,7 +124,7 @@ Each is independent and can be built in any order:
 - [x] Step 4: Generate descriptions (626 markdown pages with deduplicated activities from perfil)
 - [x] Step 2: Get CAGED data (12 months 2025, 51.4M rows from MTE FTP, 623 families with salary/employment)
 - [x] Step 3: Build CSV (626 rows merging CBO + CAGED, 608 with employment data)
-- [ ] Step 5: LLM scoring
-- [ ] Step 6: Build site data
+- [x] Step 5: LLM scoring (626/626 for all 3 metrics, avg: exposição=4.6, vantagem=5.1, crescimento=5.0)
+- [x] Step 6: Build site data (626 occupations with all metrics + salary + employment in data.json)
 - [ ] Step 7: Adapt treemap
 - [ ] Step 8: New views
