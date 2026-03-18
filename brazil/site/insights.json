@@ -1,0 +1,355 @@
+[
+  {
+    "id": "gender-risk-gap",
+    "category": "Demografia",
+    "title": "IA e Gênero: Mulheres Mais Expostas no Mercado de Trabalho",
+    "subtitle": "Análise revela disparidade significativa na vulnerabilidade a automação no Brasil.",
+    "body_html": "<p>A ascensão da Inteligência Artificial (IA) no mercado de trabalho brasileiro aponta para uma preocupante disparidade de gênero na exposição a ocupações de alto risco. Dados recentes indicam que 37,7% das mulheres, totalizando 9.366.100 de 24.821.302 empregadas, estão em funções consideradas de alta vulnerabilidade à automação por IA.</p><p>Em contraste, a proporção de homens em ocupações de alto risco é notavelmente menor, atingindo 22,2% – o que representa 6.746.290 de um total de 30.324.878 homens empregados. Essa diferença de 15,5 pontos percentuais sublinha uma assimetria significativa na forma como a IA pode impactar a força de trabalho brasileira, com as mulheres enfrentando uma probabilidade consideravelmente maior de terem suas funções afetadas ou substituídas pela tecnologia.</p><p>A análise desses números sugere a necessidade urgente de políticas públicas e estratégias corporativas que visem mitigar os riscos e promover a requalificação profissional, garantindo que a transição para uma economia mais digitalizada seja equitativa e não aprofunde as desigualdades de gênero existentes.</p>",
+    "headline_stat": "37,7%",
+    "headline_label": "das mulheres em ocupações de alto risco de exposição à IA",
+    "chart": {
+      "type": "horizontal_bar",
+      "data": [
+        {
+          "label": "Mulheres",
+          "value": 37.7,
+          "formatted": "37,7%"
+        },
+        {
+          "label": "Homens",
+          "value": 22.2,
+          "formatted": "22,2%"
+        }
+      ]
+    },
+    "generated_at": "2026-03-18",
+    "tags": [
+      "gênero",
+      "risco",
+      "exposição"
+    ],
+    "data_hash": "809b0d3cfe2df34504a26cc3455fdbf2"
+  },
+  {
+    "id": "race-risk-gap",
+    "category": "Demografia",
+    "title": "IA e Desigualdade Racial no Trabalho Brasileiro",
+    "subtitle": "Brancos enfrentam maior risco de automação por IA, revela estudo.",
+    "body_html": "<p>A ascensão da inteligência artificial (IA) no mercado de trabalho brasileiro expõe uma notável disparidade racial na exposição a riscos de automação. Dados recentes indicam que trabalhadores brancos estão significativamente mais suscetíveis a ter suas ocupações impactadas pela IA em comparação com trabalhadores negros.</p><p>Entre os trabalhadores brancos, 33,5% (equivalente a 8.139.620 de 24.324.593) estão classificados em alto risco de exposição à IA. Em contraste, a proporção entre trabalhadores negros (que engloba pretos e pardos, conforme classificação do IBGE) é de 25,4% (ou 6.229.632 de 24.505.628). Essa diferença representa um hiato de 8,1 pontos percentuais, sugerindo que as profissões predominantemente ocupadas por brancos são as que mais se alinham com as capacidades atuais e futuras da IA.</p><p>Essa disparidade levanta questões importantes sobre a estrutura do mercado de trabalho e as implicações sociais da automação, indicando que a transição para uma economia mais automatizada pode não afetar todos os grupos raciais da mesma forma.</p>",
+    "headline_stat": "33,5%",
+    "headline_label": "dos trabalhadores brancos em alto risco vs 25,4% dos negros",
+    "chart": {
+      "type": "horizontal_bar",
+      "data": [
+        {
+          "label": "Branca",
+          "value": 33.5,
+          "formatted": "33,5%"
+        },
+        {
+          "label": "Negra",
+          "value": 25.4,
+          "formatted": "25,4%"
+        }
+      ]
+    },
+    "generated_at": "2026-03-18",
+    "tags": [
+      "raça",
+      "risco",
+      "exposição"
+    ],
+    "data_hash": "252253d7408753e9a55732552b6ffd90"
+  },
+  {
+    "id": "state-exposure-ranking",
+    "category": "Regional",
+    "title": "DF Lidera Exposição à IA no Brasil",
+    "subtitle": "Capital Federal e estados do Norte e Nordeste se destacam acima da média nacional.",
+    "body_html": "<p>O Distrito Federal se posiciona como o estado com a maior exposição média à inteligência artificial (IA) no Brasil, registrando um índice de 5,4. Este patamar supera significativamente a média nacional, que é de 4,8.</p><p>A análise dos dados revela que, além do DF, outros estados apresentam alta exposição à IA. Roraima e Piauí compartilham o segundo lugar, ambos com um índice de 5,1. Em seguida, Acre, Amapá e Paraíba registram 5,0. Maranhão (4,9), Amazonas (4,8), Tocantins (4,8) e Ceará (4,8) completam a lista dos dez estados com maior exposição.</p><p>Em contraste, Mato Grosso do Sul figura na outra ponta da tabela, com a menor exposição média à IA, atingindo 4,4. A disparidade entre o líder e o último colocado, de um ponto percentual, indica um cenário heterogêneo na adoção e impacto da IA entre as diferentes regiões brasileiras.</p>",
+    "headline_stat": "5,4",
+    "headline_label": "exposição média em DF — líder nacional",
+    "chart": {
+      "type": "horizontal_bar",
+      "data": [
+        {
+          "label": "DF",
+          "value": 5.4,
+          "formatted": "5,4",
+          "workers": "1.310.670"
+        },
+        {
+          "label": "RR",
+          "value": 5.1,
+          "formatted": "5,1",
+          "workers": "144.375"
+        },
+        {
+          "label": "PI",
+          "value": 5.1,
+          "formatted": "5,1",
+          "workers": "559.979"
+        },
+        {
+          "label": "AC",
+          "value": 5.0,
+          "formatted": "5,0",
+          "workers": "172.939"
+        },
+        {
+          "label": "AP",
+          "value": 5.0,
+          "formatted": "5,0",
+          "workers": "153.734"
+        },
+        {
+          "label": "PB",
+          "value": 5.0,
+          "formatted": "5,0",
+          "workers": "787.729"
+        },
+        {
+          "label": "MA",
+          "value": 4.9,
+          "formatted": "4,9",
+          "workers": "955.125"
+        },
+        {
+          "label": "AM",
+          "value": 4.8,
+          "formatted": "4,8",
+          "workers": "774.157"
+        },
+        {
+          "label": "TO",
+          "value": 4.8,
+          "formatted": "4,8",
+          "workers": "375.698"
+        },
+        {
+          "label": "CE",
+          "value": 4.8,
+          "formatted": "4,8",
+          "workers": "1.754.390"
+        }
+      ]
+    },
+    "generated_at": "2026-03-18",
+    "tags": [
+      "estados",
+      "UF",
+      "exposição",
+      "regional"
+    ],
+    "data_hash": "6b2de70cea2bbda8074bdb1265d5d3ed"
+  },
+  {
+    "id": "most-exposed-top10",
+    "category": "Ocupações",
+    "title": "IA: 10 profissões mais expostas no Brasil",
+    "subtitle": "Milhões de trabalhadores em risco de automação, salários variam.",
+    "body_html": "<p>A inteligência artificial (IA) avança e, no Brasil, algumas profissões já sentem o impacto. Dados revelam as 10 ocupações mais expostas à IA, totalizando 6.665.163 trabalhadores.</p><p>No topo da lista, com exposição de 10, estão 'Operadores de telemarketing e afins' (474.153 empregados, salário de R$ 1.424), 'Operadores de telefonia' (48.982 empregados, salário de R$ 1.780) e 'Operadores de equipamentos de entrada e transmissão de dados' (39.280 empregados, salário de R$ 1.894).</p><p>Com exposição de 9, destacam-se 'Agentes, assistentes e auxiliares administrativos', a maior categoria com 4.719.388 empregados e salário de R$ 2.058. Outras ocupações incluem 'Analistas de tecnologia da informação' (449.999 empregados, R$ 6.574) e 'Profissionais da matemática' (110.312 empregados, R$ 9.380), que apresenta o maior salário entre as listadas. 'Escriturários de serviços bancários' (295.091 empregados) também figuram com alta exposição e salário de R$ 7.521.</p>",
+    "headline_stat": "10",
+    "headline_label": "exposição máxima — Operadores de telemarketing e afins",
+    "chart": {
+      "type": "ranking_table",
+      "data": [
+        {
+          "label": "Operadores de telemarketing e afins",
+          "value": 10,
+          "formatted": "10",
+          "workers": "474.153",
+          "salary": "1.424"
+        },
+        {
+          "label": "Operadores de telefonia",
+          "value": 10,
+          "formatted": "10",
+          "workers": "48.982",
+          "salary": "1.780"
+        },
+        {
+          "label": "Operadores de equipamentos de entrada e transmissão de dados",
+          "value": 10,
+          "formatted": "10",
+          "workers": "39.280",
+          "salary": "1.894"
+        },
+        {
+          "label": "Agentes, assistentes e auxiliares administrativos",
+          "value": 9,
+          "formatted": "9",
+          "workers": "4.719.388",
+          "salary": "2.058"
+        },
+        {
+          "label": "Analistas de tecnologia da informação",
+          "value": 9,
+          "formatted": "9",
+          "workers": "449.999",
+          "salary": "6.574"
+        },
+        {
+          "label": "Auxiliares de contabilidade",
+          "value": 9,
+          "formatted": "9",
+          "workers": "310.568",
+          "salary": "2.473"
+        },
+        {
+          "label": "Escriturários de serviços bancários",
+          "value": 9,
+          "formatted": "9",
+          "workers": "295.091",
+          "salary": "7.521"
+        },
+        {
+          "label": "Profissionais de administração ecônomico-financeira",
+          "value": 9,
+          "formatted": "9",
+          "workers": "117.114",
+          "salary": "4.975"
+        },
+        {
+          "label": "Profissionais da matemática",
+          "value": 9,
+          "formatted": "9",
+          "workers": "110.312",
+          "salary": "9.380"
+        },
+        {
+          "label": "Técnicos de desenvolvimento de sistemas e aplicações",
+          "value": 9,
+          "formatted": "9",
+          "workers": "100.276",
+          "salary": "4.930"
+        }
+      ]
+    },
+    "generated_at": "2026-03-18",
+    "tags": [
+      "ocupações",
+      "exposição",
+      "ranking"
+    ],
+    "data_hash": "4fefe3e6d89c3059877fe3b9370d1ecb"
+  },
+  {
+    "id": "grupo-comparison",
+    "category": "Setores",
+    "title": "IA e o Futuro do Trabalho no Brasil",
+    "subtitle": "Exposição à inteligência artificial varia drasticamente entre setores",
+    "body_html": "<p>A inteligência artificial (IA) está redefinindo o panorama do mercado de trabalho brasileiro, com diferentes grupos ocupacionais enfrentando níveis variados de exposição. Dados revelam que os 'Serviços Administrativos' lideram essa exposição, com uma média de 7.6. Este grupo, que emprega mais de 10,2 milhões de trabalhadores e tem um salário médio de R$ 2.564, é o mais suscetível às transformações impulsionadas pela IA.</p><p>Em contraste, 'Profissionais das Ciências' e 'Dirigentes e Gerentes' também apresentam alta exposição, com médias de 6.7 e 6.4, respectivamente. No entanto, esses grupos desfrutam de salários médios significativamente mais altos (R$ 8.917 e R$ 10.563), o que pode indicar uma maior capacidade de adaptação ou a natureza complementar da IA em suas funções. Os grupos com menor exposição incluem 'Agropecuária e Pesca' (2.0) e 'Serviços e Comércio' (3.2), que, apesar de empregarem milhões, mostram menor vulnerabilidade direta à automação por IA.</p>",
+    "headline_stat": "7,6",
+    "headline_label": "exposição média — Serviços Administrativos",
+    "chart": {
+      "type": "horizontal_bar",
+      "data": [
+        {
+          "label": "Serviços Administrativos",
+          "value": 7.6,
+          "formatted": "7,6",
+          "workers": "10.216.015",
+          "salary": "R$ 2.564"
+        },
+        {
+          "label": "Profissionais das Ciências",
+          "value": 6.7,
+          "formatted": "6,7",
+          "workers": "7.204.129",
+          "salary": "R$ 8.917"
+        },
+        {
+          "label": "Dirigentes e Gerentes",
+          "value": 6.4,
+          "formatted": "6,4",
+          "workers": "2.848.385",
+          "salary": "R$ 10.563"
+        },
+        {
+          "label": "Técnicos de Nível Médio",
+          "value": 5.6,
+          "formatted": "5,6",
+          "workers": "6.649.007",
+          "salary": "R$ 3.568"
+        },
+        {
+          "label": "Forças Armadas e Polícia",
+          "value": 4.3,
+          "formatted": "4,3",
+          "workers": "0",
+          "salary": "R$ 0"
+        },
+        {
+          "label": "Produção Industrial",
+          "value": 3.3,
+          "formatted": "3,3",
+          "workers": "11.405.784",
+          "salary": "R$ 2.977"
+        },
+        {
+          "label": "Serviços e Comércio",
+          "value": 3.2,
+          "formatted": "3,2",
+          "workers": "13.857.335",
+          "salary": "R$ 2.303"
+        },
+        {
+          "label": "Reparação e Manutenção",
+          "value": 3.1,
+          "formatted": "3,1",
+          "workers": "1.259.221",
+          "salary": "R$ 3.203"
+        },
+        {
+          "label": "Agropecuária e Pesca",
+          "value": 2.0,
+          "formatted": "2,0",
+          "workers": "1.706.304",
+          "salary": "R$ 1.892"
+        }
+      ]
+    },
+    "generated_at": "2026-03-18",
+    "tags": [
+      "grande grupo",
+      "setores",
+      "comparação"
+    ],
+    "data_hash": "1420df6faee48965d3aab752e4eff7ba"
+  },
+  {
+    "id": "growth-vs-decline",
+    "category": "Mercado",
+    "title": "IA e o Mercado de Trabalho: Crescimento e Declínio",
+    "subtitle": "Novos dados do CAGED revelam tendências e exposição à automação.",
+    "body_html": "<p>O mercado de trabalho brasileiro registrou um saldo positivo de 1.709.708 contratações em 295 ocupações, enquanto 305 ocupações tiveram um saldo negativo de 460.104. A análise desses dados, à luz da exposição à Inteligência Artificial (IA), revela padrões interessantes.</p><p>As ocupações em crescimento apresentam uma exposição média à IA de 4,4. Entre os destaques estão 'Operadores do comércio em lojas e mercados' (+194.757 contratações, exposição 3) e 'Alimentadores de linhas de produção' (+169.885 contratações, exposição 3). No entanto, 'Agentes, assistentes e auxiliares administrativos' (+153.254 contratações) se destaca com uma exposição 9, indicando um potencial de automação futuro.</p><p>Por outro lado, as ocupações em declínio mostram uma exposição média à IA de 4,9. Ocupações como 'Supervisores administrativos' (-35.045 contratações, exposição 7) e 'Gerentes administrativos, financeiros, de riscos e afins' (-26.178 contratações, exposição 7) lideram as perdas. 'Apontadores e conferentes' (-21.249 contratações) registram uma exposição 8. Os números sugerem que funções com maior suscetibilidade à automação já começam a sentir os impactos no saldo de empregos.</p>",
+    "headline_stat": "295",
+    "headline_label": "ocupações em crescimento vs 305 em declínio",
+    "chart": {
+      "type": "comparison_pair",
+      "data": [
+        {
+          "label": "Em crescimento",
+          "value": 295,
+          "formatted": "295",
+          "detail": "saldo total: +1.709.708"
+        },
+        {
+          "label": "Em declínio",
+          "value": 305,
+          "formatted": "305",
+          "detail": "saldo total: -460.104"
+        }
+      ]
+    },
+    "generated_at": "2026-03-18",
+    "tags": [
+      "saldo",
+      "crescimento",
+      "declínio",
+      "CAGED"
+    ],
+    "data_hash": "49cf95c0f7cafacb13efb23113101423"
+  }
+]

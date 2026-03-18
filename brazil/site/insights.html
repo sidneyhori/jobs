@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pílulas de Insight — IA e Emprego no Brasil</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0a0a0f;
+  --bg2: #12121a;
+  --bg3: #1a1a26;
+  --fg: #e0e0e8;
+  --fg2: #888894;
+  --accent: #6c8cff;
+  --green: #4caf50;
+  --red: #ef5350;
+  --yellow: #ffc107;
+  --blue: #42a5f5;
+  --radius: 8px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* ── Navigation ─────────────────────────────────────── */
+#nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10,10,15,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 0 16px;
+}
+#nav a {
+  padding: 14px 18px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--fg2);
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: all 0.15s;
+}
+#nav a:hover { color: var(--fg); }
+#nav a.active {
+  color: var(--fg);
+  border-bottom-color: var(--accent);
+}
+
+/* ── Page layout ────────────────────────────────────── */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px 24px 80px;
+}
+
+.page-header {
+  margin-bottom: 32px;
+}
+.page-header h1 {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+.page-header p {
+  font-size: 15px;
+  color: var(--fg2);
+  line-height: 1.6;
+}
+
+/* ── Filter chips ───────────────────────────────────── */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+.chip {
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  background: transparent;
+  color: var(--fg2);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.chip:hover { border-color: var(--accent); color: var(--fg); }
+.chip.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+/* ── Article grid ───────────────────────────────────── */
+.articles {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ── Article card ───────────────────────────────────── */
+.article {
+  background: var(--bg2);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--radius);
+  padding: 24px;
+  transition: border-color 0.2s;
+}
+.article:hover { border-color: rgba(255,255,255,0.12); }
+
+.article-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.article-category {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  font-weight: 600;
+}
+.article-date {
+  font-size: 11px;
+  color: var(--fg2);
+}
+
+.hero-stat {
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.hero-label {
+  font-size: 14px;
+  color: var(--fg2);
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+.article-chart {
+  margin-bottom: 20px;
+}
+
+.article-body {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--fg);
+}
+.article-body p {
+  margin-bottom: 12px;
+}
+.article-body p:last-child {
+  margin-bottom: 0;
+}
+
+.article-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 16px;
+}
+.tag {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: var(--bg3);
+  color: var(--fg2);
+}
+
+/* ── Chart: horizontal bars ─────────────────────────── */
+.bar-chart { width: 100%; }
+.bar-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.bar-label {
+  font-size: 13px;
+  color: var(--fg);
+  min-width: 100px;
+  text-align: right;
+  flex-shrink: 0;
+}
+.bar-track {
+  flex: 1;
+  height: 24px;
+  background: var(--bg3);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+.bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  background: var(--accent);
+  transition: width 0.5s ease;
+}
+.bar-value {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--fg);
+  min-width: 50px;
+  flex-shrink: 0;
+}
+
+/* ── Chart: ranking table ───────────────────────────── */
+.ranking-table {
+  width: 100%;
+  font-size: 13px;
+}
+.ranking-table .rank-row {
+  display: grid;
+  grid-template-columns: 28px 1fr 80px 80px;
+  gap: 8px;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.ranking-table .rank-row:last-child { border-bottom: none; }
+.rank-num {
+  font-weight: 700;
+  color: var(--fg2);
+  text-align: center;
+}
+.rank-name {
+  color: var(--fg);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.rank-score {
+  font-weight: 600;
+  color: var(--accent);
+  text-align: right;
+}
+.rank-workers {
+  color: var(--fg2);
+  text-align: right;
+}
+
+/* ── Chart: comparison pair ─────────────────────────── */
+.comparison-pair {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+}
+.comp-item {
+  text-align: center;
+  flex: 1;
+}
+.comp-value {
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+}
+.comp-value.positive { color: var(--green); }
+.comp-value.negative { color: var(--red); }
+.comp-label {
+  font-size: 13px;
+  color: var(--fg2);
+}
+.comp-detail {
+  font-size: 12px;
+  color: var(--fg2);
+  margin-top: 4px;
+}
+
+/* ── Loading state ──────────────────────────────────── */
+.loading {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--fg2);
+  font-size: 15px;
+}
+
+/* ── Responsive ─────────────────────────────────────── */
+@media (max-width: 700px) {
+  .container { padding: 20px 16px 60px; }
+  .page-header h1 { font-size: 22px; }
+  .hero-stat { font-size: 36px; }
+  #nav a { padding: 12px 12px; font-size: 12px; }
+  .bar-label { min-width: 70px; font-size: 12px; }
+  .ranking-table .rank-row { grid-template-columns: 24px 1fr 60px; }
+  .rank-workers { display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html">← Mapa</a>
+  <a href="insights.html" class="active">Insights</a>
+</nav>
+
+<div class="container">
+  <header class="page-header">
+    <h1>Pílulas de Insight: IA e Emprego no Brasil</h1>
+    <p>Análises automatizadas a partir de dados do CAGED e RAIS sobre o impacto da inteligência artificial no mercado de trabalho brasileiro.</p>
+  </header>
+
+  <div class="filters" id="filters"></div>
+
+  <div class="articles" id="articles">
+    <div class="loading">Carregando insights...</div>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════════════════════════════════════════
+// DATA LOADING & RENDERING
+// ══════════════════════════════════════════════════════════════════════════
+
+let allInsights = [];
+let activeCategory = "Todas";
+
+fetch("insights.json")
+  .then(r => r.json())
+  .then(data => {
+    allInsights = data;
+    buildFilters();
+    renderArticles();
+  })
+  .catch(() => {
+    document.getElementById("articles").innerHTML =
+      '<div class="loading">Nenhum insight disponível. Execute generate_insights.py para gerar.</div>';
+  });
+
+function buildFilters() {
+  const categories = ["Todas", ...new Set(allInsights.map(a => a.category))];
+  const container = document.getElementById("filters");
+  categories.forEach(cat => {
+    const chip = document.createElement("button");
+    chip.className = "chip" + (cat === activeCategory ? " active" : "");
+    chip.textContent = cat;
+    chip.onclick = () => {
+      activeCategory = cat;
+      container.querySelectorAll(".chip").forEach(c => c.classList.toggle("active", c.textContent === cat));
+      renderArticles();
+    };
+    container.appendChild(chip);
+  });
+}
+
+function renderArticles() {
+  const container = document.getElementById("articles");
+  const filtered = activeCategory === "Todas"
+    ? allInsights
+    : allInsights.filter(a => a.category === activeCategory);
+
+  if (filtered.length === 0) {
+    container.innerHTML = '<div class="loading">Nenhum insight nesta categoria.</div>';
+    return;
+  }
+
+  container.innerHTML = filtered.map(article => `
+    <article class="article">
+      <div class="article-meta">
+        <span class="article-category">${esc(article.category)}</span>
+        <span class="article-date">${formatDate(article.generated_at)}</span>
+      </div>
+      <div class="hero-stat">${esc(article.headline_stat)}</div>
+      <div class="hero-label">${esc(article.headline_label)}</div>
+      <div class="article-chart">${renderChart(article.chart)}</div>
+      <div class="article-body">${article.body_html}</div>
+      <div class="article-tags">
+        ${article.tags.map(t => `<span class="tag">${esc(t)}</span>`).join("")}
+      </div>
+    </article>
+  `).join("");
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// CHART RENDERERS
+// ══════════════════════════════════════════════════════════════════════════
+
+function renderChart(chart) {
+  if (!chart || !chart.data) return "";
+  switch (chart.type) {
+    case "horizontal_bar": return renderHorizontalBar(chart.data);
+    case "ranking_table": return renderRankingTable(chart.data);
+    case "comparison_pair": return renderComparisonPair(chart.data);
+    default: return "";
+  }
+}
+
+function renderHorizontalBar(data) {
+  const max = Math.max(...data.map(d => d.value));
+  return `<div class="bar-chart">${data.map(d => `
+    <div class="bar-row">
+      <span class="bar-label">${esc(d.label)}</span>
+      <div class="bar-track">
+        <div class="bar-fill" style="width: ${(d.value / max * 100).toFixed(1)}%"></div>
+      </div>
+      <span class="bar-value">${esc(d.formatted)}</span>
+    </div>
+  `).join("")}</div>`;
+}
+
+function renderRankingTable(data) {
+  return `<div class="ranking-table">${data.map((d, i) => `
+    <div class="rank-row">
+      <span class="rank-num">${i + 1}</span>
+      <span class="rank-name" title="${esc(d.label)}">${esc(d.label)}</span>
+      <span class="rank-score">${esc(d.formatted)}</span>
+      <span class="rank-workers">${d.workers ? esc(d.workers) : ""}</span>
+    </div>
+  `).join("")}</div>`;
+}
+
+function renderComparisonPair(data) {
+  return `<div class="comparison-pair">${data.map(d => {
+    const cls = d.value > 0 ? "positive" : d.value < 0 ? "negative" : "";
+    return `
+      <div class="comp-item">
+        <div class="comp-value ${cls}">${esc(d.formatted)}</div>
+        <div class="comp-label">${esc(d.label)}</div>
+        ${d.detail ? `<div class="comp-detail">${esc(d.detail)}</div>` : ""}
+      </div>`;
+  }).join("")}</div>`;
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// HELPERS
+// ══════════════════════════════════════════════════════════════════════════
+
+function esc(s) {
+  if (!s) return "";
+  const d = document.createElement("div");
+  d.textContent = String(s);
+  return d.innerHTML;
+}
+
+function formatDate(iso) {
+  if (!iso) return "";
+  const [y, m, d] = iso.split("-");
+  const months = ["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez"];
+  return `${parseInt(d)} ${months[parseInt(m) - 1]} ${y}`;
+}
+</script>
+</body>
+</html>
