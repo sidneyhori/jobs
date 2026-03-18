@@ -1,9 +1,10 @@
 """
-Build a CSV summary of all Brazilian occupations by merging CBO + CAGED data.
+Build a CSV summary of all Brazilian occupations by merging CBO + CAGED + RAIS data.
 
 Merges:
 - brazil/data/cbo_occupations.json (structure, hierarchy, activities)
-- brazil/data/caged_stats.json (salary, employment, saldo)
+- brazil/data/caged_stats.json (salary flows, admissions/terminations)
+- brazil/data/rais_stats.json (employment stock, market salary, education)
 
 Output: brazil/occupations_br.csv
 
@@ -33,7 +34,18 @@ def main():
         for s in caged_stats:
             caged_by_code[s["codigo_familia"]] = s
     else:
-        print(f"WARNING: {caged_path} not found. CSV will have empty salary/employment columns.")
+        print(f"WARNING: {caged_path} not found. CSV will have empty CAGED columns.")
+
+    # Load RAIS stats, index by family code
+    rais_path = os.path.join(DATA_DIR, "rais_stats.json")
+    rais_by_code = {}
+    if os.path.exists(rais_path):
+        with open(rais_path, encoding="utf-8") as f:
+            rais_stats = json.load(f)
+        for s in rais_stats:
+            rais_by_code[s["codigo_familia"]] = s
+    else:
+        print(f"WARNING: {rais_path} not found. CSV will have empty RAIS columns.")
 
     # Build rows
     fieldnames = [
@@ -41,18 +53,26 @@ def main():
         "grande_grupo_codigo", "grande_grupo",
         "subgrupo_principal_codigo", "subgrupo_principal",
         "subgrupo_codigo", "subgrupo",
-        "salario_mediano", "salario_medio",
+        # RAIS (stock)
+        "empregados",  # vinculos_ativos from RAIS
+        "salario_mediano_rais",  # true market median
+        "escolaridade_tipica",
+        # CAGED (flow)
+        "salario_mediano_caged",  # admission salary
         "admissoes", "desligamentos", "saldo_periodo",
-        "n_ocupacoes",  # count of 6-digit sub-occupations
-        "n_areas_atividade",  # count of activity areas
-        "n_atividades",  # count of distinct activities
+        # CBO metadata
+        "n_ocupacoes",
+        "n_areas_atividade",
+        "n_atividades",
     ]
 
     rows = []
-    matched = 0
+    matched_caged = 0
+    matched_rais = 0
     for fam in familias:
         codigo = fam["codigo"]
         caged = caged_by_code.get(codigo, {})
+        rais = rais_by_code.get(codigo, {})
 
         # Count activities (deduplicated)
         atividades = fam.get("atividades", [])
@@ -71,18 +91,25 @@ def main():
             "subgrupo_principal": fam["subgrupo_principal"],
             "subgrupo_codigo": fam["subgrupo_codigo"],
             "subgrupo": fam["subgrupo"],
-            "salario_mediano": caged.get("salario_mediano", ""),
-            "salario_medio": caged.get("salario_medio", ""),
+            # RAIS
+            "empregados": rais.get("vinculos_ativos", ""),
+            "salario_mediano_rais": rais.get("salario_mediano_rais", ""),
+            "escolaridade_tipica": rais.get("escolaridade_tipica", ""),
+            # CAGED
+            "salario_mediano_caged": caged.get("salario_mediano", ""),
             "admissoes": caged.get("admissoes", ""),
             "desligamentos": caged.get("desligamentos", ""),
             "saldo_periodo": caged.get("saldo_periodo", ""),
-            "n_ocupacoes": 0,  # will fill below
+            # CBO
+            "n_ocupacoes": 0,
             "n_areas_atividade": len(areas),
             "n_atividades": len(unique_atividades),
         }
 
         if caged:
-            matched += 1
+            matched_caged += 1
+        if rais:
+            matched_rais += 1
 
         rows.append(row)
 
@@ -105,7 +132,8 @@ def main():
         writer.writerows(rows)
 
     print(f"Wrote {len(rows)} rows to {out_path}")
-    print(f"  With CAGED data: {matched}/{len(rows)}")
+    print(f"  With CAGED data: {matched_caged}/{len(rows)}")
+    print(f"  With RAIS data: {matched_rais}/{len(rows)}")
 
     # Spot checks
     print(f"\nSample rows:")
@@ -114,8 +142,10 @@ def main():
         match = [r for r in rows if r["codigo_cbo"] == code]
         if match:
             r = match[0]
-            sal = f"R${float(r['salario_mediano']):,.0f}" if r['salario_mediano'] else "N/A"
-            print(f"  {r['codigo_cbo']} {r['titulo']}: {sal}/mês, adm={r['admissoes']}, saldo={r['saldo_periodo']}")
+            emp = f"{int(r['empregados']):,}" if r['empregados'] else "N/A"
+            sal_r = f"R${float(r['salario_mediano_rais']):,.0f}" if r['salario_mediano_rais'] else "N/A"
+            sal_c = f"R${float(r['salario_mediano_caged']):,.0f}" if r['salario_mediano_caged'] else "N/A"
+            print(f"  {r['codigo_cbo']} {r['titulo']}: emp={emp}, sal_rais={sal_r}, sal_caged={sal_c}, saldo={r['saldo_periodo']}, escol={r['escolaridade_tipica']}")
 
 
 if __name__ == "__main__":

@@ -137,17 +137,17 @@ def download_rais(year: int, force: bool = False) -> list[str]:
 def parse_rais_row(fields: list[str]) -> dict | None:
     """Parse a single RAIS row into relevant fields."""
     try:
-        cbo6 = fields[COL_CBO].strip().strip('"')
+        cbo6 = fields[COL_CBO].strip()
         if not cbo6 or len(cbo6) < 4:
             return None
 
-        ativo = fields[COL_ATIVO].strip().strip('"')
-        municipio = fields[COL_MUNICIPIO].strip().strip('"')
-        escol = fields[COL_ESCOL].strip().strip('"')
-        sexo = fields[COL_SEXO].strip().strip('"')
+        ativo = fields[COL_ATIVO].strip()
+        municipio = fields[COL_MUNICIPIO].strip()
+        escol = fields[COL_ESCOL].strip()
+        sexo = fields[COL_SEXO].strip()
 
-        # Salary — Brazilian format uses comma as decimal
-        rem_str = fields[COL_REM_MEDIA].strip().strip('"').replace(",", ".")
+        # Salary — csv.reader already parsed, just need float conversion
+        rem_str = fields[COL_REM_MEDIA].strip()
         try:
             rem_media = float(rem_str) if rem_str else 0.0
         except ValueError:
@@ -186,11 +186,10 @@ def aggregate_rais(txt_paths: list[str]) -> dict:
         rows = 0
 
         with open(txt_path, encoding="latin-1") as f:
-            # Skip header
-            next(f)
-            for line in f:
+            reader = csv.reader(f)
+            next(reader)  # Skip header
+            for fields in reader:
                 rows += 1
-                fields = line.split(";")
                 parsed = parse_rais_row(fields)
                 if not parsed:
                     continue

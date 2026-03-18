@@ -55,9 +55,17 @@ def main():
         if vantagem is not None and crescimento is not None:
             oportunidade = round((vantagem + crescimento) / 2, 1)
 
-        salario = row.get("salario_mediano", "")
+        # RAIS (stock)
+        empregados = row.get("empregados", "")
+        salario_rais = row.get("salario_mediano_rais", "")
+        escolaridade = row.get("escolaridade_tipica", "")
+        # CAGED (flow)
+        salario_caged = row.get("salario_mediano_caged", "")
         admissoes = row.get("admissoes", "")
         saldo = row.get("saldo_periodo", "")
+
+        # Best salary: prefer RAIS (market rate) over CAGED (admission rate)
+        salario = salario_rais or salario_caged
 
         data.append({
             "titulo": row["titulo"],
@@ -66,7 +74,10 @@ def main():
             "grande_grupo": row["grande_grupo"],
             "grande_grupo_codigo": row["grande_grupo_codigo"],
             "subgrupo_principal": row["subgrupo_principal"],
+            "empregados": int(empregados) if empregados else None,
             "salario": round(float(salario)) if salario else None,
+            "salario_admissao": round(float(salario_caged)) if salario_caged else None,
+            "escolaridade": escolaridade,
             "admissoes": int(admissoes) if admissoes else None,
             "saldo": int(saldo) if saldo else None,
             "exposicao": exp.get("exposicao"),
