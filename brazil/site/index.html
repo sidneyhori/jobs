@@ -587,6 +587,7 @@ canvas#scatterCanvas { display: block; cursor: crosshair; }
   <button data-view="demo">Demografia</button>
   <button data-view="regional">Mapa Regional</button>
   <button data-view="ranking">Ranking</button>
+  <button data-view="perguntar">Perguntar</button>
 </nav>
 
 <!-- View 1: Treemap -->
@@ -695,6 +696,20 @@ canvas#scatterCanvas { display: block; cursor: crosshair; }
   <div class="ranking-pagination" id="rankingPagination"></div>
 </div>
 
+<!-- View 7: Perguntar -->
+<div id="view-perguntar" class="view">
+  <h2 class="section-title">Pergunte sobre o mercado de trabalho</h2>
+  <p class="section-desc">Fa&ccedil;a perguntas em portugu&ecirc;s sobre ocupa&ccedil;&otilde;es, sal&aacute;rios, risco de automa&ccedil;&atilde;o e demografia.</p>
+  <div style="max-width:700px;margin:0 auto 24px">
+    <div style="position:relative">
+      <input type="text" id="perguntarInput" placeholder="Ex: vagas femininas em risco" style="width:100%;padding:14px 48px 14px 16px;font-size:16px;background:var(--bg2);border:1px solid rgba(255,255,255,0.12);border-radius:var(--radius);color:var(--fg);outline:none">
+      <button id="perguntarBtn" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);background:var(--accent);border:none;border-radius:6px;color:#fff;padding:8px 14px;cursor:pointer;font-size:14px;font-weight:600">Buscar</button>
+    </div>
+    <div id="perguntarChips" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px"></div>
+  </div>
+  <div id="perguntarResult"></div>
+</div>
+
 <!-- Shared tooltip -->
 <div id="tooltip">
   <div class="tt-title"></div>
@@ -729,6 +744,7 @@ function switchView(view) {
   if (view === "demo") initDemo();
   if (view === "regional") initRegional();
   if (view === "ranking") initRanking();
+  if (view === "perguntar") initPerguntar();
 }
 
 // ══════════════════════════════════════════════════════════════════════════
@@ -1950,6 +1966,556 @@ function renderRanking() {
       renderRanking();
       document.getElementById("rankingTable").scrollIntoView({ behavior: "smooth", block: "start" });
     });
+  });
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// VIEW 7: PERGUNTAR (Natural Language Query)
+// ══════════════════════════════════════════════════════════════════════════
+let perguntarInited = false;
+
+const PERGUNTAR_CHIPS = [
+  "vagas femininas em risco",
+  "vagas pretas em risco",
+  "melhores pontos de entrada",
+  "numero de empregos em risco",
+  "melhores sal\u00e1rios",
+  "oportunidades n\u00edvel m\u00e9dio",
+  "estados com mais risco",
+  "crescimento por setor"
+];
+
+const UF_ABBR_TO_CODE = {};
+const UF_NAME_TO_CODE = {};
+
+function buildUfMaps() {
+  if (!summaryData || !summaryData.uf_codes) return;
+  const ufCodes = summaryData.uf_codes;
+  const porUf = summaryData.por_uf;
+  for (const [code, abbr] of Object.entries(ufCodes)) {
+    UF_ABBR_TO_CODE[abbr.toLowerCase()] = code;
+    if (porUf[code] && porUf[code].nome) {
+      UF_NAME_TO_CODE[porUf[code].nome.toLowerCase()] = code;
+    }
+  }
+}
+
+function parseQuery(text) {
+  const q = text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  const orig = text.toLowerCase();
+  const intent = {
+    filters: [],
+    sort: null,
+    aggregate: null,
+    aggregateField: null,
+    demographic: null,
+    limit: null,
+    groupBy: null,
+    raw: text
+  };
+
+  // Demographics
+  if (/\b(feminina?s?|mulher|mulheres)\b/.test(q)) intent.demographic = "feminino";
+  else if (/\b(masculina?s?|homens?|homem)\b/.test(q)) intent.demographic = "masculino";
+
+  if (/\b(pret[oa]s?|negr[oa]s?)\b/.test(q)) {
+    intent.demographic = intent.demographic === "feminino" ? "feminino" : (intent.demographic === "masculino" ? "masculino" : null);
+    intent.raceDemographic = "negra";
+  }
+  if (/\b(branc[oa]s?)\b/.test(q)) {
+    intent.raceDemographic = "branca";
+  }
+  if (/\b(pard[oa]s?)\b/.test(q)) {
+    intent.raceDemographic = "parda";
+  }
+
+  // Risk filters
+  if (/\b(em risco|risco alto|exposicao alta|alto risco)\b/.test(q)) {
+    intent.filters.push({ field: "exposicao", op: ">=", value: 7 });
+  } else if (/\b(seguro|risco baixo|protegido|baixo risco)\b/.test(q)) {
+    intent.filters.push({ field: "exposicao", op: "<=", value: 3 });
+  }
+
+  // Education filters
+  if (/\b(doutorado)\b/.test(q)) intent.filters.push({ field: "escolaridade", op: "==", value: "Doutorado" });
+  else if (/\b(mestrado)\b/.test(q)) intent.filters.push({ field: "escolaridade", op: "==", value: "Mestrado" });
+  else if (/\b(superior|faculdade|graduacao)\b/.test(q)) intent.filters.push({ field: "escolaridade", op: "==", value: "Superior Completo" });
+  else if (/\b(nivel medio|ensino medio|medio completo)\b/.test(q)) intent.filters.push({ field: "escolaridade", op: "==", value: "M\u00e9dio Completo" });
+  else if (/\b(fundamental)\b/.test(q)) intent.filters.push({ field: "escolaridade", op: "==", value: "6\u00aa a 9\u00aa Fundamental" });
+
+  // UF filter
+  for (const [name, code] of Object.entries(UF_NAME_TO_CODE)) {
+    if (orig.includes(name)) {
+      intent.filters.push({ field: "uf", op: "==", value: code });
+      break;
+    }
+  }
+  if (!intent.filters.some(f => f.field === "uf")) {
+    for (const [abbr, code] of Object.entries(UF_ABBR_TO_CODE)) {
+      const re = new RegExp("\\b" + abbr + "\\b", "i");
+      if (re.test(orig)) {
+        intent.filters.push({ field: "uf", op: "==", value: code });
+        break;
+      }
+    }
+  }
+
+  // Sort
+  if (/\b(salario|paga bem|remuneracao|melhores salarios)\b/.test(q)) {
+    intent.sort = { field: "salario", direction: "desc" };
+  } else if (/\b(oportunidade|entrada|futuro|pontos de entrada)\b/.test(q)) {
+    intent.sort = { field: "oportunidade", direction: "desc" };
+  } else if (/\b(crescendo|crescimento)\b/.test(q)) {
+    intent.sort = { field: "saldo", direction: "desc" };
+  } else if (/\b(diminuindo|perdendo|declinio)\b/.test(q)) {
+    intent.sort = { field: "saldo", direction: "asc" };
+  } else if (/\b(exposicao|mais risco)\b/.test(q)) {
+    intent.sort = { field: "exposicao", direction: "desc" };
+  }
+
+  // Aggregation
+  if (/\b(quantos?|numero|total|vagas)\b/.test(q)) {
+    intent.aggregate = "sum";
+    intent.aggregateField = "empregados";
+  }
+
+  // Limit / top / bottom
+  const numMatch = q.match(/\b(top|melhores?|maiores?|piores?|menores?)\s*(\d+)?\b/);
+  if (numMatch) {
+    intent.limit = numMatch[2] ? parseInt(numMatch[2]) : 10;
+    if (/\b(piores?|menores?)\b/.test(q)) {
+      if (!intent.sort) intent.sort = { field: "exposicao", direction: "desc" };
+      // "piores" for risk means highest exposure
+    } else {
+      if (!intent.sort) intent.sort = { field: "oportunidade", direction: "desc" };
+    }
+  }
+
+  // GroupBy
+  if (/\b(por setor|por grupo)\b/.test(q)) intent.groupBy = "grande_grupo";
+  else if (/\b(por escolaridade|por nivel)\b/.test(q)) intent.groupBy = "escolaridade";
+  else if (/\b(por estado|por uf|estados)\b/.test(q)) intent.groupBy = "uf";
+
+  // Default: if only demographic + risk but no aggregate, infer sum
+  if (intent.demographic && intent.filters.some(f => f.field === "exposicao") && !intent.aggregate) {
+    intent.aggregate = "sum";
+    intent.aggregateField = "empregados";
+  }
+
+  // If race demographic + risk but no aggregate, infer sum
+  if (intent.raceDemographic && intent.filters.some(f => f.field === "exposicao") && !intent.aggregate) {
+    intent.aggregate = "sum";
+    intent.aggregateField = "empregados";
+  }
+
+  // Default limit for list results
+  if (!intent.aggregate && !intent.groupBy && !intent.limit) {
+    intent.limit = 20;
+  }
+
+  // Default sort
+  if (!intent.sort && !intent.aggregate && !intent.groupBy) {
+    if (intent.filters.some(f => f.field === "exposicao" && f.op === ">=")) {
+      intent.sort = { field: "empregados", direction: "desc" };
+    } else {
+      intent.sort = { field: "empregados", direction: "desc" };
+    }
+  }
+
+  return intent;
+}
+
+function executeQuery(intent, allData) {
+  let items = allData.filter(d => d.empregados != null && d.empregados > 0);
+
+  // Apply filters (except UF which needs special handling)
+  for (const f of intent.filters) {
+    if (f.field === "uf") continue; // handled separately
+    if (f.field === "escolaridade") {
+      items = items.filter(d => d.escolaridade === f.value);
+    } else {
+      items = items.filter(d => {
+        const v = d[f.field];
+        if (v == null) return false;
+        if (f.op === ">=") return v >= f.value;
+        if (f.op === "<=") return v <= f.value;
+        if (f.op === "==") return v === f.value;
+        return true;
+      });
+    }
+  }
+
+  const ufFilter = intent.filters.find(f => f.field === "uf");
+
+  // Demographic + race queries using summary data
+  if ((intent.demographic || intent.raceDemographic) && intent.aggregate === "sum") {
+    return executeDemographicQuery(intent, items, ufFilter);
+  }
+
+  // GroupBy
+  if (intent.groupBy) {
+    return executeGroupBy(intent, items);
+  }
+
+  // UF filter for occupation list — filter to occupations present in that state
+  if (ufFilter) {
+    items = items.filter(d => d.por_uf && d.por_uf[ufFilter.value]);
+  }
+
+  // Sort
+  if (intent.sort) {
+    const { field, direction } = intent.sort;
+    items.sort((a, b) => {
+      const av = a[field] != null ? a[field] : -Infinity;
+      const bv = b[field] != null ? b[field] : -Infinity;
+      return direction === "desc" ? bv - av : av - bv;
+    });
+  }
+
+  // Aggregate
+  if (intent.aggregate === "sum" && intent.aggregateField) {
+    const total = items.reduce((s, d) => s + (d[intent.aggregateField] || 0), 0);
+    const allTotal = allData.reduce((s, d) => s + (d[intent.aggregateField] || 0), 0);
+    return {
+      type: "aggregate",
+      value: total,
+      pct: allTotal > 0 ? total / allTotal * 100 : 0,
+      count: items.length,
+      label: describeIntent(intent),
+      items: items.slice(0, 10),
+      intent: intent
+    };
+  }
+
+  if (intent.aggregate === "count") {
+    return {
+      type: "aggregate",
+      value: items.length,
+      label: describeIntent(intent),
+      items: items.slice(0, 10),
+      intent: intent
+    };
+  }
+
+  // List result
+  if (intent.limit) items = items.slice(0, intent.limit);
+  return {
+    type: "list",
+    items: items,
+    label: describeIntent(intent),
+    intent: intent
+  };
+}
+
+function executeDemographicQuery(intent, filteredItems, ufFilter) {
+  // Calculate demographic totals from filtered occupations
+  let demTotal = 0;
+  let demCompare = 0;
+  let demLabel = "";
+  let compareLabel = "";
+  const topItems = [];
+
+  if (intent.raceDemographic && !intent.demographic) {
+    // Race query: "vagas pretas em risco"
+    const raceField = "total_" + intent.raceDemographic;
+    for (const d of filteredItems) {
+      if (!d.demographics) continue;
+      const val = d.demographics[raceField] || 0;
+      if (val > 0) {
+        demTotal += val;
+        topItems.push({ ...d, demCount: val });
+      }
+    }
+    demLabel = intent.raceDemographic === "negra" ? "trabalhadores negros" :
+               intent.raceDemographic === "preta" ? "trabalhadores pretos" :
+               intent.raceDemographic === "parda" ? "trabalhadores pardos" :
+               "trabalhadores brancos";
+
+    // Compare with other race
+    const compField = intent.raceDemographic === "branca" ? "total_negra" : "total_branca";
+    compareLabel = intent.raceDemographic === "branca" ? "negros" : "brancos";
+    for (const d of filteredItems) {
+      if (!d.demographics) continue;
+      demCompare += d.demographics[compField] || 0;
+    }
+  } else if (intent.raceDemographic && intent.demographic) {
+    // Combined: "mulheres negras em risco" — approximate via both filters
+    const genderField = "total_" + intent.demographic;
+    const raceField = "total_" + intent.raceDemographic;
+    for (const d of filteredItems) {
+      if (!d.demographics) continue;
+      const genderVal = d.demographics[genderField] || 0;
+      const raceVal = d.demographics[raceField] || 0;
+      const totalDem = (d.demographics.total_feminino || 0) + (d.demographics.total_masculino || 0);
+      if (totalDem > 0 && genderVal > 0 && raceVal > 0) {
+        // Approximate intersection: P(gender) * P(race) * total
+        const approx = Math.round(genderVal / totalDem * raceVal);
+        demTotal += approx;
+        topItems.push({ ...d, demCount: approx });
+      }
+    }
+    const genderLabel = intent.demographic === "feminino" ? "trabalhadoras" : "trabalhadores";
+    const raceLabel = intent.raceDemographic === "negra" ? "negras" : intent.raceDemographic === "preta" ? "pretas" : intent.raceDemographic === "branca" ? "brancas" : "pardas";
+    demLabel = genderLabel + " " + raceLabel;
+  } else {
+    // Gender only
+    const genderField = "total_" + intent.demographic;
+    const compGenderField = intent.demographic === "feminino" ? "total_masculino" : "total_feminino";
+    for (const d of filteredItems) {
+      if (!d.demographics) continue;
+      const val = d.demographics[genderField] || 0;
+      if (val > 0) {
+        demTotal += val;
+        topItems.push({ ...d, demCount: val });
+      }
+      demCompare += d.demographics[compGenderField] || 0;
+    }
+    demLabel = intent.demographic === "feminino" ? "trabalhadoras" : "trabalhadores";
+    compareLabel = intent.demographic === "feminino" ? "homens" : "mulheres";
+  }
+
+  topItems.sort((a, b) => b.demCount - a.demCount);
+
+  // Calculate percentages using summary data
+  const totalWorkers = summaryData.demographics.total_feminino + summaryData.demographics.total_masculino;
+  const demBase = intent.demographic === "feminino" ? summaryData.demographics.total_feminino :
+                  intent.demographic === "masculino" ? summaryData.demographics.total_masculino :
+                  intent.raceDemographic === "negra" ? summaryData.demographics.total_negra :
+                  intent.raceDemographic === "preta" ? summaryData.demographics.total_preta :
+                  intent.raceDemographic === "branca" ? summaryData.demographics.total_branca :
+                  totalWorkers;
+  const pct = demBase > 0 ? demTotal / demBase * 100 : 0;
+
+  const riskLabel = intent.filters.some(f => f.field === "exposicao" && f.op === ">=") ? " em ocupa\u00e7\u00f5es de alto risco" : "";
+
+  return {
+    type: "demographic",
+    value: demTotal,
+    pct: pct,
+    compareValue: demCompare,
+    comparePct: demCompare > 0 && demBase > 0 ? demCompare / (intent.demographic === "feminino" ? summaryData.demographics.total_masculino : intent.demographic === "masculino" ? summaryData.demographics.total_feminino : summaryData.demographics.total_branca) * 100 : 0,
+    compareLabel: compareLabel,
+    label: demLabel + riskLabel,
+    items: topItems.slice(0, 10),
+    intent: intent
+  };
+}
+
+function executeGroupBy(intent, items) {
+  const groups = {};
+  const groupField = intent.groupBy;
+
+  if (groupField === "uf") {
+    // Group by state using por_uf data
+    const ufCodes = summaryData.uf_codes;
+    const porUf = summaryData.por_uf;
+    const rows = Object.entries(porUf).map(([code, s]) => ({
+      label: (s.nome || ufCodes[code] || code),
+      abbr: ufCodes[code] || code,
+      total: s.total_workers,
+      avgExposicao: s.avg_exposicao,
+      avgSalario: s.avg_salary
+    }));
+    if (intent.sort) {
+      const sf = intent.sort.field;
+      const dir = intent.sort.direction === "desc" ? -1 : 1;
+      rows.sort((a, b) => {
+        const av = sf === "exposicao" ? a.avgExposicao : sf === "salario" ? a.avgSalario : a.total;
+        const bv = sf === "exposicao" ? b.avgExposicao : sf === "salario" ? b.avgSalario : b.total;
+        return (bv - av) * dir;
+      });
+    } else {
+      rows.sort((a, b) => b.avgExposicao - a.avgExposicao);
+    }
+    return { type: "grouped", groups: rows, groupLabel: "Estado", label: describeIntent(intent), intent: intent };
+  }
+
+  for (const d of items) {
+    const key = d[groupField] || "Outros";
+    if (!groups[key]) groups[key] = { label: key, total: 0, count: 0, sumExposicao: 0, sumSalario: 0, sumSaldo: 0 };
+    groups[key].total += d.empregados || 0;
+    groups[key].count++;
+    groups[key].sumExposicao += (d.exposicao || 0) * (d.empregados || 0);
+    groups[key].sumSalario += (d.salario || 0) * (d.empregados || 0);
+    groups[key].sumSaldo += d.saldo || 0;
+  }
+
+  let rows = Object.values(groups).map(g => ({
+    ...g,
+    avgExposicao: g.total > 0 ? g.sumExposicao / g.total : 0,
+    avgSalario: g.total > 0 ? g.sumSalario / g.total : 0
+  }));
+
+  if (intent.sort) {
+    const sf = intent.sort.field;
+    const dir = intent.sort.direction === "desc" ? -1 : 1;
+    rows.sort((a, b) => {
+      const av = sf === "saldo" ? a.sumSaldo : sf === "salario" ? a.avgSalario : sf === "exposicao" ? a.avgExposicao : a.total;
+      const bv = sf === "saldo" ? b.sumSaldo : sf === "salario" ? b.avgSalario : sf === "exposicao" ? b.avgExposicao : b.total;
+      return (bv - av) * dir;
+    });
+  } else {
+    rows.sort((a, b) => b.total - a.total);
+  }
+
+  return { type: "grouped", groups: rows, groupLabel: groupField === "grande_grupo" ? "Setor" : "Escolaridade", label: describeIntent(intent), intent: intent };
+}
+
+function describeIntent(intent) {
+  const parts = [];
+  if (intent.demographic) parts.push(intent.demographic === "feminino" ? "femininas" : "masculinas");
+  if (intent.raceDemographic) {
+    const rl = { negra: "negras", preta: "pretas", branca: "brancas", parda: "pardas" };
+    parts.push(rl[intent.raceDemographic] || intent.raceDemographic);
+  }
+  for (const f of intent.filters) {
+    if (f.field === "exposicao" && f.op === ">=") parts.push("em risco (exposi\u00e7\u00e3o \u2265 " + f.value + ")");
+    else if (f.field === "exposicao" && f.op === "<=") parts.push("seguras (exposi\u00e7\u00e3o \u2264 " + f.value + ")");
+    else if (f.field === "escolaridade") parts.push("escolaridade: " + f.value);
+    else if (f.field === "uf") {
+      const abbr = summaryData.uf_codes[f.value] || f.value;
+      const nome = summaryData.por_uf[f.value]?.nome || abbr;
+      parts.push("em " + nome);
+    }
+  }
+  if (intent.sort) parts.push("ordenado por " + intent.sort.field + " " + (intent.sort.direction === "desc" ? "\u2193" : "\u2191"));
+  if (intent.limit) parts.push("top " + intent.limit);
+  if (intent.groupBy) parts.push("agrupado por " + intent.groupBy);
+  if (intent.aggregate) parts.push("agregado: " + intent.aggregate);
+  return parts.join(" \u00b7 ");
+}
+
+function renderResult(result) {
+  const container = document.getElementById("perguntarResult");
+  if (!result) { container.innerHTML = ""; return; }
+
+  let html = "";
+
+  if (result.type === "aggregate") {
+    html += `<div class="card" style="text-align:center;padding:32px 24px;margin-bottom:20px">
+      <div style="font-size:48px;font-weight:800;color:var(--accent);letter-spacing:-0.03em">${result.value.toLocaleString("pt-BR")}</div>
+      <div style="font-size:16px;color:var(--fg2);margin-top:8px">${result.label}</div>`;
+    if (result.pct) {
+      html += `<div style="font-size:14px;color:var(--fg2);margin-top:4px">${formatPct(result.pct)} do total</div>`;
+    }
+    html += `</div>`;
+  }
+
+  if (result.type === "demographic") {
+    html += `<div class="card" style="text-align:center;padding:32px 24px;margin-bottom:20px">
+      <div style="font-size:48px;font-weight:800;color:var(--accent);letter-spacing:-0.03em">${result.value.toLocaleString("pt-BR")}</div>
+      <div style="font-size:16px;color:var(--fg2);margin-top:8px">${result.label}</div>`;
+    if (result.pct) {
+      html += `<div style="font-size:14px;color:var(--fg2);margin-top:4px">${formatPct(result.pct)} do grupo demogr\u00e1fico</div>`;
+    }
+    if (result.compareValue > 0 && result.compareLabel) {
+      html += `<div style="font-size:14px;color:var(--fg2);margin-top:8px">vs ${result.compareValue.toLocaleString("pt-BR")} ${result.compareLabel} (${formatPct(result.comparePct)})</div>`;
+    }
+    html += `</div>`;
+  }
+
+  if (result.type === "grouped") {
+    html += `<div class="card" style="margin-bottom:20px;padding:0;overflow:hidden">
+      <div class="ranking-table-wrap"><table class="ranking-table" style="margin:0">
+      <thead><tr>
+        <th>${result.groupLabel}</th>
+        <th>Trabalhadores</th>
+        <th>Exp. m\u00e9dia</th>
+        <th>Sal\u00e1rio m\u00e9dio</th>
+        ${result.groups[0] && result.groups[0].sumSaldo !== undefined ? '<th>Saldo</th>' : ''}
+      </tr></thead><tbody>`;
+    for (const g of result.groups) {
+      html += `<tr>
+        <td>${g.abbr ? g.abbr + " \u2014 " : ""}${g.label}</td>
+        <td>${formatNumber(g.total)}</td>
+        <td><span style="color:${exposicaoColor(g.avgExposicao, 1)}">${g.avgExposicao.toFixed(1).replace(".", ",")}</span></td>
+        <td>${formatSalario(Math.round(g.avgSalario))}</td>
+        ${g.sumSaldo !== undefined ? '<td>' + formatSaldo(g.sumSaldo) + '</td>' : ''}
+      </tr>`;
+    }
+    html += `</tbody></table></div></div>`;
+  }
+
+  // Show top items table for aggregate/demographic results
+  if ((result.type === "aggregate" || result.type === "demographic") && result.items && result.items.length > 0) {
+    html += `<h3 style="font-size:16px;font-weight:600;margin:16px 0 12px">Top ocupa\u00e7\u00f5es</h3>`;
+    html += renderOccupationTable(result.items, result.type === "demographic");
+  }
+
+  // Show list table
+  if (result.type === "list" && result.items && result.items.length > 0) {
+    html += renderOccupationTable(result.items, false);
+  }
+
+  // "Como foi calculado" expandable
+  html += `<details style="margin-top:20px;color:var(--fg2);font-size:13px">
+    <summary style="cursor:pointer;user-select:none">Como foi calculado</summary>
+    <div style="margin-top:8px;padding:12px;background:var(--bg2);border-radius:var(--radius);font-family:monospace;font-size:12px;white-space:pre-wrap">${escapeHtml(JSON.stringify(result.intent, null, 2))}</div>
+  </details>`;
+
+  container.innerHTML = html;
+}
+
+function renderOccupationTable(items, showDemCount) {
+  let html = `<div class="card" style="padding:0;overflow:hidden"><div class="ranking-table-wrap"><table class="ranking-table" style="margin:0">
+    <thead><tr>
+      <th>C\u00f3digo</th>
+      <th>Ocupa\u00e7\u00e3o</th>
+      <th>Exposi\u00e7\u00e3o</th>
+      <th>Oportunidade</th>
+      <th>Sal\u00e1rio</th>
+      <th>${showDemCount ? 'Afetados' : 'Empregados'}</th>
+    </tr></thead><tbody>`;
+  for (const d of items) {
+    html += `<tr>
+      <td>${d.codigo || "\u2014"}</td>
+      <td>${d.titulo || "\u2014"}</td>
+      <td><span class="score-cell" style="background:${exposicaoColor(d.exposicao, 0.2)};color:${exposicaoColor(d.exposicao, 1)}">${d.exposicao != null ? d.exposicao : "\u2014"}</span></td>
+      <td><span class="score-cell" style="background:${oportunidadeColor(d.oportunidade, 0.2)};color:${oportunidadeColor(d.oportunidade, 1)}">${d.oportunidade != null ? d.oportunidade : "\u2014"}</span></td>
+      <td>${formatSalarioFull(d.salario)}</td>
+      <td>${formatNumber(showDemCount ? d.demCount : d.empregados)}</td>
+    </tr>`;
+  }
+  html += `</tbody></table></div></div>`;
+  return html;
+}
+
+function escapeHtml(str) {
+  return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+function runPerguntar(query) {
+  if (!query || !query.trim()) return;
+  const input = document.getElementById("perguntarInput");
+  input.value = query;
+  const intent = parseQuery(query);
+  const result = executeQuery(intent, data);
+  renderResult(result);
+}
+
+function initPerguntar() {
+  if (perguntarInited) return;
+  perguntarInited = true;
+
+  buildUfMaps();
+
+  const chipsEl = document.getElementById("perguntarChips");
+  chipsEl.innerHTML = PERGUNTAR_CHIPS.map(q =>
+    `<button style="background:var(--bg3);border:1px solid rgba(255,255,255,0.1);border-radius:16px;color:var(--fg);padding:6px 14px;font-size:13px;cursor:pointer;transition:background 0.15s" data-query="${escapeHtml(q)}">${q}</button>`
+  ).join("");
+
+  chipsEl.addEventListener("click", function(e) {
+    const btn = e.target.closest("button");
+    if (!btn || !btn.dataset.query) return;
+    runPerguntar(btn.dataset.query);
+  });
+
+  const input = document.getElementById("perguntarInput");
+  const btn = document.getElementById("perguntarBtn");
+
+  btn.addEventListener("click", function() { runPerguntar(input.value); });
+  input.addEventListener("keydown", function(e) {
+    if (e.key === "Enter") runPerguntar(input.value);
   });
 }
 
