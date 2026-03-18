@@ -126,5 +126,6 @@ Each is independent and can be built in any order:
 - [x] Step 3: Build CSV (626 rows merging CBO + CAGED, 608 with employment data)
 - [x] Step 5: LLM scoring (626/626 for all 3 metrics, avg: exposição=4.6, vantagem=5.1, crescimento=5.0)
 - [x] Step 6: Build site data (626 occupations with all metrics + salary + employment in data.json)
-- [ ] Step 7: Adapt treemap
-- [ ] Step 8: New views
+- [x] Step 2b: Get RAIS data (3/6 regions: Norte, Nordeste, Centro-Oeste = 19.3M workers; SP/MG/Sul downloading)
+- [x] Step 7: Adapt treemap (canvas-based, 10 CBO groups, 6 color modes, Portuguese UI)
+- [ ] Step 8: New views (scatter, personal dashboard, etc. — future phases)
