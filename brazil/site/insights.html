@@ -22,6 +22,21 @@
   --red: #c06a5a;
   --radius: 8px;
 
+  /* Theme-aware borders and overlays */
+  --nav-bg: rgba(20,18,16,0.92);
+  --border: rgba(255,255,255,0.06);
+  --border-hover: rgba(255,255,255,0.12);
+  --border-subtle: rgba(255,255,255,0.05);
+  --border-chip: rgba(255,255,255,0.1);
+  --border-chip-hover: rgba(255,255,255,0.25);
+  --overlay-soft: rgba(255,255,255,0.06);
+  --overlay-hover: rgba(255,255,255,0.08);
+  --card-shadow: 0 2px 16px rgba(0,0,0,0.3);
+  --row-border: rgba(255,255,255,0.04);
+  --tag-bg: rgba(196, 154, 92, 0.08);
+  --tag-bg-hover: rgba(196, 154, 92, 0.15);
+  --tag-active-fg: #1a1814;
+
   /* Spacing scale */
   --sp-4: 4px;
   --sp-8: 8px;
@@ -39,6 +54,39 @@
   --cat-setores: #7090a0;
   --cat-mercado: #b07868;
   --cat-educacao: #7a9a70;
+}
+
+/* ── Light theme ───────────────────────────────────── */
+[data-theme="light"] {
+  --bg: #f5f2ed;
+  --bg2: #ffffff;
+  --bg3: #ebe8e3;
+  --fg: #1a1814;
+  --fg2: #6b6860;
+  --accent: #a07838;
+  --green: #3a7a3a;
+  --red: #b04a3a;
+
+  --nav-bg: rgba(245,242,237,0.92);
+  --border: rgba(0,0,0,0.08);
+  --border-hover: rgba(0,0,0,0.14);
+  --border-subtle: rgba(0,0,0,0.06);
+  --border-chip: rgba(0,0,0,0.12);
+  --border-chip-hover: rgba(0,0,0,0.25);
+  --overlay-soft: rgba(0,0,0,0.04);
+  --overlay-hover: rgba(0,0,0,0.06);
+  --card-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  --row-border: rgba(0,0,0,0.06);
+  --tag-bg: rgba(160, 120, 56, 0.08);
+  --tag-bg-hover: rgba(160, 120, 56, 0.14);
+  --tag-active-fg: #fff;
+
+  --cat-demografia: #8a6830;
+  --cat-regional: #3a7a60;
+  --cat-ocupacoes: #6a5888;
+  --cat-setores: #3a6888;
+  --cat-mercado: #984838;
+  --cat-educacao: #3a7a30;
 }
 
 body {
@@ -61,16 +109,36 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(20,18,16,0.92);
+  background: var(--nav-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid var(--border);
   display: flex;
   align-items: center;
   padding: 0 var(--sp-16);
 }
-.nav-scope {
+/* ── Theme toggle ──────────────────────────────────── */
+.theme-toggle {
   margin-left: auto;
+  background: none;
+  border: none;
+  color: var(--fg2);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s ease-out;
+  flex-shrink: 0;
+}
+.theme-toggle:hover { color: var(--fg); }
+.theme-toggle svg { width: 18px; height: 18px; }
+.theme-toggle .icon-moon { display: none; }
+[data-theme="light"] .theme-toggle .icon-sun { display: none; }
+[data-theme="light"] .theme-toggle .icon-moon { display: block; }
+
+.nav-scope {
   font-size: 11px;
   color: var(--fg2);
   opacity: 0;
@@ -142,7 +210,7 @@ body {
   padding: 6px 14px;
   font-size: 13px;
   font-weight: 500;
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid var(--border-chip);
   border-radius: 20px;
   background: transparent;
   color: var(--fg2);
@@ -152,7 +220,7 @@ body {
   flex-shrink: 0;
   min-height: 34px;
 }
-.chip:hover { border-color: rgba(255,255,255,0.25); color: var(--fg); }
+.chip:hover { border-color: var(--border-chip-hover); color: var(--fg); }
 .chip:active { transform: scale(0.97); }
 .chip.active {
   background: var(--chip-color, var(--accent));
@@ -172,7 +240,7 @@ body {
 .tag-filter-bar:empty { display: none; }
 .tag-clear-btn {
   background: var(--bg3);
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid var(--border-chip);
   color: var(--fg);
   padding: var(--sp-4) var(--sp-12);
   border-radius: 14px;
@@ -180,7 +248,7 @@ body {
   cursor: pointer;
   transition: background 0.15s ease-out, border-color 0.15s ease-out;
 }
-.tag-clear-btn:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); }
+.tag-clear-btn:hover { background: var(--overlay-hover); border-color: var(--border-hover); }
 .tag-clear-btn:active { transform: scale(0.97); }
 
 /* ── Section headers ───────────────────────────────── */
@@ -220,14 +288,14 @@ body {
 .article {
   --card-accent: var(--accent);
   background: var(--bg2);
-  border: 1px solid rgba(255,255,255,0.05);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius);
   padding: var(--sp-24);
   transition: border-color 0.2s ease-out, box-shadow 0.2s ease-out;
 }
 .article:hover {
-  border-color: rgba(255,255,255,0.09);
-  box-shadow: 0 2px 16px rgba(0,0,0,0.3);
+  border-color: var(--border-hover);
+  box-shadow: var(--card-shadow);
 }
 
 /* Featured card specifics */
@@ -417,7 +485,7 @@ body {
   font-size: 11px;
   padding: 3px 10px;
   border-radius: 12px;
-  background: rgba(196, 154, 92, 0.08);
+  background: var(--tag-bg);
   color: var(--fg2);
   cursor: pointer;
   transition: background 0.15s ease-out, color 0.15s ease-out, text-decoration-color 0.15s ease-out;
@@ -427,14 +495,14 @@ body {
   text-underline-offset: 2px;
 }
 .tag:hover {
-  background: rgba(196, 154, 92, 0.15);
+  background: var(--tag-bg-hover);
   color: var(--fg);
   text-decoration-color: var(--fg2);
 }
 .tag:active { transform: scale(0.95); }
 .tag.active-tag {
   background: var(--accent);
-  color: #1a1814;
+  color: var(--tag-active-fg);
   text-decoration-color: transparent;
 }
 
@@ -491,7 +559,7 @@ body {
   gap: var(--sp-8);
   align-items: center;
   padding: 6px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
+  border-bottom: 1px solid var(--row-border);
 }
 .ranking-table .rank-row:last-child { border-bottom: none; }
 .rank-num {
@@ -566,7 +634,7 @@ body {
 }
 #btn-load-more button {
   background: var(--bg3);
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid var(--border-chip);
   color: var(--fg);
   padding: var(--sp-12) var(--sp-32);
   border-radius: var(--radius);
@@ -577,8 +645,8 @@ body {
   min-height: 44px;
 }
 #btn-load-more button:hover {
-  background: rgba(255,255,255,0.06);
-  border-color: rgba(255,255,255,0.2);
+  background: var(--overlay-soft);
+  border-color: var(--border-hover);
 }
 #btn-load-more button:active { transform: scale(0.98); }
 .load-more-count {
@@ -596,7 +664,7 @@ body {
   height: 44px;
   border-radius: 50%;
   background: var(--bg2);
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid var(--border-chip);
   color: var(--fg);
   cursor: pointer;
   display: flex;
@@ -614,7 +682,7 @@ body {
   transform: translateY(0);
 }
 #btn-top:hover {
-  background: rgba(255,255,255,0.08);
+  background: var(--overlay-hover);
 }
 #btn-top:active { transform: scale(0.93); }
 
@@ -678,7 +746,7 @@ body {
 
   /* Ensure touch targets + tag affordance on mobile */
   .chip { min-height: 44px; display: flex; align-items: center; }
-  .tag { padding: 6px 12px; text-decoration-color: rgba(154, 149, 144, 0.4); }
+  .tag { padding: 6px 12px; text-decoration-color: color-mix(in srgb, var(--fg2) 40%, transparent); }
 }
 
 /* ── Reduced motion ────────────────────────────────── */
@@ -689,6 +757,17 @@ body {
   }
 }
 </style>
+<script>
+// Apply theme before paint to avoid flash
+(function() {
+  var saved = localStorage.getItem("theme");
+  if (saved === "light") {
+    document.documentElement.setAttribute("data-theme", "light");
+  } else if (!saved && window.matchMedia("(prefers-color-scheme: light)").matches) {
+    document.documentElement.setAttribute("data-theme", "light");
+  }
+})();
+</script>
 </head>
 <body>
 
@@ -696,6 +775,10 @@ body {
   <a href="index.html">← Início</a>
   <a href="insights.html" class="active" aria-current="page">Insights</a>
   <span class="nav-scope" id="nav-scope"></span>
+  <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Alternar tema">
+    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  </button>
 </nav>
 
 <main class="container">
@@ -1125,6 +1208,21 @@ window.addEventListener("scroll", function() {
 
 btnTop.addEventListener("click", function() {
   window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+// ══════════════════════════════════════════════════════════════════════════
+// THEME TOGGLE
+// ══════════════════════════════════════════════════════════════════════════
+
+document.getElementById("theme-toggle").addEventListener("click", function() {
+  var isLight = document.documentElement.getAttribute("data-theme") === "light";
+  if (isLight) {
+    document.documentElement.removeAttribute("data-theme");
+    localStorage.setItem("theme", "dark");
+  } else {
+    document.documentElement.setAttribute("data-theme", "light");
+    localStorage.setItem("theme", "light");
+  }
 });
 
 // ══════════════════════════════════════════════════════════════════════════
