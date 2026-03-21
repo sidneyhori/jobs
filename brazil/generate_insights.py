@@ -66,8 +66,11 @@ def call_llm(findings, prompt_template):
             "body": "<p>Artigo será gerado quando a chave de API estiver configurada.</p>",
         }
 
-    # Format prompt with findings details
-    prompt = prompt_template.format(**findings.get("details", {}))
+    # Format prompt with findings details (default missing keys to "N/D")
+    class DefaultDict(dict):
+        def __missing__(self, key):
+            return "N/D"
+    prompt = prompt_template.format_map(DefaultDict(findings.get("details", {})))
 
     client = httpx.Client()
     response = client.post(
@@ -122,16 +125,26 @@ def main():
         current_hash = data_hash(findings)
         print(f"  headline: {findings['headline_stat']} — {findings['headline_label']}")
 
-        # Step 2: Check cache
+        # Step 2: Check cache (skip placeholders even if hash matches)
         cached = existing.get(tmpl["id"])
-        if cached and cached.get("data_hash") == current_hash:
+        is_placeholder = cached and "chave de API" in (cached.get("body_html") or "")
+        if cached and cached.get("data_hash") == current_hash and not is_placeholder:
             print("  ✓ cached (data unchanged)")
             insights.append(cached)
             continue
+        if is_placeholder:
+            print("  ↻ regenerating (was placeholder)")
 
         # Step 3: LLM call for editorial prose
         print("  → calling LLM...")
-        prose = call_llm(findings, tmpl["prompt_template"])
+        try:
+            prose = call_llm(findings, tmpl["prompt_template"])
+        except Exception as e:
+            print(f"  ✗ LLM error: {e}")
+            # Keep existing placeholder or create one
+            if cached:
+                insights.append(cached)
+            continue
         print(f"  title: {prose.get('title', '?')}")
 
         insights.append({
