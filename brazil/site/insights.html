@@ -54,6 +54,7 @@
   --cat-setores: #7090a0;
   --cat-mercado: #b07868;
   --cat-educacao: #7a9a70;
+  --cat-genero: #a07890;
 }
 
 /* ── Light theme ───────────────────────────────────── */
@@ -87,6 +88,7 @@
   --cat-setores: #3a6888;
   --cat-mercado: #984838;
   --cat-educacao: #3a7a30;
+  --cat-genero: #884870;
 }
 
 body {
@@ -116,7 +118,23 @@ body {
   display: flex;
   align-items: center;
   padding: 0 var(--sp-16);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
 }
+#nav::-webkit-scrollbar { display: none; }
+.nav-home {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--fg);
+  text-decoration: none;
+  padding: 12px 14px 12px 0;
+  white-space: nowrap;
+  letter-spacing: -0.01em;
+  border-bottom: 2px solid transparent;
+  flex-shrink: 0;
+}
+.nav-home:hover { color: var(--accent); }
 /* ── Theme toggle ──────────────────────────────────── */
 .theme-toggle {
   margin-left: auto;
@@ -708,7 +726,7 @@ body {
   .article.featured-card .hero-stat { font-size: 32px; }
   .article { padding: var(--sp-20); }
   #nav a { padding: 10px var(--sp-12); font-size: 12px; }
-  .nav-scope { font-size: 10px; }
+  .nav-scope { display: none; }
   .bar-row { flex-wrap: wrap; }
   .bar-label { width: 100%; min-width: 100%; text-align: left; font-size: 12px; margin-bottom: -2px; }
   .bar-track { height: 20px; }
@@ -772,7 +790,14 @@ body {
 <body>
 
 <nav id="nav" aria-label="Navegação principal">
-  <a href="index.html">← Início</a>
+  <a href="index.html" class="nav-home">IA &amp; Emprego</a>
+  <a href="index.html#mapa">Mapa</a>
+  <a href="index.html#scatter">Risco × Oportunidade</a>
+  <a href="index.html#painel">Minha Ocupação</a>
+  <a href="index.html#demo">Demografia</a>
+  <a href="index.html#regional">Regional</a>
+  <a href="index.html#ranking">Ranking</a>
+  <a href="index.html#perguntar">Perguntar</a>
   <a href="insights.html" class="active" aria-current="page">Insights</a>
   <span class="nav-scope" id="nav-scope"></span>
   <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Alternar tema">
@@ -827,12 +852,20 @@ const CATEGORY_COLORS = {
   "Setores":     "var(--cat-setores)",
   "Mercado":     "var(--cat-mercado)",
   "Educação":    "var(--cat-educacao)",
+  "Gênero":      "var(--cat-genero)",
 };
 
 const CATEGORY_NORMALIZE = {
   "Ocupacoes": "Ocupações",
   "Educacao": "Educação",
 };
+
+const GENERO_KEYWORDS = /gênero|genero|mulher|feminino|masculino|homens\b/i;
+
+function isGeneroInsight(a) {
+  var text = (a.title || "") + " " + (a.body || "") + " " + (a.tags || []).join(" ");
+  return GENERO_KEYWORDS.test(text);
+}
 
 function getCategoryColor(cat) {
   return CATEGORY_COLORS[cat] || "var(--accent)";
@@ -852,6 +885,9 @@ fetch("insights.json")
     allInsights = data.map(function(a) {
       if (CATEGORY_NORMALIZE[a.category]) {
         a.category = CATEGORY_NORMALIZE[a.category];
+      }
+      if (a.category === "Demografia" && isGeneroInsight(a)) {
+        a.category = "Gênero";
       }
       return a;
     });

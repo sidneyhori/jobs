@@ -92,7 +92,9 @@ body {
   padding: 0 16px;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
 }
+#nav::-webkit-scrollbar { display: none; }
 #nav button {
   padding: 12px 18px;
   font-size: 13px;
@@ -654,9 +656,6 @@ canvas#scatterCanvas { display: block; cursor: crosshair; }
 
 /* Nav: when landing is active, hide tool tabs */
 .nav-tabs { display: contents; }
-body.on-landing .nav-tabs { display: none; }
-body.on-landing #nav { justify-content: flex-end; }
-body.on-landing .nav-home { display: none; }
 .nav-home {
   font-size: 14px;
   font-weight: 700;
@@ -664,12 +663,14 @@ body.on-landing .nav-home { display: none; }
   background: none;
   border: none;
   cursor: pointer;
-  padding: 12px 18px 12px 0;
+  padding: 12px 14px 12px 0;
   white-space: nowrap;
   letter-spacing: -0.01em;
   border-bottom: 2px solid transparent;
+  flex-shrink: 0;
 }
 .nav-home:hover { color: var(--accent); }
+body.on-landing .nav-home { border-bottom-color: var(--accent); }
 
 #view-landing {
   max-width: none;
@@ -965,7 +966,7 @@ body.on-landing .nav-home { display: none; }
     <button data-view="ranking">Ranking</button>
     <button data-view="perguntar">Perguntar</button>
   </span>
-  <a href="insights.html">Insights →</a>
+  <a href="insights.html">Insights</a>
   <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Alternar tema">
     <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
     <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -3228,7 +3229,11 @@ Promise.all([
   updateStats();
   drawGradientLegend();
   updateLandingStats();
-  // Don't init treemap until user navigates there
+  // Handle hash-based deep links (e.g. index.html#mapa)
+  var hash = window.location.hash.replace("#", "");
+  if (hash && document.getElementById("view-" + hash)) {
+    switchView(hash);
+  }
 });
 
 window.addEventListener("resize", function() {
