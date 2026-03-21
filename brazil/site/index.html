@@ -3,7 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mapa de IA e Emprego no Brasil</title>
+<meta name="description" content="Como a inteligência artificial vai transformar 19 milhões de empregos formais no Brasil. Dados do CAGED e CBO.">
+<meta property="og:title" content="IA e Emprego no Brasil">
+<meta property="og:description" content="Análise de 626 ocupações e o impacto da inteligência artificial no mercado de trabalho brasileiro.">
+<meta property="og:type" content="website">
+<title>IA e Emprego no Brasil</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,700;0,8..60,800;1,8..60,400&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -142,7 +149,8 @@ body {
 
 /* ── Shared components ─────────────────────────────── */
 .section-title {
-  font-size: 20px;
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 22px;
   font-weight: 700;
   margin-bottom: 16px;
   letter-spacing: -0.02em;
@@ -199,6 +207,7 @@ body {
 
 .intro { margin-bottom: 18px; }
 .intro h1 {
+  font-family: 'Source Serif 4', Georgia, serif;
   font-size: 26px;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -640,6 +649,273 @@ canvas#scatterCanvas { display: block; cursor: crosshair; }
 .ranking-pagination button:disabled { opacity: 0.3; cursor: default; }
 .ranking-pagination span { font-size: 12px; color: var(--fg2); }
 
+/* ── Landing page ──────────────────────────────────── */
+.serif { font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif; }
+
+/* Nav: when landing is active, hide tool tabs */
+.nav-tabs { display: contents; }
+body.on-landing .nav-tabs { display: none; }
+body.on-landing #nav { justify-content: flex-end; }
+body.on-landing .nav-home { display: none; }
+.nav-home {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--fg);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 12px 18px 12px 0;
+  white-space: nowrap;
+  letter-spacing: -0.01em;
+  border-bottom: 2px solid transparent;
+}
+.nav-home:hover { color: var(--accent); }
+
+#view-landing {
+  max-width: none;
+  padding: 0;
+}
+
+/* Hero */
+.hero {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: clamp(60px, 12vh, 120px) 24px clamp(48px, 8vh, 80px);
+}
+.hero-eyebrow {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+.hero h1 {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: clamp(32px, 5.5vw, 56px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 20px;
+  color: var(--fg);
+  max-width: 720px;
+}
+.hero-sub {
+  font-size: clamp(16px, 2vw, 19px);
+  line-height: 1.6;
+  color: var(--fg2);
+  max-width: 560px;
+  margin-bottom: 36px;
+}
+
+/* Hero search */
+.hero-search {
+  position: relative;
+  max-width: 520px;
+  margin-bottom: 40px;
+}
+.hero-search input {
+  width: 100%;
+  padding: 16px 20px;
+  font-size: 16px;
+  background: var(--bg2);
+  border: 1px solid var(--border-hover);
+  border-radius: var(--radius);
+  color: var(--fg);
+  outline: none;
+  transition: border-color 0.15s;
+}
+.hero-search input:focus { border-color: var(--accent); }
+.hero-search input::placeholder { color: var(--fg2); }
+.hero-search .search-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--bg2);
+  border: 1px solid var(--border-hover);
+  border-radius: 0 0 var(--radius) var(--radius);
+  max-height: 280px;
+  overflow-y: auto;
+  z-index: 50;
+  display: none;
+}
+.hero-search .search-dropdown.open { display: block; }
+
+/* Hero stats ribbon */
+.hero-stats {
+  display: flex;
+  gap: clamp(24px, 4vw, 48px);
+  flex-wrap: wrap;
+}
+.hero-stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.hero-stat-val {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.hero-stat-label {
+  font-size: 13px;
+  color: var(--fg2);
+  line-height: 1.3;
+}
+
+/* Landing sections */
+.landing-section {
+  border-top: 1px solid var(--border);
+  padding: clamp(48px, 8vh, 80px) 24px;
+}
+.landing-section:nth-child(even) {
+  background: var(--bg2);
+}
+.landing-inner {
+  max-width: 860px;
+  margin: 0 auto;
+}
+.landing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 5vw, 64px);
+  align-items: center;
+}
+.landing-grid.reverse { direction: rtl; }
+.landing-grid.reverse > * { direction: ltr; }
+
+.section-eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 12px;
+  display: block;
+}
+.landing-section h2 {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+.landing-section p {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--fg2);
+  margin-bottom: 20px;
+}
+.section-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+  transition: gap 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.section-cta:hover { gap: 10px; }
+.section-cta::after { content: "→"; }
+
+/* Section preview boxes */
+.section-preview {
+  background: var(--bg3);
+  border-radius: var(--radius);
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.section-preview canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Quick tools row */
+.tools-row {
+  max-width: 860px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.tool-card {
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: border-color 0.15s, transform 0.15s;
+}
+.tool-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
+}
+.tool-card h3 {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.tool-card p {
+  font-size: 13px;
+  color: var(--fg2);
+  line-height: 1.5;
+}
+
+/* Landing footer */
+.landing-footer {
+  border-top: 1px solid var(--border);
+  padding: 48px 24px 64px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+}
+.footer-heading {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--fg2);
+  margin-bottom: 12px;
+}
+.landing-footer p {
+  font-size: 13px;
+  color: var(--fg2);
+  line-height: 1.6;
+}
+.footer-links {
+  list-style: none;
+}
+.footer-links li { margin-bottom: 8px; }
+.footer-links a, .footer-links button {
+  font-size: 13px;
+  color: var(--fg2);
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.15s;
+}
+.footer-links a:hover, .footer-links button:hover { color: var(--fg); }
+
 /* ── Responsive ────────────────────────────────────── */
 @media (max-width: 600px) {
   #nav button { padding: 12px 12px; font-size: 12px; }
@@ -649,6 +925,10 @@ canvas#scatterCanvas { display: block; cursor: crosshair; }
   .metric-cards { grid-template-columns: repeat(2, 1fr); }
   .action-cards { grid-template-columns: 1fr; }
   .state-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+  .landing-grid { grid-template-columns: 1fr; }
+  .landing-grid.reverse { direction: ltr; }
+  .tools-row { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
 }
 
 /* ── Reduced motion ────────────────────────────────── */
@@ -671,17 +951,20 @@ canvas#scatterCanvas { display: block; cursor: crosshair; }
 })();
 </script>
 </head>
-<body>
+<body class="on-landing">
 
 <!-- Navigation -->
 <nav id="nav">
-  <button class="active" data-view="mapa">Mapa</button>
-  <button data-view="scatter">Risco x Oportunidade</button>
-  <button data-view="painel">Minha Ocupa&ccedil;&atilde;o</button>
-  <button data-view="demo">Demografia</button>
-  <button data-view="regional">Mapa Regional</button>
-  <button data-view="ranking">Ranking</button>
-  <button data-view="perguntar">Perguntar</button>
+  <button class="nav-home" id="navHome">IA &amp; Emprego</button>
+  <span class="nav-tabs">
+    <button data-view="mapa">Mapa</button>
+    <button data-view="scatter">Risco × Oportunidade</button>
+    <button data-view="painel">Minha Ocupa&ccedil;&atilde;o</button>
+    <button data-view="demo">Demografia</button>
+    <button data-view="regional">Regional</button>
+    <button data-view="ranking">Ranking</button>
+    <button data-view="perguntar">Perguntar</button>
+  </span>
   <a href="insights.html">Insights →</a>
   <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Alternar tema">
     <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
@@ -689,8 +972,145 @@ canvas#scatterCanvas { display: block; cursor: crosshair; }
   </button>
 </nav>
 
+<!-- Landing Page -->
+<div id="view-landing" class="view active">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-eyebrow">Dados do CAGED &middot; 626 ocupa&ccedil;&otilde;es</div>
+    <h1>Como a intelig&ecirc;ncia artificial vai transformar o trabalho no Brasil?</h1>
+    <p class="hero-sub">An&aacute;lise de 19 milh&otilde;es de empregos formais brasileiros e seu grau de exposi&ccedil;&atilde;o &agrave; automa&ccedil;&atilde;o por IA.</p>
+
+    <div class="hero-search" id="heroSearchBox">
+      <input type="text" id="heroSearch" placeholder="Busque sua ocupa&ccedil;&atilde;o — ex: enfermeiro, contador, motorista..." autocomplete="off">
+      <div class="search-dropdown" id="heroDropdown"></div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat-item">
+        <div class="hero-stat-val" id="heroStatJobs">&mdash;</div>
+        <div class="hero-stat-label">empregos formais<br>analisados</div>
+      </div>
+      <div class="hero-stat-item">
+        <div class="hero-stat-val" style="color:var(--red)" id="heroStatHighRisk">&mdash;</div>
+        <div class="hero-stat-label">em ocupa&ccedil;&otilde;es com<br>alta exposi&ccedil;&atilde;o &agrave; IA</div>
+      </div>
+      <div class="hero-stat-item">
+        <div class="hero-stat-val" style="color:var(--green)" id="heroStatOpportunity">&mdash;</div>
+        <div class="hero-stat-label">em ocupa&ccedil;&otilde;es com<br>alta oportunidade</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 1: The Map -->
+  <section class="landing-section">
+    <div class="landing-inner">
+      <div class="landing-grid">
+        <div>
+          <span class="section-eyebrow">Vis&atilde;o geral</span>
+          <h2>19 milh&otilde;es de empregos, mapeados por risco</h2>
+          <p>Cada ret&acirc;ngulo representa uma ocupa&ccedil;&atilde;o. A &aacute;rea &eacute; proporcional ao n&uacute;mero de empregados. A cor mostra o grau de exposi&ccedil;&atilde;o &agrave; intelig&ecirc;ncia artificial — do verde (baixa) ao vermelho (alta).</p>
+          <button class="section-cta" data-goto="mapa">Explorar o mapa</button>
+        </div>
+        <div class="section-preview" id="previewTreemap"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Risk vs Opportunity -->
+  <section class="landing-section">
+    <div class="landing-inner">
+      <div class="landing-grid reverse">
+        <div>
+          <span class="section-eyebrow">Risco × Oportunidade</span>
+          <h2>Quem perde e quem ganha com a IA?</h2>
+          <p>Algumas profiss&otilde;es ser&atilde;o automatizadas. Outras v&atilde;o prosperar com novas ferramentas. O gr&aacute;fico posiciona cada ocupa&ccedil;&atilde;o no cruzamento entre risco e potencial de ganho.</p>
+          <button class="section-cta" data-goto="scatter">Ver o gr&aacute;fico</button>
+        </div>
+        <div class="section-preview" id="previewScatter"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Demographics -->
+  <section class="landing-section">
+    <div class="landing-inner">
+      <div class="landing-grid">
+        <div>
+          <span class="section-eyebrow">Desigualdade</span>
+          <h2>A IA vai afetar todos igualmente?</h2>
+          <p>O impacto n&atilde;o &eacute; neutro. G&ecirc;nero, ra&ccedil;a e regi&atilde;o determinam quem est&aacute; mais exposto. Veja como o risco se distribui na popula&ccedil;&atilde;o trabalhadora.</p>
+          <button class="section-cta" data-goto="demo">Ver dados demogr&aacute;ficos</button>
+        </div>
+        <div class="section-preview" style="background:var(--bg3);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:32px">
+          <div style="text-align:center">
+            <div class="serif" style="font-size:36px;font-weight:700;color:var(--fg)" id="previewDemoStat">&mdash;</div>
+            <div style="font-size:13px;color:var(--fg2);margin-top:4px">das mulheres em ocupa&ccedil;&otilde;es<br>de alta exposi&ccedil;&atilde;o</div>
+          </div>
+          <div style="width:80%;height:1px;background:var(--border)"></div>
+          <div style="text-align:center">
+            <div class="serif" style="font-size:36px;font-weight:700;color:var(--fg)" id="previewDemoStat2">&mdash;</div>
+            <div style="font-size:13px;color:var(--fg2);margin-top:4px">dos homens em ocupa&ccedil;&otilde;es<br>de alta exposi&ccedil;&atilde;o</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick tools -->
+  <section class="landing-section">
+    <div class="landing-inner">
+      <span class="section-eyebrow">Ferramentas</span>
+      <h2 style="margin-bottom:24px">Explore os dados</h2>
+      <div class="tools-row">
+        <div class="tool-card" data-goto="regional">
+          <h3>Mapa Regional</h3>
+          <p>Compare estados por exposi&ccedil;&atilde;o, sal&aacute;rio e volume de empregos.</p>
+        </div>
+        <div class="tool-card" data-goto="ranking">
+          <h3>Ranking Completo</h3>
+          <p>Todas as 626 ocupa&ccedil;&otilde;es com pontua&ccedil;&otilde;es, sal&aacute;rios e saldo.</p>
+        </div>
+        <div class="tool-card" data-goto="perguntar">
+          <h3>Perguntar</h3>
+          <p>Fa&ccedil;a perguntas em portugu&ecirc;s sobre os dados.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="landing-footer">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-heading">Sobre</div>
+        <p>Dados de empregos formais (RAIS/CAGED), sal&aacute;rios medianos e escolaridade modal do Minist&eacute;rio do Trabalho. Pontua&ccedil;&otilde;es de IA estimadas por LLM considerando o contexto brasileiro. Classifica&ccedil;&atilde;o Brasileira de Ocupa&ccedil;&otilde;es (CBO).</p>
+      </div>
+      <div>
+        <div class="footer-heading">Navegar</div>
+        <ul class="footer-links">
+          <li><button data-goto="mapa">Mapa</button></li>
+          <li><button data-goto="scatter">Risco × Oportunidade</button></li>
+          <li><button data-goto="painel">Minha Ocupa&ccedil;&atilde;o</button></li>
+          <li><button data-goto="demo">Demografia</button></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Mais</div>
+        <ul class="footer-links">
+          <li><button data-goto="regional">Regional</button></li>
+          <li><button data-goto="ranking">Ranking</button></li>
+          <li><button data-goto="perguntar">Perguntar</button></li>
+          <li><a href="insights.html">Insights</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
 <!-- View 1: Treemap -->
-<div id="view-mapa" class="view active">
+<div id="view-mapa" class="view">
   <div id="treemap-header">
     <div class="intro">
       <h1>Mapa de IA e Emprego no Brasil</h1>
@@ -823,7 +1243,7 @@ canvas#scatterCanvas { display: block; cursor: crosshair; }
 // ══════════════════════════════════════════════════════════════════════════
 let data = [];
 let summaryData = null;
-let currentView = "mapa";
+let currentView = "landing";
 
 // ══════════════════════════════════════════════════════════════════════════
 // THEME
@@ -854,20 +1274,38 @@ document.getElementById("theme-toggle").addEventListener("click", function() {
   // Re-render canvases
   if (currentView === "mapa" && data.length) treemapResize();
   if (currentView === "scatter" && scatterInited) scatterDraw();
+  if (currentView === "landing" && data.length) { drawMiniTreemap(); drawMiniScatter(); }
 });
 
 // ══════════════════════════════════════════════════════════════════════════
 // NAVIGATION
 // ══════════════════════════════════════════════════════════════════════════
+// Nav tab clicks
 document.getElementById("nav").addEventListener("click", function(e) {
   const btn = e.target.closest("button");
   if (!btn || !btn.dataset.view) return;
   switchView(btn.dataset.view);
 });
 
+// Home button
+document.getElementById("navHome").addEventListener("click", function() {
+  switchView("landing");
+});
+
+// All data-goto buttons (landing page CTAs, footer, tool cards)
+document.addEventListener("click", function(e) {
+  const el = e.target.closest("[data-goto]");
+  if (!el) return;
+  e.preventDefault();
+  switchView(el.dataset.goto);
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
 function switchView(view) {
   currentView = view;
-  document.querySelectorAll("#nav button").forEach(b => b.classList.toggle("active", b.dataset.view === view));
+  const isLanding = view === "landing";
+  document.body.classList.toggle("on-landing", isLanding);
+  document.querySelectorAll("#nav .nav-tabs button").forEach(b => b.classList.toggle("active", b.dataset.view === view));
   document.querySelectorAll(".view").forEach(v => v.classList.toggle("active", v.id === "view-" + view));
   if (view === "mapa") treemapResize();
   if (view === "scatter") initScatter();
@@ -2652,6 +3090,135 @@ function initPerguntar() {
 // ══════════════════════════════════════════════════════════════════════════
 // LOAD DATA
 // ══════════════════════════════════════════════════════════════════════════
+// ══════════════════════════════════════════════════════════════════════════
+// HERO SEARCH (landing page)
+// ══════════════════════════════════════════════════════════════════════════
+const heroSearch = document.getElementById("heroSearch");
+const heroDropdown = document.getElementById("heroDropdown");
+let heroHighlightIdx = -1;
+
+heroSearch.addEventListener("input", function() {
+  const q = this.value.trim();
+  if (q.length < 2 || data.length === 0) { heroDropdown.classList.remove("open"); return; }
+  const matches = data.filter(d => fuzzyMatch(q, d.titulo) || fuzzyMatch(q, d.codigo)).slice(0, 12);
+  if (matches.length === 0) { heroDropdown.classList.remove("open"); return; }
+  heroDropdown.innerHTML = matches.map((m, i) =>
+    `<div class="search-item" data-idx="${data.indexOf(m)}">${m.titulo}<span class="search-code">${m.codigo}</span></div>`
+  ).join("");
+  heroDropdown.classList.add("open");
+  heroHighlightIdx = -1;
+});
+
+heroSearch.addEventListener("keydown", function(e) {
+  const items = heroDropdown.querySelectorAll(".search-item");
+  if (!items.length) return;
+  if (e.key === "ArrowDown") { e.preventDefault(); heroHighlightIdx = Math.min(heroHighlightIdx + 1, items.length - 1); items.forEach((it, i) => it.classList.toggle("highlighted", i === heroHighlightIdx)); }
+  else if (e.key === "ArrowUp") { e.preventDefault(); heroHighlightIdx = Math.max(heroHighlightIdx - 1, 0); items.forEach((it, i) => it.classList.toggle("highlighted", i === heroHighlightIdx)); }
+  else if (e.key === "Enter" && heroHighlightIdx >= 0) { e.preventDefault(); items[heroHighlightIdx].click(); }
+  else if (e.key === "Escape") { heroDropdown.classList.remove("open"); }
+});
+
+heroDropdown.addEventListener("click", function(e) {
+  const item = e.target.closest(".search-item");
+  if (!item) return;
+  const idx = parseInt(item.dataset.idx);
+  heroDropdown.classList.remove("open");
+  heroSearch.value = "";
+  // Navigate to painel and select the occupation
+  switchView("painel");
+  window.scrollTo({ top: 0 });
+  selectOccupation(data[idx]);
+});
+
+document.addEventListener("click", function(e) {
+  if (!e.target.closest("#heroSearchBox")) heroDropdown.classList.remove("open");
+});
+
+// ══════════════════════════════════════════════════════════════════════════
+// LANDING PAGE STATS
+// ══════════════════════════════════════════════════════════════════════════
+function updateLandingStats() {
+  if (data.length === 0) return;
+  const totalJobs = data.reduce((s, d) => s + (d.empregados || 0), 0);
+  document.getElementById("heroStatJobs").textContent = (totalJobs / 1e6).toFixed(1).replace(".", ",") + "M";
+
+  // High risk: exposicao >= 7
+  let highRiskJobs = 0;
+  for (const d of data) { if (d.exposicao != null && d.exposicao >= 7 && d.empregados) highRiskJobs += d.empregados; }
+  document.getElementById("heroStatHighRisk").textContent = (highRiskJobs / 1e6).toFixed(1).replace(".", ",") + "M";
+
+  // High opportunity: oportunidade >= 7
+  let highOppJobs = 0;
+  for (const d of data) { if (d.oportunidade != null && d.oportunidade >= 7 && d.empregados) highOppJobs += d.empregados; }
+  document.getElementById("heroStatOpportunity").textContent = (highOppJobs / 1e6).toFixed(1).replace(".", ",") + "M";
+
+  // Demographics preview — % of women in high exposure occupations
+  if (summaryData && summaryData.demographics) {
+    const dem = summaryData.demographics;
+    if (dem.pct_high_risk_feminino != null) {
+      document.getElementById("previewDemoStat").textContent = dem.pct_high_risk_feminino.toFixed(1).replace(".", ",") + "%";
+    }
+    if (dem.pct_high_risk_masculino != null) {
+      document.getElementById("previewDemoStat2").textContent = dem.pct_high_risk_masculino.toFixed(1).replace(".", ",") + "%";
+    }
+  }
+
+  // Draw mini previews
+  drawMiniTreemap();
+  drawMiniScatter();
+}
+
+function drawMiniTreemap() {
+  const container = document.getElementById("previewTreemap");
+  if (!container || data.length === 0) return;
+  let cvs = container.querySelector("canvas");
+  if (!cvs) { cvs = document.createElement("canvas"); container.appendChild(cvs); }
+  const w = container.clientWidth || 300;
+  const h = container.clientHeight || 225;
+  const d = window.devicePixelRatio || 1;
+  cvs.width = w * d; cvs.height = h * d;
+  cvs.style.width = w + "px"; cvs.style.height = h + "px";
+  const ctx = cvs.getContext("2d");
+  ctx.setTransform(d, 0, 0, d, 0, 0);
+  ctx.fillStyle = canvasBg();
+  ctx.fillRect(0, 0, w, h);
+  const items = data.filter(x => x.empregados > 0).sort((a, b) => b.empregados - a.empregados).slice(0, 80).map(x => ({ ...x, value: x.empregados }));
+  const rects = squarify(items, 2, 2, w - 4, h - 4);
+  for (const r of rects) {
+    ctx.fillStyle = tileColorCSS(r, 0.5);
+    ctx.fillRect(r.rx + 0.5, r.ry + 0.5, r.rw - 1, r.rh - 1);
+  }
+}
+
+function drawMiniScatter() {
+  const container = document.getElementById("previewScatter");
+  if (!container || data.length === 0) return;
+  let cvs = container.querySelector("canvas");
+  if (!cvs) { cvs = document.createElement("canvas"); container.appendChild(cvs); }
+  const w = container.clientWidth || 300;
+  const h = container.clientHeight || 225;
+  const d = window.devicePixelRatio || 1;
+  cvs.width = w * d; cvs.height = h * d;
+  cvs.style.width = w + "px"; cvs.style.height = h + "px";
+  const ctx = cvs.getContext("2d");
+  ctx.setTransform(d, 0, 0, d, 0, 0);
+  ctx.fillStyle = canvasBg();
+  ctx.fillRect(0, 0, w, h);
+  const pad = 12;
+  let maxEmp = 0;
+  for (const dd of data) { if (dd.empregados > maxEmp) maxEmp = dd.empregados; }
+  for (const dd of data) {
+    if (dd.exposicao == null || dd.oportunidade == null) continue;
+    const px = pad + (dd.exposicao / 10) * (w - pad * 2);
+    const py = pad + (1 - dd.oportunidade / 10) * (h - pad * 2);
+    const r = Math.max(1.5, Math.sqrt((dd.empregados || 1) / maxEmp) * 14);
+    ctx.beginPath();
+    ctx.arc(px, py, r, 0, Math.PI * 2);
+    ctx.fillStyle = exposicaoColor(dd.exposicao, 0.35);
+    ctx.fill();
+  }
+}
+
 Promise.all([
   fetch("data.json").then(r => r.json()),
   fetch("summary.json").then(r => r.json())
@@ -2660,13 +3227,15 @@ Promise.all([
   summaryData = s;
   updateStats();
   drawGradientLegend();
-  treemapResize();
+  updateLandingStats();
+  // Don't init treemap until user navigates there
 });
 
 window.addEventListener("resize", function() {
   dpr = window.devicePixelRatio || 1;
   if (currentView === "mapa") treemapResize();
   if (currentView === "scatter" && scatterInited) scatterResize();
+  if (currentView === "landing" && data.length) { drawMiniTreemap(); drawMiniScatter(); }
 });
 </script>
 </body>
