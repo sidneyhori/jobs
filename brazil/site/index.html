@@ -1101,6 +1101,23 @@ body.on-landing .nav-home { border-bottom-color: var(--accent); }
   transition: color 0.15s;
 }
 .footer-links a:hover, .footer-links button:hover { color: var(--fg); }
+.footer-credits {
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--fg2);
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.footer-credits a {
+  color: var(--fg2);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.footer-credits a:hover { color: var(--fg); }
+.footer-credits strong { color: var(--fg); font-weight: 600; }
 
 /* ── Responsive ────────────────────────────────────── */
 @media (max-width: 700px) {
@@ -1173,6 +1190,7 @@ body.on-landing .nav-home { border-bottom-color: var(--accent); }
 
   .landing-footer { padding: 36px 16px 48px; }
   .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+  .footer-credits { flex-direction: column; gap: 8px; }
 }
 
 @media (max-width: 400px) {
@@ -1380,10 +1398,10 @@ body.on-landing .nav-home { border-bottom-color: var(--accent); }
         </ul>
       </div>
     </div>
-    <div style="margin-top:32px;padding-top:20px;border-top:1px solid var(--border);font-size:12px;color:var(--fg2);display:flex;gap:24px;flex-wrap:wrap">
+    <div class="footer-credits">
       <span>Desenvolvido por</span>
-      <a href="https://www.linkedin.com/in/joao-alqueres/" target="_blank" rel="noopener" style="color:var(--fg2);text-decoration:none;transition:color 0.15s"><strong style="color:var(--fg);font-weight:600">Jo&atilde;o Paulo Alqueres</strong> &middot; Iara Digital</a>
-      <a href="https://www.linkedin.com/in/sidney-hori/" target="_blank" rel="noopener" style="color:var(--fg2);text-decoration:none;transition:color 0.15s"><strong style="color:var(--fg);font-weight:600">Sidney Hori Hawthorne</strong> &middot; Aeonix Tech</a>
+      <a href="https://www.linkedin.com/in/joao-alqueres/" target="_blank" rel="noopener"><strong>Jo&atilde;o Paulo Alqueres</strong> &middot; Iara Digital</a>
+      <a href="https://www.linkedin.com/in/sidney-hori/" target="_blank" rel="noopener"><strong>Sidney Hori Hawthorne</strong> &middot; Aeonix Tech</a>
     </div>
   </footer>
 
