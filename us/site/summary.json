@@ -1,0 +1,185 @@
+{
+  "total_occupations": 341,
+  "total_workers": 143066500,
+  "categories": [
+    {
+      "name": "healthcare",
+      "total_workers": 17533300,
+      "occupations": 49,
+      "avg_exposure": 3.4,
+      "avg_pay": 72979
+    },
+    {
+      "name": "office-and-administrative-support",
+      "total_workers": 16488600,
+      "occupations": 13,
+      "avg_exposure": 8.1,
+      "avg_pay": 45433
+    },
+    {
+      "name": "transportation-and-material-moving",
+      "total_workers": 13050600,
+      "occupations": 11,
+      "avg_exposure": 3.0,
+      "avg_pay": 45484
+    },
+    {
+      "name": "management",
+      "total_workers": 12027300,
+      "occupations": 26,
+      "avg_exposure": 6.0,
+      "avg_pay": 115332
+    },
+    {
+      "name": "food-preparation-and-serving",
+      "total_workers": 12022100,
+      "occupations": 6,
+      "avg_exposure": 2.9,
+      "avg_pay": 33555
+    },
+    {
+      "name": "sales",
+      "total_workers": 10828000,
+      "occupations": 10,
+      "avg_exposure": 5.8,
+      "avg_pay": 44994
+    },
+    {
+      "name": "business-and-financial",
+      "total_workers": 9819000,
+      "occupations": 24,
+      "avg_exposure": 7.6,
+      "avg_pay": 83773
+    },
+    {
+      "name": "education-training-and-library",
+      "total_workers": 8295000,
+      "occupations": 14,
+      "avg_exposure": 5.7,
+      "avg_pay": 59460
+    },
+    {
+      "name": "construction-and-extraction",
+      "total_workers": 6222900,
+      "occupations": 20,
+      "avg_exposure": 1.8,
+      "avg_pay": 55528
+    },
+    {
+      "name": "production",
+      "total_workers": 5706000,
+      "occupations": 16,
+      "avg_exposure": 3.4,
+      "avg_pay": 46667
+    },
+    {
+      "name": "installation-maintenance-and-repair",
+      "total_workers": 5008200,
+      "occupations": 15,
+      "avg_exposure": 2.5,
+      "avg_pay": 56629
+    },
+    {
+      "name": "computer-and-information-technology",
+      "total_workers": 4513700,
+      "occupations": 10,
+      "avg_exposure": 8.5,
+      "avg_pay": 108960
+    },
+    {
+      "name": "building-and-grounds-cleaning",
+      "total_workers": 3846500,
+      "occupations": 3,
+      "avg_exposure": 1.0,
+      "avg_pay": 37020
+    },
+    {
+      "name": "personal-care-and-service",
+      "total_workers": 3399100,
+      "occupations": 11,
+      "avg_exposure": 2.4,
+      "avg_pay": 36008
+    },
+    {
+      "name": "protective-service",
+      "total_workers": 2911800,
+      "occupations": 6,
+      "avg_exposure": 4.2,
+      "avg_pay": 55098
+    },
+    {
+      "name": "community-and-social-service",
+      "total_workers": 2519200,
+      "occupations": 9,
+      "avg_exposure": 4.8,
+      "avg_pay": 58014
+    },
+    {
+      "name": "architecture-and-engineering",
+      "total_workers": 2406700,
+      "occupations": 29,
+      "avg_exposure": 6.7,
+      "avg_pay": 97469
+    },
+    {
+      "name": "legal",
+      "total_workers": 1312600,
+      "occupations": 5,
+      "avg_exposure": 8.3,
+      "avg_pay": 123067
+    },
+    {
+      "name": "media-and-communication",
+      "total_workers": 1164800,
+      "occupations": 10,
+      "avg_exposure": 7.8,
+      "avg_pay": 64630
+    },
+    {
+      "name": "life-physical-and-social-science",
+      "total_workers": 1143800,
+      "occupations": 29,
+      "avg_exposure": 6.0,
+      "avg_pay": 84203
+    },
+    {
+      "name": "farming-fishing-and-forestry",
+      "total_workers": 889600,
+      "occupations": 4,
+      "avg_exposure": 2.9,
+      "avg_pay": 35863
+    },
+    {
+      "name": "entertainment-and-sports",
+      "total_workers": 803000,
+      "occupations": 8,
+      "avg_exposure": 4.9,
+      "avg_pay": 64251
+    },
+    {
+      "name": "arts-and-design",
+      "total_workers": 728500,
+      "occupations": 9,
+      "avg_exposure": 7.8,
+      "avg_pay": 73584
+    },
+    {
+      "name": "math",
+      "total_workers": 426200,
+      "occupations": 4,
+      "avg_exposure": 8.9,
+      "avg_pay": 107358
+    }
+  ],
+  "education_levels": {
+    "Bachelor's degree": 35990000,
+    "Some college, no degree": 3308700,
+    "High school diploma or equivalent": 38707800,
+    "Associate's degree": 2763000,
+    "See How to Become One": 20294400,
+    "Postsecondary nondegree award": 7776200,
+    "Master's degree": 3085300,
+    "No formal educational credential": 28196700,
+    "Doctoral or professional degree": 2944400
+  }
+}

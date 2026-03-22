@@ -1,0 +1,2664 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="How artificial intelligence will transform 143 million American jobs. Data from BLS Occupational Outlook Handbook.">
+<meta property="og:title" content="AI & Jobs in America">
+<meta property="og:description" content="Analysis of 342 occupations and the impact of artificial intelligence on the US labor market.">
+<meta property="og:type" content="website">
+<title>AI & Jobs in America</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,700;0,8..60,800;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #141210;
+  --bg2: #1c1a17;
+  --bg3: #26231f;
+  --fg: #e8e4dc;
+  --fg2: #9a9590;
+  --accent: #c49a5c;
+  --green: #5a9a5a;
+  --red: #c06a5a;
+  --radius: 0;
+
+  --nav-bg: rgba(20,18,16,0.92);
+  --border: rgba(255,255,255,0.06);
+  --border-hover: rgba(255,255,255,0.12);
+  --border-subtle: rgba(255,255,255,0.05);
+  --border-chip: rgba(255,255,255,0.1);
+  --border-chip-hover: rgba(255,255,255,0.25);
+  --overlay-soft: rgba(255,255,255,0.06);
+  --overlay-hover: rgba(255,255,255,0.08);
+  --card-shadow: 0 2px 16px rgba(0,0,0,0.3);
+  --row-border: rgba(255,255,255,0.04);
+  --tag-bg: rgba(196, 154, 92, 0.08);
+}
+
+[data-theme="light"] {
+  --bg: #f5f2ed;
+  --bg2: #ffffff;
+  --bg3: #ebe8e3;
+  --fg: #1a1814;
+  --fg2: #6b6860;
+  --accent: #a07838;
+  --green: #3a7a3a;
+  --red: #b04a3a;
+
+  --nav-bg: rgba(245,242,237,0.92);
+  --border: rgba(0,0,0,0.08);
+  --border-hover: rgba(0,0,0,0.14);
+  --border-subtle: rgba(0,0,0,0.06);
+  --border-chip: rgba(0,0,0,0.12);
+  --border-chip-hover: rgba(0,0,0,0.25);
+  --overlay-soft: rgba(0,0,0,0.04);
+  --overlay-hover: rgba(0,0,0,0.06);
+  --card-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  --row-border: rgba(0,0,0,0.06);
+  --tag-bg: rgba(160, 120, 56, 0.08);
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Navigation */
+#nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--nav-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+#nav::-webkit-scrollbar { display: none; }
+#nav button {
+  padding: 12px 18px;
+  font-size: 13px;
+  font-weight: 500;
+  border: none;
+  background: transparent;
+  color: var(--fg2);
+  cursor: pointer;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: all 0.15s;
+}
+#nav button.active {
+  color: var(--fg);
+  border-bottom-color: var(--accent);
+}
+#nav button:hover:not(.active) { color: var(--fg); }
+#nav button:active { opacity: 0.8; }
+#nav a {
+  padding: 12px 18px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--fg2);
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s;
+}
+#nav a:hover { color: var(--fg); }
+#nav a:active { opacity: 0.8; }
+
+/* Theme toggle */
+.theme-toggle {
+  background: none;
+  border: none;
+  color: var(--fg2);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s, background 0.15s, transform 0.1s;
+  flex-shrink: 0;
+}
+.theme-toggle:hover { color: var(--fg); background: var(--overlay-hover); }
+.theme-toggle:active { transform: scale(0.92); }
+.theme-toggle svg { width: 18px; height: 18px; }
+.theme-toggle .icon-moon { display: none; }
+[data-theme="light"] .theme-toggle .icon-sun { display: none; }
+[data-theme="light"] .theme-toggle .icon-moon { display: block; }
+
+/* Hamburger menu */
+.nav-burger {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--fg2);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 0;
+  flex-shrink: 0;
+  transition: color 0.15s;
+}
+.nav-burger:hover { color: var(--fg); background: var(--overlay-hover); }
+.nav-burger:active { transform: scale(0.92); }
+.nav-burger svg { width: 20px; height: 20px; display: block; }
+.nav-burger .icon-close { display: none; }
+.nav-open .nav-burger .icon-menu { display: none; }
+.nav-open .nav-burger .icon-close { display: block; }
+
+.nav-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--nav-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 8px 0;
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+  transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-open .nav-menu { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.nav-menu button, .nav-menu a {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 14px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--fg2);
+  background: none;
+  border: none;
+  border-bottom: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.1s, color 0.1s;
+}
+.nav-menu button:hover, .nav-menu a:hover { background: var(--overlay-hover); color: var(--fg); }
+.nav-menu button.active { color: var(--accent); font-weight: 600; }
+
+/* Views container */
+.view { display: none; max-width: 1400px; margin: 0 auto; padding: 20px 24px 80px; }
+.view.active { display: block; }
+
+/* Shared components */
+.section-title {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+.section-desc {
+  font-size: 14px;
+  color: var(--fg2);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+}
+
+.metric-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.metric-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  text-align: center;
+}
+.metric-card .metric-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--fg2);
+  margin-bottom: 8px;
+}
+.metric-card .metric-value {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.metric-card .metric-sub {
+  font-size: 11px;
+  color: var(--fg2);
+  margin-top: 4px;
+}
+
+/* Treemap view */
+#view-map { padding-bottom: 250px; }
+#treemap-header { padding: 0 0 16px; }
+
+.intro { margin-bottom: 18px; }
+.intro h1 {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.intro p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--fg2);
+  margin-bottom: 8px;
+}
+.intro strong, .intro b { color: var(--fg); font-weight: 600; }
+
+.stats-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 28px;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+.stat-section { display: flex; flex-direction: column; gap: 5px; }
+.stat-section h3 {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--fg2);
+}
+.stat-big {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.stat-label { font-size: 11px; color: var(--fg2); }
+
+.tier-bar { display: flex; flex-direction: column; gap: 3px; }
+.tier-row { display: flex; align-items: center; gap: 6px; font-size: 12px; }
+.tier-color { width: 10px; height: 10px; border-radius: 0; flex-shrink: 0; }
+.tier-name { flex: 1; color: var(--fg2); white-space: nowrap; }
+.tier-jobs { text-align: right; white-space: nowrap; }
+.tier-pct { text-align: right; width: 30px; color: var(--fg2); font-size: 11px; }
+
+.histogram { display: flex; align-items: flex-end; gap: 2px; height: 54px; }
+.histogram .bar { flex: 1; border-radius: 0; min-height: 1px; }
+.hist-labels { display: flex; justify-content: space-between; font-size: 10px; color: var(--fg2); margin-top: 2px; }
+
+.hbar-chart { display: flex; flex-direction: column; gap: 3px; }
+.hbar-row { display: flex; align-items: center; gap: 6px; font-size: 12px; }
+.hbar-label { width: 90px; flex-shrink: 0; color: var(--fg2); font-size: 11px; text-align: right; }
+.hbar-track { flex: 1; height: 12px; background: var(--row-border); border-radius: 0; overflow: hidden; min-width: 36px; }
+.hbar-fill { height: 100%; border-radius: 0; }
+.hbar-val { width: 40px; flex-shrink: 0; font-size: 11px; color: var(--fg); text-align: right; }
+
+.controls-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+.color-toggle { display: flex; gap: 4px; flex-wrap: wrap; }
+.color-toggle button {
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid var(--border-chip);
+  border-radius: 0;
+  background: transparent;
+  color: var(--fg2);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.color-toggle button.active {
+  background: var(--overlay-hover);
+  color: var(--fg);
+  border-color: var(--border-chip-hover);
+}
+.color-toggle button:hover:not(.active) { background: var(--row-border); }
+.color-toggle button:active { transform: scale(0.96); }
+
+.gradient-legend { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--fg2); }
+.gradient-legend canvas { border-radius: 0; }
+
+canvas#treemapCanvas { display: block; cursor: default; }
+
+/* Tooltip */
+#tooltip {
+  position: fixed;
+  pointer-events: none;
+  background: var(--bg2);
+  border: 1px solid var(--border-hover);
+  border-radius: 0;
+  padding: 12px 16px;
+  font-size: 13px;
+  line-height: 1.5;
+  max-width: 380px;
+  opacity: 0;
+  transition: opacity 0.12s;
+  z-index: 200;
+  box-shadow: var(--card-shadow);
+}
+#tooltip.visible { opacity: 1; }
+#tooltip .tt-title { font-weight: 600; font-size: 14px; margin-bottom: 6px; color: var(--fg); }
+#tooltip .tt-highlight { font-size: 12px; margin-bottom: 8px; }
+#tooltip .tt-stats { display: grid; grid-template-columns: auto auto; gap: 2px 12px; font-size: 12px; }
+#tooltip .tt-stats .label { color: var(--fg2); }
+#tooltip .tt-stats .value { color: var(--fg); text-align: right; }
+#tooltip .tt-rationale { font-size: 11px; color: var(--fg2); margin-top: 8px; line-height: 1.4; border-top: 1px solid var(--border); padding-top: 8px; }
+
+/* Scatter Plot */
+#scatterContainer { position: relative; }
+canvas#scatterCanvas { display: block; cursor: crosshair; }
+
+/* My Job (Painel) */
+.search-box {
+  position: relative;
+  max-width: 600px;
+  margin-bottom: 24px;
+}
+.search-box input {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 15px;
+  background: var(--bg2);
+  border: 1px solid var(--border-hover);
+  border-radius: var(--radius);
+  color: var(--fg);
+  outline: none;
+  transition: border-color 0.15s;
+}
+.search-box input:focus { border-color: var(--accent); }
+.search-box input::placeholder { color: var(--fg2); }
+.search-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--bg2);
+  border: 1px solid var(--border-hover);
+  border-radius: 0;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 50;
+  display: none;
+}
+.search-dropdown.open { display: block; }
+.search-dropdown .search-item {
+  padding: 10px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  border-bottom: 1px solid var(--row-border);
+  transition: background 0.1s;
+}
+.search-dropdown .search-item:hover,
+.search-dropdown .search-item.highlighted { background: var(--overlay-soft); }
+.search-dropdown .search-item .search-code { color: var(--fg2); font-size: 12px; margin-left: 8px; }
+
+#painelContent { display: none; }
+#painelPlaceholder {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--fg2);
+  font-size: 16px;
+}
+
+.salary-section {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.salary-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  flex: 1;
+  min-width: 200px;
+}
+.salary-card .sal-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--fg2); margin-bottom: 6px; }
+.salary-card .sal-value { font-size: 24px; font-weight: 700; }
+
+.risk-assessment {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.risk-assessment .risk-title { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+.risk-assessment .risk-text { font-size: 14px; color: var(--fg2); line-height: 1.6; }
+
+.action-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.action-card {
+  background: var(--bg2);
+  border: 1px solid var(--overlay-hover);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+.action-card .action-title { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+.action-card .action-desc { font-size: 13px; color: var(--fg2); line-height: 1.5; margin-bottom: 8px; }
+.action-card .action-suggestion { font-size: 12px; color: var(--accent); font-weight: 500; }
+
+.rationale-box {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.rationale-box h3 { font-size: 14px; font-weight: 600; margin-bottom: 10px; }
+.rationale-box p { font-size: 13px; color: var(--fg2); line-height: 1.6; }
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+.comparison-table th {
+  text-align: left;
+  padding: 10px 12px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--fg2);
+  border-bottom: 1px solid var(--border-chip);
+  font-weight: 600;
+}
+.comparison-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--row-border);
+}
+.comparison-table tr:hover td { background: var(--row-border); }
+
+/* Ranking */
+.ranking-controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.ranking-controls input {
+  flex: 1;
+  min-width: 200px;
+  max-width: 400px;
+  padding: 10px 14px;
+  font-size: 14px;
+  background: var(--bg2);
+  border: 1px solid var(--border-chip);
+  border-radius: var(--radius);
+  color: var(--fg);
+  outline: none;
+}
+.ranking-controls input:focus { border-color: var(--accent); }
+.ranking-controls input::placeholder { color: var(--fg2); }
+
+.ranking-table-wrap { overflow-x: auto; }
+.ranking-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  min-width: 900px;
+}
+.ranking-table th {
+  text-align: left;
+  padding: 10px 10px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--fg2);
+  border-bottom: 2px solid var(--border-chip);
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  user-select: none;
+  transition: color 0.1s;
+}
+.ranking-table th:hover { color: var(--fg); }
+.ranking-table th.sorted { color: var(--accent); }
+.ranking-table th .sort-arrow { margin-left: 4px; font-size: 10px; }
+.ranking-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--row-border);
+  white-space: nowrap;
+}
+.ranking-table tbody tr:hover td { background: var(--row-border); }
+
+.score-cell {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 0;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.ranking-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+.ranking-pagination button {
+  padding: 6px 14px;
+  font-size: 12px;
+  border: 1px solid var(--border-chip);
+  border-radius: 0;
+  background: transparent;
+  color: var(--fg2);
+  cursor: pointer;
+}
+.ranking-pagination button:hover:not(:disabled) { background: var(--row-border); color: var(--fg); }
+.ranking-pagination button:active:not(:disabled) { transform: scale(0.96); }
+.ranking-pagination button.active { background: var(--overlay-hover); color: var(--fg); border-color: var(--border-chip-hover); }
+.ranking-pagination button:disabled { opacity: 0.3; cursor: default; }
+.ranking-pagination span { font-size: 12px; color: var(--fg2); }
+
+/* Ask (Perguntar) */
+.perguntar-form {
+  max-width: 700px;
+  margin: 0 auto 24px;
+}
+.perguntar-input-wrap { position: relative; }
+.perguntar-input-wrap input {
+  width: 100%;
+  padding: 14px 56px 14px 16px;
+  font-size: 16px;
+  background: var(--bg2);
+  border: 1px solid var(--border-hover);
+  border-radius: var(--radius);
+  color: var(--fg);
+  outline: none;
+  transition: border-color 0.15s;
+}
+.perguntar-input-wrap input:focus { border-color: var(--accent); }
+.perguntar-input-wrap input::placeholder { color: var(--fg2); }
+.perguntar-btn {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--accent);
+  border: none;
+  border-radius: var(--radius);
+  color: var(--bg);
+  padding: 8px 14px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: opacity 0.15s;
+}
+.perguntar-btn:hover { opacity: 0.85; }
+.perguntar-btn:active { transform: translateY(-50%) scale(0.96); }
+.perguntar-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+/* Loading indicator */
+@keyframes pulse-bar {
+  0% { transform: scaleX(0); transform-origin: left; }
+  50% { transform: scaleX(1); transform-origin: left; }
+  50.1% { transform-origin: right; }
+  100% { transform: scaleX(0); transform-origin: right; }
+}
+.query-loading {
+  padding: 32px 24px;
+  text-align: center;
+}
+.query-loading-bar {
+  width: 120px;
+  height: 2px;
+  background: var(--border);
+  margin: 0 auto 20px;
+  overflow: hidden;
+}
+.query-loading-bar::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--accent);
+  animation: pulse-bar 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+.query-loading-text {
+  font-size: 15px;
+  color: var(--fg2);
+  margin-bottom: 8px;
+}
+.query-loading-sub {
+  font-size: 13px;
+  color: var(--fg2);
+  opacity: 0.5;
+}
+
+/* Landing page */
+.serif { font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif; }
+
+.nav-tabs { display: contents; }
+.nav-home {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--fg);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 12px 14px 12px 0;
+  white-space: nowrap;
+  letter-spacing: -0.01em;
+  border-bottom: 2px solid transparent;
+  flex-shrink: 0;
+  text-decoration: none;
+  margin-right: auto;
+}
+.nav-home:hover { color: var(--accent); }
+.nav-home:hover .logo-accent { fill: var(--fg); }
+body.on-landing .nav-home { border-bottom-color: var(--accent); }
+.nav-logo { flex-shrink: 0; }
+.logo-tile { fill: var(--fg); opacity: 0.25; }
+.logo-accent { fill: var(--accent); transition: fill 0.15s; }
+
+#view-landing {
+  max-width: none;
+  padding: 0;
+}
+
+/* Animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up {
+  opacity: 0;
+  transform: translateY(18px);
+}
+.fade-up.visible {
+  animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero > * {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: fadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.hero > :nth-child(1) { animation-delay: 0.05s; }
+.hero > :nth-child(2) { animation-delay: 0.15s; }
+.hero > :nth-child(3) { animation-delay: 0.25s; }
+.hero > :nth-child(4) { animation-delay: 0.35s; }
+.hero > :nth-child(5) { animation-delay: 0.45s; }
+
+.hero {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: clamp(60px, 12vh, 120px) 24px clamp(48px, 8vh, 80px);
+}
+.hero-eyebrow {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+.hero h1 {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: clamp(32px, 5.5vw, 56px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 20px;
+  color: var(--fg);
+  max-width: 720px;
+}
+.hero-sub {
+  font-size: clamp(16px, 2vw, 19px);
+  line-height: 1.6;
+  color: var(--fg2);
+  max-width: 560px;
+  margin-bottom: 36px;
+}
+
+.hero-search {
+  position: relative;
+  z-index: 10;
+  max-width: 520px;
+  margin-bottom: 40px;
+}
+.hero-search input {
+  width: 100%;
+  padding: 16px 20px;
+  font-size: 16px;
+  background: var(--bg2);
+  border: 1px solid var(--border-hover);
+  border-radius: var(--radius);
+  color: var(--fg);
+  outline: none;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+.hero-search input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(196, 154, 92, 0.12);
+}
+[data-theme="light"] .hero-search input:focus {
+  box-shadow: 0 0 0 3px rgba(160, 120, 56, 0.12);
+}
+.hero-search input::placeholder { color: var(--fg2); }
+.hero-search .search-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--bg2);
+  border: 1px solid var(--border-hover);
+  border-radius: 0;
+  max-height: 280px;
+  overflow-y: auto;
+  z-index: 50;
+  opacity: 0;
+  transform: translateY(-4px);
+  pointer-events: none;
+  transition: opacity 0.15s cubic-bezier(0.16, 1, 0.3, 1), transform 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.hero-search .search-dropdown.open { opacity: 1; transform: translateY(0); pointer-events: auto; }
+
+.hero-stats {
+  display: flex;
+  gap: clamp(24px, 4vw, 48px);
+  flex-wrap: wrap;
+}
+.hero-stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.hero-stat-val {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.hero-stat-label {
+  font-size: 13px;
+  color: var(--fg2);
+  line-height: 1.3;
+}
+
+/* Landing sections */
+.landing-section {
+  border-top: 1px solid var(--border);
+  padding: clamp(48px, 8vh, 80px) 24px;
+}
+.landing-section:nth-child(even) {
+  background: var(--bg2);
+}
+.landing-inner {
+  max-width: 860px;
+  margin: 0 auto;
+}
+.landing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 5vw, 64px);
+  align-items: center;
+}
+.landing-grid.reverse { direction: rtl; }
+.landing-grid.reverse > * { direction: ltr; }
+
+.section-eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 12px;
+  display: block;
+}
+.landing-section h2 {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+.landing-section p {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--fg2);
+  margin-bottom: 20px;
+}
+.section-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+  transition: gap 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.section-cta:hover { gap: 10px; }
+.section-cta::after { content: "\2192"; }
+
+.section-preview {
+  background: var(--bg3);
+  border-radius: var(--radius);
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.section-preview canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.tools-row {
+  max-width: 860px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.tool-card {
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: border-color 0.15s, transform 0.15s;
+}
+.tool-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
+}
+.tool-card:active {
+  transform: translateY(0) scale(0.99);
+}
+.tool-card h3 {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.tool-card p {
+  font-size: 13px;
+  color: var(--fg2);
+  line-height: 1.5;
+}
+
+/* Landing footer */
+.landing-footer {
+  border-top: 1px solid var(--border);
+  padding: 48px 24px 64px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+}
+.footer-heading {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--fg2);
+  margin-bottom: 12px;
+}
+.landing-footer p {
+  font-size: 13px;
+  color: var(--fg2);
+  line-height: 1.6;
+}
+.footer-links {
+  list-style: none;
+}
+.footer-links li { margin-bottom: 8px; }
+.footer-links a, .footer-links button {
+  font-size: 13px;
+  color: var(--fg2);
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.15s;
+}
+.footer-links a:hover, .footer-links button:hover { color: var(--fg); }
+.footer-credits {
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--fg2);
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.footer-credits a {
+  color: var(--fg2);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.footer-credits a:hover { color: var(--fg); }
+.footer-credits strong { color: var(--fg); font-weight: 600; }
+
+/* Responsive */
+@media (max-width: 700px) {
+  #nav { padding: 0 12px; overflow: visible; position: relative; }
+  .nav-tabs, #nav > a { display: none; }
+  .nav-burger { display: flex; }
+  .nav-home { padding: 10px 10px 10px 0; font-size: 13px; margin-right: auto; }
+  .theme-toggle { margin-right: 4px; }
+
+  .view { padding: 16px 14px 60px; }
+  .intro h1 { font-size: 20px; gap: 10px; }
+  .intro p { font-size: 14px; }
+  .stat-big { font-size: 24px; }
+  .stats-row { gap: 14px 20px; }
+  .controls-row { gap: 10px; }
+  .color-toggle button { padding: 8px 12px; min-height: 40px; font-size: 11px; }
+  .metric-cards { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .metric-card { padding: 12px; }
+  .metric-card .metric-value { font-size: 26px; }
+  .action-cards { grid-template-columns: 1fr; }
+
+  .hbar-label { width: 70px; font-size: 10px; }
+  .hbar-val { width: 36px; font-size: 10px; }
+
+  .search-box input { font-size: 16px; padding: 14px 14px; }
+
+  .ranking-controls { gap: 8px; }
+  .ranking-controls input { min-width: 0; max-width: none; font-size: 16px; }
+  .ranking-pagination { gap: 6px; }
+  .ranking-pagination button { min-height: 40px; }
+
+  .section-title { font-size: 20px; }
+
+  .hero { padding: 48px 16px 40px; }
+  .hero-eyebrow { font-size: 11px; margin-bottom: 14px; }
+  .hero-sub { margin-bottom: 28px; }
+  .hero-search { margin-bottom: 32px; }
+  .hero-search input { padding: 14px 16px; font-size: 16px; }
+  .hero-stats { gap: 20px; }
+  .hero-stat-val { font-size: clamp(24px, 7vw, 36px); }
+  .hero-stat-label { font-size: 12px; }
+
+  .landing-section { padding: clamp(36px, 6vh, 56px) 16px; }
+  .landing-grid { grid-template-columns: 1fr; gap: 24px; }
+  .landing-grid.reverse { direction: ltr; }
+  .section-preview { aspect-ratio: 3 / 2; }
+  .landing-section h2 { font-size: 22px; }
+
+  .tools-row { grid-template-columns: 1fr; gap: 12px; }
+  .tool-card { padding: 20px; min-height: 44px; }
+
+  .landing-footer { padding: 36px 16px 48px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+  .footer-credits { flex-direction: column; gap: 8px; }
+}
+
+@media (max-width: 400px) {
+  .hero h1 { font-size: 28px; }
+  .hero-stats { flex-direction: column; gap: 16px; }
+  .metric-cards { grid-template-columns: 1fr; }
+  .color-toggle { gap: 6px; }
+  .color-toggle button { padding: 8px 10px; font-size: 10px; }
+  .hbar-label { width: 60px; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+<script>
+// Apply theme before paint
+(function() {
+  var saved = localStorage.getItem("theme");
+  if (saved === "light") {
+    document.documentElement.setAttribute("data-theme", "light");
+  } else if (!saved && window.matchMedia("(prefers-color-scheme: light)").matches) {
+    document.documentElement.setAttribute("data-theme", "light");
+  }
+})();
+</script>
+</head>
+<body class="on-landing">
+
+<!-- Navigation -->
+<nav id="nav" aria-label="Main navigation">
+  <button class="nav-home" id="navHome" aria-label="Back to home">
+    <svg class="nav-logo" width="22" height="22" viewBox="0 0 22 22" fill="none">
+      <rect class="logo-tile" x="1" y="1" width="9" height="13" rx="0"/>
+      <rect class="logo-tile" x="12" y="1" width="9" height="6" rx="0"/>
+      <rect class="logo-accent" x="12" y="9" width="9" height="5" rx="0"/>
+      <rect class="logo-tile" x="1" y="16" width="20" height="5" rx="0"/>
+    </svg>
+    AI &amp; Jobs
+  </button>
+  <span class="nav-tabs">
+    <button data-view="map">Map</button>
+    <button data-view="scatter">Risk &times; Opportunity</button>
+    <button data-view="painel">My Job</button>
+    <button data-view="ranking">Ranking</button>
+    <button data-view="ask">Ask</button>
+  </span>
+  <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme">
+    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  </button>
+  <button class="nav-burger" id="navBurger" type="button" aria-label="Menu">
+    <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+  </button>
+  <div class="nav-menu" id="navMenu">
+    <button data-view="map">Map</button>
+    <button data-view="scatter">Risk &times; Opportunity</button>
+    <button data-view="painel">My Job</button>
+    <button data-view="ranking">Ranking</button>
+    <button data-view="ask">Ask</button>
+  </div>
+</nav>
+
+<!-- Landing Page -->
+<div id="view-landing" class="view active">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-eyebrow">BLS Data &middot; 342 occupations</div>
+    <h1>How will artificial intelligence transform work in America?</h1>
+    <p class="hero-sub">Analysis of 143 million American jobs and their degree of exposure to AI automation.</p>
+
+    <div class="hero-search" id="heroSearchBox">
+      <input type="text" id="heroSearch" placeholder="Search your occupation &mdash; e.g. accountant, nurse, driver..." autocomplete="off">
+      <div class="search-dropdown" id="heroDropdown"></div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat-item">
+        <div class="hero-stat-val" id="heroStatJobs">&mdash;</div>
+        <div class="hero-stat-label">jobs<br>analyzed</div>
+      </div>
+      <div class="hero-stat-item">
+        <div class="hero-stat-val" style="color:var(--red)" id="heroStatHighRisk">&mdash;</div>
+        <div class="hero-stat-label">in occupations with<br>high AI exposure</div>
+      </div>
+      <div class="hero-stat-item">
+        <div class="hero-stat-val" style="color:var(--green)" id="heroStatOpportunity">&mdash;</div>
+        <div class="hero-stat-label">in occupations with<br>high opportunity</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 1: The Map -->
+  <section class="landing-section fade-up">
+    <div class="landing-inner">
+      <div class="landing-grid">
+        <div>
+          <span class="section-eyebrow">Overview</span>
+          <h2>143 million jobs, mapped by risk</h2>
+          <p>Each rectangle represents an occupation. The area is proportional to the number of workers. The color shows the degree of AI exposure &mdash; from green (low) to red (high).</p>
+          <button class="section-cta" data-goto="map">Explore the map</button>
+        </div>
+        <div class="section-preview" id="previewTreemap"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Risk vs Opportunity -->
+  <section class="landing-section fade-up">
+    <div class="landing-inner">
+      <div class="landing-grid reverse">
+        <div>
+          <span class="section-eyebrow">Risk &times; Opportunity</span>
+          <h2>Who loses and who gains from AI?</h2>
+          <p>Some occupations will be automated. Others will thrive with new tools. The chart positions each occupation at the intersection of risk and potential gain.</p>
+          <button class="section-cta" data-goto="scatter">View the chart</button>
+        </div>
+        <div class="section-preview" id="previewScatter"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick tools -->
+  <section class="landing-section fade-up">
+    <div class="landing-inner">
+      <span class="section-eyebrow">Tools</span>
+      <h2 style="margin-bottom:24px">Explore the data</h2>
+      <div class="tools-row">
+        <div class="tool-card" data-goto="painel">
+          <h3>My Job</h3>
+          <p>Search your occupation for a personalized risk assessment and recommendations.</p>
+        </div>
+        <div class="tool-card" data-goto="ranking">
+          <h3>Full Ranking</h3>
+          <p>All 342 occupations with scores, salaries, and outlook.</p>
+        </div>
+        <div class="tool-card" data-goto="ask">
+          <h3>Ask</h3>
+          <p>Ask questions in English about the data.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="landing-footer">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-heading">About</div>
+        <p>Employment data from the Bureau of Labor Statistics (BLS) Occupational Outlook Handbook. AI scores (exposure, advantage, growth, opportunity) estimated by LLM considering the US labor market context.</p>
+      </div>
+      <div>
+        <div class="footer-heading">Navigate</div>
+        <ul class="footer-links">
+          <li><button data-goto="map">Map</button></li>
+          <li><button data-goto="scatter">Risk &times; Opportunity</button></li>
+          <li><button data-goto="painel">My Job</button></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">More</div>
+        <ul class="footer-links">
+          <li><button data-goto="ranking">Ranking</button></li>
+          <li><button data-goto="ask">Ask</button></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-credits">
+      <span>Built by</span>
+      <a href="https://www.linkedin.com/in/sidney-hori/" target="_blank" rel="noopener"><strong>Sidney Hori Hawthorne</strong> &middot; Aeonix Tech</a>
+    </div>
+  </footer>
+
+</div>
+
+<!-- View 1: Treemap -->
+<div id="view-map" class="view">
+  <div id="treemap-header">
+    <div class="intro">
+      <h1>AI & Jobs in America</h1>
+      <p>Visualization of <b>342 occupations</b> from the Bureau of Labor Statistics, covering approximately <b>143 million jobs</b>. Each rectangle has <b>area</b> proportional to total employees. The <b>color</b> indicates the selected metric.</p>
+      <p><b>Data:</b> Employment totals, median annual pay, and typical education from BLS Occupational Outlook Handbook. AI scores (exposure, advantage, growth, and opportunity) were estimated by LLM considering the US labor market context.</p>
+    </div>
+    <div class="controls-row">
+      <div class="stat-section">
+        <h3>Layer</h3>
+        <div class="color-toggle" id="colorToggle">
+          <button data-mode="exposure" class="active">AI Exposure</button>
+          <button data-mode="advantage">AI Advantage</button>
+          <button data-mode="growth">AI Growth</button>
+          <button data-mode="opportunity">Opportunity</button>
+          <button data-mode="pay">Pay</button>
+          <button data-mode="education">Education</button>
+        </div>
+      </div>
+      <div class="gradient-legend">
+        <span id="legendLow">Low</span>
+        <canvas id="gradientLegend" width="80" height="8"></canvas>
+        <span id="legendHigh">High</span>
+      </div>
+    </div>
+    <div class="stats-row">
+      <div class="stat-section">
+        <h3>Total employees</h3>
+        <div class="stat-big" id="statTotalJobs">&mdash;</div>
+      </div>
+      <div class="stat-section" id="block2"></div>
+      <div class="stat-section" id="block3"></div>
+      <div class="stat-section" id="block4"></div>
+      <div class="stat-section" id="block5"></div>
+      <div class="stat-section" id="block6"></div>
+      <div class="stat-section" id="block7"></div>
+      <div class="stat-section" id="block8"></div>
+    </div>
+  </div>
+  <canvas id="treemapCanvas"></canvas>
+</div>
+
+<!-- View 2: Scatter Plot -->
+<div id="view-scatter" class="view">
+  <h2 class="section-title">Risk x Opportunity</h2>
+  <p class="section-desc">Each dot represents an occupation. The horizontal axis measures <b>AI exposure</b> (automation risk) and the vertical measures <b>opportunity</b> (potential to benefit from AI). Dot size is proportional to number of employees.</p>
+  <div id="scatterContainer">
+    <canvas id="scatterCanvas"></canvas>
+  </div>
+</div>
+
+<!-- View 3: My Job -->
+<div id="view-painel" class="view">
+  <h2 class="section-title">My Job</h2>
+  <p class="section-desc">Search your occupation to see a complete assessment with risk analysis, recommendations, and comparisons.</p>
+  <div class="search-box" id="painelSearchBox">
+    <input type="text" id="painelSearch" placeholder="Type your occupation name..." autocomplete="off" aria-label="Search occupation">
+    <div class="search-dropdown" id="painelDropdown"></div>
+  </div>
+  <div id="painelPlaceholder">Select an occupation above to see your personalized analysis.</div>
+  <div id="painelContent"></div>
+</div>
+
+<!-- View 4: Ranking -->
+<div id="view-ranking" class="view">
+  <h2 class="section-title">Occupation Ranking</h2>
+  <p class="section-desc">Complete table with all 342 occupations. Click column headers to sort.</p>
+  <div class="ranking-controls">
+    <input type="text" id="rankingSearch" placeholder="Filter occupations..." aria-label="Filter occupations">
+  </div>
+  <div class="ranking-table-wrap">
+    <table class="ranking-table" id="rankingTable">
+      <thead>
+        <tr id="rankingHead"></tr>
+      </thead>
+      <tbody id="rankingBody"></tbody>
+    </table>
+  </div>
+  <div class="ranking-pagination" id="rankingPagination"></div>
+</div>
+
+<!-- View 5: Ask -->
+<div id="view-ask" class="view">
+  <h2 class="section-title">Ask about the labor market</h2>
+  <p class="section-desc">Ask questions in English about occupations, salaries, automation risk, and job outlook.</p>
+  <div class="perguntar-form">
+    <div class="perguntar-input-wrap">
+      <input type="text" id="askInput" placeholder="E.g. which jobs are most at risk?" aria-label="Question about the labor market">
+      <button id="askBtn" class="perguntar-btn">Ask</button>
+    </div>
+    <div id="askChips" class="perguntar-chips"></div>
+  </div>
+  <div id="askResult"></div>
+</div>
+
+<!-- Shared tooltip -->
+<div id="tooltip">
+  <div class="tt-title"></div>
+  <div class="tt-highlight"></div>
+  <div class="tt-stats"></div>
+  <div class="tt-rationale"></div>
+</div>
+
+<script>
+// ======================================================================
+// GLOBALS
+// ======================================================================
+let data = [];
+let summaryData = null;
+let currentView = "landing";
+
+// ======================================================================
+// THEME
+// ======================================================================
+function isLightTheme() {
+  return document.documentElement.getAttribute("data-theme") === "light";
+}
+function themeColor(cssVar) {
+  return getComputedStyle(document.documentElement).getPropertyValue(cssVar).trim();
+}
+function canvasFg(alpha) {
+  return isLightTheme() ? "rgba(26,24,20," + alpha + ")" : "rgba(232,228,220," + alpha + ")";
+}
+function canvasBg() {
+  return isLightTheme() ? "#f5f2ed" : "#141210";
+}
+
+document.getElementById("theme-toggle").addEventListener("click", function() {
+  var light = isLightTheme();
+  if (light) {
+    document.documentElement.removeAttribute("data-theme");
+    localStorage.setItem("theme", "dark");
+  } else {
+    document.documentElement.setAttribute("data-theme", "light");
+    localStorage.setItem("theme", "light");
+  }
+  if (currentView === "map" && data.length) treemapResize();
+  if (currentView === "scatter" && scatterInited) scatterDraw();
+  if (currentView === "landing" && data.length) { drawMiniTreemap(); drawMiniScatter(); }
+});
+
+// ======================================================================
+// NAVIGATION
+// ======================================================================
+document.getElementById("nav").addEventListener("click", function(e) {
+  var btn = e.target.closest("button");
+  if (!btn || !btn.dataset.view) return;
+  switchView(btn.dataset.view);
+});
+
+document.getElementById("navHome").addEventListener("click", function() {
+  switchView("landing");
+});
+
+document.getElementById("navBurger").addEventListener("click", function() {
+  document.getElementById("nav").classList.toggle("nav-open");
+});
+
+document.getElementById("navMenu").addEventListener("click", function(e) {
+  var btn = e.target.closest("button");
+  if (!btn || !btn.dataset.view) return;
+  switchView(btn.dataset.view);
+  window.scrollTo({ top: 0 });
+});
+
+document.addEventListener("click", function(e) {
+  var el = e.target.closest("[data-goto]");
+  if (!el) return;
+  e.preventDefault();
+  switchView(el.dataset.goto);
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+function closeMenu() {
+  document.getElementById("nav").classList.remove("nav-open");
+}
+
+function switchView(view) {
+  currentView = view;
+  closeMenu();
+  var isLanding = view === "landing";
+  document.body.classList.toggle("on-landing", isLanding);
+  document.querySelectorAll("#nav .nav-tabs button").forEach(function(b) { b.classList.toggle("active", b.dataset.view === view); });
+  document.querySelectorAll("#navMenu button").forEach(function(b) { b.classList.toggle("active", b.dataset.view === view); });
+  document.querySelectorAll(".view").forEach(function(v) { v.classList.toggle("active", v.id === "view-" + view); });
+  if (view === "map") treemapResize();
+  if (view === "scatter") initScatter();
+  if (view === "ranking") initRanking();
+  if (view === "ask") initAsk();
+}
+
+// ======================================================================
+// COLOR SCALES
+// ======================================================================
+let colorMode = "exposure";
+
+function boostContrast(t) {
+  var c = (t - 0.5) * 2;
+  var b = Math.sign(c) * Math.pow(Math.abs(c), 0.55);
+  return b / 2 + 0.5;
+}
+
+function greenRedCSS(t, alpha) {
+  t = boostContrast(Math.max(0, Math.min(1, t)));
+  var r, g, b;
+  if (t < 0.5) {
+    var s = t / 0.5;
+    r = Math.round(30 + s * 200);
+    g = Math.round(180 - s * 20);
+    b = Math.round(40 - s * 20);
+  } else {
+    var s = (t - 0.5) / 0.5;
+    r = Math.round(230 + s * 25);
+    g = Math.round(160 - s * 130);
+    b = Math.round(20 - s * 5);
+  }
+  return "rgba(" + r + "," + g + "," + b + "," + alpha + ")";
+}
+
+var EDU_LEVELS = ["No formal educational credential","High school diploma or equivalent","Some college, no degree","Postsecondary nondegree award","Associate's degree","Bachelor's degree","Master's degree","Doctoral or professional degree"];
+var EDU_SHORT = {"No formal educational credential":"No formal","High school diploma or equivalent":"High school","Some college, no degree":"Some college","Postsecondary nondegree award":"Postsecondary","Associate's degree":"Associate's","Bachelor's degree":"Bachelor's","Master's degree":"Master's","Doctoral or professional degree":"Doctoral"};
+
+function exposureColor(v, a) { if (v == null) return "rgba(128,128,128," + a + ")"; return greenRedCSS(v / 10, a); }
+function advantageColor(v, a) { if (v == null) return "rgba(128,128,128," + a + ")"; return greenRedCSS(1 - v / 10, a); }
+function growthColor(v, a) { if (v == null) return "rgba(128,128,128," + a + ")"; return greenRedCSS(1 - v / 10, a); }
+function opportunityColor(v, a) { if (v == null) return "rgba(128,128,128," + a + ")"; return greenRedCSS(1 - v / 10, a); }
+
+function payColor(v, a) {
+  if (v == null) return "rgba(128,128,128," + a + ")";
+  var minS = Math.log(25000), maxS = Math.log(250000);
+  var t = 1 - (Math.log(Math.max(25000, Math.min(250000, v))) - minS) / (maxS - minS);
+  return greenRedCSS(t, a);
+}
+
+function educationColor(idx, a) {
+  if (idx < 0) return "rgba(128,128,128," + a + ")";
+  return greenRedCSS(1 - idx / (EDU_LEVELS.length - 1), a);
+}
+
+function tileColorCSS(d, alpha) {
+  if (colorMode === "exposure") return exposureColor(d.exposure, alpha);
+  if (colorMode === "advantage") return advantageColor(d.advantage, alpha);
+  if (colorMode === "growth") return growthColor(d.growth, alpha);
+  if (colorMode === "opportunity") return opportunityColor(d.opportunity, alpha);
+  if (colorMode === "pay") return payColor(d.pay, alpha);
+  if (colorMode === "education") return educationColor(EDU_LEVELS.indexOf(d.education), alpha);
+  return "rgba(128,128,128," + alpha + ")";
+}
+
+// ======================================================================
+// FORMATTING
+// ======================================================================
+function formatNumber(n) {
+  if (n == null) return "\u2014";
+  if (n >= 1e6) return (n / 1e6).toFixed(1) + "M";
+  if (n >= 1e3) return Math.round(n / 1e3).toLocaleString("en-US") + "K";
+  return n.toLocaleString("en-US");
+}
+
+function formatPay(n) {
+  if (n == null) return "\u2014";
+  return "$" + n.toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+}
+
+function formatPayFull(n) {
+  if (n == null) return "\u2014";
+  return "$" + n.toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+}
+
+function formatOutlook(n) {
+  if (n == null) return "\u2014";
+  return (n > 0 ? "+" : "") + n + "%";
+}
+
+function formatPct(n) { return n.toFixed(1) + "%"; }
+
+// ======================================================================
+// CATEGORY LABELS
+// ======================================================================
+var CAT_SHORT = {
+  "architecture-and-engineering":"Architecture & Engineering",
+  "arts-and-design":"Arts & Design",
+  "building-and-grounds-cleaning":"Building & Grounds",
+  "business-and-financial":"Business & Financial",
+  "community-and-social-service":"Community & Social",
+  "computer-and-information-technology":"Computer & IT",
+  "construction-and-extraction":"Construction",
+  "education-training-and-library":"Education",
+  "entertainment-and-sports":"Entertainment & Sports",
+  "farming-fishing-and-forestry":"Farming & Forestry",
+  "food-preparation-and-serving":"Food Service",
+  "healthcare":"Healthcare",
+  "installation-maintenance-and-repair":"Installation & Repair",
+  "legal":"Legal",
+  "life-physical-and-social-science":"Life & Social Science",
+  "management":"Management",
+  "math":"Math",
+  "media-and-communication":"Media & Communication",
+  "military":"Military",
+  "office-and-administrative-support":"Office & Admin",
+  "personal-care-and-service":"Personal Care",
+  "production":"Production",
+  "protective-service":"Protective Service",
+  "sales":"Sales",
+  "transportation-and-material-moving":"Transportation"
+};
+
+// ======================================================================
+// SQUARIFIED TREEMAP LAYOUT
+// ======================================================================
+function squarify(items, x, y, w, h) {
+  if (items.length === 0) return [];
+  if (items.length === 1) return [Object.assign({}, items[0], { rx: x, ry: y, rw: w, rh: h })];
+  var total = items.reduce(function(s, d) { return s + d.value; }, 0);
+  if (total === 0) return [];
+  var results = [];
+  var remaining = items.slice(), cx = x, cy = y, cw = w, ch = h;
+  while (remaining.length > 0) {
+    var remTotal = remaining.reduce(function(s, d) { return s + d.value; }, 0);
+    var vertical = cw >= ch;
+    var side = vertical ? ch : cw;
+    var row = [remaining[0]], rowSum = remaining[0].value;
+    for (var i = 1; i < remaining.length; i++) {
+      var candidate = row.concat([remaining[i]]);
+      var candidateSum = rowSum + remaining[i].value;
+      if (worstAspect(candidate, candidateSum, side, remTotal, vertical ? cw : ch) <
+          worstAspect(row, rowSum, side, remTotal, vertical ? cw : ch)) {
+        row = candidate; rowSum = candidateSum;
+      } else break;
+    }
+    var rowFraction = rowSum / remTotal;
+    var rowThickness = vertical ? cw * rowFraction : ch * rowFraction;
+    var offset = 0;
+    for (var j = 0; j < row.length; j++) {
+      var item = row[j];
+      var itemFraction = item.value / rowSum;
+      var itemLength = side * itemFraction;
+      if (vertical) results.push(Object.assign({}, item, { rx: cx, ry: cy + offset, rw: rowThickness, rh: itemLength }));
+      else results.push(Object.assign({}, item, { rx: cx + offset, ry: cy, rw: itemLength, rh: rowThickness }));
+      offset += itemLength;
+    }
+    if (vertical) { cx += rowThickness; cw -= rowThickness; }
+    else { cy += rowThickness; ch -= rowThickness; }
+    remaining = remaining.slice(row.length);
+  }
+  return results;
+}
+
+function worstAspect(row, rowSum, side, totalArea, availableExtent) {
+  var rowExtent = availableExtent * (rowSum / totalArea);
+  if (rowExtent === 0) return Infinity;
+  var worst = 0;
+  for (var i = 0; i < row.length; i++) {
+    var itemLen = side * (row[i].value / rowSum);
+    if (itemLen === 0) continue;
+    var aspect = Math.max(rowExtent / itemLen, itemLen / rowExtent);
+    if (aspect > worst) worst = aspect;
+  }
+  return worst;
+}
+
+// ======================================================================
+// VIEW 1: TREEMAP
+// ======================================================================
+var treemapRects = [];
+var treemapHovered = null;
+var treemapCanvas = document.getElementById("treemapCanvas");
+var treemapCtx = treemapCanvas.getContext("2d");
+var dpr = window.devicePixelRatio || 1;
+var MARGIN = 12, GAP = 1.5;
+
+function tileSubInfo(r) {
+  var jobs = r.jobs ? formatNumber(r.jobs) + " jobs" : "";
+  if (colorMode === "exposure") return (r.exposure != null ? r.exposure + "/10" : "") + (jobs ? " \u00b7 " + jobs : "");
+  if (colorMode === "advantage") return (r.advantage != null ? r.advantage + "/10" : "") + (jobs ? " \u00b7 " + jobs : "");
+  if (colorMode === "growth") return (r.growth != null ? r.growth + "/10" : "") + (jobs ? " \u00b7 " + jobs : "");
+  if (colorMode === "opportunity") return (r.opportunity != null ? r.opportunity + "/10" : "") + (jobs ? " \u00b7 " + jobs : "");
+  if (colorMode === "pay") return (r.pay != null ? formatPay(r.pay) : "") + (jobs ? " \u00b7 " + jobs : "");
+  if (colorMode === "education") { var short = EDU_SHORT[r.education] || ""; return short + (jobs ? " \u00b7 " + jobs : ""); }
+  return "";
+}
+
+function treemapLayout() {
+  var wrapper = document.getElementById("view-map");
+  var w = wrapper.clientWidth - 48;
+  var h = Math.round(w * 3 / 4);
+  treemapCanvas.width = w * dpr; treemapCanvas.height = h * dpr;
+  treemapCanvas.style.width = w + "px"; treemapCanvas.style.height = h + "px";
+  var tx = MARGIN, ty = MARGIN, tw = w - MARGIN * 2, th = h - MARGIN * 2;
+  var byCategory = {};
+  for (var i = 0; i < data.length; i++) {
+    var d = data[i];
+    var cat = d.category;
+    if (!byCategory[cat]) byCategory[cat] = [];
+    byCategory[cat].push(d);
+  }
+  var categories = Object.keys(byCategory).map(function(cat) {
+    return {
+      cat: cat,
+      items: byCategory[cat].sort(function(a, b) { return (b.jobs || 0) - (a.jobs || 0); }),
+      value: byCategory[cat].reduce(function(s, d) { return s + (d.jobs || 1); }, 0),
+    };
+  }).sort(function(a, b) { return b.value - a.value; });
+  var catRects = squarify(categories, tx, ty, tw, th);
+  treemapRects = [];
+  for (var c = 0; c < catRects.length; c++) {
+    var cr = catRects[c];
+    var items = cr.items.map(function(d) { return Object.assign({}, d, { value: d.jobs || 1 }); });
+    var innerRects = squarify(items, cr.rx + GAP, cr.ry + GAP, cr.rw - GAP * 2, cr.rh - GAP * 2);
+    for (var r = 0; r < innerRects.length; r++) treemapRects.push(innerRects[r]);
+  }
+}
+
+function treemapDraw() {
+  treemapCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  treemapCtx.fillStyle = canvasBg();
+  treemapCtx.fillRect(0, 0, treemapCanvas.width / dpr, treemapCanvas.height / dpr);
+  for (var i = 0; i < treemapRects.length; i++) {
+    var r = treemapRects[i];
+    var isHovered = r === treemapHovered;
+    var g = GAP / 2, rx = r.rx + g, ry = r.ry + g, rw = r.rw - g * 2, rh = r.rh - g * 2;
+    if (rw <= 0 || rh <= 0) continue;
+    treemapCtx.fillStyle = tileColorCSS(r, isHovered ? 0.8 : 0.5);
+    treemapCtx.fillRect(rx, ry, rw, rh);
+    if (isHovered) { treemapCtx.strokeStyle = canvasFg(1); treemapCtx.lineWidth = 2; treemapCtx.strokeRect(rx, ry, rw, rh); }
+    if (rw > 50 && rh > 18) {
+      treemapCtx.save(); treemapCtx.beginPath(); treemapCtx.rect(rx + 4, ry + 2, rw - 8, rh - 4); treemapCtx.clip();
+      var fontSize = Math.min(13, Math.max(9, Math.min(rw / 10, rh / 3)));
+      treemapCtx.font = "500 " + fontSize + "px -apple-system, system-ui, sans-serif";
+      treemapCtx.fillStyle = isHovered ? canvasFg(1) : canvasFg(0.85);
+      treemapCtx.textBaseline = "top";
+      treemapCtx.fillText(r.title, rx + 5, ry + 4);
+      if (rh > 34 && rw > 60) {
+        treemapCtx.font = "400 " + Math.max(8, fontSize - 2) + "px -apple-system, system-ui, sans-serif";
+        treemapCtx.fillStyle = canvasFg(0.5);
+        treemapCtx.fillText(tileSubInfo(r), rx + 5, ry + 4 + fontSize + 2);
+      }
+      treemapCtx.restore();
+    }
+  }
+}
+
+function treemapHitTest(mx, my) {
+  var rect = treemapCanvas.getBoundingClientRect();
+  var cx = mx - rect.left, cy = my - rect.top;
+  for (var i = treemapRects.length - 1; i >= 0; i--) {
+    var r = treemapRects[i];
+    if (cx >= r.rx && cx < r.rx + r.rw && cy >= r.ry && cy < r.ry + r.rh) return r;
+  }
+  return null;
+}
+
+function treemapResize() {
+  if (data.length === 0) return;
+  dpr = window.devicePixelRatio || 1;
+  treemapLayout();
+  treemapDraw();
+}
+
+// Tooltip
+function aiScoresTooltipLines(d) {
+  var lines = [];
+  if (d.exposure != null) lines.push('<span style="color:' + exposureColor(d.exposure, 1) + '">Exposure: ' + d.exposure + '/10</span>');
+  if (d.advantage != null) lines.push('<span style="color:' + advantageColor(d.advantage, 1) + '">Advantage: ' + d.advantage + '/10</span>');
+  if (d.growth != null) lines.push('<span style="color:' + growthColor(d.growth, 1) + '">Growth: ' + d.growth + '/10</span>');
+  if (d.opportunity != null) lines.push('<span style="color:' + opportunityColor(d.opportunity, 1) + '">Opportunity: ' + d.opportunity + '/10</span>');
+  return lines.join("<br>");
+}
+
+function tooltipHighlight(d) {
+  var isAILayer = ["exposure","advantage","growth","opportunity"].indexOf(colorMode) >= 0;
+  if (isAILayer) {
+    var labelMap = { exposure:"AI Exposure",advantage:"AI Advantage",growth:"AI Growth",opportunity:"Opportunity" };
+    var colorFnMap = { exposure:exposureColor,advantage:advantageColor,growth:growthColor,opportunity:opportunityColor };
+    var primary = d[colorMode];
+    var colorFn = colorFnMap[colorMode];
+    var label = labelMap[colorMode];
+    var html = "";
+    if (primary != null) {
+      var color = colorFn(primary, 1);
+      html += '<span style="color:' + color + ';font-weight:600;">' + label + ': ' + primary + '/10</span>' +
+        '<div style="margin-top:3px;height:4px;background:var(--overlay-hover);border-radius:0;">' +
+        '<div style="height:100%;width:' + (primary * 10) + '%;background:' + color + ';border-radius:0;"></div></div>';
+    }
+    html += '<div style="margin-top:5px;font-size:11px;line-height:1.6;">' + aiScoresTooltipLines(d) + '</div>';
+    return html;
+  } else if (colorMode === "pay") {
+    var v = d.pay;
+    if (v == null) return "";
+    var color = payColor(v, 1);
+    return '<span style="color:' + color + ';font-weight:600;">Pay: ' + formatPayFull(v) + '/year</span>' +
+      '<div style="margin-top:3px;height:4px;background:var(--overlay-hover);border-radius:0;">' +
+      '<div style="height:100%;width:' + Math.min(100, (Math.log(Math.max(25000, v)) - Math.log(25000)) / (Math.log(250000) - Math.log(25000)) * 100) + '%;background:' + color + ';border-radius:0;"></div></div>';
+  } else if (colorMode === "education") {
+    var edu = d.education || "";
+    var idx = EDU_LEVELS.indexOf(edu);
+    var color = idx >= 0 ? educationColor(idx, 1) : "var(--fg)";
+    return '<span style="color:' + color + ';font-weight:600;">Education: ' + (edu || '\u2014') + '</span>';
+  }
+  return "";
+}
+
+function showTooltip(d, mx, my) {
+  var tt = document.getElementById("tooltip");
+  tt.querySelector(".tt-title").textContent = d.title;
+  tt.querySelector(".tt-highlight").innerHTML = tooltipHighlight(d);
+  tt.querySelector(".tt-stats").innerHTML =
+    '<span class="label">Median pay</span><span class="value">' + formatPayFull(d.pay) + '/yr</span>' +
+    '<span class="label">Employees</span><span class="value">' + formatNumber(d.jobs) + '</span>' +
+    '<span class="label">Outlook</span><span class="value">' + formatOutlook(d.outlook) + '</span>' +
+    '<span class="label">Education</span><span class="value">' + (d.education || '\u2014') + '</span>' +
+    '<span class="label">Exposure</span><span class="value">' + (d.exposure != null ? d.exposure + '/10' : '\u2014') + '</span>' +
+    '<span class="label">Advantage</span><span class="value">' + (d.advantage != null ? d.advantage + '/10' : '\u2014') + '</span>' +
+    '<span class="label">Growth</span><span class="value">' + (d.growth != null ? d.growth + '/10' : '\u2014') + '</span>' +
+    '<span class="label">Opportunity</span><span class="value">' + (d.opportunity != null ? d.opportunity + '/10' : '\u2014') + '</span>';
+  var rationaleMap = {
+    exposure: d.exposure_rationale || "",
+    advantage: d.advantage_rationale || "",
+    growth: d.growth_rationale || "",
+    opportunity: [d.advantage_rationale, d.growth_rationale].filter(Boolean).join(" | "),
+  };
+  tt.querySelector(".tt-rationale").textContent = rationaleMap[colorMode] || "";
+  var tx = mx + 16, ty = my - 16;
+  if (tx + 380 > window.innerWidth) tx = mx - 396;
+  if (ty < 10) ty = my + 16;
+  if (ty + 200 > window.innerHeight) ty = my - 200;
+  tt.style.left = tx + "px"; tt.style.top = ty + "px";
+  tt.classList.add("visible");
+}
+
+function showSimpleTooltip(d, mx, my) {
+  var tt = document.getElementById("tooltip");
+  tt.querySelector(".tt-title").textContent = d.title;
+  tt.querySelector(".tt-highlight").innerHTML =
+    '<span style="color:' + exposureColor(d.exposure,1) + '">Exposure: ' + (d.exposure != null ? d.exposure + '/10' : '\u2014') + '</span> &middot; ' +
+    '<span style="color:' + opportunityColor(d.opportunity,1) + '">Opportunity: ' + (d.opportunity != null ? d.opportunity + '/10' : '\u2014') + '</span>';
+  tt.querySelector(".tt-stats").innerHTML =
+    '<span class="label">Pay</span><span class="value">' + formatPayFull(d.pay) + '</span>' +
+    '<span class="label">Employees</span><span class="value">' + formatNumber(d.jobs) + '</span>' +
+    '<span class="label">Advantage</span><span class="value">' + (d.advantage != null ? d.advantage + '/10' : '\u2014') + '</span>' +
+    '<span class="label">Growth</span><span class="value">' + (d.growth != null ? d.growth + '/10' : '\u2014') + '</span>';
+  tt.querySelector(".tt-rationale").textContent = "";
+  var tx = mx + 16, ty = my - 16;
+  if (tx + 380 > window.innerWidth) tx = mx - 396;
+  if (ty < 10) ty = my + 16;
+  if (ty + 200 > window.innerHeight) ty = my - 200;
+  tt.style.left = tx + "px"; tt.style.top = ty + "px";
+  tt.classList.add("visible");
+}
+
+function hideTooltip() { document.getElementById("tooltip").classList.remove("visible"); }
+
+// Treemap events
+treemapCanvas.addEventListener("mousemove", function(e) {
+  var hit = treemapHitTest(e.clientX, e.clientY);
+  if (hit !== treemapHovered) { treemapHovered = hit; treemapDraw(); }
+  if (treemapHovered) { showTooltip(treemapHovered, e.clientX, e.clientY); treemapCanvas.style.cursor = "pointer"; }
+  else { hideTooltip(); treemapCanvas.style.cursor = "default"; }
+});
+treemapCanvas.addEventListener("mouseleave", function() { treemapHovered = null; hideTooltip(); treemapDraw(); });
+
+// Treemap stats
+var PAY_BANDS = [
+  { label: "<$30K", min: 0, max: 30000 },
+  { label: "$30\u201360K", min: 30000, max: 60000 },
+  { label: "$60\u201390K", min: 60000, max: 90000 },
+  { label: "$90\u2013150K", min: 90000, max: 150000 },
+  { label: "$150K+", min: 150000, max: Infinity },
+];
+var EDU_GROUPS = [
+  { label: "No formal", match: ["No formal educational credential"] },
+  { label: "High school", match: ["High school diploma or equivalent"] },
+  { label: "Some college", match: ["Some college, no degree","Postsecondary nondegree award","Associate's degree"] },
+  { label: "Bachelor's", match: ["Bachelor's degree"] },
+  { label: "Graduate", match: ["Master's degree","Doctoral or professional degree"] },
+];
+
+function getJobs(d) { return d.jobs || 0; }
+
+function weightedAvgByGroups(groups, filterFn, metricFn) {
+  return groups.map(function(g) {
+    var wS = 0, wC = 0;
+    for (var i = 0; i < data.length; i++) {
+      var d = data[i]; var v = metricFn(d); var jobs = getJobs(d);
+      if (v != null && jobs && filterFn(d, g)) { wS += v * jobs; wC += jobs; }
+    }
+    return Object.assign({}, g, { avg: wC > 0 ? wS / wC : 0, jobs: wC });
+  });
+}
+
+function renderTiers(tiers, totalJobs) {
+  return tiers.map(function(t) {
+    return '<div class="tier-row"><div class="tier-color" style="background:' + t.color + '"></div><span class="tier-name">' + t.label + '</span><span class="tier-jobs">' + formatNumber(t.jobs) + '</span><span class="tier-pct">' + (totalJobs > 0 ? (t.jobs / totalJobs * 100).toFixed(0) : 0) + '%</span></div>';
+  }).join("");
+}
+
+function renderHbars(items) {
+  return items.map(function(it) {
+    return '<div class="hbar-row"><span class="hbar-label">' + it.label + '</span><div class="hbar-track"><div class="hbar-fill" style="width:' + it.pct + '%;background:' + it.color + '"></div></div><span class="hbar-val">' + it.val + '</span></div>';
+  }).join("");
+}
+
+function updateStats() {
+  var totalJobs = data.reduce(function(s, d) { return s + getJobs(d); }, 0);
+  document.getElementById("statTotalJobs").textContent = (totalJobs / 1e6).toFixed(1) + "M";
+  if (colorMode === "exposure") updateExposureStats(totalJobs);
+  else if (colorMode === "advantage") updateGreenLayerStats(totalJobs, "advantage", "Advantage", advantageColor);
+  else if (colorMode === "growth") updateGreenLayerStats(totalJobs, "growth", "Growth", growthColor);
+  else if (colorMode === "opportunity") updateGreenLayerStats(totalJobs, "opportunity", "Opportunity", opportunityColor);
+  else if (colorMode === "pay") updatePayStats(totalJobs);
+  else if (colorMode === "education") updateEducationStats(totalJobs);
+}
+
+function updateExposureStats(totalJobs) {
+  var wS = 0, wC = 0;
+  for (var i = 0; i < data.length; i++) { var d = data[i]; var j = getJobs(d); if (d.exposure != null && j) { wS += d.exposure * j; wC += j; } }
+  var avg = wC > 0 ? wS / wC : 0;
+  document.getElementById("block2").innerHTML = '<h3>Avg exposure</h3><div class="stat-big"><span style="color:' + exposureColor(avg, 1) + '">' + avg.toFixed(1) + '</span></div><div class="stat-label">weighted, 0\u201310</div>';
+  var histogram = new Array(11).fill(0);
+  for (var i = 0; i < data.length; i++) { var d = data[i]; var j = getJobs(d); if (d.exposure != null && j) histogram[d.exposure] += j; }
+  var maxH = Math.max.apply(null, histogram);
+  document.getElementById("block3").innerHTML = '<h3>Jobs by exposure</h3><div class="histogram">' + histogram.map(function(c, i) { return '<div class="bar" style="height:' + Math.max(2, maxH > 0 ? c / maxH * 100 : 0) + '%;background:' + exposureColor(i, 0.7) + '"></div>'; }).join("") + '</div><div class="hist-labels"><span>0</span><span>5</span><span>10</span></div>';
+  var tierDefs = [{ label: "Minimal (0\u20131)", lo: 0, hi: 1, mid: 0.5 },{ label: "Low (2\u20133)", lo: 2, hi: 3, mid: 2.5 },{ label: "Moderate (4\u20135)", lo: 4, hi: 5, mid: 4.5 },{ label: "High (6\u20137)", lo: 6, hi: 7, mid: 6.5 },{ label: "Very high (8\u201310)", lo: 8, hi: 10, mid: 9 }];
+  var tiers = tierDefs.map(function(t) { var jobs = 0; for (var i = 0; i < data.length; i++) { var d = data[i]; var j = getJobs(d); if (d.exposure != null && j && d.exposure >= t.lo && d.exposure <= t.hi) jobs += j; } return Object.assign({}, t, { jobs: jobs, color: exposureColor(t.mid, 1) }); });
+  document.getElementById("block4").innerHTML = '<h3>Exposure tiers</h3><div class="tier-bar">' + renderTiers(tiers, totalJobs) + '</div>';
+  var byPay = weightedAvgByGroups(PAY_BANDS, function(d, g) { return d.pay != null && d.pay >= g.min && d.pay < g.max; }, function(d) { return d.exposure; });
+  document.getElementById("block5").innerHTML = '<h3>Exposure by pay</h3><div class="hbar-chart">' + renderHbars(byPay.map(function(g) { return { label: g.label, val: g.avg.toFixed(1), pct: g.avg / 10 * 100, color: exposureColor(g.avg, 0.8) }; })) + '</div>';
+  var byEdu = weightedAvgByGroups(EDU_GROUPS, function(d, g) { return g.match.indexOf(d.education) >= 0; }, function(d) { return d.exposure; });
+  document.getElementById("block6").innerHTML = '<h3>Exposure by education</h3><div class="hbar-chart">' + renderHbars(byEdu.map(function(g) { return { label: g.label, val: g.avg.toFixed(1), pct: g.avg / 10 * 100, color: exposureColor(g.avg, 0.8) }; })) + '</div>';
+  var sorted = data.filter(function(d) { return d.outlook != null; }).sort(function(a, b) { return b.outlook - a.outlook; });
+  var top5 = sorted.slice(0, 5);
+  document.getElementById("block7").innerHTML = '<h3>Fastest growing (outlook)</h3><div class="hbar-chart">' + renderHbars(top5.map(function(g) { var maxO = Math.max.apply(null, top5.map(function(x) { return Math.abs(x.outlook); })); return { label: g.title.substring(0, 18), val: formatOutlook(g.outlook), pct: Math.abs(g.outlook) / maxO * 100, color: "rgba(80,200,120,0.7)" }; })) + '</div>';
+  var bot5 = sorted.slice(-5).reverse();
+  document.getElementById("block8").innerHTML = '<h3>Slowest growing (outlook)</h3><div class="hbar-chart">' + renderHbars(bot5.map(function(g) { var maxO = Math.max.apply(null, bot5.map(function(x) { return Math.abs(x.outlook || 1); })); return { label: g.title.substring(0, 18), val: formatOutlook(g.outlook), pct: Math.max(5, Math.abs(g.outlook || 1) / maxO * 100), color: "rgba(230,80,60,0.7)" }; })) + '</div>';
+}
+
+function updateGreenLayerStats(totalJobs, key, label, colorFn) {
+  var wS = 0, wC = 0;
+  for (var i = 0; i < data.length; i++) { var d = data[i]; var j = getJobs(d); if (d[key] != null && j) { wS += d[key] * j; wC += j; } }
+  var avg = wC > 0 ? wS / wC : 0;
+  document.getElementById("block2").innerHTML = '<h3>Avg ' + label.toLowerCase() + '</h3><div class="stat-big"><span style="color:' + colorFn(avg, 1) + '">' + avg.toFixed(1) + '</span></div><div class="stat-label">weighted, 0\u201310</div>';
+  var histogram = new Array(11).fill(0);
+  for (var i = 0; i < data.length; i++) { var d = data[i]; var j = getJobs(d); if (d[key] != null && j) histogram[Math.round(d[key])] += j; }
+  var maxH = Math.max.apply(null, histogram);
+  document.getElementById("block3").innerHTML = '<h3>Jobs by ' + label.toLowerCase() + '</h3><div class="histogram">' + histogram.map(function(c, i) { return '<div class="bar" style="height:' + Math.max(2, maxH > 0 ? c / maxH * 100 : 0) + '%;background:' + colorFn(i, 0.7) + '"></div>'; }).join("") + '</div><div class="hist-labels"><span>0</span><span>5</span><span>10</span></div>';
+  var tierDefs = [{ label: "Low (0\u20132)", lo: 0, hi: 2, mid: 1 },{ label: "Moderate (3\u20134)", lo: 3, hi: 4, mid: 3.5 },{ label: "Good (5\u20136)", lo: 5, hi: 6, mid: 5.5 },{ label: "High (7\u20138)", lo: 7, hi: 8, mid: 7.5 },{ label: "Very high (9\u201310)", lo: 9, hi: 10, mid: 9.5 }];
+  var tiers = tierDefs.map(function(t) { var jobs = 0; for (var i = 0; i < data.length; i++) { var d = data[i]; var j = getJobs(d); if (d[key] != null && j && d[key] >= t.lo && d[key] <= t.hi) jobs += j; } return Object.assign({}, t, { jobs: jobs, color: colorFn(t.mid, 1) }); });
+  document.getElementById("block4").innerHTML = '<h3>' + label + ' tiers</h3><div class="tier-bar">' + renderTiers(tiers, totalJobs) + '</div>';
+  var byPay = weightedAvgByGroups(PAY_BANDS, function(d, g) { return d.pay != null && d.pay >= g.min && d.pay < g.max; }, function(d) { return d[key]; });
+  document.getElementById("block5").innerHTML = '<h3>' + label + ' by pay</h3><div class="hbar-chart">' + renderHbars(byPay.map(function(g) { return { label: g.label, val: g.avg.toFixed(1), pct: g.avg / 10 * 100, color: colorFn(g.avg, 0.8) }; })) + '</div>';
+  var byEdu = weightedAvgByGroups(EDU_GROUPS, function(d, g) { return g.match.indexOf(d.education) >= 0; }, function(d) { return d[key]; });
+  document.getElementById("block6").innerHTML = '<h3>' + label + ' by education</h3><div class="hbar-chart">' + renderHbars(byEdu.map(function(g) { return { label: g.label, val: g.avg.toFixed(1), pct: g.avg / 10 * 100, color: colorFn(g.avg, 0.8) }; })) + '</div>';
+  document.getElementById("block7").innerHTML = "";
+  document.getElementById("block8").innerHTML = "";
+}
+
+function updatePayStats(totalJobs) {
+  var wS = 0, wC = 0;
+  for (var i = 0; i < data.length; i++) { var d = data[i]; var j = getJobs(d); if (d.pay != null && j) { wS += d.pay * j; wC += j; } }
+  var avg = wC > 0 ? wS / wC : 0;
+  document.getElementById("block2").innerHTML = '<h3>Avg pay</h3><div class="stat-big"><span style="color:' + payColor(avg, 1) + '">' + formatPay(avg) + '</span></div><div class="stat-label">weighted/year</div>';
+  var buckets = [{ lo: 0, hi: 30000, mid: 25000 },{ lo: 30000, hi: 50000, mid: 40000 },{ lo: 50000, hi: 80000, mid: 65000 },{ lo: 80000, hi: 120000, mid: 100000 },{ lo: 120000, hi: 200000, mid: 160000 },{ lo: 200000, hi: Infinity, mid: 300000 }];
+  var histJobs = buckets.map(function() { return 0; });
+  for (var i = 0; i < data.length; i++) { var d = data[i]; var j = getJobs(d); if (d.pay != null && j) { var idx = buckets.findIndex(function(b) { return d.pay >= b.lo && d.pay < b.hi; }); if (idx >= 0) histJobs[idx] += j; } }
+  var maxH = Math.max.apply(null, histJobs);
+  document.getElementById("block3").innerHTML = '<h3>Jobs by pay</h3><div class="histogram">' + histJobs.map(function(c, i) { return '<div class="bar" style="height:' + Math.max(2, maxH > 0 ? c / maxH * 100 : 0) + '%;background:' + payColor(buckets[i].mid, 0.7) + '"></div>'; }).join("") + '</div><div class="hist-labels"><span>$30K</span><span>$80K</span><span>$200K+</span></div>';
+  var tiers = PAY_BANDS.map(function(t) { var jobs = 0; for (var i = 0; i < data.length; i++) { var d = data[i]; var j = getJobs(d); if (d.pay != null && j && d.pay >= t.min && d.pay < t.max) jobs += j; } return Object.assign({}, t, { jobs: jobs, color: payColor(t.max === Infinity ? 200000 : (t.min + t.max) / 2, 1) }); });
+  document.getElementById("block4").innerHTML = '<h3>Pay bands</h3><div class="tier-bar">' + renderTiers(tiers, totalJobs) + '</div>';
+  var byEdu = weightedAvgByGroups(EDU_GROUPS, function(d, g) { return g.match.indexOf(d.education) >= 0; }, function(d) { return d.pay; });
+  document.getElementById("block5").innerHTML = '<h3>Pay by education</h3><div class="hbar-chart">' + renderHbars(byEdu.map(function(g) { return { label: g.label, val: formatPay(g.avg), pct: Math.max(0, Math.min(100, (Math.log(Math.max(25000, g.avg)) - Math.log(25000)) / (Math.log(250000) - Math.log(25000)) * 100)), color: payColor(g.avg, 0.8) }; })) + '</div>';
+  var expTiers = [{ label: "Exp. 0\u20132", lo: 0, hi: 2 },{ label: "Exp. 3\u20134", lo: 3, hi: 4 },{ label: "Exp. 5\u20136", lo: 5, hi: 6 },{ label: "Exp. 7\u20138", lo: 7, hi: 8 },{ label: "Exp. 9\u201310", lo: 9, hi: 10 }];
+  var byExp = weightedAvgByGroups(expTiers, function(d, g) { return d.exposure != null && d.exposure >= g.lo && d.exposure <= g.hi; }, function(d) { return d.pay; });
+  document.getElementById("block6").innerHTML = '<h3>Pay by exposure</h3><div class="hbar-chart">' + renderHbars(byExp.map(function(g) { return { label: g.label, val: formatPay(g.avg), pct: Math.max(0, Math.min(100, (Math.log(Math.max(25000, g.avg)) - Math.log(25000)) / (Math.log(250000) - Math.log(25000)) * 100)), color: payColor(g.avg, 0.8) }; })) + '</div>';
+  var totalWages = 0;
+  for (var i = 0; i < data.length; i++) { var d = data[i]; var j = getJobs(d); if (d.pay != null && j) totalWages += d.pay * j; }
+  document.getElementById("block7").innerHTML = '<h3>Total wage bill</h3><div class="stat-big">$' + (totalWages / 1e12).toFixed(1) + 'T</div><div class="stat-label">annual</div>';
+  document.getElementById("block8").innerHTML = "";
+}
+
+function updateEducationStats(totalJobs) {
+  var supJobs = 0;
+  for (var i = 0; i < data.length; i++) { var d = data[i]; var j = getJobs(d); if (j && ["Bachelor's degree","Master's degree","Doctoral or professional degree"].indexOf(d.education) >= 0) supJobs += j; }
+  document.getElementById("block2").innerHTML = '<h3>Bachelor\'s+</h3><div class="stat-big"><span style="color:' + educationColor(5, 1) + '">' + (supJobs / totalJobs * 100).toFixed(0) + '%</span></div><div class="stat-label">of jobs</div>';
+  var groups = EDU_GROUPS.map(function(g, i) { var jobs = 0; for (var j = 0; j < data.length; j++) { var d = data[j]; var jb = getJobs(d); if (jb && g.match.indexOf(d.education) >= 0) jobs += jb; } return Object.assign({}, g, { jobs: jobs, idx: i }); });
+  var maxH = Math.max.apply(null, groups.map(function(g) { return g.jobs; }));
+  document.getElementById("block3").innerHTML = '<h3>Jobs by education</h3><div class="histogram">' + groups.map(function(g) { return '<div class="bar" style="height:' + Math.max(2, maxH > 0 ? g.jobs / maxH * 100 : 0) + '%;background:' + educationColor(g.idx * 1.5, 0.7) + '"></div>'; }).join("") + '</div><div class="hist-labels"><span>None</span><span>HS</span><span>Grad.</span></div>';
+  var tiers = groups.map(function(g, i) { return { label: g.label, jobs: g.jobs, color: educationColor(i * 1.5, 1) }; });
+  document.getElementById("block4").innerHTML = '<h3>Education tiers</h3><div class="tier-bar">' + renderTiers(tiers, totalJobs) + '</div>';
+  var payByEdu = weightedAvgByGroups(EDU_GROUPS, function(d, g) { return g.match.indexOf(d.education) >= 0; }, function(d) { return d.pay; });
+  document.getElementById("block5").innerHTML = '<h3>Pay by education</h3><div class="hbar-chart">' + renderHbars(payByEdu.map(function(g) { return { label: g.label, val: formatPay(g.avg), pct: Math.max(0, Math.min(100, (Math.log(Math.max(25000, g.avg)) - Math.log(25000)) / (Math.log(250000) - Math.log(25000)) * 100)), color: payColor(g.avg, 0.8) }; })) + '</div>';
+  var expByEdu = weightedAvgByGroups(EDU_GROUPS, function(d, g) { return g.match.indexOf(d.education) >= 0; }, function(d) { return d.exposure; });
+  document.getElementById("block6").innerHTML = '<h3>Exposure by education</h3><div class="hbar-chart">' + renderHbars(expByEdu.map(function(g) { return { label: g.label, val: g.avg.toFixed(1), pct: g.avg / 10 * 100, color: exposureColor(g.avg, 0.8) }; })) + '</div>';
+  var noFormal = 0;
+  for (var i = 0; i < data.length; i++) { var d = data[i]; var j = getJobs(d); if (j && ["No formal educational credential","High school diploma or equivalent"].indexOf(d.education) >= 0) noFormal += j; }
+  document.getElementById("block7").innerHTML = '<h3>HS or less</h3><div class="stat-big">' + formatNumber(noFormal) + '</div><div class="stat-label">jobs requiring high school or less</div>';
+  document.getElementById("block8").innerHTML = "";
+}
+
+// Legend gradient
+var LEGEND_CONFIG = {
+  exposure: { low: "Low", high: "High" },
+  advantage: { low: "Low", high: "High" },
+  growth: { low: "Low", high: "High" },
+  opportunity: { low: "Low", high: "High" },
+  pay: { low: "$25K", high: "$250K" },
+  education: { low: "No formal", high: "Doctoral" },
+};
+
+function drawGradientLegend() {
+  var c = document.getElementById("gradientLegend");
+  var gctx = c.getContext("2d");
+  for (var x = 0; x < 80; x++) {
+    var t = x / 79;
+    gctx.fillStyle = colorMode === "exposure" ? greenRedCSS(t, 1) : greenRedCSS(1 - t, 1);
+    gctx.fillRect(x, 0, 1, 8);
+  }
+  var cfg = LEGEND_CONFIG[colorMode];
+  document.getElementById("legendLow").textContent = cfg.low;
+  document.getElementById("legendHigh").textContent = cfg.high;
+}
+
+// Color toggle
+document.getElementById("colorToggle").addEventListener("click", function(e) {
+  var btn = e.target.closest("button");
+  if (!btn || !btn.dataset.mode) return;
+  colorMode = btn.dataset.mode;
+  document.querySelectorAll("#colorToggle button").forEach(function(b) { b.classList.remove("active"); });
+  btn.classList.add("active");
+  updateStats();
+  drawGradientLegend();
+  treemapDraw();
+  requestAnimationFrame(treemapResize);
+});
+
+// ======================================================================
+// VIEW 2: SCATTER PLOT
+// ======================================================================
+var scatterInited = false;
+var scatterHovered = null;
+var scatterCanvas = document.getElementById("scatterCanvas");
+var scatterCtx = scatterCanvas.getContext("2d");
+
+var SCATTER_PAD = { top: 40, right: 30, bottom: 50, left: 60 };
+
+function initScatter() {
+  if (data.length === 0) return;
+  scatterInited = true;
+  scatterResize();
+}
+
+function scatterResize() {
+  if (!scatterInited || data.length === 0) return;
+  var container = document.getElementById("scatterContainer");
+  var w = container.clientWidth;
+  var h = Math.min(w * 0.7, 700);
+  var d = window.devicePixelRatio || 1;
+  scatterCanvas.width = w * d; scatterCanvas.height = h * d;
+  scatterCanvas.style.width = w + "px"; scatterCanvas.style.height = h + "px";
+  scatterDraw();
+}
+
+function scatterToPlot(exposure, opportunity) {
+  var w = scatterCanvas.width / (window.devicePixelRatio || 1);
+  var h = scatterCanvas.height / (window.devicePixelRatio || 1);
+  var plotW = w - SCATTER_PAD.left - SCATTER_PAD.right;
+  var plotH = h - SCATTER_PAD.top - SCATTER_PAD.bottom;
+  return {
+    px: SCATTER_PAD.left + (exposure / 10) * plotW,
+    py: SCATTER_PAD.top + (1 - opportunity / 10) * plotH
+  };
+}
+
+function scatterDraw() {
+  var d = window.devicePixelRatio || 1;
+  var w = scatterCanvas.width / d;
+  var h = scatterCanvas.height / d;
+  scatterCtx.setTransform(d, 0, 0, d, 0, 0);
+  scatterCtx.fillStyle = canvasBg();
+  scatterCtx.fillRect(0, 0, w, h);
+
+  var plotW = w - SCATTER_PAD.left - SCATTER_PAD.right;
+  var plotH = h - SCATTER_PAD.top - SCATTER_PAD.bottom;
+
+  var midX = SCATTER_PAD.left + plotW * 0.5;
+  var midY = SCATTER_PAD.top + plotH * 0.5;
+
+  // Quadrant backgrounds
+  scatterCtx.fillStyle = "rgba(76,175,80,0.06)";
+  scatterCtx.fillRect(SCATTER_PAD.left, SCATTER_PAD.top, plotW * 0.5, plotH * 0.5);
+  scatterCtx.fillStyle = "rgba(66,165,245,0.06)";
+  scatterCtx.fillRect(midX, SCATTER_PAD.top, plotW * 0.5, plotH * 0.5);
+  scatterCtx.fillStyle = "rgba(150,150,160,0.04)";
+  scatterCtx.fillRect(SCATTER_PAD.left, midY, plotW * 0.5, plotH * 0.5);
+  scatterCtx.fillStyle = "rgba(239,83,80,0.06)";
+  scatterCtx.fillRect(midX, midY, plotW * 0.5, plotH * 0.5);
+
+  // Quadrant labels
+  scatterCtx.font = "600 14px -apple-system, system-ui, sans-serif";
+  scatterCtx.textAlign = "center";
+  scatterCtx.fillStyle = "rgba(76,175,80,0.4)";
+  scatterCtx.fillText("Thrive", SCATTER_PAD.left + plotW * 0.25, SCATTER_PAD.top + 24);
+  scatterCtx.fillStyle = "rgba(66,165,245,0.4)";
+  scatterCtx.fillText("Transform", midX + plotW * 0.25, SCATTER_PAD.top + 24);
+  scatterCtx.fillStyle = "rgba(150,150,160,0.3)";
+  scatterCtx.fillText("Stable", SCATTER_PAD.left + plotW * 0.25, midY + plotH * 0.5 - 10);
+  scatterCtx.fillStyle = "rgba(239,83,80,0.4)";
+  scatterCtx.fillText("Urgent", midX + plotW * 0.25, midY + plotH * 0.5 - 10);
+
+  // Grid lines
+  scatterCtx.strokeStyle = canvasFg(0.06);
+  scatterCtx.lineWidth = 1;
+  for (var i = 0; i <= 10; i++) {
+    var x = SCATTER_PAD.left + (i / 10) * plotW;
+    var y = SCATTER_PAD.top + (i / 10) * plotH;
+    scatterCtx.beginPath(); scatterCtx.moveTo(x, SCATTER_PAD.top); scatterCtx.lineTo(x, SCATTER_PAD.top + plotH); scatterCtx.stroke();
+    scatterCtx.beginPath(); scatterCtx.moveTo(SCATTER_PAD.left, y); scatterCtx.lineTo(SCATTER_PAD.left + plotW, y); scatterCtx.stroke();
+  }
+  scatterCtx.strokeStyle = canvasFg(0.15);
+  scatterCtx.setLineDash([4, 4]);
+  scatterCtx.beginPath(); scatterCtx.moveTo(midX, SCATTER_PAD.top); scatterCtx.lineTo(midX, SCATTER_PAD.top + plotH); scatterCtx.stroke();
+  scatterCtx.beginPath(); scatterCtx.moveTo(SCATTER_PAD.left, midY); scatterCtx.lineTo(SCATTER_PAD.left + plotW, midY); scatterCtx.stroke();
+  scatterCtx.setLineDash([]);
+
+  // Axis labels
+  scatterCtx.fillStyle = canvasFg(0.5);
+  scatterCtx.font = "500 12px -apple-system, system-ui, sans-serif";
+  scatterCtx.textAlign = "center";
+  for (var i = 0; i <= 10; i += 2) {
+    var x = SCATTER_PAD.left + (i / 10) * plotW;
+    scatterCtx.fillText(String(i), x, SCATTER_PAD.top + plotH + 18);
+  }
+  scatterCtx.textAlign = "right";
+  for (var i = 0; i <= 10; i += 2) {
+    var y = SCATTER_PAD.top + (1 - i / 10) * plotH;
+    scatterCtx.fillText(String(i), SCATTER_PAD.left - 8, y + 4);
+  }
+  scatterCtx.fillStyle = canvasFg(0.6);
+  scatterCtx.font = "600 12px -apple-system, system-ui, sans-serif";
+  scatterCtx.textAlign = "center";
+  scatterCtx.fillText("AI Exposure \u2192", SCATTER_PAD.left + plotW / 2, h - 6);
+  scatterCtx.save();
+  scatterCtx.translate(14, SCATTER_PAD.top + plotH / 2);
+  scatterCtx.rotate(-Math.PI / 2);
+  scatterCtx.fillText("Opportunity \u2192", 0, 0);
+  scatterCtx.restore();
+
+  var maxEmp = 0;
+  for (var i = 0; i < data.length; i++) { if (data[i].jobs > maxEmp) maxEmp = data[i].jobs; }
+
+  var dots = [];
+  for (var i = 0; i < data.length; i++) {
+    var dd = data[i];
+    if (dd.exposure == null || dd.opportunity == null) continue;
+    var pt = scatterToPlot(dd.exposure, dd.opportunity);
+    var emp = dd.jobs || 1;
+    var r = Math.max(3, Math.sqrt(emp / maxEmp) * 28);
+    dots.push({ d: dd, px: pt.px, py: pt.py, r: r });
+  }
+
+  dots.sort(function(a, b) { return b.r - a.r; });
+
+  for (var i = 0; i < dots.length; i++) {
+    var dot = dots[i];
+    var isH = dot.d === scatterHovered;
+    scatterCtx.beginPath();
+    scatterCtx.arc(dot.px, dot.py, dot.r, 0, Math.PI * 2);
+    scatterCtx.fillStyle = exposureColor(dot.d.exposure, isH ? 0.9 : 0.45);
+    scatterCtx.fill();
+    if (isH) {
+      scatterCtx.strokeStyle = canvasFg(1);
+      scatterCtx.lineWidth = 2;
+      scatterCtx.stroke();
+    }
+  }
+
+  scatterCanvas._dots = dots;
+}
+
+scatterCanvas.addEventListener("mousemove", function(e) {
+  if (!scatterInited) return;
+  var rect = scatterCanvas.getBoundingClientRect();
+  var mx = e.clientX - rect.left, my = e.clientY - rect.top;
+  var dots = scatterCanvas._dots || [];
+  var hit = null;
+  for (var i = dots.length - 1; i >= 0; i--) {
+    var dot = dots[i];
+    var dx = mx - dot.px, dy = my - dot.py;
+    if (dx * dx + dy * dy <= (dot.r + 2) * (dot.r + 2)) { hit = dot.d; break; }
+  }
+  if (hit !== scatterHovered) { scatterHovered = hit; scatterDraw(); }
+  if (scatterHovered) { showSimpleTooltip(scatterHovered, e.clientX, e.clientY); scatterCanvas.style.cursor = "pointer"; }
+  else { hideTooltip(); scatterCanvas.style.cursor = "crosshair"; }
+});
+scatterCanvas.addEventListener("mouseleave", function() { scatterHovered = null; hideTooltip(); if (scatterInited) scatterDraw(); });
+
+// ======================================================================
+// VIEW 3: MY JOB
+// ======================================================================
+var painelSearch = document.getElementById("painelSearch");
+var painelDropdown = document.getElementById("painelDropdown");
+var painelHighlightIdx = -1;
+
+function fuzzyMatch(query, text) {
+  if (!text) return false;
+  var q = query.toLowerCase();
+  var t = text.toLowerCase();
+  return t.indexOf(q) >= 0;
+}
+
+painelSearch.addEventListener("input", function() {
+  var q = this.value.trim();
+  if (q.length < 2) { painelDropdown.classList.remove("open"); return; }
+  var matches = data.filter(function(d) { return fuzzyMatch(q, d.title) || fuzzyMatch(q, d.slug); }).slice(0, 20);
+  if (matches.length === 0) { painelDropdown.classList.remove("open"); return; }
+  painelDropdown.innerHTML = matches.map(function(m) {
+    return '<div class="search-item" data-idx="' + data.indexOf(m) + '">' + escapeHtml(m.title) + '<span class="search-code">' + escapeHtml(CAT_SHORT[m.category] || m.category) + '</span></div>';
+  }).join("");
+  painelDropdown.classList.add("open");
+  painelHighlightIdx = -1;
+});
+
+painelSearch.addEventListener("keydown", function(e) {
+  var items = painelDropdown.querySelectorAll(".search-item");
+  if (!items.length) return;
+  if (e.key === "ArrowDown") { e.preventDefault(); painelHighlightIdx = Math.min(painelHighlightIdx + 1, items.length - 1); updatePainelHighlight(items); }
+  else if (e.key === "ArrowUp") { e.preventDefault(); painelHighlightIdx = Math.max(painelHighlightIdx - 1, 0); updatePainelHighlight(items); }
+  else if (e.key === "Enter" && painelHighlightIdx >= 0) { e.preventDefault(); items[painelHighlightIdx].click(); }
+  else if (e.key === "Escape") { painelDropdown.classList.remove("open"); }
+});
+
+function updatePainelHighlight(items) {
+  items.forEach(function(it, i) { it.classList.toggle("highlighted", i === painelHighlightIdx); });
+  if (painelHighlightIdx >= 0) items[painelHighlightIdx].scrollIntoView({ block: "nearest" });
+}
+
+painelDropdown.addEventListener("click", function(e) {
+  var item = e.target.closest(".search-item");
+  if (!item) return;
+  var idx = parseInt(item.dataset.idx);
+  selectOccupation(data[idx]);
+  painelDropdown.classList.remove("open");
+});
+
+document.addEventListener("click", function(e) {
+  if (!e.target.closest("#painelSearchBox")) painelDropdown.classList.remove("open");
+});
+
+function selectOccupation(occ) {
+  painelSearch.value = occ.title;
+  document.getElementById("painelPlaceholder").style.display = "none";
+  var content = document.getElementById("painelContent");
+  content.style.display = "block";
+
+  var exp = occ.exposure != null ? occ.exposure : 0;
+  var adv = occ.advantage != null ? occ.advantage : 0;
+  var gro = occ.growth != null ? occ.growth : 0;
+  var opo = occ.opportunity != null ? occ.opportunity : 0;
+
+  var html = '<div class="metric-cards">' +
+    '<div class="metric-card"><div class="metric-label">AI Exposure</div><div class="metric-value" style="color:' + exposureColor(exp, 1) + '">' + exp + '/10</div><div class="metric-sub">' + (exp <= 3 ? 'Low' : exp <= 5 ? 'Moderate' : exp <= 7 ? 'High' : 'Very high') + '</div></div>' +
+    '<div class="metric-card"><div class="metric-label">AI Advantage</div><div class="metric-value" style="color:' + advantageColor(adv, 1) + '">' + adv + '/10</div><div class="metric-sub">' + (adv <= 3 ? 'Low' : adv <= 5 ? 'Moderate' : adv <= 7 ? 'High' : 'Very high') + '</div></div>' +
+    '<div class="metric-card"><div class="metric-label">Growth</div><div class="metric-value" style="color:' + growthColor(gro, 1) + '">' + gro + '/10</div><div class="metric-sub">' + (gro <= 3 ? 'Low' : gro <= 5 ? 'Moderate' : gro <= 7 ? 'High' : 'Very high') + '</div></div>' +
+    '<div class="metric-card"><div class="metric-label">Opportunity</div><div class="metric-value" style="color:' + opportunityColor(opo, 1) + '">' + opo + '/10</div><div class="metric-sub">' + (opo <= 3 ? 'Low' : opo <= 5 ? 'Moderate' : opo <= 7 ? 'High' : 'Very high') + '</div></div>' +
+    '</div>';
+
+  // Pay & outlook
+  html += '<div class="salary-section">' +
+    '<div class="salary-card"><div class="sal-label">Median annual pay (BLS)</div><div class="sal-value">' + formatPayFull(occ.pay) + '<span style="font-size:14px;color:var(--fg2)">/year</span></div></div>' +
+    '<div class="salary-card"><div class="sal-label">Job outlook (10-year)</div><div class="sal-value">' + formatOutlook(occ.outlook) + '<span style="font-size:14px;color:var(--fg2)"> ' + (occ.outlook_desc || '') + '</span></div></div>' +
+    '</div>';
+
+  // Risk assessment
+  var riskTitle, riskText, riskColor;
+  if (exp <= 3) {
+    riskTitle = "Low risk";
+    riskText = "Your occupation has low exposure to AI. The core tasks of this work are still difficult to automate with current technology. Even so, it's worth keeping up with technological developments and looking for opportunities to use AI as an auxiliary tool.";
+    riskColor = "var(--green)";
+  } else if (exp <= 5) {
+    riskTitle = "Moderate risk";
+    riskText = "AI is beginning to impact parts of your work. Some routine tasks may be automated, but the core of the occupation still requires human skills. This is the ideal time to learn AI tools and integrate them into your workflow.";
+    riskColor = "var(--accent)";
+  } else if (exp <= 7) {
+    riskTitle = "High risk";
+    riskText = "AI is significantly transforming this occupation. Many tasks can already be performed by automated systems. Professionals who master AI tools will have a competitive advantage. Consider investing in complementary skills and specializations that AI doesn't easily replace.";
+    riskColor = "var(--red)";
+  } else {
+    riskTitle = "Very high risk";
+    riskText = "This occupation faces significant automation by AI. A large portion of core tasks can be performed by intelligent systems. It's essential to start planning a career transition, developing new skills, and exploring related occupations with lower exposure.";
+    riskColor = "var(--red)";
+  }
+
+  html += '<div class="risk-assessment" style="border-left:3px solid ' + riskColor + '">' +
+    '<div class="risk-title" style="color:' + riskColor + '">' + riskTitle + '</div>' +
+    '<div class="risk-text">' + riskText + '</div>' +
+    '</div>';
+
+  // Action cards
+  html += '<h3 style="font-size:16px;font-weight:600;margin-bottom:12px;">What to do?</h3>';
+  html += '<div class="action-cards">';
+  if (exp >= 5 && opo >= 5) {
+    html += '<div class="action-card"><div class="action-title">Adopt AI as a tool</div><div class="action-desc">Professionals in your field who master AI tools have a competitive edge. High opportunity means AI can amplify your productivity.</div><div class="action-suggestion">Explore AI tools specific to your field and invest in practical courses.</div></div>';
+  }
+  if (exp >= 6 && opo < 5) {
+    html += '<div class="action-card"><div class="action-title">Consider a transition</div><div class="action-desc">With high exposure and low opportunity, this occupation may shrink. See related occupations below with better prospects.</div><div class="action-suggestion">Evaluate occupations in the same category with better opportunity scores.</div></div>';
+  }
+  html += '<div class="action-card"><div class="action-title">Develop complementary skills</div><div class="action-desc">Skills that AI doesn\'t easily replace: creativity, empathy, leadership, negotiation, critical thinking, and people management.</div><div class="action-suggestion">Invest in soft skills and areas that require complex human judgment.</div></div>';
+  html += '</div>';
+
+  // Rationale
+  if (occ.exposure_rationale) {
+    html += '<div class="rationale-box"><h3>AI Exposure Analysis</h3><p>' + occ.exposure_rationale + '</p></div>';
+  }
+  if (occ.advantage_rationale) {
+    html += '<div class="rationale-box"><h3>AI Advantage Analysis</h3><p>' + occ.advantage_rationale + '</p></div>';
+  }
+  if (occ.growth_rationale) {
+    html += '<div class="rationale-box"><h3>Growth Analysis</h3><p>' + occ.growth_rationale + '</p></div>';
+  }
+
+  // Similar occupations
+  var sameGroup = data.filter(function(d) { return d.category === occ.category && d.slug !== occ.slug && d.opportunity != null; });
+  var betterOps = sameGroup.filter(function(d) { return d.opportunity > opo; }).sort(function(a, b) { return b.opportunity - a.opportunity; }).slice(0, 5);
+  if (betterOps.length === 0) {
+    var top5 = sameGroup.sort(function(a, b) { return (b.opportunity || 0) - (a.opportunity || 0); }).slice(0, 5);
+    if (top5.length > 0) {
+      html += '<h3 style="font-size:16px;font-weight:600;margin:20px 0 12px;">Occupations in the same category</h3>';
+      html += buildComparisonTable(top5, occ);
+    }
+  } else {
+    html += '<h3 style="font-size:16px;font-weight:600;margin:20px 0 12px;">Transition suggestions (same category, better opportunity)</h3>';
+    html += buildComparisonTable(betterOps, occ);
+  }
+
+  content.innerHTML = html;
+}
+
+function buildComparisonTable(occs, current) {
+  var html = '<div class="ranking-table-wrap"><table class="comparison-table"><thead><tr>' +
+    '<th>Occupation</th><th>Pay</th><th>Employees</th><th>Exposure</th><th>Opportunity</th><th>Advantage</th>' +
+    '</tr></thead><tbody>';
+  for (var i = 0; i < occs.length; i++) {
+    var o = occs[i];
+    var payDiff = (o.pay && current.pay) ? o.pay - current.pay : null;
+    var payDiffStr = payDiff != null ? ' (' + (payDiff >= 0 ? '+' : '') + formatPay(payDiff) + ')' : '';
+    html += '<tr>' +
+      '<td>' + o.title + '</td>' +
+      '<td>' + formatPayFull(o.pay) + '<span style="font-size:11px;color:' + (payDiff >= 0 ? 'var(--green)' : 'var(--red)') + '">' + payDiffStr + '</span></td>' +
+      '<td>' + formatNumber(o.jobs) + '</td>' +
+      '<td><span class="score-cell" style="background:' + exposureColor(o.exposure, 0.2) + ';color:' + exposureColor(o.exposure, 1) + '">' + (o.exposure != null ? o.exposure : '\u2014') + '</span></td>' +
+      '<td><span class="score-cell" style="background:' + opportunityColor(o.opportunity, 0.2) + ';color:' + opportunityColor(o.opportunity, 1) + '">' + (o.opportunity != null ? o.opportunity : '\u2014') + '</span></td>' +
+      '<td><span class="score-cell" style="background:' + advantageColor(o.advantage, 0.2) + ';color:' + advantageColor(o.advantage, 1) + '">' + (o.advantage != null ? o.advantage : '\u2014') + '</span></td>' +
+      '</tr>';
+  }
+  html += '</tbody></table></div>';
+  return html;
+}
+
+// ======================================================================
+// VIEW 4: RANKING
+// ======================================================================
+var rankingInited = false;
+var rankingSortKey = "jobs";
+var rankingSortAsc = false;
+var rankingFilter = "";
+var rankingPage = 0;
+var ROWS_PER_PAGE = 50;
+
+var RANKING_COLS = [
+  { key: "title", label: "Occupation", fmt: function(v) { return v || "\u2014"; } },
+  { key: "jobs", label: "Employees", fmt: function(v) { return formatNumber(v); } },
+  { key: "pay", label: "Pay", fmt: function(v) { return formatPayFull(v); } },
+  { key: "exposure", label: "Exposure", fmt: function(v) { return v != null ? v : "\u2014"; }, color: function(v) { return v != null ? { bg: exposureColor(v, 0.15), fg: exposureColor(v, 1) } : null; } },
+  { key: "advantage", label: "Advantage", fmt: function(v) { return v != null ? v : "\u2014"; }, color: function(v) { return v != null ? { bg: advantageColor(v, 0.15), fg: advantageColor(v, 1) } : null; } },
+  { key: "growth", label: "Growth", fmt: function(v) { return v != null ? v : "\u2014"; }, color: function(v) { return v != null ? { bg: growthColor(v, 0.15), fg: growthColor(v, 1) } : null; } },
+  { key: "opportunity", label: "Opportunity", fmt: function(v) { return v != null ? v : "\u2014"; }, color: function(v) { return v != null ? { bg: opportunityColor(v, 0.15), fg: opportunityColor(v, 1) } : null; } },
+  { key: "education", label: "Education", fmt: function(v) { return EDU_SHORT[v] || v || "\u2014"; } },
+  { key: "outlook", label: "Outlook", fmt: function(v) { return formatOutlook(v); } },
+];
+
+function initRanking() {
+  if (data.length === 0) return;
+  if (!rankingInited) {
+    rankingInited = true;
+    var head = document.getElementById("rankingHead");
+    head.innerHTML = RANKING_COLS.map(function(c) {
+      return '<th data-key="' + c.key + '">' + c.label + '<span class="sort-arrow"></span></th>';
+    }).join("");
+    head.addEventListener("click", function(e) {
+      var th = e.target.closest("th");
+      if (!th) return;
+      var key = th.dataset.key;
+      if (rankingSortKey === key) rankingSortAsc = !rankingSortAsc;
+      else { rankingSortKey = key; rankingSortAsc = key === "title"; }
+      rankingPage = 0;
+      renderRanking();
+    });
+    document.getElementById("rankingSearch").addEventListener("input", function() {
+      rankingFilter = this.value.trim();
+      rankingPage = 0;
+      renderRanking();
+    });
+  }
+  renderRanking();
+}
+
+function renderRanking() {
+  var filtered = data;
+  if (rankingFilter.length >= 2) {
+    filtered = data.filter(function(d) { return fuzzyMatch(rankingFilter, d.title) || fuzzyMatch(rankingFilter, d.slug); });
+  }
+
+  var sorted = filtered.slice().sort(function(a, b) {
+    var va = a[rankingSortKey], vb = b[rankingSortKey];
+    if (va == null && vb == null) return 0;
+    if (va == null) return 1;
+    if (vb == null) return -1;
+    if (typeof va === "string") return rankingSortAsc ? va.localeCompare(vb) : vb.localeCompare(va);
+    return rankingSortAsc ? va - vb : vb - va;
+  });
+
+  var totalPages = Math.ceil(sorted.length / ROWS_PER_PAGE);
+  rankingPage = Math.min(rankingPage, totalPages - 1);
+  if (rankingPage < 0) rankingPage = 0;
+  var start = rankingPage * ROWS_PER_PAGE;
+  var page = sorted.slice(start, start + ROWS_PER_PAGE);
+
+  document.querySelectorAll("#rankingHead th").forEach(function(th) {
+    var isActive = th.dataset.key === rankingSortKey;
+    th.classList.toggle("sorted", isActive);
+    th.querySelector(".sort-arrow").textContent = isActive ? (rankingSortAsc ? " \u25B2" : " \u25BC") : "";
+  });
+
+  var body = document.getElementById("rankingBody");
+  body.innerHTML = page.map(function(d) {
+    return '<tr>' + RANKING_COLS.map(function(c) {
+      var v = d[c.key];
+      var colorInfo = c.color ? c.color(v) : null;
+      if (colorInfo) {
+        return '<td><span class="score-cell" style="background:' + colorInfo.bg + ';color:' + colorInfo.fg + '">' + c.fmt(v) + '</span></td>';
+      }
+      return '<td>' + c.fmt(v) + '</td>';
+    }).join("") + '</tr>';
+  }).join("");
+
+  var pag = document.getElementById("rankingPagination");
+  if (totalPages <= 1) { pag.innerHTML = '<span>' + sorted.length + ' occupations</span>'; return; }
+  var pagHtml = '<button ' + (rankingPage === 0 ? 'disabled' : '') + ' data-page="' + (rankingPage - 1) + '">&laquo; Previous</button>';
+  pagHtml += '<span>Page ' + (rankingPage + 1) + ' of ' + totalPages + ' (' + sorted.length + ' occ.)</span>';
+  pagHtml += '<button ' + (rankingPage >= totalPages - 1 ? 'disabled' : '') + ' data-page="' + (rankingPage + 1) + '">Next &raquo;</button>';
+  pag.innerHTML = pagHtml;
+  pag.querySelectorAll("button").forEach(function(btn) {
+    btn.addEventListener("click", function() {
+      if (this.disabled) return;
+      rankingPage = parseInt(this.dataset.page);
+      renderRanking();
+      document.getElementById("rankingTable").scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+}
+
+// ======================================================================
+// VIEW 5: ASK (LLM-powered)
+// ======================================================================
+var askInited = false;
+
+var ASK_CHIPS = [
+  "which jobs are most at risk from AI?",
+  "best paying jobs with high opportunity",
+  "occupations that don't require a degree",
+  "top 10 highest paying occupations",
+  "safe jobs with good AI advantage",
+  "fastest growing occupations",
+  "jobs with highest exposure but good opportunity",
+  "compare nurses vs accountants",
+  "how many jobs are at high risk?",
+  "best jobs for someone without a degree"
+];
+
+function initAsk() {
+  if (askInited) return;
+  askInited = true;
+
+  var chipsEl = document.getElementById("askChips");
+  chipsEl.innerHTML = ASK_CHIPS.map(function(q) {
+    return '<button style="background:var(--bg3);border:1px solid var(--border-chip);border-radius:0;color:var(--fg);padding:6px 14px;font-size:13px;cursor:pointer;transition:background 0.15s" data-query="' + escapeHtml(q) + '">' + q + '</button>';
+  }).join("");
+
+  chipsEl.addEventListener("click", function(e) {
+    var btn = e.target.closest("button");
+    if (!btn || !btn.dataset.query) return;
+    runAsk(btn.dataset.query);
+  });
+
+  var input = document.getElementById("askInput");
+  var btn = document.getElementById("askBtn");
+
+  btn.addEventListener("click", function() { runAsk(input.value); });
+  input.addEventListener("keydown", function(e) {
+    if (e.key === "Enter") runAsk(input.value);
+  });
+}
+
+function runAsk(query) {
+  if (!query || !query.trim()) return;
+  var input = document.getElementById("askInput");
+  input.value = query;
+  var container = document.getElementById("askResult");
+
+  container.innerHTML = '<div class="card query-loading">' +
+    '<div class="query-loading-bar"></div>' +
+    '<div class="query-loading-text">Analyzing the data...</div>' +
+    '<div class="query-loading-sub">Querying 342 occupations to answer your question</div>' +
+    '</div>';
+
+  input.disabled = true;
+  document.getElementById("askBtn").disabled = true;
+
+  fetch("/api/ask-us", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ question: query.trim() })
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    if (data.error) {
+      container.innerHTML = '<div class="card" style="padding:24px">' +
+        '<div style="color:var(--red);font-weight:600;margin-bottom:8px">Error</div>' +
+        '<div style="color:var(--fg2);font-size:14px">' + escapeHtml(data.error) + '</div>' +
+        '</div>';
+    } else {
+      renderLLMAnswer(data.answer);
+    }
+  })
+  .catch(function(err) {
+    container.innerHTML = '<div class="card" style="padding:24px">' +
+      '<div style="color:var(--red);font-weight:600;margin-bottom:8px">Error</div>' +
+      '<div style="color:var(--fg2);font-size:14px">Could not connect to the server. Please try again.</div>' +
+      '</div>';
+  })
+  .finally(function() {
+    input.disabled = false;
+    document.getElementById("askBtn").disabled = false;
+    input.focus();
+  });
+}
+
+function renderLLMAnswer(markdown) {
+  var container = document.getElementById("askResult");
+  var html = escapeHtml(markdown)
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    .replace(/^### (.+)$/gm, '<h3 style="font-family:Source Serif 4,Georgia,serif;font-size:18px;font-weight:700;margin:20px 0 8px">$1</h3>')
+    .replace(/^## (.+)$/gm, '<h2 style="font-family:Source Serif 4,Georgia,serif;font-size:20px;font-weight:700;margin:24px 0 10px">$1</h2>')
+    .replace(/^- (.+)$/gm, '<li style="margin-bottom:4px">$1</li>')
+    .replace(/(<li.*<\/li>\n?)+/g, function(m) { return '<ul style="list-style:disc;padding-left:20px;margin:8px 0 16px">' + m + '</ul>'; })
+    .replace(/\n\n/g, '</p><p style="margin-bottom:12px;line-height:1.6">')
+    .replace(/\n/g, '<br>');
+  html = '<p style="margin-bottom:12px;line-height:1.6">' + html + '</p>';
+  container.innerHTML = '<div class="card" style="padding:24px 28px">' + html + '<div style="margin-top:20px;padding-top:14px;border-top:1px solid var(--border);font-size:11px;color:var(--fg2);opacity:0.7">Response generated by AI based on BLS Occupational Outlook Handbook data. May contain inaccuracies \u2014 verify numbers in the other tabs.</div></div>';
+}
+
+function escapeHtml(str) {
+  return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+}
+
+// ======================================================================
+// HERO SEARCH
+// ======================================================================
+var heroSearch = document.getElementById("heroSearch");
+var heroDropdown = document.getElementById("heroDropdown");
+var heroHighlightIdx = -1;
+
+heroSearch.addEventListener("input", function() {
+  var q = this.value.trim();
+  if (q.length < 2 || data.length === 0) { heroDropdown.classList.remove("open"); return; }
+  var matches = data.filter(function(d) { return fuzzyMatch(q, d.title) || fuzzyMatch(q, d.slug); }).slice(0, 12);
+  if (matches.length === 0) { heroDropdown.classList.remove("open"); return; }
+  heroDropdown.innerHTML = matches.map(function(m) {
+    return '<div class="search-item" data-idx="' + data.indexOf(m) + '">' + escapeHtml(m.title) + '<span class="search-code">' + escapeHtml(CAT_SHORT[m.category] || m.category) + '</span></div>';
+  }).join("");
+  heroDropdown.classList.add("open");
+  heroHighlightIdx = -1;
+});
+
+heroSearch.addEventListener("keydown", function(e) {
+  var items = heroDropdown.querySelectorAll(".search-item");
+  if (!items.length) return;
+  if (e.key === "ArrowDown") { e.preventDefault(); heroHighlightIdx = Math.min(heroHighlightIdx + 1, items.length - 1); items.forEach(function(it, i) { it.classList.toggle("highlighted", i === heroHighlightIdx); }); }
+  else if (e.key === "ArrowUp") { e.preventDefault(); heroHighlightIdx = Math.max(heroHighlightIdx - 1, 0); items.forEach(function(it, i) { it.classList.toggle("highlighted", i === heroHighlightIdx); }); }
+  else if (e.key === "Enter" && heroHighlightIdx >= 0) { e.preventDefault(); items[heroHighlightIdx].click(); }
+  else if (e.key === "Escape") { heroDropdown.classList.remove("open"); }
+});
+
+heroDropdown.addEventListener("click", function(e) {
+  var item = e.target.closest(".search-item");
+  if (!item) return;
+  var idx = parseInt(item.dataset.idx);
+  heroDropdown.classList.remove("open");
+  heroSearch.value = "";
+  switchView("painel");
+  window.scrollTo({ top: 0 });
+  selectOccupation(data[idx]);
+});
+
+document.addEventListener("click", function(e) {
+  if (!e.target.closest("#heroSearchBox")) heroDropdown.classList.remove("open");
+});
+
+// ======================================================================
+// LANDING PAGE STATS
+// ======================================================================
+function updateLandingStats() {
+  if (data.length === 0) return;
+  var totalJobs = data.reduce(function(s, d) { return s + (d.jobs || 0); }, 0);
+  document.getElementById("heroStatJobs").textContent = (totalJobs / 1e6).toFixed(1) + "M";
+
+  var highRiskJobs = 0;
+  for (var i = 0; i < data.length; i++) { var d = data[i]; if (d.exposure != null && d.exposure >= 7 && d.jobs) highRiskJobs += d.jobs; }
+  document.getElementById("heroStatHighRisk").textContent = (highRiskJobs / 1e6).toFixed(1) + "M";
+
+  var highOppJobs = 0;
+  for (var i = 0; i < data.length; i++) { var d = data[i]; if (d.opportunity != null && d.opportunity >= 7 && d.jobs) highOppJobs += d.jobs; }
+  document.getElementById("heroStatOpportunity").textContent = (highOppJobs / 1e6).toFixed(1) + "M";
+
+  drawMiniTreemap();
+  drawMiniScatter();
+}
+
+function drawMiniTreemap() {
+  var container = document.getElementById("previewTreemap");
+  if (!container || data.length === 0) return;
+  var cvs = container.querySelector("canvas");
+  if (!cvs) { cvs = document.createElement("canvas"); container.appendChild(cvs); }
+  var w = container.clientWidth || 300;
+  var h = container.clientHeight || 225;
+  var d = window.devicePixelRatio || 1;
+  cvs.width = w * d; cvs.height = h * d;
+  cvs.style.width = w + "px"; cvs.style.height = h + "px";
+  var ctx = cvs.getContext("2d");
+  ctx.setTransform(d, 0, 0, d, 0, 0);
+  ctx.fillStyle = canvasBg();
+  ctx.fillRect(0, 0, w, h);
+  var items = data.filter(function(x) { return x.jobs > 0; }).sort(function(a, b) { return b.jobs - a.jobs; }).slice(0, 80).map(function(x) { return Object.assign({}, x, { value: x.jobs }); });
+  var rects = squarify(items, 2, 2, w - 4, h - 4);
+  for (var i = 0; i < rects.length; i++) {
+    var r = rects[i];
+    ctx.fillStyle = tileColorCSS(r, 0.5);
+    ctx.fillRect(r.rx + 0.5, r.ry + 0.5, r.rw - 1, r.rh - 1);
+  }
+}
+
+function drawMiniScatter() {
+  var container = document.getElementById("previewScatter");
+  if (!container || data.length === 0) return;
+  var cvs = container.querySelector("canvas");
+  if (!cvs) { cvs = document.createElement("canvas"); container.appendChild(cvs); }
+  var w = container.clientWidth || 300;
+  var h = container.clientHeight || 225;
+  var d = window.devicePixelRatio || 1;
+  cvs.width = w * d; cvs.height = h * d;
+  cvs.style.width = w + "px"; cvs.style.height = h + "px";
+  var ctx = cvs.getContext("2d");
+  ctx.setTransform(d, 0, 0, d, 0, 0);
+  ctx.fillStyle = canvasBg();
+  ctx.fillRect(0, 0, w, h);
+  var pad = 12;
+  var maxEmp = 0;
+  for (var i = 0; i < data.length; i++) { if (data[i].jobs > maxEmp) maxEmp = data[i].jobs; }
+  for (var i = 0; i < data.length; i++) {
+    var dd = data[i];
+    if (dd.exposure == null || dd.opportunity == null) continue;
+    var px = pad + (dd.exposure / 10) * (w - pad * 2);
+    var py = pad + (1 - dd.opportunity / 10) * (h - pad * 2);
+    var r = Math.max(1.5, Math.sqrt((dd.jobs || 1) / maxEmp) * 14);
+    ctx.beginPath();
+    ctx.arc(px, py, r, 0, Math.PI * 2);
+    ctx.fillStyle = exposureColor(dd.exposure, 0.35);
+    ctx.fill();
+  }
+}
+
+// ======================================================================
+// LOAD DATA
+// ======================================================================
+Promise.all([
+  fetch("data.json").then(function(r) { return r.json(); }),
+  fetch("summary.json").then(function(r) { return r.json(); })
+]).then(function(results) {
+  data = results[0];
+  summaryData = results[1];
+  updateStats();
+  drawGradientLegend();
+  updateLandingStats();
+  var hash = window.location.hash.replace("#", "");
+  if (hash && document.getElementById("view-" + hash)) {
+    switchView(hash);
+  }
+});
+
+window.addEventListener("resize", function() {
+  dpr = window.devicePixelRatio || 1;
+  if (currentView === "map") treemapResize();
+  if (currentView === "scatter" && scatterInited) scatterResize();
+  if (currentView === "landing" && data.length) { drawMiniTreemap(); drawMiniScatter(); }
+});
+
+// ======================================================================
+// SCROLL-TRIGGERED REVEALS
+// ======================================================================
+(function() {
+  var prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var targets = document.querySelectorAll(".fade-up");
+  if (prefersReduced) {
+    targets.forEach(function(el) { el.classList.add("visible"); });
+    return;
+  }
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  targets.forEach(function(el) { observer.observe(el); });
+})();
+</script>
+</body>
+</html>

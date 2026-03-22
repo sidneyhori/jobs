@@ -7,6 +7,10 @@
     "api/ask.js": {
       "maxDuration": 30,
       "includeFiles": "brazil/site/data.json,brazil/site/summary.json"
+    },
+    "api/ask-us.js": {
+      "maxDuration": 30,
+      "includeFiles": "us/site/data.json,us/site/summary.json"
     }
   }
 }
