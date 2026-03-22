@@ -3441,7 +3441,7 @@ function renderLLMAnswer(markdown) {
     .replace(/\n\n/g, '</p><p style="margin-bottom:12px;line-height:1.6">')
     .replace(/\n/g, '<br>');
   html = '<p style="margin-bottom:12px;line-height:1.6">' + html + '</p>';
-  container.innerHTML = `<div class="card" style="padding:24px 28px">${html}</div>`;
+  container.innerHTML = `<div class="card" style="padding:24px 28px">${html}<div style="margin-top:20px;padding-top:14px;border-top:1px solid var(--border);font-size:11px;color:var(--fg2);opacity:0.7">Resposta gerada por intelig\u00eancia artificial com base nos dados do CAGED/CBO. Pode conter imprecis\u00f5es \u2014 verifique os n\u00fameros nas demais abas.</div></div>`;
 }
 
 function initPerguntar() {
