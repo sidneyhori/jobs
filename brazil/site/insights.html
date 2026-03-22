@@ -124,6 +124,9 @@ body {
 }
 #nav::-webkit-scrollbar { display: none; }
 .nav-home {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-size: 14px;
   font-weight: 700;
   color: var(--fg);
@@ -133,11 +136,15 @@ body {
   letter-spacing: -0.01em;
   border-bottom: 2px solid transparent;
   flex-shrink: 0;
+  margin-right: auto;
 }
 .nav-home:hover { color: var(--accent); }
+.nav-home:hover .logo-accent { fill: var(--fg); }
+.nav-logo { flex-shrink: 0; }
+.logo-tile { fill: var(--fg); opacity: 0.25; }
+.logo-accent { fill: var(--accent); transition: fill 0.15s; }
 /* ── Theme toggle ──────────────────────────────────── */
 .theme-toggle {
-  margin-left: auto;
   background: none;
   border: none;
   color: var(--fg2);
@@ -174,7 +181,6 @@ body {
   color: var(--fg2);
   cursor: pointer;
   padding: 8px;
-  margin-left: auto;
   border-radius: 4px;
   flex-shrink: 0;
   transition: color 0.15s;
@@ -207,7 +213,7 @@ body {
 .nav-menu a {
   display: block;
   width: 100%;
-  text-align: left;
+  text-align: center;
   padding: 14px 20px;
   font-size: 14px;
   font-weight: 500;
@@ -782,8 +788,8 @@ body {
   #nav { overflow: visible; position: relative; }
   #nav > a { display: none; }
   .nav-burger { display: flex; }
-  .nav-home { padding: 10px 10px 10px 0; font-size: 13px; margin-right: 0; }
-  .theme-toggle { margin-left: 0; margin-right: 4px; }
+  .nav-home { padding: 10px 10px 10px 0; font-size: 13px; margin-right: auto; }
+  .theme-toggle { margin-right: 4px; }
   .nav-scope { display: none; }
   .bar-row { flex-wrap: wrap; }
   .bar-label { width: 100%; min-width: 100%; text-align: left; font-size: 12px; margin-bottom: -2px; }
@@ -848,7 +854,15 @@ body {
 <body>
 
 <nav id="nav" aria-label="Navegação principal">
-  <a href="index.html" class="nav-home">IA &amp; Emprego</a>
+  <a href="index.html" class="nav-home">
+    <svg class="nav-logo" width="22" height="22" viewBox="0 0 22 22" fill="none">
+      <rect class="logo-tile" x="1" y="1" width="9" height="13" rx="1.5"/>
+      <rect class="logo-tile" x="12" y="1" width="9" height="6" rx="1.5"/>
+      <rect class="logo-accent" x="12" y="9" width="9" height="5" rx="1.5"/>
+      <rect class="logo-tile" x="1" y="16" width="20" height="5" rx="1.5"/>
+    </svg>
+    IA &amp; Emprego
+  </a>
   <a href="index.html#mapa">Mapa</a>
   <a href="index.html#scatter">Risco × Oportunidade</a>
   <a href="index.html#painel">Minha Ocupação</a>
