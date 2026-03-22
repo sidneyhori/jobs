@@ -19,6 +19,9 @@ wheels/
 embed.py
 embeddings.json
 
+# Node
+node_modules/
+
 # macOS
 .DS_Store
 .vercel

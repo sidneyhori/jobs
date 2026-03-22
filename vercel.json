@@ -1,5 +1,12 @@
 {
   "framework": null,
-  "buildCommand": "",
-  "outputDirectory": "brazil/site"
+  "buildCommand": "npm install",
+  "installCommand": "npm install",
+  "outputDirectory": "brazil/site",
+  "functions": {
+    "api/ask.js": {
+      "maxDuration": 30,
+      "includeFiles": "brazil/site/data.json,brazil/site/summary.json"
+    }
+  }
 }
