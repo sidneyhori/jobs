@@ -753,6 +753,43 @@ canvas#scatterCanvas { display: block; cursor: crosshair; }
   margin-top: 12px;
 }
 
+/* ── Loading indicator ─────────────────────────────── */
+@keyframes pulse-bar {
+  0% { transform: scaleX(0); transform-origin: left; }
+  50% { transform: scaleX(1); transform-origin: left; }
+  50.1% { transform-origin: right; }
+  100% { transform: scaleX(0); transform-origin: right; }
+}
+.query-loading {
+  padding: 32px 24px;
+  text-align: center;
+}
+.query-loading-bar {
+  width: 120px;
+  height: 2px;
+  background: var(--border);
+  margin: 0 auto 20px;
+  overflow: hidden;
+}
+.query-loading-bar::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--accent);
+  animation: pulse-bar 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+.query-loading-text {
+  font-size: 15px;
+  color: var(--fg2);
+  margin-bottom: 8px;
+}
+.query-loading-sub {
+  font-size: 13px;
+  color: var(--fg2);
+  opacity: 0.5;
+}
+
 /* ── Landing page ──────────────────────────────────── */
 .serif { font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif; }
 
@@ -3349,9 +3386,10 @@ function runPerguntar(query) {
   const container = document.getElementById("perguntarResult");
 
   // Show loading state
-  container.innerHTML = `<div class="card" style="padding:32px 24px;text-align:center">
-    <div style="color:var(--fg2);font-size:15px">Analisando os dados...</div>
-    <div style="margin-top:12px;font-size:13px;color:var(--fg2);opacity:0.6">A IA está consultando 626 ocupações para responder sua pergunta</div>
+  container.innerHTML = `<div class="card query-loading">
+    <div class="query-loading-bar"></div>
+    <div class="query-loading-text">Analisando os dados...</div>
+    <div class="query-loading-sub">Consultando 626 ocupa\u00e7\u00f5es para responder sua pergunta</div>
   </div>`;
 
   // Disable input while loading
