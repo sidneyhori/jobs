@@ -23,7 +23,7 @@
   --accent: #c49a5c;
   --green: #5a9a5a;
   --red: #c06a5a;
-  --radius: 8px;
+  --radius: 0;
 
   /* Theme-aware borders and overlays */
   --nav-bg: rgba(20,18,16,0.92);
@@ -133,7 +133,7 @@ body {
   color: var(--fg2);
   cursor: pointer;
   padding: 6px;
-  border-radius: 50%;
+  border-radius: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -155,7 +155,7 @@ body {
   color: var(--fg2);
   cursor: pointer;
   padding: 8px;
-  border-radius: 4px;
+  border-radius: 0;
   flex-shrink: 0;
   transition: color 0.15s;
 }
@@ -310,20 +310,20 @@ body {
 
 .tier-bar { display: flex; flex-direction: column; gap: 3px; }
 .tier-row { display: flex; align-items: center; gap: 6px; font-size: 12px; }
-.tier-color { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+.tier-color { width: 10px; height: 10px; border-radius: 0; flex-shrink: 0; }
 .tier-name { flex: 1; color: var(--fg2); white-space: nowrap; }
 .tier-jobs { text-align: right; white-space: nowrap; }
 .tier-pct { text-align: right; width: 30px; color: var(--fg2); font-size: 11px; }
 
 .histogram { display: flex; align-items: flex-end; gap: 2px; height: 54px; }
-.histogram .bar { flex: 1; border-radius: 1px 1px 0 0; min-height: 1px; }
+.histogram .bar { flex: 1; border-radius: 0; min-height: 1px; }
 .hist-labels { display: flex; justify-content: space-between; font-size: 10px; color: var(--fg2); margin-top: 2px; }
 
 .hbar-chart { display: flex; flex-direction: column; gap: 3px; }
 .hbar-row { display: flex; align-items: center; gap: 6px; font-size: 12px; }
 .hbar-label { width: 90px; flex-shrink: 0; color: var(--fg2); font-size: 11px; text-align: right; }
-.hbar-track { flex: 1; height: 12px; background: var(--row-border); border-radius: 2px; overflow: hidden; min-width: 36px; }
-.hbar-fill { height: 100%; border-radius: 2px; }
+.hbar-track { flex: 1; height: 12px; background: var(--row-border); border-radius: 0; overflow: hidden; min-width: 36px; }
+.hbar-fill { height: 100%; border-radius: 0; }
 .hbar-val { width: 40px; flex-shrink: 0; font-size: 11px; color: var(--fg); text-align: right; }
 
 .controls-row {
@@ -339,7 +339,7 @@ body {
   font-size: 12px;
   font-weight: 500;
   border: 1px solid var(--border-chip);
-  border-radius: 4px;
+  border-radius: 0;
   background: transparent;
   color: var(--fg2);
   cursor: pointer;
@@ -354,7 +354,7 @@ body {
 .color-toggle button:active { transform: scale(0.96); }
 
 .gradient-legend { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--fg2); }
-.gradient-legend canvas { border-radius: 2px; }
+.gradient-legend canvas { border-radius: 0; }
 
 canvas#treemapCanvas { display: block; cursor: default; }
 
@@ -364,7 +364,7 @@ canvas#treemapCanvas { display: block; cursor: default; }
   pointer-events: none;
   background: var(--bg2);
   border: 1px solid var(--border-hover);
-  border-radius: 8px;
+  border-radius: 0;
   padding: 12px 16px;
   font-size: 13px;
   line-height: 1.5;
@@ -412,7 +412,7 @@ canvas#scatterCanvas { display: block; cursor: crosshair; }
   right: 0;
   background: var(--bg2);
   border: 1px solid var(--border-hover);
-  border-radius: 0 0 var(--radius) var(--radius);
+  border-radius: 0;
   max-height: 300px;
   overflow-y: auto;
   z-index: 50;
@@ -523,8 +523,8 @@ canvas#scatterCanvas { display: block; cursor: crosshair; }
 .demo-bar-section h4 { font-size: 13px; font-weight: 600; margin-bottom: 10px; color: var(--fg2); }
 .demo-bar-item { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; font-size: 13px; }
 .demo-bar-item .dbl { width: 80px; text-align: right; color: var(--fg2); font-size: 12px; flex-shrink: 0; }
-.demo-bar-item .dbt { flex: 1; height: 18px; background: var(--row-border); border-radius: 3px; overflow: hidden; }
-.demo-bar-item .dbf { height: 100%; border-radius: 3px; }
+.demo-bar-item .dbt { flex: 1; height: 18px; background: var(--row-border); border-radius: 0; overflow: hidden; }
+.demo-bar-item .dbf { height: 100%; border-radius: 0; }
 .demo-bar-item .dbv { width: 50px; font-size: 12px; flex-shrink: 0; }
 
 /* ── Demographics (View 4) ─────────────────────────── */
@@ -561,8 +561,8 @@ canvas#scatterCanvas { display: block; cursor: crosshair; }
 
 .demo-hbar { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
 .demo-hbar .dh-label { width: 100px; font-size: 13px; color: var(--fg2); text-align: right; flex-shrink: 0; }
-.demo-hbar .dh-track { flex: 1; height: 24px; background: var(--row-border); border-radius: 4px; overflow: hidden; position: relative; }
-.demo-hbar .dh-fill { height: 100%; border-radius: 4px; transition: width 0.3s; }
+.demo-hbar .dh-track { flex: 1; height: 24px; background: var(--row-border); border-radius: 0; overflow: hidden; position: relative; }
+.demo-hbar .dh-fill { height: 100%; border-radius: 0; transition: width 0.3s; }
 .demo-hbar .dh-val { width: 50px; font-size: 13px; font-weight: 600; flex-shrink: 0; }
 
 .demo-table-section { margin-top: 24px; }
@@ -580,7 +580,7 @@ canvas#scatterCanvas { display: block; cursor: crosshair; }
   font-size: 12px;
   font-weight: 500;
   border: 1px solid var(--border-chip);
-  border-radius: 4px;
+  border-radius: 0;
   background: transparent;
   color: var(--fg2);
   cursor: pointer;
@@ -682,7 +682,7 @@ canvas#scatterCanvas { display: block; cursor: crosshair; }
 .score-cell {
   display: inline-block;
   padding: 2px 8px;
-  border-radius: 4px;
+  border-radius: 0;
   font-weight: 500;
   font-size: 12px;
 }
@@ -699,7 +699,7 @@ canvas#scatterCanvas { display: block; cursor: crosshair; }
   padding: 6px 14px;
   font-size: 12px;
   border: 1px solid var(--border-chip);
-  border-radius: 4px;
+  border-radius: 0;
   background: transparent;
   color: var(--fg2);
   cursor: pointer;
@@ -877,7 +877,7 @@ body.on-landing .nav-home { border-bottom-color: var(--accent); }
   right: 0;
   background: var(--bg2);
   border: 1px solid var(--border-hover);
-  border-radius: 0 0 var(--radius) var(--radius);
+  border-radius: 0;
   max-height: 280px;
   overflow-y: auto;
   z-index: 50;
@@ -1173,10 +1173,10 @@ body.on-landing .nav-home { border-bottom-color: var(--accent); }
 <nav id="nav" aria-label="Navega&ccedil;&atilde;o principal">
   <button class="nav-home" id="navHome" aria-label="Voltar ao in&iacute;cio">
     <svg class="nav-logo" width="22" height="22" viewBox="0 0 22 22" fill="none">
-      <rect class="logo-tile" x="1" y="1" width="9" height="13" rx="1.5"/>
-      <rect class="logo-tile" x="12" y="1" width="9" height="6" rx="1.5"/>
-      <rect class="logo-accent" x="12" y="9" width="9" height="5" rx="1.5"/>
-      <rect class="logo-tile" x="1" y="16" width="20" height="5" rx="1.5"/>
+      <rect class="logo-tile" x="1" y="1" width="9" height="13" rx="0"/>
+      <rect class="logo-tile" x="12" y="1" width="9" height="6" rx="0"/>
+      <rect class="logo-accent" x="12" y="9" width="9" height="5" rx="0"/>
+      <rect class="logo-tile" x="1" y="16" width="20" height="5" rx="0"/>
     </svg>
     IA &amp; Emprego
   </button>
@@ -1832,8 +1832,8 @@ function tooltipHighlight(d) {
     if (primary != null) {
       const color = colorFn(primary, 1);
       html += `<span style="color:${color};font-weight:600;">${label}: ${primary}/10</span>` +
-        `<div style="margin-top:3px;height:4px;background:var(--overlay-hover);border-radius:2px;">` +
-        `<div style="height:100%;width:${primary * 10}%;background:${color};border-radius:2px;"></div></div>`;
+        `<div style="margin-top:3px;height:4px;background:var(--overlay-hover);border-radius:0;">` +
+        `<div style="height:100%;width:${primary * 10}%;background:${color};border-radius:0;"></div></div>`;
     }
     html += `<div style="margin-top:5px;font-size:11px;line-height:1.6;">${aiScoresTooltipLines(d)}</div>`;
     return html;
@@ -1842,8 +1842,8 @@ function tooltipHighlight(d) {
     if (v == null) return "";
     const color = salarioColor(v, 1);
     return `<span style="color:${color};font-weight:600;">Sal\u00e1rio: ${formatSalarioFull(v)}/m\u00eas</span>` +
-      `<div style="margin-top:3px;height:4px;background:var(--overlay-hover);border-radius:2px;">` +
-      `<div style="height:100%;width:${Math.min(100, (Math.log(Math.max(1000, v)) - Math.log(1000)) / (Math.log(45000) - Math.log(1000)) * 100)}%;background:${color};border-radius:2px;"></div></div>`;
+      `<div style="margin-top:3px;height:4px;background:var(--overlay-hover);border-radius:0;">` +
+      `<div style="height:100%;width:${Math.min(100, (Math.log(Math.max(1000, v)) - Math.log(1000)) / (Math.log(45000) - Math.log(1000)) * 100)}%;background:${color};border-radius:0;"></div></div>`;
   } else if (colorMode === "escolaridade") {
     const edu = d.escolaridade || "";
     const idx = EDU_LEVELS.indexOf(edu);
@@ -3274,7 +3274,7 @@ function renderResult(result) {
   // "Como foi calculado" expandable
   html += `<details style="margin-top:20px;color:var(--fg2);font-size:13px">
     <summary style="cursor:pointer;user-select:none">Como foi calculado</summary>
-    <div style="margin-top:8px;padding:12px;background:var(--bg2);border-radius:var(--radius);font-family:monospace;font-size:12px;white-space:pre-wrap">${escapeHtml(JSON.stringify(result.intent, null, 2))}</div>
+    <div style="margin-top:8px;padding:12px;background:var(--bg2);border-radius:0;font-family:monospace;font-size:12px;white-space:pre-wrap">${escapeHtml(JSON.stringify(result.intent, null, 2))}</div>
   </details>`;
 
   container.innerHTML = html;
@@ -3325,7 +3325,7 @@ function initPerguntar() {
 
   const chipsEl = document.getElementById("perguntarChips");
   chipsEl.innerHTML = PERGUNTAR_CHIPS.map(q =>
-    `<button style="background:var(--bg3);border:1px solid var(--border-chip);border-radius:16px;color:var(--fg);padding:6px 14px;font-size:13px;cursor:pointer;transition:background 0.15s" data-query="${escapeHtml(q)}">${q}</button>`
+    `<button style="background:var(--bg3);border:1px solid var(--border-chip);border-radius:0;color:var(--fg);padding:6px 14px;font-size:13px;cursor:pointer;transition:background 0.15s" data-query="${escapeHtml(q)}">${q}</button>`
   ).join("");
 
   chipsEl.addEventListener("click", function(e) {

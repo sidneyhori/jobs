@@ -20,7 +20,7 @@
   --accent: #c49a5c;
   --green: #5a9a5a;
   --red: #c06a5a;
-  --radius: 8px;
+  --radius: 0;
 
   /* Theme-aware borders and overlays */
   --nav-bg: rgba(20,18,16,0.92);
@@ -150,7 +150,7 @@ body {
   color: var(--fg2);
   cursor: pointer;
   padding: 6px;
-  border-radius: 50%;
+  border-radius: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -181,7 +181,7 @@ body {
   color: var(--fg2);
   cursor: pointer;
   padding: 8px;
-  border-radius: 4px;
+  border-radius: 0;
   flex-shrink: 0;
   transition: color 0.15s;
 }
@@ -289,7 +289,7 @@ body {
   font-size: 13px;
   font-weight: 500;
   border: 1px solid var(--border-chip);
-  border-radius: 20px;
+  border-radius: 0;
   background: transparent;
   color: var(--fg2);
   cursor: pointer;
@@ -321,7 +321,7 @@ body {
   border: 1px solid var(--border-chip);
   color: var(--fg);
   padding: var(--sp-4) var(--sp-12);
-  border-radius: 14px;
+  border-radius: 0;
   font-size: 12px;
   cursor: pointer;
   transition: background 0.15s ease-out, border-color 0.15s ease-out;
@@ -562,7 +562,7 @@ body {
 .tag {
   font-size: 11px;
   padding: 3px 10px;
-  border-radius: 12px;
+  border-radius: 0;
   background: var(--tag-bg);
   color: var(--fg2);
   cursor: pointer;
@@ -608,13 +608,13 @@ body {
   flex: 1;
   height: 24px;
   background: var(--bg3);
-  border-radius: 4px;
+  border-radius: 0;
   overflow: hidden;
   position: relative;
 }
 .bar-fill {
   height: 100%;
-  border-radius: 4px;
+  border-radius: 0;
   background: var(--accent);
   transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -740,7 +740,7 @@ body {
   right: 28px;
   width: 44px;
   height: 44px;
-  border-radius: 50%;
+  border-radius: 0;
   background: var(--bg2);
   border: 1px solid var(--border-chip);
   color: var(--fg);
@@ -856,10 +856,10 @@ body {
 <nav id="nav" aria-label="Navegação principal">
   <a href="index.html" class="nav-home">
     <svg class="nav-logo" width="22" height="22" viewBox="0 0 22 22" fill="none">
-      <rect class="logo-tile" x="1" y="1" width="9" height="13" rx="1.5"/>
-      <rect class="logo-tile" x="12" y="1" width="9" height="6" rx="1.5"/>
-      <rect class="logo-accent" x="12" y="9" width="9" height="5" rx="1.5"/>
-      <rect class="logo-tile" x="1" y="16" width="20" height="5" rx="1.5"/>
+      <rect class="logo-tile" x="1" y="1" width="9" height="13" rx="0"/>
+      <rect class="logo-tile" x="12" y="1" width="9" height="6" rx="0"/>
+      <rect class="logo-accent" x="12" y="9" width="9" height="5" rx="0"/>
+      <rect class="logo-tile" x="1" y="16" width="20" height="5" rx="0"/>
     </svg>
     IA &amp; Emprego
   </a>
