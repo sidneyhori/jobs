@@ -147,10 +147,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: color 0.15s ease-out;
+  transition: color 0.15s ease-out, background 0.15s ease-out, transform 0.1s ease-out;
   flex-shrink: 0;
 }
-.theme-toggle:hover { color: var(--fg); }
+.theme-toggle:hover { color: var(--fg); background: var(--overlay-hover); }
+.theme-toggle:active { transform: scale(0.92); }
 .theme-toggle svg { width: 18px; height: 18px; }
 .theme-toggle .icon-moon { display: none; }
 [data-theme="light"] .theme-toggle .icon-sun { display: none; }
@@ -178,7 +179,8 @@ body {
   flex-shrink: 0;
   transition: color 0.15s;
 }
-.nav-burger:hover { color: var(--fg); }
+.nav-burger:hover { color: var(--fg); background: var(--overlay-hover); }
+.nav-burger:active { transform: scale(0.92); }
 .nav-burger svg { width: 20px; height: 20px; display: block; }
 .nav-burger .icon-close { display: none; }
 .nav-open .nav-burger .icon-menu { display: none; }
@@ -291,7 +293,7 @@ body {
 .chip.active {
   background: var(--chip-color, var(--accent));
   border-color: var(--chip-color, var(--accent));
-  color: #fff;
+  color: var(--tag-active-fg);
 }
 
 /* ── Tag filter active state ───────────────────────── */
@@ -565,7 +567,7 @@ body {
   color: var(--fg);
   text-decoration-color: var(--fg2);
 }
-.tag:active { transform: scale(0.95); }
+.tag:active { transform: scale(0.97); }
 .tag.active-tag {
   background: var(--accent);
   color: var(--tag-active-fg);
@@ -596,13 +598,13 @@ body {
   flex: 1;
   height: 24px;
   background: var(--bg3);
-  border-radius: var(--sp-4);
+  border-radius: 4px;
   overflow: hidden;
   position: relative;
 }
 .bar-fill {
   height: 100%;
-  border-radius: var(--sp-4);
+  border-radius: 4px;
   background: var(--accent);
   transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -714,7 +716,7 @@ body {
   background: var(--overlay-soft);
   border-color: var(--border-hover);
 }
-#btn-load-more button:active { transform: scale(0.98); }
+#btn-load-more button:active { transform: scale(0.97); }
 .load-more-count {
   margin-top: var(--sp-8);
   font-size: 13px;
@@ -750,7 +752,7 @@ body {
 #btn-top:hover {
   background: var(--overlay-hover);
 }
-#btn-top:active { transform: scale(0.93); }
+#btn-top:active { transform: scale(0.92); }
 
 /* ── Expand chevron ────────────────────────────────── */
 .expand-chevron {

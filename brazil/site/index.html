@@ -112,6 +112,7 @@ body {
   border-bottom-color: var(--accent);
 }
 #nav button:hover:not(.active) { color: var(--fg); }
+#nav button:active { opacity: 0.8; }
 #nav a {
   padding: 12px 18px;
   font-size: 13px;
@@ -123,6 +124,7 @@ body {
   transition: color 0.15s;
 }
 #nav a:hover { color: var(--fg); }
+#nav a:active { opacity: 0.8; }
 
 /* ── Theme toggle ──────────────────────────────────── */
 .theme-toggle {
@@ -136,10 +138,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: color 0.15s;
+  transition: color 0.15s, background 0.15s, transform 0.1s;
   flex-shrink: 0;
 }
-.theme-toggle:hover { color: var(--fg); }
+.theme-toggle:hover { color: var(--fg); background: var(--overlay-hover); }
+.theme-toggle:active { transform: scale(0.92); }
 .theme-toggle svg { width: 18px; height: 18px; }
 .theme-toggle .icon-moon { display: none; }
 [data-theme="light"] .theme-toggle .icon-sun { display: none; }
@@ -158,7 +161,8 @@ body {
   flex-shrink: 0;
   transition: color 0.15s;
 }
-.nav-burger:hover { color: var(--fg); }
+.nav-burger:hover { color: var(--fg); background: var(--overlay-hover); }
+.nav-burger:active { transform: scale(0.92); }
 .nav-burger svg { width: 20px; height: 20px; display: block; }
 .nav-burger .icon-close { display: none; }
 .nav-open .nav-burger .icon-menu { display: none; }
@@ -345,6 +349,7 @@ body {
   border-color: var(--border-chip-hover);
 }
 .color-toggle button:hover:not(.active) { background: var(--row-border); }
+.color-toggle button:active { transform: scale(0.96); }
 
 .gradient-legend { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--fg2); }
 .gradient-legend canvas { border-radius: 2px; }
@@ -584,6 +589,8 @@ canvas#scatterCanvas { display: block; cursor: crosshair; }
   color: var(--fg);
   border-color: var(--border-chip-hover);
 }
+.regional-controls button:hover:not(.active) { background: var(--row-border); }
+.regional-controls button:active { transform: scale(0.96); }
 
 .state-grid {
   display: grid;
@@ -695,9 +702,54 @@ canvas#scatterCanvas { display: block; cursor: crosshair; }
   color: var(--fg2);
   cursor: pointer;
 }
+.ranking-pagination button:hover:not(:disabled) { background: var(--row-border); color: var(--fg); }
+.ranking-pagination button:active:not(:disabled) { transform: scale(0.96); }
 .ranking-pagination button.active { background: var(--overlay-hover); color: var(--fg); border-color: var(--border-chip-hover); }
 .ranking-pagination button:disabled { opacity: 0.3; cursor: default; }
 .ranking-pagination span { font-size: 12px; color: var(--fg2); }
+
+/* ── Perguntar (View 7) ──────────────────────────── */
+.perguntar-form {
+  max-width: 700px;
+  margin: 0 auto 24px;
+}
+.perguntar-input-wrap { position: relative; }
+.perguntar-input-wrap input {
+  width: 100%;
+  padding: 14px 56px 14px 16px;
+  font-size: 16px;
+  background: var(--bg2);
+  border: 1px solid var(--border-hover);
+  border-radius: var(--radius);
+  color: var(--fg);
+  outline: none;
+  transition: border-color 0.15s;
+}
+.perguntar-input-wrap input:focus { border-color: var(--accent); }
+.perguntar-input-wrap input::placeholder { color: var(--fg2); }
+.perguntar-btn {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--accent);
+  border: none;
+  border-radius: var(--radius);
+  color: var(--bg);
+  padding: 8px 14px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: opacity 0.15s;
+}
+.perguntar-btn:hover { opacity: 0.85; }
+.perguntar-btn:active { transform: translateY(-50%) scale(0.96); }
+.perguntar-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
 
 /* ── Landing page ──────────────────────────────────── */
 .serif { font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif; }
@@ -912,6 +964,9 @@ body.on-landing .nav-home { border-bottom-color: var(--accent); }
   border-color: var(--border-hover);
   transform: translateY(-2px);
 }
+.tool-card:active {
+  transform: translateY(0) scale(0.99);
+}
 .tool-card h3 {
   font-family: 'Source Serif 4', Georgia, serif;
   font-size: 17px;
@@ -1070,8 +1125,8 @@ body.on-landing .nav-home { border-bottom-color: var(--accent); }
 <body class="on-landing">
 
 <!-- Navigation -->
-<nav id="nav">
-  <button class="nav-home" id="navHome">IA &amp; Emprego</button>
+<nav id="nav" aria-label="Navega&ccedil;&atilde;o principal">
+  <button class="nav-home" id="navHome" aria-label="Voltar ao in&iacute;cio">IA &amp; Emprego</button>
   <span class="nav-tabs">
     <button data-view="mapa">Mapa</button>
     <button data-view="scatter">Risco × Oportunidade</button>
@@ -1296,7 +1351,7 @@ body.on-landing .nav-home { border-bottom-color: var(--accent); }
   <h2 class="section-title">Minha Ocupa&ccedil;&atilde;o</h2>
   <p class="section-desc">Busque sua ocupa&ccedil;&atilde;o para ver um painel completo com avalia&ccedil;&atilde;o de risco, recomenda&ccedil;&otilde;es e compara&ccedil;&otilde;es.</p>
   <div class="search-box" id="painelSearchBox">
-    <input type="text" id="painelSearch" placeholder="Digite o nome da sua ocupa&ccedil;&atilde;o..." autocomplete="off">
+    <input type="text" id="painelSearch" placeholder="Digite o nome da sua ocupa&ccedil;&atilde;o..." autocomplete="off" aria-label="Buscar ocupa&ccedil;&atilde;o">
     <div class="search-dropdown" id="painelDropdown"></div>
   </div>
   <div id="painelPlaceholder">Selecione uma ocupa&ccedil;&atilde;o acima para ver sua an&aacute;lise personalizada.</div>
@@ -1332,7 +1387,7 @@ body.on-landing .nav-home { border-bottom-color: var(--accent); }
   <h2 class="section-title">Ranking de Ocupa&ccedil;&otilde;es</h2>
   <p class="section-desc">Tabela completa com todas as 626 ocupa&ccedil;&otilde;es. Clique nos cabe&ccedil;alhos para ordenar.</p>
   <div class="ranking-controls">
-    <input type="text" id="rankingSearch" placeholder="Filtrar ocupa&ccedil;&otilde;es...">
+    <input type="text" id="rankingSearch" placeholder="Filtrar ocupa&ccedil;&otilde;es..." aria-label="Filtrar ocupa&ccedil;&otilde;es">
   </div>
   <div class="ranking-table-wrap">
     <table class="ranking-table" id="rankingTable">
@@ -1349,12 +1404,12 @@ body.on-landing .nav-home { border-bottom-color: var(--accent); }
 <div id="view-perguntar" class="view">
   <h2 class="section-title">Pergunte sobre o mercado de trabalho</h2>
   <p class="section-desc">Fa&ccedil;a perguntas em portugu&ecirc;s sobre ocupa&ccedil;&otilde;es, sal&aacute;rios, risco de automa&ccedil;&atilde;o e demografia.</p>
-  <div style="max-width:700px;margin:0 auto 24px">
-    <div style="position:relative">
-      <input type="text" id="perguntarInput" placeholder="Ex: vagas femininas em risco" style="width:100%;padding:14px 48px 14px 16px;font-size:16px;background:var(--bg2);border:1px solid var(--border-hover);border-radius:var(--radius);color:var(--fg);outline:none">
-      <button id="perguntarBtn" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);background:var(--accent);border:none;border-radius:6px;color:#fff;padding:8px 14px;cursor:pointer;font-size:14px;font-weight:600">Buscar</button>
+  <div class="perguntar-form">
+    <div class="perguntar-input-wrap">
+      <input type="text" id="perguntarInput" placeholder="Ex: vagas femininas em risco" aria-label="Pergunta sobre o mercado de trabalho">
+      <button id="perguntarBtn" class="perguntar-btn">Buscar</button>
     </div>
-    <div id="perguntarChips" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px"></div>
+    <div id="perguntarChips" class="perguntar-chips"></div>
   </div>
   <div id="perguntarResult"></div>
 </div>
