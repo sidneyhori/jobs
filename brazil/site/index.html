@@ -169,7 +169,6 @@ body {
 .nav-open .nav-burger .icon-close { display: block; }
 
 .nav-menu {
-  display: none;
   position: absolute;
   top: 100%;
   left: 0;
@@ -180,9 +179,14 @@ body {
   border-bottom: 1px solid var(--border);
   padding: 8px 0;
   z-index: 99;
+  display: flex;
   flex-direction: column;
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+  transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.nav-open .nav-menu { display: flex; }
+.nav-open .nav-menu { opacity: 1; transform: translateY(0); pointer-events: auto; }
 .nav-menu button, .nav-menu a {
   display: block;
   width: 100%;
@@ -777,6 +781,31 @@ body.on-landing .nav-home { border-bottom-color: var(--accent); }
   padding: 0;
 }
 
+/* ── Animations ─────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up {
+  opacity: 0;
+  transform: translateY(18px);
+}
+.fade-up.visible {
+  animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Hero entrance — staggered children */
+.hero > * {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: fadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.hero > :nth-child(1) { animation-delay: 0.05s; }
+.hero > :nth-child(2) { animation-delay: 0.15s; }
+.hero > :nth-child(3) { animation-delay: 0.25s; }
+.hero > :nth-child(4) { animation-delay: 0.35s; }
+.hero > :nth-child(5) { animation-delay: 0.45s; }
+
 /* Hero */
 .hero {
   max-width: 860px;
@@ -824,9 +853,15 @@ body.on-landing .nav-home { border-bottom-color: var(--accent); }
   border-radius: var(--radius);
   color: var(--fg);
   outline: none;
-  transition: border-color 0.15s;
+  transition: border-color 0.25s, box-shadow 0.25s;
 }
-.hero-search input:focus { border-color: var(--accent); }
+.hero-search input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(196, 154, 92, 0.12);
+}
+[data-theme="light"] .hero-search input:focus {
+  box-shadow: 0 0 0 3px rgba(160, 120, 56, 0.12);
+}
 .hero-search input::placeholder { color: var(--fg2); }
 .hero-search .search-dropdown {
   position: absolute;
@@ -839,9 +874,12 @@ body.on-landing .nav-home { border-bottom-color: var(--accent); }
   max-height: 280px;
   overflow-y: auto;
   z-index: 50;
-  display: none;
+  opacity: 0;
+  transform: translateY(-4px);
+  pointer-events: none;
+  transition: opacity 0.15s cubic-bezier(0.16, 1, 0.3, 1), transform 0.15s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.hero-search .search-dropdown.open { display: block; }
+.hero-search .search-dropdown.open { opacity: 1; transform: translateY(0); pointer-events: auto; }
 
 /* Hero stats ribbon */
 .hero-stats {
@@ -1188,7 +1226,7 @@ body.on-landing .nav-home { border-bottom-color: var(--accent); }
   </section>
 
   <!-- Section 1: The Map -->
-  <section class="landing-section">
+  <section class="landing-section fade-up">
     <div class="landing-inner">
       <div class="landing-grid">
         <div>
@@ -1203,7 +1241,7 @@ body.on-landing .nav-home { border-bottom-color: var(--accent); }
   </section>
 
   <!-- Section 2: Risk vs Opportunity -->
-  <section class="landing-section">
+  <section class="landing-section fade-up">
     <div class="landing-inner">
       <div class="landing-grid reverse">
         <div>
@@ -1218,7 +1256,7 @@ body.on-landing .nav-home { border-bottom-color: var(--accent); }
   </section>
 
   <!-- Section 3: Demographics -->
-  <section class="landing-section">
+  <section class="landing-section fade-up">
     <div class="landing-inner">
       <div class="landing-grid">
         <div>
@@ -1243,7 +1281,7 @@ body.on-landing .nav-home { border-bottom-color: var(--accent); }
   </section>
 
   <!-- Quick tools -->
-  <section class="landing-section">
+  <section class="landing-section fade-up">
     <div class="landing-inner">
       <span class="section-eyebrow">Ferramentas</span>
       <h2 style="margin-bottom:24px">Explore os dados</h2>
@@ -3444,6 +3482,27 @@ window.addEventListener("resize", function() {
   if (currentView === "scatter" && scatterInited) scatterResize();
   if (currentView === "landing" && data.length) { drawMiniTreemap(); drawMiniScatter(); }
 });
+
+// ══════════════════════════════════════════════════════════════════════════
+// SCROLL-TRIGGERED REVEALS
+// ══════════════════════════════════════════════════════════════════════════
+(function() {
+  var prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var targets = document.querySelectorAll(".fade-up");
+  if (prefersReduced) {
+    targets.forEach(function(el) { el.classList.add("visible"); });
+    return;
+  }
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  targets.forEach(function(el) { observer.observe(el); });
+})();
 </script>
 </body>
 </html>
