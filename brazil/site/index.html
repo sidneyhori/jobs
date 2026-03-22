@@ -461,8 +461,6 @@ canvas#scatterCanvas { display: block; cursor: crosshair; }
   gap: 20px;
   margin-top: 16px;
 }
-@media (max-width: 700px) { .demo-bars { grid-template-columns: 1fr; } }
-
 .demo-bar-section h4 { font-size: 13px; font-weight: 600; margin-bottom: 10px; color: var(--fg2); }
 .demo-bar-item { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; font-size: 13px; }
 .demo-bar-item .dbl { width: 80px; text-align: right; color: var(--fg2); font-size: 12px; flex-shrink: 0; }
@@ -494,8 +492,6 @@ canvas#scatterCanvas { display: block; cursor: crosshair; }
   gap: 24px;
   margin-bottom: 32px;
 }
-@media (max-width: 700px) { .demo-charts { grid-template-columns: 1fr; } }
-
 .demo-chart-box {
   background: var(--bg2);
   border: 1px solid var(--border);
@@ -918,18 +914,83 @@ body.on-landing .nav-home { border-bottom-color: var(--accent); }
 .footer-links a:hover, .footer-links button:hover { color: var(--fg); }
 
 /* ── Responsive ────────────────────────────────────── */
-@media (max-width: 600px) {
-  #nav button { padding: 12px 12px; font-size: 12px; }
-  .view { padding: 16px 12px 60px; }
-  .intro h1 { font-size: 20px; }
+@media (max-width: 700px) {
+  /* Nav — compact touch-friendly */
+  #nav { padding: 0 12px; }
+  #nav button, #nav a { padding: 10px 12px; font-size: 12px; min-height: 44px; display: flex; align-items: center; }
+  .nav-home { padding: 10px 10px 10px 0; font-size: 13px; }
+
+  /* Tool views */
+  .view { padding: 16px 14px 60px; }
+  .intro h1 { font-size: 20px; gap: 10px; }
+  .intro p { font-size: 14px; }
   .stat-big { font-size: 24px; }
-  .metric-cards { grid-template-columns: repeat(2, 1fr); }
+  .stats-row { gap: 14px 20px; }
+  .controls-row { gap: 10px; }
+  .color-toggle button { padding: 8px 12px; min-height: 40px; font-size: 11px; }
+  .metric-cards { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .metric-card { padding: 12px; }
+  .metric-card .metric-value { font-size: 26px; }
   .action-cards { grid-template-columns: 1fr; }
+
+  /* Hbar charts — tighter labels */
+  .hbar-label { width: 70px; font-size: 10px; }
+  .hbar-val { width: 36px; font-size: 10px; }
+
+  /* Search box */
+  .search-box input { font-size: 16px; padding: 14px 14px; }
+
+  /* Demographics */
+  .demo-bars { grid-template-columns: 1fr; }
+  .demo-charts { grid-template-columns: 1fr; }
+  .demo-summary { gap: 12px; }
+  .demo-stat { padding: 16px; min-width: 0; }
+  .demo-stat .ds-value { font-size: 24px; }
+
+  /* Regional */
   .state-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
-  .landing-grid { grid-template-columns: 1fr; }
+  .state-detail { padding: 16px; }
+  .regional-controls button { min-height: 40px; }
+
+  /* Ranking — allow horizontal scroll */
+  .ranking-controls { gap: 8px; }
+  .ranking-controls input { min-width: 0; max-width: none; font-size: 16px; }
+  .ranking-pagination { gap: 6px; }
+  .ranking-pagination button { min-height: 40px; }
+
+  /* Perguntar */
+  .section-title { font-size: 20px; }
+
+  /* Landing page */
+  .hero { padding: 48px 16px 40px; }
+  .hero-eyebrow { font-size: 11px; margin-bottom: 14px; }
+  .hero-sub { margin-bottom: 28px; }
+  .hero-search { margin-bottom: 32px; }
+  .hero-search input { padding: 14px 16px; font-size: 16px; }
+  .hero-stats { gap: 20px; }
+  .hero-stat-val { font-size: clamp(24px, 7vw, 36px); }
+  .hero-stat-label { font-size: 12px; }
+
+  .landing-section { padding: clamp(36px, 6vh, 56px) 16px; }
+  .landing-grid { grid-template-columns: 1fr; gap: 24px; }
   .landing-grid.reverse { direction: ltr; }
-  .tools-row { grid-template-columns: 1fr; }
-  .footer-grid { grid-template-columns: 1fr; }
+  .section-preview { aspect-ratio: 3 / 2; }
+  .landing-section h2 { font-size: 22px; }
+
+  .tools-row { grid-template-columns: 1fr; gap: 12px; }
+  .tool-card { padding: 20px; min-height: 44px; }
+
+  .landing-footer { padding: 36px 16px 48px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+}
+
+@media (max-width: 400px) {
+  .hero h1 { font-size: 28px; }
+  .hero-stats { flex-direction: column; gap: 16px; }
+  .metric-cards { grid-template-columns: 1fr; }
+  .color-toggle { gap: 6px; }
+  .color-toggle button { padding: 8px 10px; font-size: 10px; }
+  .hbar-label { width: 60px; }
 }
 
 /* ── Reduced motion ────────────────────────────────── */
