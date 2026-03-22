@@ -145,6 +145,58 @@ body {
 [data-theme="light"] .theme-toggle .icon-sun { display: none; }
 [data-theme="light"] .theme-toggle .icon-moon { display: block; }
 
+/* ── Hamburger menu ─────────────────────────────────── */
+.nav-burger {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--fg2);
+  cursor: pointer;
+  padding: 8px;
+  margin-left: auto;
+  border-radius: 4px;
+  flex-shrink: 0;
+  transition: color 0.15s;
+}
+.nav-burger:hover { color: var(--fg); }
+.nav-burger svg { width: 20px; height: 20px; display: block; }
+.nav-burger .icon-close { display: none; }
+.nav-open .nav-burger .icon-menu { display: none; }
+.nav-open .nav-burger .icon-close { display: block; }
+
+.nav-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--nav-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 8px 0;
+  z-index: 99;
+  flex-direction: column;
+}
+.nav-open .nav-menu { display: flex; }
+.nav-menu button, .nav-menu a {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 14px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--fg2);
+  background: none;
+  border: none;
+  border-bottom: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.1s, color 0.1s;
+}
+.nav-menu button:hover, .nav-menu a:hover { background: var(--overlay-hover); color: var(--fg); }
+.nav-menu button.active { color: var(--accent); font-weight: 600; }
+
 /* ── Views container ───────────────────────────────── */
 .view { display: none; max-width: 1400px; margin: 0 auto; padding: 20px 24px 80px; }
 .view.active { display: block; }
@@ -915,10 +967,12 @@ body.on-landing .nav-home { border-bottom-color: var(--accent); }
 
 /* ── Responsive ────────────────────────────────────── */
 @media (max-width: 700px) {
-  /* Nav — compact touch-friendly */
-  #nav { padding: 0 12px; }
-  #nav button, #nav a { padding: 10px 12px; font-size: 12px; min-height: 44px; display: flex; align-items: center; }
-  .nav-home { padding: 10px 10px 10px 0; font-size: 13px; }
+  /* Nav — hamburger on mobile */
+  #nav { padding: 0 12px; overflow: visible; position: relative; }
+  .nav-tabs, #nav > a { display: none; }
+  .nav-burger { display: flex; }
+  .nav-home { padding: 10px 10px 10px 0; font-size: 13px; margin-right: 0; }
+  .theme-toggle { margin-left: 0; margin-right: 4px; }
 
   /* Tool views */
   .view { padding: 16px 14px 60px; }
@@ -1032,6 +1086,20 @@ body.on-landing .nav-home { border-bottom-color: var(--accent); }
     <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
     <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
   </button>
+  <button class="nav-burger" id="navBurger" type="button" aria-label="Menu">
+    <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+  </button>
+  <div class="nav-menu" id="navMenu">
+    <button data-view="mapa">Mapa</button>
+    <button data-view="scatter">Risco × Oportunidade</button>
+    <button data-view="painel">Minha Ocupa&ccedil;&atilde;o</button>
+    <button data-view="demo">Demografia</button>
+    <button data-view="regional">Regional</button>
+    <button data-view="ranking">Ranking</button>
+    <button data-view="perguntar">Perguntar</button>
+    <a href="insights.html">Insights</a>
+  </div>
 </nav>
 
 <!-- Landing Page -->
@@ -1354,6 +1422,18 @@ document.getElementById("navHome").addEventListener("click", function() {
   switchView("landing");
 });
 
+// Hamburger menu
+document.getElementById("navBurger").addEventListener("click", function() {
+  document.getElementById("nav").classList.toggle("nav-open");
+});
+// Mobile menu clicks
+document.getElementById("navMenu").addEventListener("click", function(e) {
+  const btn = e.target.closest("button");
+  if (!btn || !btn.dataset.view) return;
+  switchView(btn.dataset.view);
+  window.scrollTo({ top: 0 });
+});
+
 // All data-goto buttons (landing page CTAs, footer, tool cards)
 document.addEventListener("click", function(e) {
   const el = e.target.closest("[data-goto]");
@@ -1363,11 +1443,17 @@ document.addEventListener("click", function(e) {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
+function closeMenu() {
+  document.getElementById("nav").classList.remove("nav-open");
+}
+
 function switchView(view) {
   currentView = view;
+  closeMenu();
   const isLanding = view === "landing";
   document.body.classList.toggle("on-landing", isLanding);
   document.querySelectorAll("#nav .nav-tabs button").forEach(b => b.classList.toggle("active", b.dataset.view === view));
+  document.querySelectorAll("#navMenu button").forEach(b => b.classList.toggle("active", b.dataset.view === view));
   document.querySelectorAll(".view").forEach(v => v.classList.toggle("active", v.id === "view-" + view));
   if (view === "mapa") treemapResize();
   if (view === "scatter") initScatter();
