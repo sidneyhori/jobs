@@ -2800,13 +2800,15 @@ let perguntarInited = false;
 
 const PERGUNTAR_CHIPS = [
   "vagas femininas em risco",
-  "vagas pretas em risco",
-  "melhores pontos de entrada",
-  "numero de empregos em risco",
-  "melhores sal\u00e1rios",
-  "oportunidades n\u00edvel m\u00e9dio",
+  "mulheres negras em risco",
+  "melhores oportunidades n\u00edvel m\u00e9dio",
+  "top 10 melhores sal\u00e1rios",
+  "ocupa\u00e7\u00f5es seguras com boa vantagem",
   "estados com mais risco",
-  "crescimento por setor"
+  "crescimento por setor",
+  "empregos em risco em SP",
+  "quantos empregos est\u00e3o em risco",
+  "sal\u00e1rio acima de 5000"
 ];
 
 const UF_ABBR_TO_CODE = {};
@@ -2833,39 +2835,58 @@ function parseQuery(text) {
     aggregate: null,
     aggregateField: null,
     demographic: null,
+    raceDemographic: null,
     limit: null,
     groupBy: null,
     raw: text
   };
 
-  // Demographics
-  if (/\b(feminina?s?|mulher|mulheres)\b/.test(q)) intent.demographic = "feminino";
-  else if (/\b(masculina?s?|homens?|homem)\b/.test(q)) intent.demographic = "masculino";
+  // Demographics — gender
+  if (/\b(feminina?s?|mulher(es)?|mae|maes)\b/.test(q)) intent.demographic = "feminino";
+  else if (/\b(masculina?s?|hom(em|ens)|pai|pais)\b/.test(q)) intent.demographic = "masculino";
 
-  if (/\b(pret[oa]s?|negr[oa]s?)\b/.test(q)) {
-    intent.demographic = intent.demographic === "feminino" ? "feminino" : (intent.demographic === "masculino" ? "masculino" : null);
-    intent.raceDemographic = "negra";
-  }
-  if (/\b(branc[oa]s?)\b/.test(q)) {
-    intent.raceDemographic = "branca";
-  }
-  if (/\b(pard[oa]s?)\b/.test(q)) {
-    intent.raceDemographic = "parda";
-  }
+  // Demographics — race (preserves any gender already matched)
+  if (/\b(pret[oa]s?|negr[oa]s?|afro)\b/.test(q)) intent.raceDemographic = "negra";
+  else if (/\b(branc[oa]s?)\b/.test(q)) intent.raceDemographic = "branca";
+  else if (/\b(pard[oa]s?|mestic[oa]s?)\b/.test(q)) intent.raceDemographic = "parda";
 
-  // Risk filters
-  if (/\b(em risco|risco alto|exposicao alta|alto risco)\b/.test(q)) {
+  // Risk / exposure filters
+  if (/\b(em risco|risco alto|exposicao alta|alto risco|mais expostas?|ameacad[oa]s?|vulnera)/i.test(q)) {
     intent.filters.push({ field: "exposicao", op: ">=", value: 7 });
-  } else if (/\b(seguro|risco baixo|protegido|baixo risco)\b/.test(q)) {
+  } else if (/\b(segur[oa]s?|risco baixo|protegid[oa]s?|baixo risco|menos risco|pouco risco)\b/.test(q)) {
     intent.filters.push({ field: "exposicao", op: "<=", value: 3 });
   }
 
+  // Vantagem (advantage with AI) filters
+  if (/\b(boa vantagem|alta vantagem|vantagem alta|beneficiad[oa]s?|ganham com ia)\b/.test(q)) {
+    intent.filters.push({ field: "vantagem", op: ">=", value: 7 });
+  } else if (/\b(sem vantagem|baixa vantagem|vantagem baixa)\b/.test(q)) {
+    intent.filters.push({ field: "vantagem", op: "<=", value: 3 });
+  }
+
+  // Opportunity filters
+  if (/\b(alta oportunidade|muita oportunidade|boas? oportunidade)\b/.test(q)) {
+    intent.filters.push({ field: "oportunidade", op: ">=", value: 7 });
+  }
+
+  // Salary range filters
+  const salaryAbove = q.match(/\b(?:salario|remuneracao|ganho|renda)\s*(?:acima|maior|mais)\s*(?:de|que)\s*(\d[\d.]*)\b/);
+  const salaryBelow = q.match(/\b(?:salario|remuneracao|ganho|renda)\s*(?:abaixo|menor|menos)\s*(?:de|que)\s*(\d[\d.]*)\b/);
+  const salaryGeneric = q.match(/\b(?:acima|maior|mais)\s*(?:de|que)\s*(?:r\$?\s*)?(\d[\d.]*)\b/);
+  if (salaryAbove) {
+    intent.filters.push({ field: "salario", op: ">=", value: parseFloat(salaryAbove[1].replace(/\./g, "")) });
+  } else if (salaryBelow) {
+    intent.filters.push({ field: "salario", op: "<=", value: parseFloat(salaryBelow[1].replace(/\./g, "")) });
+  } else if (salaryGeneric && !intent.filters.some(f => f.field === "exposicao")) {
+    intent.filters.push({ field: "salario", op: ">=", value: parseFloat(salaryGeneric[1].replace(/\./g, "")) });
+  }
+
   // Education filters
-  if (/\b(doutorado)\b/.test(q)) intent.filters.push({ field: "escolaridade", op: "==", value: "Doutorado" });
-  else if (/\b(mestrado)\b/.test(q)) intent.filters.push({ field: "escolaridade", op: "==", value: "Mestrado" });
-  else if (/\b(superior|faculdade|graduacao)\b/.test(q)) intent.filters.push({ field: "escolaridade", op: "==", value: "Superior Completo" });
-  else if (/\b(nivel medio|ensino medio|medio completo)\b/.test(q)) intent.filters.push({ field: "escolaridade", op: "==", value: "M\u00e9dio Completo" });
-  else if (/\b(fundamental)\b/.test(q)) intent.filters.push({ field: "escolaridade", op: "==", value: "6\u00aa a 9\u00aa Fundamental" });
+  if (/\b(doutorado|doutores?)\b/.test(q)) intent.filters.push({ field: "escolaridade", op: "==", value: "Doutorado" });
+  else if (/\b(mestrado|mestres?)\b/.test(q)) intent.filters.push({ field: "escolaridade", op: "==", value: "Mestrado" });
+  else if (/\b(superior|faculdade|graduacao|universitario|diploma)\b/.test(q)) intent.filters.push({ field: "escolaridade", op: "==", value: "Superior Completo" });
+  else if (/\b(nivel medio|ensino medio|medio completo|segundo grau)\b/.test(q)) intent.filters.push({ field: "escolaridade", op: "==", value: "M\u00e9dio Completo" });
+  else if (/\b(fundamental|primeiro grau)\b/.test(q)) intent.filters.push({ field: "escolaridade", op: "==", value: "6\u00aa a 9\u00aa Fundamental" });
 
   // UF filter
   for (const [name, code] of Object.entries(UF_NAME_TO_CODE)) {
@@ -2884,50 +2905,45 @@ function parseQuery(text) {
     }
   }
 
-  // Sort
-  if (/\b(salario|paga bem|remuneracao|melhores salarios)\b/.test(q)) {
+  // Sort — expanded synonyms
+  if (/\b(salario|paga bem|remuneracao|melhores salarios|paga mais|mais pagam|melhor pag[oa])\b/.test(q)) {
     intent.sort = { field: "salario", direction: "desc" };
-  } else if (/\b(oportunidade|entrada|futuro|pontos de entrada)\b/.test(q)) {
+  } else if (/\b(oportunidade|entrada|futuro|pontos de entrada|potencial)\b/.test(q)) {
     intent.sort = { field: "oportunidade", direction: "desc" };
-  } else if (/\b(crescendo|crescimento)\b/.test(q)) {
+  } else if (/\b(vantagem)\b/.test(q) && !intent.filters.some(f => f.field === "vantagem")) {
+    intent.sort = { field: "vantagem", direction: "desc" };
+  } else if (/\b(crescendo|crescimento|contratando|mais contratam|admissoes)\b/.test(q)) {
     intent.sort = { field: "saldo", direction: "desc" };
-  } else if (/\b(diminuindo|perdendo|declinio)\b/.test(q)) {
+  } else if (/\b(diminuindo|perdendo|declinio|demitindo|encolhendo)\b/.test(q)) {
     intent.sort = { field: "saldo", direction: "asc" };
-  } else if (/\b(exposicao|mais risco)\b/.test(q)) {
+  } else if (/\b(exposicao|mais risco|mais expostas?)\b/.test(q)) {
     intent.sort = { field: "exposicao", direction: "desc" };
   }
 
   // Aggregation
-  if (/\b(quantos?|numero|total|vagas)\b/.test(q)) {
+  if (/\b(quantos?|quantas?|numero|total de|total)\b/.test(q)) {
     intent.aggregate = "sum";
     intent.aggregateField = "empregados";
   }
 
   // Limit / top / bottom
-  const numMatch = q.match(/\b(top|melhores?|maiores?|piores?|menores?)\s*(\d+)?\b/);
+  const numMatch = q.match(/\b(top|melhores?|maiores?|piores?|menores?|principais)\s*(\d+)?\b/);
   if (numMatch) {
     intent.limit = numMatch[2] ? parseInt(numMatch[2]) : 10;
     if (/\b(piores?|menores?)\b/.test(q)) {
       if (!intent.sort) intent.sort = { field: "exposicao", direction: "desc" };
-      // "piores" for risk means highest exposure
     } else {
       if (!intent.sort) intent.sort = { field: "oportunidade", direction: "desc" };
     }
   }
 
   // GroupBy
-  if (/\b(por setor|por grupo)\b/.test(q)) intent.groupBy = "grande_grupo";
-  else if (/\b(por escolaridade|por nivel)\b/.test(q)) intent.groupBy = "escolaridade";
-  else if (/\b(por estado|por uf|estados)\b/.test(q)) intent.groupBy = "uf";
+  if (/\b(por setor|por grupo|por area|setores)\b/.test(q)) intent.groupBy = "grande_grupo";
+  else if (/\b(por escolaridade|por nivel|por educacao|por formacao)\b/.test(q)) intent.groupBy = "escolaridade";
+  else if (/\b(por estado|por uf|por regiao|estados)\b/.test(q)) intent.groupBy = "uf";
 
-  // Default: if only demographic + risk but no aggregate, infer sum
-  if (intent.demographic && intent.filters.some(f => f.field === "exposicao") && !intent.aggregate) {
-    intent.aggregate = "sum";
-    intent.aggregateField = "empregados";
-  }
-
-  // If race demographic + risk but no aggregate, infer sum
-  if (intent.raceDemographic && intent.filters.some(f => f.field === "exposicao") && !intent.aggregate) {
+  // Infer aggregate for demographic + risk/filter combinations
+  if ((intent.demographic || intent.raceDemographic) && intent.filters.some(f => f.field === "exposicao") && !intent.aggregate) {
     intent.aggregate = "sum";
     intent.aggregateField = "empregados";
   }
@@ -2941,6 +2957,8 @@ function parseQuery(text) {
   if (!intent.sort && !intent.aggregate && !intent.groupBy) {
     if (intent.filters.some(f => f.field === "exposicao" && f.op === ">=")) {
       intent.sort = { field: "empregados", direction: "desc" };
+    } else if (intent.filters.some(f => f.field === "salario")) {
+      intent.sort = { field: "salario", direction: "desc" };
     } else {
       intent.sort = { field: "empregados", direction: "desc" };
     }
@@ -3195,6 +3213,11 @@ function describeIntent(intent) {
   for (const f of intent.filters) {
     if (f.field === "exposicao" && f.op === ">=") parts.push("em risco (exposi\u00e7\u00e3o \u2265 " + f.value + ")");
     else if (f.field === "exposicao" && f.op === "<=") parts.push("seguras (exposi\u00e7\u00e3o \u2264 " + f.value + ")");
+    else if (f.field === "vantagem" && f.op === ">=") parts.push("com vantagem IA (\u2265 " + f.value + ")");
+    else if (f.field === "vantagem" && f.op === "<=") parts.push("sem vantagem IA (\u2264 " + f.value + ")");
+    else if (f.field === "oportunidade" && f.op === ">=") parts.push("alta oportunidade (\u2265 " + f.value + ")");
+    else if (f.field === "salario" && f.op === ">=") parts.push("sal\u00e1rio \u2265 R$" + f.value.toLocaleString("pt-BR"));
+    else if (f.field === "salario" && f.op === "<=") parts.push("sal\u00e1rio \u2264 R$" + f.value.toLocaleString("pt-BR"));
     else if (f.field === "escolaridade") parts.push("escolaridade: " + f.value);
     else if (f.field === "uf") {
       const abbr = summaryData.uf_codes[f.value] || f.value;
@@ -3212,6 +3235,17 @@ function describeIntent(intent) {
 function renderResult(result) {
   const container = document.getElementById("perguntarResult");
   if (!result) { container.innerHTML = ""; return; }
+
+  // Empty results
+  if ((result.type === "list" && (!result.items || result.items.length === 0)) ||
+      (result.type === "aggregate" && result.value === 0) ||
+      (result.type === "grouped" && (!result.groups || result.groups.length === 0))) {
+    container.innerHTML = `<div class="card" style="text-align:center;padding:32px 24px">
+      <div style="font-size:18px;font-weight:600;margin-bottom:8px">Nenhum resultado encontrado</div>
+      <div style="font-size:14px;color:var(--fg2)">Tente reformular sua pergunta ou usar termos diferentes.<br>Exemplos: "vagas em risco", "melhores sal\u00e1rios", "crescimento por setor"</div>
+    </div>`;
+    return;
+  }
 
   let html = "";
 
