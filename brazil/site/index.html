@@ -477,7 +477,6 @@ canvas#scatterCanvas { display: block; cursor: crosshair; }
   border-radius: var(--radius);
   padding: 20px;
 }
-.action-card .action-icon { font-size: 28px; margin-bottom: 10px; }
 .action-card .action-title { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
 .action-card .action-desc { font-size: 13px; color: var(--fg2); line-height: 1.5; margin-bottom: 8px; }
 .action-card .action-suggestion { font-size: 12px; color: var(--accent); font-weight: 500; }
@@ -2449,23 +2448,20 @@ function selectOccupation(occ) {
   html += `<h3 style="font-size:16px;font-weight:600;margin-bottom:12px;">O que fazer?</h3>`;
   html += `<div class="action-cards">`;
   if (exp >= 5 && opo >= 5) {
-    html += `<div class="action-card" style="border-left:3px solid var(--blue)">
-      <div class="action-icon">&#x1F680;</div>
+    html += `<div class="action-card">
       <div class="action-title">Adote IA como ferramenta</div>
       <div class="action-desc">Profissionais da sua \u00e1rea que dominam ferramentas de IA t\u00eam vantagem competitiva. A alta oportunidade indica que a IA pode amplificar sua produtividade.</div>
       <div class="action-suggestion">Explore ferramentas de IA espec\u00edficas para sua \u00e1rea e invista em cursos pr\u00e1ticos.</div>
     </div>`;
   }
   if (exp >= 6 && opo < 5) {
-    html += `<div class="action-card" style="border-left:3px solid var(--yellow)">
-      <div class="action-icon">&#x1F504;</div>
+    html += `<div class="action-card">
       <div class="action-title">Considere uma transi\u00e7\u00e3o</div>
       <div class="action-desc">Com alta exposi\u00e7\u00e3o e baixa oportunidade, esta ocupa\u00e7\u00e3o pode encolher. Veja abaixo ocupa\u00e7\u00f5es relacionadas com melhores perspectivas.</div>
       <div class="action-suggestion">Avalie ocupa\u00e7\u00f5es do mesmo grupo com melhor pontua\u00e7\u00e3o de oportunidade.</div>
     </div>`;
   }
-  html += `<div class="action-card" style="border-left:3px solid var(--green)">
-    <div class="action-icon">&#x1F331;</div>
+  html += `<div class="action-card">
     <div class="action-title">Desenvolva habilidades complementares</div>
     <div class="action-desc">Habilidades que a IA n\u00e3o substitui facilmente: criatividade, empatia, lideran\u00e7a, negocia\u00e7\u00e3o, pensamento cr\u00edtico e gest\u00e3o de pessoas.</div>
     <div class="action-suggestion">Invista em soft skills e em \u00e1reas que exigem julgamento humano complexo.</div>
