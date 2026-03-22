@@ -2322,7 +2322,7 @@ painelSearch.addEventListener("input", function() {
   const matches = data.filter(d => fuzzyMatch(q, d.titulo) || fuzzyMatch(q, d.codigo)).slice(0, 20);
   if (matches.length === 0) { painelDropdown.classList.remove("open"); return; }
   painelDropdown.innerHTML = matches.map((m, i) =>
-    `<div class="search-item" data-idx="${data.indexOf(m)}">${m.titulo}<span class="search-code">${m.codigo}</span></div>`
+    `<div class="search-item" data-idx="${data.indexOf(m)}">${escapeHtml(m.titulo)}<span class="search-code">${escapeHtml(m.codigo)}</span></div>`
   ).join("");
   painelDropdown.classList.add("open");
   painelHighlightIdx = -1;
@@ -3383,7 +3383,7 @@ function renderOccupationTable(items, showDemCount) {
 }
 
 function escapeHtml(str) {
-  return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
 }
 
 function runPerguntar(query) {
@@ -3493,7 +3493,7 @@ heroSearch.addEventListener("input", function() {
   const matches = data.filter(d => fuzzyMatch(q, d.titulo) || fuzzyMatch(q, d.codigo)).slice(0, 12);
   if (matches.length === 0) { heroDropdown.classList.remove("open"); return; }
   heroDropdown.innerHTML = matches.map((m, i) =>
-    `<div class="search-item" data-idx="${data.indexOf(m)}">${m.titulo}<span class="search-code">${m.codigo}</span></div>`
+    `<div class="search-item" data-idx="${data.indexOf(m)}">${escapeHtml(m.titulo)}<span class="search-code">${escapeHtml(m.codigo)}</span></div>`
   ).join("");
   heroDropdown.classList.add("open");
   heroHighlightIdx = -1;

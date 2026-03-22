@@ -514,9 +514,31 @@ Rules:
 
 // ── API handler ───────────────────────────────────────────────────────────
 
+// Simple in-memory rate limiter (per serverless instance)
+const rateMap = new Map();
+const RATE_WINDOW = 60000; // 1 minute
+const RATE_LIMIT = 10; // max requests per IP per window
+
+function checkRate(ip) {
+  const now = Date.now();
+  const entry = rateMap.get(ip);
+  if (!entry || now - entry.start > RATE_WINDOW) {
+    rateMap.set(ip, { start: now, count: 1 });
+    return true;
+  }
+  entry.count++;
+  return entry.count <= RATE_LIMIT;
+}
+
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
+  }
+
+  // Rate limiting
+  const ip = req.headers["x-forwarded-for"]?.split(",")[0]?.trim() || "unknown";
+  if (!checkRate(ip)) {
+    return res.status(429).json({ error: "Muitas requisições. Aguarde um momento." });
   }
 
   const { question } = req.body;
@@ -524,9 +546,14 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: "Missing question" });
   }
 
+  // Input length limit
+  if (question.length > 500) {
+    return res.status(400).json({ error: "Pergunta muito longa (máximo 500 caracteres)." });
+  }
+
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) {
-    return res.status(500).json({ error: "ANTHROPIC_API_KEY not configured" });
+    return res.status(500).json({ error: "Serviço indisponível." });
   }
 
   const client = new Anthropic({ apiKey });
@@ -538,7 +565,7 @@ export default async function handler(req, res) {
     const maxIterations = 6;
     for (let i = 0; i < maxIterations; i++) {
       const response = await client.messages.create({
-        model: "claude-sonnet-4-20250514",
+        model: "claude-sonnet-4-6",
         max_tokens: 2048,
         system: SYSTEM_PROMPT,
         tools,
