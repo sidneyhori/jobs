@@ -1,6 +1,20 @@
 import Anthropic from "@anthropic-ai/sdk";
-import { readFileSync } from "fs";
+import { readFileSync, existsSync } from "fs";
 import { join } from "path";
+
+// Load .env.local for local dev (Vercel production injects env vars automatically)
+if (!process.env.ANTHROPIC_API_KEY) {
+  try {
+    const envPath = join(process.cwd(), ".env.local");
+    if (existsSync(envPath)) {
+      const lines = readFileSync(envPath, "utf-8").split("\n");
+      for (const line of lines) {
+        const match = line.match(/^([^#=]+)=(.*)$/);
+        if (match) process.env[match[1].trim()] = match[2].trim();
+      }
+    }
+  } catch (_) {}
+}
 
 // Load data at cold-start (cached across invocations)
 const dataPath = join(process.cwd(), "brazil", "site", "data.json");
