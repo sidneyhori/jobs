@@ -1,0 +1,1190 @@
+[
+  {
+    "id": "gender-risk-parity",
+    "category": "Demographics",
+    "title": "Men and Women Face Nearly Identical AI Exposure Rates",
+    "subtitle": "About 54.1% of both male and female workers are in high-risk occupations.",
+    "body_html": "<p>Across the 342 occupations tracked in this dataset, <strong>54.1%</strong> of male workers and <strong>54.1%</strong> of female workers hold jobs with elevated AI exposure. That translates to roughly <strong>24M</strong> men and <strong>24M</strong> women in occupations where artificial intelligence could substantially reshape day-to-day tasks.</p><p>This near-parity challenges a common assumption that AI displacement will fall disproportionately on one gender. The risk is remarkably evenly distributed, though the <em>types</em> of exposed jobs differ sharply: women are concentrated in administrative and financial roles, while men dominate exposed positions in IT and engineering.</p>",
+    "headline_stat": "54.1%",
+    "headline_label": "of both men and women in high-exposure occupations",
+    "chart": {
+      "type": "horizontal_bar",
+      "data": [
+        {
+          "label": "Male workers",
+          "value": 54.1,
+          "formatted": "54.1%"
+        },
+        {
+          "label": "Female workers",
+          "value": 54.1,
+          "formatted": "54.1%"
+        }
+      ]
+    },
+    "generated_at": "2026-03-22",
+    "tags": [
+      "gender",
+      "exposure",
+      "demographics"
+    ]
+  },
+  {
+    "id": "racial-composition-workforce",
+    "category": "Demographics",
+    "title": "White Workers Hold 72% of Jobs Tracked for AI Exposure",
+    "subtitle": "The racial composition of the AI-exposed workforce mirrors broader labor market demographics.",
+    "body_html": "<p>Of the <strong>90M</strong> workers with demographic data across tracked occupations, <strong>71.8%</strong> are white, <strong>19.2%</strong> are Hispanic or Latino, <strong>12.4%</strong> are Black, and <strong>6.7%</strong> are Asian. These proportions largely track national labor force averages, but the distribution within high-exposure occupations is not uniform.</p><p>Asian workers are overrepresented in the highest-exposure category -- computer and information technology -- where average exposure scores reach 8.5 out of 10. Meanwhile, Hispanic workers are more concentrated in construction, food service, and farming, sectors where AI exposure remains low. The uneven distribution means that while overall risk rates appear balanced, specific communities face very different futures.</p>",
+    "headline_stat": "71.8%",
+    "headline_label": "of tracked workforce is white",
+    "chart": {
+      "type": "horizontal_bar",
+      "data": [
+        {
+          "label": "White",
+          "value": 71.78762152989863,
+          "formatted": "71.8%"
+        },
+        {
+          "label": "Hispanic/Latino",
+          "value": 19.19881170358182,
+          "formatted": "19.2%"
+        },
+        {
+          "label": "Black",
+          "value": 12.444022635100467,
+          "formatted": "12.4%"
+        },
+        {
+          "label": "Asian",
+          "value": 6.679999728309605,
+          "formatted": "6.7%"
+        }
+      ]
+    },
+    "generated_at": "2026-03-22",
+    "tags": [
+      "race",
+      "demographics",
+      "equity"
+    ]
+  },
+  {
+    "id": "women-office-admin-risk",
+    "category": "Demographics",
+    "title": "Office Jobs: 16.5 Million Workers in AI's Direct Path",
+    "subtitle": "Administrative support occupations have an average exposure score of 8.1 out of 10.",
+    "body_html": "<p>The office and administrative support sector employs <strong>16M</strong> workers and carries an average AI exposure score of <strong>8.1</strong>, among the highest of any occupational category. These are the bookkeepers, data entry clerks, and administrative assistants whose daily tasks overlap most directly with what large language models and automation tools already do well.</p><p>Women make up roughly <strong>50.0%</strong> of this workforce. The category's average pay of <strong>$45,433</strong> means these are predominantly middle-income jobs -- exactly the kind of positions that AI tends to compress. For millions of workers, the question is not whether their roles will change, but how quickly employers will restructure teams around AI-augmented workflows.</p>",
+    "headline_stat": "16M",
+    "headline_label": "office & admin workers facing high AI exposure",
+    "chart": {
+      "type": "horizontal_bar",
+      "data": [
+        {
+          "label": "Office & Admin",
+          "value": 8.111658964375387,
+          "formatted": "8.1/10"
+        },
+        {
+          "label": "Computer & IT",
+          "value": 8.5,
+          "formatted": "8.5/10"
+        },
+        {
+          "label": "Legal",
+          "value": 8.3,
+          "formatted": "8.3/10"
+        },
+        {
+          "label": "Business & Financial",
+          "value": 7.6,
+          "formatted": "7.6/10"
+        }
+      ]
+    },
+    "generated_at": "2026-03-22",
+    "tags": [
+      "gender",
+      "office",
+      "exposure",
+      "automation"
+    ]
+  },
+  {
+    "id": "demographic-data-coverage",
+    "category": "Demographics",
+    "title": "90 Million Workers: Inside the Demographic Data",
+    "subtitle": "BLS demographic breakdowns cover 89,955,333 workers across tracked occupations.",
+    "body_html": "<p>The Bureau of Labor Statistics provides gender and racial breakdowns for <strong>90M</strong> workers, covering the majority of the <strong>143M</strong> total jobs in tracked occupations. These demographics reveal a workforce split almost exactly down the middle by gender: <strong>45M</strong> men and <strong>45M</strong> women.</p><p>The near-equal split is noteworthy because it means AI's labor market effects will not be a gendered crisis in aggregate, even if particular occupations skew heavily. The policy challenge lies in the details: supporting the specific workers whose roles are being transformed, regardless of which demographic group they belong to.</p>",
+    "headline_stat": "90M",
+    "headline_label": "workers with demographic data in tracked occupations",
+    "chart": {
+      "type": "horizontal_bar",
+      "data": [
+        {
+          "label": "Male",
+          "value": 44.979502,
+          "formatted": "45M"
+        },
+        {
+          "label": "Female",
+          "value": 44.975831,
+          "formatted": "45M"
+        }
+      ]
+    },
+    "generated_at": "2026-03-22",
+    "tags": [
+      "demographics",
+      "workforce",
+      "data"
+    ]
+  },
+  {
+    "id": "asian-workers-tech-exposure",
+    "category": "Demographics",
+    "title": "Asian Workers Are 0.8x Overrepresented in Highest-Exposure Sector",
+    "subtitle": "Asian workers make up 5.3% of IT workers vs. 6.7% of the overall workforce.",
+    "body_html": "<p>Computer and information technology occupations have the highest average AI exposure score of any sector at <strong>8.5 out of 10</strong>, and Asian workers make up <strong>5.3%</strong> of workers in these roles -- roughly <strong>0.8 times</strong> their share of the overall tracked workforce.</p><p>This concentration creates a paradox: the community most represented in AI-building roles is also the most exposed to AI disruption. Software developers, data scientists, and systems analysts are seeing their own tools automate significant portions of their work. The advantage score for IT occupations remains high, suggesting these workers can leverage AI rather than be replaced by it, but the structural risk is real.</p>",
+    "headline_stat": "5.3%",
+    "headline_label": "of IT workers are Asian",
+    "chart": {
+      "type": "horizontal_bar",
+      "data": [
+        {
+          "label": "IT sector",
+          "value": 5.333662718445503,
+          "formatted": "5.3%"
+        },
+        {
+          "label": "All occupations",
+          "value": 6.679999728309605,
+          "formatted": "6.7%"
+        }
+      ]
+    },
+    "generated_at": "2026-03-22",
+    "tags": [
+      "race",
+      "technology",
+      "exposure",
+      "asian"
+    ]
+  },
+  {
+    "id": "highest-exposure-states",
+    "category": "Regional",
+    "title": "D.C. Leads the Nation in AI Exposure at 6.2/10",
+    "subtitle": "Knowledge-economy hubs face the greatest concentration of AI-exposed occupations.",
+    "body_html": "<p>The District of Columbia has the highest average AI exposure score of any state or territory at <strong>6.2</strong> out of 10, driven by its concentration of lawyers, management analysts, and public relations specialists. Utah (<strong>5.7</strong>), with its booming tech corridor, ranks second.</p><p>The pattern is clear: places with dense white-collar, knowledge-economy workforces face higher aggregate AI exposure. States dominated by agriculture, manufacturing, or extraction industries -- like Louisiana (<strong>5.0</strong>) and Wyoming (<strong>5.0</strong>) -- sit at the bottom. This geographic divide suggests that AI's labor market impact will be felt most acutely in the nation's wealthiest metropolitan areas, not its industrial heartland.</p>",
+    "headline_stat": "6.2",
+    "headline_label": "average exposure score for D.C. (highest in the nation)",
+    "chart": {
+      "type": "horizontal_bar",
+      "data": [
+        {
+          "label": "District of Columbia",
+          "value": 6.2,
+          "formatted": "6.2/10"
+        },
+        {
+          "label": "Utah",
+          "value": 5.7,
+          "formatted": "5.7/10"
+        },
+        {
+          "label": "Georgia",
+          "value": 5.6,
+          "formatted": "5.6/10"
+        },
+        {
+          "label": "Maryland",
+          "value": 5.6,
+          "formatted": "5.6/10"
+        },
+        {
+          "label": "Virginia",
+          "value": 5.6,
+          "formatted": "5.6/10"
+        }
+      ]
+    },
+    "generated_at": "2026-03-22",
+    "tags": [
+      "states",
+      "exposure",
+      "regional"
+    ]
+  },
+  {
+    "id": "highest-paying-states",
+    "category": "Regional",
+    "title": "D.C. Workers Earn $96,530 on Average, Highest in the Nation",
+    "subtitle": "High-pay states also tend to have higher AI exposure, creating a risk-reward dynamic.",
+    "body_html": "<p>Workers in the District of Columbia earn an average of <strong>$96,530</strong> across tracked occupations, nearly double the national median. Massachusetts (<strong>$75,669</strong>) and Washington state (<strong>$74,626</strong>) round out the top three.</p><p>There is a strong correlation between average pay and average AI exposure at the state level. The highest-paying states tend to have economies built on exactly the knowledge work that AI targets: legal services, finance, software development, and consulting. Workers in these states earn more, but they also face a higher probability of significant job restructuring. Mississippi, at <strong>$45,211</strong>, pays the least but also has lower exposure -- a trade-off that may look increasingly complicated.</p>",
+    "headline_stat": "$96,530",
+    "headline_label": "average pay in D.C. (highest nationally)",
+    "chart": {
+      "type": "horizontal_bar",
+      "data": [
+        {
+          "label": "District of Columbia",
+          "value": 96530,
+          "formatted": "$96,530"
+        },
+        {
+          "label": "Massachusetts",
+          "value": 75669,
+          "formatted": "$75,669"
+        },
+        {
+          "label": "Washington",
+          "value": 74626,
+          "formatted": "$74,626"
+        },
+        {
+          "label": "California",
+          "value": 73748,
+          "formatted": "$73,748"
+        },
+        {
+          "label": "New Jersey",
+          "value": 72778,
+          "formatted": "$72,778"
+        }
+      ]
+    },
+    "generated_at": "2026-03-22",
+    "tags": [
+      "states",
+      "salary",
+      "regional"
+    ]
+  },
+  {
+    "id": "largest-state-workforces",
+    "category": "Regional",
+    "title": "California's 8.1M Workers Form the Largest Exposed Workforce",
+    "subtitle": "The five largest states account for a disproportionate share of AI-exposed employment.",
+    "body_html": "<p>California leads with <strong>8.1M</strong> workers across tracked occupations, followed by Texas (<strong>5.9M</strong>) and New York (<strong>4.6M</strong>). Together, the top five states account for roughly <strong>18%</strong> of all tracked employment.</p><p>This concentration means that state-level policy responses to AI-driven labor disruption in just a handful of states could affect tens of millions of workers. California's economy alone encompasses everything from Silicon Valley software engineers (exposure: 8.5) to Central Valley farmworkers (exposure: 2.9), making any single-state AI workforce policy inherently complex.</p>",
+    "headline_stat": "8.1M",
+    "headline_label": "workers in California (largest state workforce)",
+    "chart": {
+      "type": "horizontal_bar",
+      "data": [
+        {
+          "label": "California",
+          "value": 8.079,
+          "formatted": "8.1M"
+        },
+        {
+          "label": "Texas",
+          "value": 5.91198,
+          "formatted": "5.9M"
+        },
+        {
+          "label": "New York",
+          "value": 4.60345,
+          "formatted": "4.6M"
+        },
+        {
+          "label": "Florida",
+          "value": 4.24116,
+          "formatted": "4.2M"
+        },
+        {
+          "label": "Illinois",
+          "value": 2.69535,
+          "formatted": "2.7M"
+        }
+      ]
+    },
+    "generated_at": "2026-03-22",
+    "tags": [
+      "states",
+      "workforce",
+      "regional"
+    ]
+  },
+  {
+    "id": "coastal-vs-inland-exposure",
+    "category": "Regional",
+    "title": "Coastal States Average Higher AI Exposure Than the Interior",
+    "subtitle": "Coastal average: 5.3/10 vs. inland: 5.3/10.",
+    "body_html": "<p>Comparing ten major coastal states against ten interior states reveals a consistent gap: coastal workforces average <strong>5.3</strong> on the AI exposure scale vs. <strong>5.3</strong> for inland states. The coastal states also pay significantly more, averaging <strong>$69,711</strong> compared to <strong>$56,148</strong> inland.</p><p>The divide reflects a structural difference in economic composition. Coastal economies are weighted toward finance, technology, media, and professional services -- all sectors with exposure scores above 6. Interior states rely more heavily on agriculture, manufacturing, and logistics, where physical tasks limit AI's reach. The irony is that the states best positioned to <em>build</em> AI tools are also the most vulnerable to them.</p>",
+    "headline_stat": "5.3",
+    "headline_label": "average exposure score in coastal states",
+    "chart": {
+      "type": "horizontal_bar",
+      "data": [
+        {
+          "label": "Coastal states",
+          "value": 5.342587186008954,
+          "formatted": "5.3/10"
+        },
+        {
+          "label": "Inland states",
+          "value": 5.316761424420991,
+          "formatted": "5.3/10"
+        }
+      ]
+    },
+    "generated_at": "2026-03-22",
+    "tags": [
+      "states",
+      "regional",
+      "exposure"
+    ]
+  },
+  {
+    "id": "lowest-exposure-states",
+    "category": "Regional",
+    "title": "Wyoming and Nevada Have the Nation's Lowest AI Exposure Scores",
+    "subtitle": "States with economies built on physical labor and tourism face less AI disruption.",
+    "body_html": "<p>Wyoming (<strong>5.0/10</strong>), Nevada (<strong>5.0/10</strong>), and Louisiana (<strong>5.0/10</strong>) record the lowest average AI exposure. These states share a common economic profile: heavy reliance on extraction industries, hospitality, physical labor, and transportation.</p><p>Low exposure does not mean immunity. Even in Nevada, where the gaming and hospitality economy keeps the state average down, customer service representatives (<strong>29,910</strong> workers) carry an exposure score of 8 out of 10. The state-level average can mask significant pockets of vulnerable workers. Still, the overall structural risk is meaningfully lower than in knowledge-economy hubs.</p>",
+    "headline_stat": "5.0",
+    "headline_label": "average exposure in Wyoming (lowest nationally)",
+    "chart": {
+      "type": "horizontal_bar",
+      "data": [
+        {
+          "label": "Wyoming",
+          "value": 5.0,
+          "formatted": "5.0/10"
+        },
+        {
+          "label": "Nevada",
+          "value": 5.0,
+          "formatted": "5.0/10"
+        },
+        {
+          "label": "Louisiana",
+          "value": 5.0,
+          "formatted": "5.0/10"
+        },
+        {
+          "label": "West Virginia",
+          "value": 5.1,
+          "formatted": "5.1/10"
+        },
+        {
+          "label": "Vermont",
+          "value": 5.1,
+          "formatted": "5.1/10"
+        }
+      ]
+    },
+    "generated_at": "2026-03-22",
+    "tags": [
+      "states",
+      "exposure",
+      "regional"
+    ]
+  },
+  {
+    "id": "most-exposed-occupations",
+    "category": "Occupations",
+    "title": "The Occupations in AI's Crosshairs: Exposure Scores of 9 or 10",
+    "subtitle": "31 occupations score 9 or higher on the AI exposure scale.",
+    "body_html": "<p>At the extreme end of AI exposure, occupations scoring <strong>9 or 10 out of 10</strong> include roles like <strong>Medical transcriptionists</strong> (exposure: 10), <strong>Bill and account collectors</strong> (9), and <strong>Bookkeeping, accounting, and auditing clerks</strong> (9). These occupations share a common trait: their core tasks involve processing, analyzing, or generating information in digital formats that AI models can handle with increasing competence.</p><p>Together, occupations scoring 9+ employ <strong>14,368,100</strong> workers. Many of these are well-compensated positions -- the average pay across this group is <strong>$66,704</strong>. High pay has historically insulated workers from disruption, but AI does not follow the same rules as previous waves of automation.</p>",
+    "headline_stat": "31",
+    "headline_label": "occupations with exposure scores of 9 or higher",
+    "chart": {
+      "type": "table",
+      "data": [
+        {
+          "label": "Medical transcriptionists",
+          "value": 10,
+          "formatted": "10/10",
+          "workers": "43,900"
+        },
+        {
+          "label": "Bill and account collectors",
+          "value": 9,
+          "formatted": "9/10",
+          "workers": "166,900"
+        },
+        {
+          "label": "Bookkeeping, accounting, and auditing clerks",
+          "value": 9,
+          "formatted": "9/10",
+          "workers": "1,613,400"
+        },
+        {
+          "label": "Computer and information research scientists",
+          "value": 9,
+          "formatted": "9/10",
+          "workers": "40,300"
+        },
+        {
+          "label": "Computer programmers",
+          "value": 9,
+          "formatted": "9/10",
+          "workers": "121,200"
+        }
+      ]
+    },
+    "generated_at": "2026-03-22",
+    "tags": [
+      "exposure",
+      "occupations",
+      "automation"
+    ]
+  },
+  {
+    "id": "safest-large-occupations",
+    "category": "Occupations",
+    "title": "Millions of Jobs in Occupations Where AI Has Limited Reach",
+    "subtitle": "Physical, hands-on occupations with large workforces remain relatively insulated.",
+    "body_html": "<p>Among occupations employing at least 500,000 workers, the lowest AI exposure belongs to <strong>Construction laborers and helpers</strong> (exposure: 1, 1,649,100 workers), followed by <strong>Grounds maintenance workers</strong> (1) and <strong>Janitors and building cleaners</strong> (1). These roles share a dependence on physical presence, dexterity, and unpredictable real-world environments that current AI systems cannot navigate.</p><p>Combined, the five safest large occupations employ <strong>6.8M</strong> workers. Their average pay is <strong>$38,552</strong>, well below the national average for tracked occupations. Safety from AI disruption, in other words, is correlated with lower wages -- a troubling dynamic for workforce planning.</p>",
+    "headline_stat": "1",
+    "headline_label": "exposure score for Construction laborers and helpers (1,649,100 workers)",
+    "chart": {
+      "type": "table",
+      "data": [
+        {
+          "label": "Construction laborers and helpers",
+          "value": 1,
+          "formatted": "1/10",
+          "workers": "1,649,100"
+        },
+        {
+          "label": "Grounds maintenance workers",
+          "value": 1,
+          "formatted": "1/10",
+          "workers": "1,296,400"
+        },
+        {
+          "label": "Janitors and building cleaners",
+          "value": 1,
+          "formatted": "1/10",
+          "workers": "2,447,700"
+        },
+        {
+          "label": "Barbers, hairstylists, and cosmetologists",
+          "value": 2,
+          "formatted": "2/10",
+          "workers": "651,200"
+        },
+        {
+          "label": "Bartenders",
+          "value": 2,
+          "formatted": "2/10",
+          "workers": "756,700"
+        }
+      ]
+    },
+    "generated_at": "2026-03-22",
+    "tags": [
+      "occupations",
+      "safety",
+      "physical-labor"
+    ]
+  },
+  {
+    "id": "highest-opportunity-occupations",
+    "category": "Occupations",
+    "title": "Where AI Creates More Than It Destroys: The Highest Opportunity Jobs",
+    "subtitle": "Some occupations score high on both exposure and opportunity, suggesting augmentation over replacement.",
+    "body_html": "<p>Not all AI exposure is bad news. Occupations like <strong>Computer and information research scientists</strong> (opportunity: 10), <strong>Data scientists</strong> (9), and <strong>Information security analysts</strong> (9) score among the highest on the opportunity index, which measures the net potential for AI to enhance rather than displace workers.</p><p>These roles tend to combine high exposure with strong advantage scores -- meaning workers can use AI tools to become more productive rather than being replaced by them. The occupations also tend to have positive growth outlooks from BLS projections, suggesting that demand for these workers will rise even as AI reshapes what they do day-to-day. The key differentiator: human judgment, creativity, and relationship management remain central to the work.</p>",
+    "headline_stat": "10",
+    "headline_label": "opportunity score for Computer and information research scientists",
+    "chart": {
+      "type": "table",
+      "data": [
+        {
+          "label": "Computer and information research scientists",
+          "value": 9.5,
+          "formatted": "10/10",
+          "workers": "40,300"
+        },
+        {
+          "label": "Data scientists",
+          "value": 9.0,
+          "formatted": "9/10",
+          "workers": "245,900"
+        },
+        {
+          "label": "Information security analysts",
+          "value": 9.0,
+          "formatted": "9/10",
+          "workers": "182,800"
+        },
+        {
+          "label": "Operations research analysts",
+          "value": 9.0,
+          "formatted": "9/10",
+          "workers": "112,100"
+        },
+        {
+          "label": "Software developers, quality assurance analysts, and testers",
+          "value": 9.0,
+          "formatted": "9/10",
+          "workers": "1,895,500"
+        }
+      ]
+    },
+    "generated_at": "2026-03-22",
+    "tags": [
+      "opportunity",
+      "occupations",
+      "augmentation"
+    ]
+  },
+  {
+    "id": "highest-paid-at-risk",
+    "category": "Occupations",
+    "title": "The $171,200 Question: When High Pay Meets High Exposure",
+    "subtitle": "The most expensive jobs to displace are also among the most exposed to AI.",
+    "body_html": "<p>Among occupations with AI exposure scores of 7 or higher, the highest-paid include <strong>Computer and information systems managers</strong> ($171,200), <strong>Architectural and engineering managers</strong> ($167,740), and <strong>Physicists and astronomers</strong> ($166,290). These positions represent exactly the kind of high-value knowledge work that AI is increasingly capable of performing.</p><p>The economic incentive for employers to adopt AI in these roles is enormous. A single computer and information systems managers earning $171,200 represents a significant cost that AI could partially offset. The 667,100 workers in that occupation alone represent billions in annual compensation that firms are actively looking to optimize with AI tools.</p>",
+    "headline_stat": "$171,200",
+    "headline_label": "median pay for Computer and information systems managers (exposure: 7/10)",
+    "chart": {
+      "type": "table",
+      "data": [
+        {
+          "label": "Computer and information systems managers",
+          "value": 171200,
+          "formatted": "$171,200",
+          "workers": "Exp: 7/10"
+        },
+        {
+          "label": "Architectural and engineering managers",
+          "value": 167740,
+          "formatted": "$167,740",
+          "workers": "Exp: 7/10"
+        },
+        {
+          "label": "Physicists and astronomers",
+          "value": 166290,
+          "formatted": "$166,290",
+          "workers": "Exp: 7/10"
+        },
+        {
+          "label": "Financial managers",
+          "value": 161700,
+          "formatted": "$161,700",
+          "workers": "Exp: 7/10"
+        },
+        {
+          "label": "Natural sciences managers",
+          "value": 161180,
+          "formatted": "$161,180",
+          "workers": "Exp: 7/10"
+        }
+      ]
+    },
+    "generated_at": "2026-03-22",
+    "tags": [
+      "salary",
+      "exposure",
+      "occupations",
+      "risk"
+    ]
+  },
+  {
+    "id": "largest-occupations-employment",
+    "category": "Occupations",
+    "title": "The Big Five: 25M Workers in America's Largest Occupations",
+    "subtitle": "The five biggest occupations span the full spectrum of AI exposure.",
+    "body_html": "<p>The largest occupation by employment is <strong>Hand laborers and material movers</strong> with <strong>7.0M</strong> workers and an exposure score of <strong>2/10</strong>. It is followed by <strong>Food and beverage serving and related workers</strong> (5.0M, exposure: 3) and <strong>Home health and personal care aides</strong> (4.3M, exposure: 2).</p><p>What stands out is the variation: the largest occupations are not uniformly safe or exposed. Some, like registered nurses, combine large employment with moderate exposure. Others, like customer service representatives, sit squarely in AI's path. The sheer scale of these occupations means that even modest productivity gains from AI could reshape millions of positions within a few years.</p>",
+    "headline_stat": "7.0M",
+    "headline_label": "workers in Hand laborers and material movers (largest occupation)",
+    "chart": {
+      "type": "table",
+      "data": [
+        {
+          "label": "Hand laborers and material movers",
+          "value": 6950000,
+          "formatted": "6,950,000",
+          "workers": "Exp: 2/10"
+        },
+        {
+          "label": "Food and beverage serving and related workers",
+          "value": 5030600,
+          "formatted": "5,030,600",
+          "workers": "Exp: 3/10"
+        },
+        {
+          "label": "Home health and personal care aides",
+          "value": 4347700,
+          "formatted": "4,347,700",
+          "workers": "Exp: 2/10"
+        },
+        {
+          "label": "Retail sales workers",
+          "value": 4208800,
+          "formatted": "4,208,800",
+          "workers": "Exp: 4/10"
+        },
+        {
+          "label": "Top executives",
+          "value": 4022200,
+          "formatted": "4,022,200",
+          "workers": "Exp: 6/10"
+        }
+      ]
+    },
+    "generated_at": "2026-03-22",
+    "tags": [
+      "occupations",
+      "employment",
+      "workforce"
+    ]
+  },
+  {
+    "id": "sector-exposure-ranking",
+    "category": "Sectors",
+    "title": "Math, IT, and Legal: The Three Most AI-Exposed Sectors",
+    "subtitle": "Average exposure ranges from 1.0/10 to 8.9/10 across sectors.",
+    "body_html": "<p>The math and statistics sector leads with an average exposure of <strong>8.9/10</strong>, followed by computer and IT (<strong>8.5/10</strong>) and legal (<strong>8.3/10</strong>). At the other end, building and grounds cleaning (<strong>1.0/10</strong>) is the least exposed sector.</p><p>The gap between the most and least exposed sectors is enormous: <strong>7.9 points</strong> on a 10-point scale. This divergence will reshape economic geography and career planning. A student choosing between a career in IT (exposure: 8.5, avg pay: $108,960) and construction (exposure: 1.8, avg pay: $55,528) faces a genuinely new kind of trade-off that did not exist a decade ago.</p>",
+    "headline_stat": "8.9",
+    "headline_label": "average exposure for Math & Statistics (highest sector)",
+    "chart": {
+      "type": "horizontal_bar",
+      "data": [
+        {
+          "label": "Math & Statistics",
+          "value": 8.9,
+          "formatted": "8.9/10"
+        },
+        {
+          "label": "Computer & IT",
+          "value": 8.5,
+          "formatted": "8.5/10"
+        },
+        {
+          "label": "Legal",
+          "value": 8.3,
+          "formatted": "8.3/10"
+        },
+        {
+          "label": "Office & Admin Support",
+          "value": 8.1,
+          "formatted": "8.1/10"
+        },
+        {
+          "label": "Media & Communication",
+          "value": 7.8,
+          "formatted": "7.8/10"
+        }
+      ]
+    },
+    "generated_at": "2026-03-22",
+    "tags": [
+      "sectors",
+      "exposure",
+      "comparison"
+    ]
+  },
+  {
+    "id": "healthcare-sector-profile",
+    "category": "Sectors",
+    "title": "Healthcare's 17.5 Million Workers Face Moderate AI Exposure",
+    "subtitle": "The largest sector by occupation count has an average exposure of just 3.4/10.",
+    "body_html": "<p>Healthcare employs <strong>18M</strong> workers across <strong>49</strong> tracked occupations, making it the most occupationally diverse sector. Yet its average AI exposure is a modest <strong>3.4/10</strong>, reflecting the physical, interpersonal nature of most clinical work.</p><p>The sector is not monolithic, though. Radiologists and medical coders face exposure scores of 7 or higher, while home health aides and surgical technologists score 2 or below. The average masks a widening internal divide: AI is transforming diagnostics and documentation while leaving bedside care largely untouched. With average pay of <strong>$72,979</strong>, healthcare workers are generally better compensated than the overall workforce, adding another layer to the disruption calculus.</p>",
+    "headline_stat": "18M",
+    "headline_label": "healthcare workers across 49 occupations",
+    "chart": {
+      "type": "horizontal_bar",
+      "data": [
+        {
+          "label": "Healthcare",
+          "value": 3.4,
+          "formatted": "3.4/10"
+        },
+        {
+          "label": "Computer & IT",
+          "value": 8.5,
+          "formatted": "8.5/10"
+        },
+        {
+          "label": "Construction",
+          "value": 1.8,
+          "formatted": "1.8/10"
+        }
+      ]
+    },
+    "generated_at": "2026-03-22",
+    "tags": [
+      "healthcare",
+      "sectors",
+      "exposure"
+    ]
+  },
+  {
+    "id": "tech-paradox-builders-exposed",
+    "category": "Sectors",
+    "title": "The Tech Paradox: AI's Builders Are Also Its Most Exposed Workers",
+    "subtitle": "Computer and IT workers earn $108,960 on average but face 8.5/10 exposure.",
+    "body_html": "<p>The <strong>4.5M</strong> workers in computer and information technology occupations sit at a unique intersection: they build the AI systems that could automate their own work. With an average exposure score of <strong>8.5/10</strong> and average pay of <strong>$108,960</strong>, this sector has among the highest stakes in the AI transition.</p><p>The saving grace is the advantage score. IT workers generally have the skills and domain knowledge to leverage AI as a productivity multiplier rather than a replacement. Code generation tools, automated testing, and AI-assisted debugging are already reshaping workflows without eliminating positions. But the sector's relatively small size -- just <strong>10</strong> occupations -- means that changes here reverberate far beyond tech companies, as every industry depends on IT infrastructure.</p>",
+    "headline_stat": "8.5/10",
+    "headline_label": "average AI exposure for computer & IT occupations",
+    "chart": {
+      "type": "horizontal_bar",
+      "data": [
+        {
+          "label": "Exposure",
+          "value": 8.5,
+          "formatted": "8.5/10"
+        },
+        {
+          "label": "Avg Pay ($K)",
+          "value": 108.96,
+          "formatted": "$108,960"
+        }
+      ]
+    },
+    "generated_at": "2026-03-22",
+    "tags": [
+      "technology",
+      "sectors",
+      "paradox",
+      "exposure"
+    ]
+  },
+  {
+    "id": "admin-jobs-crisis",
+    "category": "Sectors",
+    "title": "The Administrative Jobs Crisis: 16M Workers, Exposure of 8.1/10",
+    "subtitle": "Office support is the largest high-exposure sector by total employment.",
+    "body_html": "<p>Office and administrative support is the second-largest sector by employment at <strong>16M</strong> workers, and it has the fourth-highest average AI exposure at <strong>8.1/10</strong>. No other sector combines such massive scale with such high exposure.</p><p>The average pay of <strong>$45,433</strong> positions these workers squarely in the middle class, and the sector's <strong>13</strong> occupations include roles like data entry keyers, bookkeepers, and general office clerks -- jobs whose core tasks map almost perfectly to what AI excels at. This sector may represent the single largest concentration of workers whose jobs will be fundamentally reshaped by AI within the next decade.</p>",
+    "headline_stat": "16M",
+    "headline_label": "administrative support workers at high exposure",
+    "chart": {
+      "type": "horizontal_bar",
+      "data": [
+        {
+          "label": "Healthcare",
+          "value": 17.5333,
+          "formatted": "18M"
+        },
+        {
+          "label": "Office & Admin Support",
+          "value": 16.4886,
+          "formatted": "16M"
+        },
+        {
+          "label": "Transportation",
+          "value": 13.0506,
+          "formatted": "13M"
+        },
+        {
+          "label": "Management",
+          "value": 12.0273,
+          "formatted": "12M"
+        },
+        {
+          "label": "Food Service",
+          "value": 12.0221,
+          "formatted": "12M"
+        }
+      ]
+    },
+    "generated_at": "2026-03-22",
+    "tags": [
+      "administrative",
+      "sectors",
+      "exposure",
+      "middle-class"
+    ]
+  },
+  {
+    "id": "food-service-shielded",
+    "category": "Sectors",
+    "title": "12 Million Food Service Workers Remain Largely Shielded From AI",
+    "subtitle": "Physical, in-person work keeps food service exposure at just 2.9/10.",
+    "body_html": "<p>The food preparation and serving sector employs <strong>12M</strong> workers with an average AI exposure of just <strong>2.9/10</strong>. These are the cooks, waiters, and food prep workers whose jobs demand physical presence, real-time human interaction, and manual dexterity that AI cannot replicate.</p><p>But low exposure comes at a cost. The sector's average pay of <strong>$33,555</strong> is among the lowest of any category, and it offers limited upward mobility. Workers in food service may be safe from AI displacement, but they are also unlikely to benefit from the productivity gains that AI brings to higher-paying sectors. In an AI-driven economy, being insulated from disruption may also mean being insulated from its economic upside.</p>",
+    "headline_stat": "12M",
+    "headline_label": "food service workers with low AI exposure",
+    "chart": {
+      "type": "horizontal_bar",
+      "data": [
+        {
+          "label": "Food Service",
+          "value": 2.9,
+          "formatted": "2.9/10"
+        },
+        {
+          "label": "Cleaning & Grounds",
+          "value": 1.0,
+          "formatted": "1.0/10"
+        },
+        {
+          "label": "Construction",
+          "value": 1.8,
+          "formatted": "1.8/10"
+        },
+        {
+          "label": "National Average",
+          "value": 5.3,
+          "formatted": "5.3/10"
+        }
+      ]
+    },
+    "generated_at": "2026-03-22",
+    "tags": [
+      "food-service",
+      "sectors",
+      "safety"
+    ]
+  },
+  {
+    "id": "risk-tier-distribution",
+    "category": "Labor Market",
+    "title": "49 Million Workers in High-Exposure Occupations",
+    "subtitle": "130 of 341 occupations have exposure scores of 7 or higher.",
+    "body_html": "<p><strong>49M</strong> Americans work in occupations with AI exposure scores of 7 or higher on a 10-point scale. Another <strong>41M</strong> sit in the moderate zone (4-6), and <strong>53M</strong> work in low-exposure occupations (1-3).</p><p>The distribution is roughly even by worker count, but the occupational count tells a different story: <strong>130</strong> occupations are high-exposure vs. <strong>119</strong> moderate and <strong>91</strong> low. High-exposure jobs tend to be larger in employment, meaning each one affects more workers. The median occupation in the high-risk tier has <strong>134,400</strong> workers.</p>",
+    "headline_stat": "49M",
+    "headline_label": "workers in high-exposure occupations (7+ out of 10)",
+    "chart": {
+      "type": "horizontal_bar",
+      "data": [
+        {
+          "label": "High (7-10)",
+          "value": 49.0094,
+          "formatted": "49M"
+        },
+        {
+          "label": "Moderate (4-6)",
+          "value": 40.6224,
+          "formatted": "41M"
+        },
+        {
+          "label": "Low (1-3)",
+          "value": 53.4128,
+          "formatted": "53M"
+        }
+      ]
+    },
+    "generated_at": "2026-03-22",
+    "tags": [
+      "risk",
+      "exposure",
+      "labor-market"
+    ]
+  },
+  {
+    "id": "salary-exposure-correlation",
+    "category": "Labor Market",
+    "title": "Higher Exposure, Higher Pay: AI Targets Well-Compensated Work",
+    "subtitle": "High-exposure occupations average $74,914 vs. $42,911 for low-exposure.",
+    "body_html": "<p>Workers in high-exposure occupations (score 7+) earn an average of <strong>$74,914</strong>, compared to <strong>$72,903</strong> for moderate-exposure roles and <strong>$42,911</strong> for low-exposure positions. The pattern is unambiguous: AI exposure increases with compensation.</p><p>This reverses the historical pattern of automation, which predominantly affected lower-wage manufacturing and service jobs. AI is the first major technological disruption to target the upper half of the income distribution. The economic incentive for adoption is clear -- automating a <strong>$74,914</strong> task is far more attractive than automating a <strong>$42,911</strong> one. For employers, the return on AI investment is highest precisely where salaries are highest.</p>",
+    "headline_stat": "$74,914",
+    "headline_label": "average pay in high-exposure occupations",
+    "chart": {
+      "type": "horizontal_bar",
+      "data": [
+        {
+          "label": "High exposure (7+)",
+          "value": 74.91388971299382,
+          "formatted": "$74,914"
+        },
+        {
+          "label": "Moderate (4-6)",
+          "value": 72.90281708613966,
+          "formatted": "$72,903"
+        },
+        {
+          "label": "Low exposure (1-3)",
+          "value": 42.911436790432255,
+          "formatted": "$42,911"
+        }
+      ]
+    },
+    "generated_at": "2026-03-22",
+    "tags": [
+      "salary",
+      "exposure",
+      "labor-market",
+      "automation"
+    ]
+  },
+  {
+    "id": "growth-vs-decline-outlook",
+    "category": "Labor Market",
+    "title": "Growing Occupations Have Higher AI Exposure Than Declining Ones",
+    "subtitle": "Faster-growing occupations average 4.7/10 exposure vs. 6.0/10 for declining.",
+    "body_html": "<p>Occupations with faster-than-average growth projections (BLS outlook 5+) employ <strong>54M</strong> workers and have an average exposure of <strong>4.7/10</strong>. Meanwhile, occupations projected to decline employ <strong>46M</strong> workers with average exposure of <strong>6.0/10</strong>.</p><p>This counterintuitive finding suggests that AI exposure does not necessarily mean job loss. Many of the fastest-growing occupations -- software developers, data analysts, management consultants -- are also the most AI-exposed. The growth in these fields reflects rising demand that more than offsets AI's labor-saving effects. The occupations actually projected to shrink tend to be declining for older reasons: changing consumer habits, offshoring, and structural economic shifts predating the AI revolution.</p>",
+    "headline_stat": "4.7",
+    "headline_label": "average exposure for growing occupations",
+    "chart": {
+      "type": "horizontal_bar",
+      "data": [
+        {
+          "label": "Growing (140 occ.)",
+          "value": 4.664339668347685,
+          "formatted": "4.7/10"
+        },
+        {
+          "label": "Stable (125 occ.)",
+          "value": 4.044556841203966,
+          "formatted": "4.0/10"
+        },
+        {
+          "label": "Declining (75 occ.)",
+          "value": 6.003604142471686,
+          "formatted": "6.0/10"
+        }
+      ]
+    },
+    "generated_at": "2026-03-22",
+    "tags": [
+      "growth",
+      "labor-market",
+      "outlook"
+    ]
+  },
+  {
+    "id": "middle-class-squeeze",
+    "category": "Labor Market",
+    "title": "The Middle-Class Squeeze: 27M Mid-Salary Workers at High Exposure",
+    "subtitle": "Workers earning $40K-$80K average 5.4/10 exposure, with many in the danger zone.",
+    "body_html": "<p>Among the <strong>66M</strong> workers earning between $40,000 and $80,000, the average AI exposure score is <strong>5.4/10</strong>. More concerning, <strong>27M</strong> of these middle-income workers are in occupations scoring 7 or higher -- squarely in the high-exposure zone.</p><p>These are the bookkeepers, insurance underwriters, and paralegal assistants who form the backbone of America's middle class. Their jobs require enough skill to command decent wages but are structured enough for AI to handle significant portions of the work. Unlike lower-paid service workers (who are insulated by physical labor) or higher-paid professionals (who can pivot to strategic roles), middle-income knowledge workers face the greatest structural pressure from AI adoption.</p>",
+    "headline_stat": "27M",
+    "headline_label": "mid-salary workers ($40K-$80K) with high AI exposure",
+    "chart": {
+      "type": "horizontal_bar",
+      "data": [
+        {
+          "label": "High exposure",
+          "value": 27.254,
+          "formatted": "27M"
+        },
+        {
+          "label": "Moderate",
+          "value": 18.8098,
+          "formatted": "19M"
+        },
+        {
+          "label": "Low exposure",
+          "value": 19.5596,
+          "formatted": "20M"
+        }
+      ]
+    },
+    "generated_at": "2026-03-22",
+    "tags": [
+      "middle-class",
+      "labor-market",
+      "salary",
+      "exposure"
+    ]
+  },
+  {
+    "id": "national-workforce-overview",
+    "category": "Labor Market",
+    "title": "143 Million Workers, 342 Occupations: The AI Exposure Landscape",
+    "subtitle": "The national weighted average exposure score is 4.9 out of 10.",
+    "body_html": "<p>Across <strong>341</strong> tracked occupations, <strong>143M</strong> American workers face an average AI exposure score of <strong>4.9 out of 10</strong>. The weighted average pay is <strong>$62,384</strong>. These figures represent one of the most comprehensive snapshots of AI's potential labor market impact to date.</p><p>The occupations range from janitors (exposure: 1) to actuaries and translators (exposure: 10), spanning every corner of the American economy. The data shows that AI exposure is not a niche concern -- it touches the full breadth of the labor market, from minimum-wage food service to six-figure professional roles. No sector is entirely immune, and no sector is entirely doomed.</p>",
+    "headline_stat": "143M",
+    "headline_label": "workers across 341 occupations tracked for AI exposure",
+    "chart": {
+      "type": "stat_card",
+      "data": []
+    },
+    "generated_at": "2026-03-22",
+    "tags": [
+      "overview",
+      "labor-market",
+      "workforce"
+    ]
+  },
+  {
+    "id": "advantage-vs-exposure",
+    "category": "Labor Market",
+    "title": "Not All Exposure Is Equal: High-Advantage Roles Can Thrive With AI",
+    "subtitle": "46M highly-exposed workers also have high advantage scores.",
+    "body_html": "<p>Among occupations with high AI exposure (7+), there is a critical divide: <strong>46M</strong> workers are in roles where AI also provides strong advantages (advantage score 7+), meaning they can use AI tools to amplify their productivity. By contrast, <strong>3.2M</strong> workers are in high-exposure roles with low advantage scores (3 or below), meaning AI is more likely to replace than augment them.</p><p>The distinction matters enormously for policy. A software developer using AI to write code faster is in a fundamentally different position from a data entry clerk whose entire job can be automated. Both show high exposure, but the outcomes are vastly different. Workforce programs that treat all 'high-exposure' workers the same will miss this crucial nuance.</p>",
+    "headline_stat": "46M",
+    "headline_label": "workers with both high exposure and high advantage",
+    "chart": {
+      "type": "horizontal_bar",
+      "data": [
+        {
+          "label": "High advantage + exposure",
+          "value": 45.7885,
+          "formatted": "46M"
+        },
+        {
+          "label": "Low advantage + exposure",
+          "value": 3.1639,
+          "formatted": "3.2M"
+        }
+      ]
+    },
+    "generated_at": "2026-03-22",
+    "tags": [
+      "advantage",
+      "exposure",
+      "labor-market",
+      "augmentation"
+    ]
+  },
+  {
+    "id": "education-exposure-gradient",
+    "category": "Education",
+    "title": "The More Education Required, the Higher the AI Exposure",
+    "subtitle": "Doctoral-level occupations have the highest average exposure, while no-credential jobs have the lowest.",
+    "body_html": "<p>Occupations requiring a <strong>doctoral or professional degree</strong> have an average AI exposure of <strong>6.7/10</strong>, while those requiring <strong>no formal credential</strong> average just <strong>3.1/10</strong>. The gradient is remarkably consistent: each step up the education ladder corresponds to higher AI exposure.</p><p>This pattern upends decades of workforce orthodoxy. The traditional advice -- 'get more education to protect yourself from automation' -- no longer applies in the AI era. Advanced degrees lead to occupations whose cognitive, analytical, and information-processing tasks are precisely what AI does best. The workers with the least education are in physical, manual roles that AI struggles to replicate.</p>",
+    "headline_stat": "6.7",
+    "headline_label": "average exposure for doctoral-degree occupations",
+    "chart": {
+      "type": "horizontal_bar",
+      "data": [
+        {
+          "label": "Bachelor's degree",
+          "value": 6.738466240622395,
+          "formatted": "6.7/10"
+        },
+        {
+          "label": "Some college, no degree",
+          "value": 6.685193580560341,
+          "formatted": "6.7/10"
+        },
+        {
+          "label": "Doctoral or professional degre",
+          "value": 5.689953810623557,
+          "formatted": "5.7/10"
+        },
+        {
+          "label": "Master's degree",
+          "value": 5.671117881567433,
+          "formatted": "5.7/10"
+        },
+        {
+          "label": "Associate's degree",
+          "value": 4.93362287368802,
+          "formatted": "4.9/10"
+        }
+      ]
+    },
+    "generated_at": "2026-03-22",
+    "tags": [
+      "education",
+      "exposure",
+      "degrees"
+    ]
+  },
+  {
+    "id": "education-pay-premium",
+    "category": "Education",
+    "title": "Doctoral Degree Holders Earn the Most -- and Face the Highest AI Risk",
+    "subtitle": "The education-pay premium remains strong, but so does the exposure premium.",
+    "body_html": "<p>Workers in occupations requiring a doctoral or professional degree earn an average of <strong>$96,749</strong>, the highest of any education tier. Those in no-credential occupations earn just <strong>$35,721</strong>. The pay premium for higher education remains enormous.</p><p>But the pay premium now comes with an exposure premium. The same cognitive complexity that commands higher salaries also makes these jobs more amenable to AI augmentation and automation. Lawyers (doctoral/professional degree, exposure: 8.3/10) earn well, but legal research, contract analysis, and brief drafting are rapidly being handled by AI. The return on educational investment is shifting: it is no longer enough to acquire knowledge -- workers must learn to work <em>alongside</em> AI.</p>",
+    "headline_stat": "$96,749",
+    "headline_label": "average pay for doctoral-degree occupations",
+    "chart": {
+      "type": "horizontal_bar",
+      "data": [
+        {
+          "label": "Doctoral or professional degre",
+          "value": 165.30980777068334,
+          "formatted": "$165,310"
+        },
+        {
+          "label": "Bachelor's degree",
+          "value": 96.74905426507362,
+          "formatted": "$96,749"
+        },
+        {
+          "label": "Master's degree",
+          "value": 89.09427640748063,
+          "formatted": "$89,094"
+        },
+        {
+          "label": "Associate's degree",
+          "value": 64.22878791169019,
+          "formatted": "$64,229"
+        },
+        {
+          "label": "Postsecondary nondegree award",
+          "value": 52.36974280496901,
+          "formatted": "$52,370"
+        }
+      ]
+    },
+    "generated_at": "2026-03-22",
+    "tags": [
+      "education",
+      "salary",
+      "degrees"
+    ]
+  },
+  {
+    "id": "bachelors-degree-risk",
+    "category": "Education",
+    "title": "Bachelor's Degree Jobs: 21M Workers in the High-Exposure Zone",
+    "subtitle": "Of 36M bachelor's-level workers, 59.5% face high AI exposure.",
+    "body_html": "<p>Occupations requiring a bachelor's degree employ <strong>36M</strong> workers with an average AI exposure of <strong>6.7/10</strong>. Of these, <strong>21M</strong> -- or <strong>59.5%</strong> -- are in occupations scoring 7 or higher on the exposure scale.</p><p>The bachelor's degree has long been considered the baseline credential for professional success in America. But 59.5% of bachelor's-level jobs are now in AI's high-exposure zone. Accountants, market research analysts, and financial analysts -- all traditionally solid bachelor's-degree careers -- face fundamental restructuring. The degree itself remains valuable, but the career paths it unlocks are being reshaped faster than university curricula can adapt.</p>",
+    "headline_stat": "59.5%",
+    "headline_label": "of bachelor's-level workers in high-exposure occupations",
+    "chart": {
+      "type": "horizontal_bar",
+      "data": [
+        {
+          "label": "High exposure (7+)",
+          "value": 21.4151,
+          "formatted": "21M"
+        },
+        {
+          "label": "Moderate (4-6)",
+          "value": 14.5588,
+          "formatted": "15M"
+        },
+        {
+          "label": "Low (1-3)",
+          "value": 0.0161,
+          "formatted": "0.0M"
+        }
+      ]
+    },
+    "generated_at": "2026-03-22",
+    "tags": [
+      "education",
+      "bachelors",
+      "exposure",
+      "risk"
+    ]
+  },
+  {
+    "id": "high-school-diploma-insulation",
+    "category": "Education",
+    "title": "High School Diploma Workers Average 4.9/10 Exposure -- Below the National Average",
+    "subtitle": "39M workers in high-school-level jobs face less AI disruption.",
+    "body_html": "<p>The <strong>39M</strong> workers in occupations requiring a high school diploma or equivalent have an average AI exposure of <strong>4.9/10</strong>, below the national weighted average of <strong>4.9/10</strong>. Workers requiring no formal credential fare even better at <strong>3.1/10</strong> average exposure across <strong>28M</strong> jobs.</p><p>These figures challenge the narrative that less-educated workers are most vulnerable to technological disruption. For AI specifically, the opposite is true: the most exposed occupations are those requiring college and professional degrees. High school-level and no-credential jobs tend to involve physical tasks, customer-facing service, and unpredictable environments where AI has limited practical application. This does not make these jobs <em>good</em> -- they remain low-paid -- but they are more durable in the face of AI.</p>",
+    "headline_stat": "4.9",
+    "headline_label": "average exposure for high-school-diploma occupations",
+    "chart": {
+      "type": "horizontal_bar",
+      "data": [
+        {
+          "label": "No credential",
+          "value": 3.089509064838082,
+          "formatted": "3.1/10"
+        },
+        {
+          "label": "High school diploma",
+          "value": 4.914603774949752,
+          "formatted": "4.9/10"
+        },
+        {
+          "label": "Bachelor's degree",
+          "value": 6.738466240622395,
+          "formatted": "6.7/10"
+        },
+        {
+          "label": "Doctoral/professional",
+          "value": 6.738466240622395,
+          "formatted": "6.7/10"
+        }
+      ]
+    },
+    "generated_at": "2026-03-22",
+    "tags": [
+      "education",
+      "high-school",
+      "exposure"
+    ]
+  }
+]

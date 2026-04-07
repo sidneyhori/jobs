@@ -8,6 +8,7 @@
 <meta property="og:description" content="Análise de 626 ocupações e o impacto da inteligência artificial no mercado de trabalho brasileiro.">
 <meta property="og:type" content="website">
 <title>IA e Emprego no Brasil</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,700;0,8..60,800;1,8..60,400&display=swap" rel="stylesheet">
@@ -1119,6 +1120,25 @@ body.on-landing .nav-home { border-bottom-color: var(--accent); }
 .footer-credits a:hover { color: var(--fg); }
 .footer-credits strong { color: var(--fg); font-weight: 600; }
 
+.country-link {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+.country-link a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--fg2);
+  text-decoration: none;
+  font-size: 13px;
+  line-height: 1.4;
+  transition: color 0.15s;
+}
+.country-link a:hover { color: var(--fg); }
+.country-link .flag { font-size: 20px; flex-shrink: 0; }
+.country-link .cl-title { color: var(--fg); font-weight: 600; font-size: 13px; }
+
 /* ── Responsive ────────────────────────────────────── */
 @media (max-width: 700px) {
   /* Nav — hamburger on mobile */
@@ -1400,8 +1420,14 @@ body.on-landing .nav-home { border-bottom-color: var(--accent); }
     </div>
     <div class="footer-credits">
       <span>Desenvolvido por</span>
-      <a href="https://www.linkedin.com/in/joao-alqueres/" target="_blank" rel="noopener"><strong>Jo&atilde;o Paulo Alqueres</strong> &middot; Iara Digital</a>
-      <a href="https://www.linkedin.com/in/sidney-hori/" target="_blank" rel="noopener"><strong>Sidney Hori Hawthorne</strong> &middot; Aeonix Tech</a>
+      <a href="https://www.linkedin.com/in/joao-alqueres/" target="_blank" rel="noopener"><strong>Jo&atilde;o Paulo Alqueres</strong></a>
+      <a href="https://www.linkedin.com/in/sidney-hori/" target="_blank" rel="noopener"><strong>Sidney Hori Hawthorne</strong></a>
+    </div>
+    <div class="country-link">
+      <a href="https://www.aijobsimpact.com" target="_blank" rel="noopener">
+        <span class="flag">&#127482;&#127480;</span>
+        <span><span class="cl-title">AI &amp; Jobs in America</span><br>342 occupations &middot; 143 million jobs &middot; BLS data</span>
+      </a>
     </div>
   </footer>
 

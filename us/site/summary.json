@@ -171,15 +171,1498 @@
       "avg_pay": 107358
     }
   ],
-  "education_levels": {
-    "Bachelor's degree": 35990000,
-    "Some college, no degree": 3308700,
-    "High school diploma or equivalent": 38707800,
-    "Associate's degree": 2763000,
-    "See How to Become One": 20294400,
-    "Postsecondary nondegree award": 7776200,
-    "Master's degree": 3085300,
-    "No formal educational credential": 28196700,
-    "Doctoral or professional degree": 2944400
+  "by_state": {
+    "AL": {
+      "name": "Alabama",
+      "abbr": "AL",
+      "total_workers": 836370,
+      "top_occupations": [
+        {
+          "title": "Registered nurses",
+          "workers": 50450
+        },
+        {
+          "title": "Cashiers",
+          "workers": 50150
+        },
+        {
+          "title": "Heavy and tractor-trailer truck drivers",
+          "workers": 37370
+        },
+        {
+          "title": "Customer service representatives",
+          "workers": 35260
+        },
+        {
+          "title": "Waiters and waitresses",
+          "workers": 29410
+        }
+      ],
+      "avg_pay": 52563,
+      "avg_exposure": 5.3
+    },
+    "AK": {
+      "name": "Alaska",
+      "abbr": "AK",
+      "total_workers": 136050,
+      "top_occupations": [
+        {
+          "title": "Registered nurses",
+          "workers": 6590
+        },
+        {
+          "title": "Cashiers",
+          "workers": 5720
+        },
+        {
+          "title": "Home health and personal care aides",
+          "workers": 5660
+        },
+        {
+          "title": "Janitors and building cleaners",
+          "workers": 5270
+        },
+        {
+          "title": "General office clerks",
+          "workers": 5080
+        }
+      ],
+      "avg_pay": 66358,
+      "avg_exposure": 5.1
+    },
+    "AZ": {
+      "name": "Arizona",
+      "abbr": "AZ",
+      "total_workers": 1407100,
+      "top_occupations": [
+        {
+          "title": "Customer service representatives",
+          "workers": 95930
+        },
+        {
+          "title": "Cashiers",
+          "workers": 71190
+        },
+        {
+          "title": "Home health and personal care aides",
+          "workers": 64690
+        },
+        {
+          "title": "Registered nurses",
+          "workers": 63150
+        },
+        {
+          "title": "General office clerks",
+          "workers": 49890
+        }
+      ],
+      "avg_pay": 60200,
+      "avg_exposure": 5.5
+    },
+    "AR": {
+      "name": "Arkansas",
+      "abbr": "AR",
+      "total_workers": 533860,
+      "top_occupations": [
+        {
+          "title": "Heavy and tractor-trailer truck drivers",
+          "workers": 34460
+        },
+        {
+          "title": "Cashiers",
+          "workers": 32090
+        },
+        {
+          "title": "Registered nurses",
+          "workers": 29690
+        },
+        {
+          "title": "General office clerks",
+          "workers": 26820
+        },
+        {
+          "title": "Customer service representatives",
+          "workers": 19840
+        }
+      ],
+      "avg_pay": 48512,
+      "avg_exposure": 5.4
+    },
+    "CA": {
+      "name": "California",
+      "abbr": "CA",
+      "total_workers": 8079000,
+      "top_occupations": [
+        {
+          "title": "Home health and personal care aides",
+          "workers": 796890
+        },
+        {
+          "title": "Cashiers",
+          "workers": 371350
+        },
+        {
+          "title": "Registered nurses",
+          "workers": 332560
+        },
+        {
+          "title": "General office clerks",
+          "workers": 295790
+        },
+        {
+          "title": "Janitors and building cleaners",
+          "workers": 245790
+        }
+      ],
+      "avg_pay": 73748,
+      "avg_exposure": 5.2
+    },
+    "CO": {
+      "name": "Colorado",
+      "abbr": "CO",
+      "total_workers": 1234760,
+      "top_occupations": [
+        {
+          "title": "Cashiers",
+          "workers": 55270
+        },
+        {
+          "title": "Registered nurses",
+          "workers": 53480
+        },
+        {
+          "title": "Customer service representatives",
+          "workers": 46910
+        },
+        {
+          "title": "Waiters and waitresses",
+          "workers": 44230
+        },
+        {
+          "title": "Home health and personal care aides",
+          "workers": 41190
+        }
+      ],
+      "avg_pay": 69858,
+      "avg_exposure": 5.5
+    },
+    "CT": {
+      "name": "Connecticut",
+      "abbr": "CT",
+      "total_workers": 781320,
+      "top_occupations": [
+        {
+          "title": "Home health and personal care aides",
+          "workers": 42280
+        },
+        {
+          "title": "Registered nurses",
+          "workers": 36430
+        },
+        {
+          "title": "Cashiers",
+          "workers": 36340
+        },
+        {
+          "title": "Janitors and building cleaners",
+          "workers": 30460
+        },
+        {
+          "title": "Customer service representatives",
+          "workers": 28540
+        }
+      ],
+      "avg_pay": 70120,
+      "avg_exposure": 5.4
+    },
+    "DE": {
+      "name": "Delaware",
+      "abbr": "DE",
+      "total_workers": 211010,
+      "top_occupations": [
+        {
+          "title": "Cashiers",
+          "workers": 12880
+        },
+        {
+          "title": "Registered nurses",
+          "workers": 11810
+        },
+        {
+          "title": "Home health and personal care aides",
+          "workers": 9100
+        },
+        {
+          "title": "Waiters and waitresses",
+          "workers": 8110
+        },
+        {
+          "title": "Janitors and building cleaners",
+          "workers": 7980
+        }
+      ],
+      "avg_pay": 65671,
+      "avg_exposure": 5.5
+    },
+    "DC": {
+      "name": "District of Columbia",
+      "abbr": "DC",
+      "total_workers": 335710,
+      "top_occupations": [
+        {
+          "title": "Lawyers",
+          "workers": 34660
+        },
+        {
+          "title": "Management analysts",
+          "workers": 18570
+        },
+        {
+          "title": "Public relations specialists",
+          "workers": 17320
+        },
+        {
+          "title": "Janitors and building cleaners",
+          "workers": 14640
+        },
+        {
+          "title": "Waiters and waitresses",
+          "workers": 11640
+        }
+      ],
+      "avg_pay": 96530,
+      "avg_exposure": 6.2
+    },
+    "FL": {
+      "name": "Florida",
+      "abbr": "FL",
+      "total_workers": 4241160,
+      "top_occupations": [
+        {
+          "title": "Customer service representatives",
+          "workers": 239440
+        },
+        {
+          "title": "Cashiers",
+          "workers": 210950
+        },
+        {
+          "title": "Registered nurses",
+          "workers": 207910
+        },
+        {
+          "title": "Waiters and waitresses",
+          "workers": 198440
+        },
+        {
+          "title": "General office clerks",
+          "workers": 192850
+        }
+      ],
+      "avg_pay": 56695,
+      "avg_exposure": 5.5
+    },
+    "GA": {
+      "name": "Georgia",
+      "abbr": "GA",
+      "total_workers": 1934730,
+      "top_occupations": [
+        {
+          "title": "Customer service representatives",
+          "workers": 122240
+        },
+        {
+          "title": "Cashiers",
+          "workers": 104140
+        },
+        {
+          "title": "Registered nurses",
+          "workers": 93730
+        },
+        {
+          "title": "General office clerks",
+          "workers": 79770
+        },
+        {
+          "title": "Heavy and tractor-trailer truck drivers",
+          "workers": 74640
+        }
+      ],
+      "avg_pay": 58532,
+      "avg_exposure": 5.6
+    },
+    "HI": {
+      "name": "Hawaii",
+      "abbr": "HI",
+      "total_workers": 256660,
+      "top_occupations": [
+        {
+          "title": "General office clerks",
+          "workers": 16260
+        },
+        {
+          "title": "Waiters and waitresses",
+          "workers": 14380
+        },
+        {
+          "title": "Cashiers",
+          "workers": 13230
+        },
+        {
+          "title": "Registered nurses",
+          "workers": 11920
+        },
+        {
+          "title": "Janitors and building cleaners",
+          "workers": 10390
+        }
+      ],
+      "avg_pay": 61764,
+      "avg_exposure": 5.2
+    },
+    "ID": {
+      "name": "Idaho",
+      "abbr": "ID",
+      "total_workers": 363290,
+      "top_occupations": [
+        {
+          "title": "Customer service representatives",
+          "workers": 20120
+        },
+        {
+          "title": "General office clerks",
+          "workers": 18020
+        },
+        {
+          "title": "Home health and personal care aides",
+          "workers": 17290
+        },
+        {
+          "title": "Cashiers",
+          "workers": 17050
+        },
+        {
+          "title": "Heavy and tractor-trailer truck drivers",
+          "workers": 14720
+        }
+      ],
+      "avg_pay": 50977,
+      "avg_exposure": 5.3
+    },
+    "IL": {
+      "name": "Illinois",
+      "abbr": "IL",
+      "total_workers": 2695350,
+      "top_occupations": [
+        {
+          "title": "Registered nurses",
+          "workers": 139910
+        },
+        {
+          "title": "Cashiers",
+          "workers": 122980
+        },
+        {
+          "title": "General office clerks",
+          "workers": 109170
+        },
+        {
+          "title": "Customer service representatives",
+          "workers": 108290
+        },
+        {
+          "title": "Home health and personal care aides",
+          "workers": 106710
+        }
+      ],
+      "avg_pay": 64419,
+      "avg_exposure": 5.4
+    },
+    "IN": {
+      "name": "Indiana",
+      "abbr": "IN",
+      "total_workers": 1318580,
+      "top_occupations": [
+        {
+          "title": "Registered nurses",
+          "workers": 68850
+        },
+        {
+          "title": "General office clerks",
+          "workers": 68190
+        },
+        {
+          "title": "Cashiers",
+          "workers": 67470
+        },
+        {
+          "title": "Heavy and tractor-trailer truck drivers",
+          "workers": 56960
+        },
+        {
+          "title": "Customer service representatives",
+          "workers": 53070
+        }
+      ],
+      "avg_pay": 55695,
+      "avg_exposure": 5.3
+    },
+    "IA": {
+      "name": "Iowa",
+      "abbr": "IA",
+      "total_workers": 685330,
+      "top_occupations": [
+        {
+          "title": "Cashiers",
+          "workers": 44750
+        },
+        {
+          "title": "Heavy and tractor-trailer truck drivers",
+          "workers": 37530
+        },
+        {
+          "title": "Registered nurses",
+          "workers": 33300
+        },
+        {
+          "title": "Customer service representatives",
+          "workers": 30250
+        },
+        {
+          "title": "Janitors and building cleaners",
+          "workers": 25970
+        }
+      ],
+      "avg_pay": 54910,
+      "avg_exposure": 5.3
+    },
+    "KS": {
+      "name": "Kansas",
+      "abbr": "KS",
+      "total_workers": 606670,
+      "top_occupations": [
+        {
+          "title": "Cashiers",
+          "workers": 34780
+        },
+        {
+          "title": "Customer service representatives",
+          "workers": 32410
+        },
+        {
+          "title": "Registered nurses",
+          "workers": 31120
+        },
+        {
+          "title": "Home health and personal care aides",
+          "workers": 25830
+        },
+        {
+          "title": "Heavy and tractor-trailer truck drivers",
+          "workers": 23700
+        }
+      ],
+      "avg_pay": 54995,
+      "avg_exposure": 5.3
+    },
+    "KY": {
+      "name": "Kentucky",
+      "abbr": "KY",
+      "total_workers": 796730,
+      "top_occupations": [
+        {
+          "title": "Registered nurses",
+          "workers": 48710
+        },
+        {
+          "title": "Cashiers",
+          "workers": 44890
+        },
+        {
+          "title": "Customer service representatives",
+          "workers": 43940
+        },
+        {
+          "title": "Heavy and tractor-trailer truck drivers",
+          "workers": 28630
+        },
+        {
+          "title": "Waiters and waitresses",
+          "workers": 27160
+        }
+      ],
+      "avg_pay": 51958,
+      "avg_exposure": 5.3
+    },
+    "LA": {
+      "name": "Louisiana",
+      "abbr": "LA",
+      "total_workers": 784000,
+      "top_occupations": [
+        {
+          "title": "Cashiers",
+          "workers": 52570
+        },
+        {
+          "title": "Home health and personal care aides",
+          "workers": 39120
+        },
+        {
+          "title": "Registered nurses",
+          "workers": 36840
+        },
+        {
+          "title": "General office clerks",
+          "workers": 32220
+        },
+        {
+          "title": "Waiters and waitresses",
+          "workers": 31300
+        }
+      ],
+      "avg_pay": 47437,
+      "avg_exposure": 5.0
+    },
+    "ME": {
+      "name": "Maine",
+      "abbr": "ME",
+      "total_workers": 286070,
+      "top_occupations": [
+        {
+          "title": "Home health and personal care aides",
+          "workers": 17160
+        },
+        {
+          "title": "Registered nurses",
+          "workers": 14770
+        },
+        {
+          "title": "Cashiers",
+          "workers": 14510
+        },
+        {
+          "title": "General office clerks",
+          "workers": 11420
+        },
+        {
+          "title": "Heavy and tractor-trailer truck drivers",
+          "workers": 10290
+        }
+      ],
+      "avg_pay": 56365,
+      "avg_exposure": 5.1
+    },
+    "MD": {
+      "name": "Maryland",
+      "abbr": "MD",
+      "total_workers": 1122040,
+      "top_occupations": [
+        {
+          "title": "Cashiers",
+          "workers": 57530
+        },
+        {
+          "title": "Registered nurses",
+          "workers": 49770
+        },
+        {
+          "title": "Customer service representatives",
+          "workers": 44360
+        },
+        {
+          "title": "Janitors and building cleaners",
+          "workers": 37740
+        },
+        {
+          "title": "Waiters and waitresses",
+          "workers": 35160
+        }
+      ],
+      "avg_pay": 70549,
+      "avg_exposure": 5.6
+    },
+    "MA": {
+      "name": "Massachusetts",
+      "abbr": "MA",
+      "total_workers": 1768480,
+      "top_occupations": [
+        {
+          "title": "Home health and personal care aides",
+          "workers": 113730
+        },
+        {
+          "title": "Registered nurses",
+          "workers": 87320
+        },
+        {
+          "title": "Cashiers",
+          "workers": 66760
+        },
+        {
+          "title": "Customer service representatives",
+          "workers": 62100
+        },
+        {
+          "title": "Janitors and building cleaners",
+          "workers": 55160
+        }
+      ],
+      "avg_pay": 75669,
+      "avg_exposure": 5.4
+    },
+    "MI": {
+      "name": "Michigan",
+      "abbr": "MI",
+      "total_workers": 1913900,
+      "top_occupations": [
+        {
+          "title": "Registered nurses",
+          "workers": 102240
+        },
+        {
+          "title": "Cashiers",
+          "workers": 90820
+        },
+        {
+          "title": "General office clerks",
+          "workers": 87020
+        },
+        {
+          "title": "Home health and personal care aides",
+          "workers": 83450
+        },
+        {
+          "title": "Customer service representatives",
+          "workers": 80040
+        }
+      ],
+      "avg_pay": 60083,
+      "avg_exposure": 5.4
+    },
+    "MN": {
+      "name": "Minnesota",
+      "abbr": "MN",
+      "total_workers": 1361020,
+      "top_occupations": [
+        {
+          "title": "Home health and personal care aides",
+          "workers": 112010
+        },
+        {
+          "title": "Registered nurses",
+          "workers": 66700
+        },
+        {
+          "title": "Customer service representatives",
+          "workers": 61870
+        },
+        {
+          "title": "Cashiers",
+          "workers": 58840
+        },
+        {
+          "title": "General office clerks",
+          "workers": 56580
+        }
+      ],
+      "avg_pay": 64131,
+      "avg_exposure": 5.3
+    },
+    "MS": {
+      "name": "Mississippi",
+      "abbr": "MS",
+      "total_workers": 469560,
+      "top_occupations": [
+        {
+          "title": "Cashiers",
+          "workers": 35510
+        },
+        {
+          "title": "Registered nurses",
+          "workers": 28910
+        },
+        {
+          "title": "Heavy and tractor-trailer truck drivers",
+          "workers": 25830
+        },
+        {
+          "title": "Customer service representatives",
+          "workers": 21940
+        },
+        {
+          "title": "General office clerks",
+          "workers": 19210
+        }
+      ],
+      "avg_pay": 45211,
+      "avg_exposure": 5.2
+    },
+    "MO": {
+      "name": "Missouri",
+      "abbr": "MO",
+      "total_workers": 1284920,
+      "top_occupations": [
+        {
+          "title": "Home health and personal care aides",
+          "workers": 83510
+        },
+        {
+          "title": "Registered nurses",
+          "workers": 73190
+        },
+        {
+          "title": "Cashiers",
+          "workers": 71100
+        },
+        {
+          "title": "General office clerks",
+          "workers": 59900
+        },
+        {
+          "title": "Customer service representatives",
+          "workers": 51840
+        }
+      ],
+      "avg_pay": 54307,
+      "avg_exposure": 5.3
+    },
+    "MT": {
+      "name": "Montana",
+      "abbr": "MT",
+      "total_workers": 220840,
+      "top_occupations": [
+        {
+          "title": "Cashiers",
+          "workers": 12570
+        },
+        {
+          "title": "General office clerks",
+          "workers": 12530
+        },
+        {
+          "title": "Registered nurses",
+          "workers": 9740
+        },
+        {
+          "title": "Janitors and building cleaners",
+          "workers": 8660
+        },
+        {
+          "title": "Home health and personal care aides",
+          "workers": 8070
+        }
+      ],
+      "avg_pay": 52420,
+      "avg_exposure": 5.2
+    },
+    "NE": {
+      "name": "Nebraska",
+      "abbr": "NE",
+      "total_workers": 435290,
+      "top_occupations": [
+        {
+          "title": "Heavy and tractor-trailer truck drivers",
+          "workers": 24720
+        },
+        {
+          "title": "Registered nurses",
+          "workers": 22870
+        },
+        {
+          "title": "Cashiers",
+          "workers": 21960
+        },
+        {
+          "title": "Customer service representatives",
+          "workers": 16890
+        },
+        {
+          "title": "Janitors and building cleaners",
+          "workers": 14160
+        }
+      ],
+      "avg_pay": 56704,
+      "avg_exposure": 5.3
+    },
+    "NV": {
+      "name": "Nevada",
+      "abbr": "NV",
+      "total_workers": 582130,
+      "top_occupations": [
+        {
+          "title": "Waiters and waitresses",
+          "workers": 38230
+        },
+        {
+          "title": "Cashiers",
+          "workers": 32410
+        },
+        {
+          "title": "Janitors and building cleaners",
+          "workers": 32210
+        },
+        {
+          "title": "Customer service representatives",
+          "workers": 29910
+        },
+        {
+          "title": "Registered nurses",
+          "workers": 25890
+        }
+      ],
+      "avg_pay": 54828,
+      "avg_exposure": 5.0
+    },
+    "NH": {
+      "name": "New Hampshire",
+      "abbr": "NH",
+      "total_workers": 302690,
+      "top_occupations": [
+        {
+          "title": "Cashiers",
+          "workers": 19140
+        },
+        {
+          "title": "General office clerks",
+          "workers": 14890
+        },
+        {
+          "title": "Registered nurses",
+          "workers": 14380
+        },
+        {
+          "title": "Customer service representatives",
+          "workers": 12710
+        },
+        {
+          "title": "Waiters and waitresses",
+          "workers": 10040
+        }
+      ],
+      "avg_pay": 62583,
+      "avg_exposure": 5.5
+    },
+    "NJ": {
+      "name": "New Jersey",
+      "abbr": "NJ",
+      "total_workers": 1899480,
+      "top_occupations": [
+        {
+          "title": "Home health and personal care aides",
+          "workers": 100860
+        },
+        {
+          "title": "Cashiers",
+          "workers": 86700
+        },
+        {
+          "title": "Registered nurses",
+          "workers": 82950
+        },
+        {
+          "title": "General office clerks",
+          "workers": 72540
+        },
+        {
+          "title": "Customer service representatives",
+          "workers": 66550
+        }
+      ],
+      "avg_pay": 72778,
+      "avg_exposure": 5.4
+    },
+    "NM": {
+      "name": "New Mexico",
+      "abbr": "NM",
+      "total_workers": 378780,
+      "top_occupations": [
+        {
+          "title": "Home health and personal care aides",
+          "workers": 36560
+        },
+        {
+          "title": "Customer service representatives",
+          "workers": 20330
+        },
+        {
+          "title": "Cashiers",
+          "workers": 19210
+        },
+        {
+          "title": "Registered nurses",
+          "workers": 18030
+        },
+        {
+          "title": "General office clerks",
+          "workers": 15260
+        }
+      ],
+      "avg_pay": 52489,
+      "avg_exposure": 5.1
+    },
+    "NY": {
+      "name": "New York",
+      "abbr": "NY",
+      "total_workers": 4603450,
+      "top_occupations": [
+        {
+          "title": "Home health and personal care aides",
+          "workers": 566160
+        },
+        {
+          "title": "Registered nurses",
+          "workers": 188060
+        },
+        {
+          "title": "Janitors and building cleaners",
+          "workers": 186630
+        },
+        {
+          "title": "Cashiers",
+          "workers": 177810
+        },
+        {
+          "title": "Customer service representatives",
+          "workers": 149580
+        }
+      ],
+      "avg_pay": 72744,
+      "avg_exposure": 5.2
+    },
+    "NC": {
+      "name": "North Carolina",
+      "abbr": "NC",
+      "total_workers": 2052510,
+      "top_occupations": [
+        {
+          "title": "Cashiers",
+          "workers": 125730
+        },
+        {
+          "title": "Registered nurses",
+          "workers": 104380
+        },
+        {
+          "title": "Customer service representatives",
+          "workers": 91620
+        },
+        {
+          "title": "Waiters and waitresses",
+          "workers": 71840
+        },
+        {
+          "title": "General office clerks",
+          "workers": 65970
+        }
+      ],
+      "avg_pay": 59206,
+      "avg_exposure": 5.5
+    },
+    "ND": {
+      "name": "North Dakota",
+      "abbr": "ND",
+      "total_workers": 180220,
+      "top_occupations": [
+        {
+          "title": "Heavy and tractor-trailer truck drivers",
+          "workers": 11170
+        },
+        {
+          "title": "Registered nurses",
+          "workers": 10350
+        },
+        {
+          "title": "Cashiers",
+          "workers": 9660
+        },
+        {
+          "title": "General office clerks",
+          "workers": 9450
+        },
+        {
+          "title": "Janitors and building cleaners",
+          "workers": 7160
+        }
+      ],
+      "avg_pay": 56082,
+      "avg_exposure": 5.1
+    },
+    "OH": {
+      "name": "Ohio",
+      "abbr": "OH",
+      "total_workers": 2380090,
+      "top_occupations": [
+        {
+          "title": "Registered nurses",
+          "workers": 133300
+        },
+        {
+          "title": "Cashiers",
+          "workers": 122370
+        },
+        {
+          "title": "Customer service representatives",
+          "workers": 99090
+        },
+        {
+          "title": "Home health and personal care aides",
+          "workers": 91890
+        },
+        {
+          "title": "Heavy and tractor-trailer truck drivers",
+          "workers": 89560
+        }
+      ],
+      "avg_pay": 58887,
+      "avg_exposure": 5.4
+    },
+    "OK": {
+      "name": "Oklahoma",
+      "abbr": "OK",
+      "total_workers": 708240,
+      "top_occupations": [
+        {
+          "title": "Cashiers",
+          "workers": 38760
+        },
+        {
+          "title": "Customer service representatives",
+          "workers": 34810
+        },
+        {
+          "title": "Registered nurses",
+          "workers": 32610
+        },
+        {
+          "title": "Waiters and waitresses",
+          "workers": 30450
+        },
+        {
+          "title": "General office clerks",
+          "workers": 28620
+        }
+      ],
+      "avg_pay": 51463,
+      "avg_exposure": 5.4
+    },
+    "OR": {
+      "name": "Oregon",
+      "abbr": "OR",
+      "total_workers": 834420,
+      "top_occupations": [
+        {
+          "title": "Registered nurses",
+          "workers": 38770
+        },
+        {
+          "title": "Cashiers",
+          "workers": 38010
+        },
+        {
+          "title": "Home health and personal care aides",
+          "workers": 33060
+        },
+        {
+          "title": "Customer service representatives",
+          "workers": 27680
+        },
+        {
+          "title": "General office clerks",
+          "workers": 26840
+        }
+      ],
+      "avg_pay": 67372,
+      "avg_exposure": 5.4
+    },
+    "PA": {
+      "name": "Pennsylvania",
+      "abbr": "PA",
+      "total_workers": 2661250,
+      "top_occupations": [
+        {
+          "title": "Home health and personal care aides",
+          "workers": 213020
+        },
+        {
+          "title": "Registered nurses",
+          "workers": 144100
+        },
+        {
+          "title": "Cashiers",
+          "workers": 125990
+        },
+        {
+          "title": "General office clerks",
+          "workers": 122170
+        },
+        {
+          "title": "Customer service representatives",
+          "workers": 112850
+        }
+      ],
+      "avg_pay": 58464,
+      "avg_exposure": 5.3
+    },
+    "RI": {
+      "name": "Rhode Island",
+      "abbr": "RI",
+      "total_workers": 225870,
+      "top_occupations": [
+        {
+          "title": "Registered nurses",
+          "workers": 11350
+        },
+        {
+          "title": "Customer service representatives",
+          "workers": 10210
+        },
+        {
+          "title": "Cashiers",
+          "workers": 10110
+        },
+        {
+          "title": "Waiters and waitresses",
+          "workers": 9430
+        },
+        {
+          "title": "General office clerks",
+          "workers": 9380
+        }
+      ],
+      "avg_pay": 64505,
+      "avg_exposure": 5.5
+    },
+    "SC": {
+      "name": "South Carolina",
+      "abbr": "SC",
+      "total_workers": 957710,
+      "top_occupations": [
+        {
+          "title": "Customer service representatives",
+          "workers": 56350
+        },
+        {
+          "title": "Cashiers",
+          "workers": 55560
+        },
+        {
+          "title": "Registered nurses",
+          "workers": 48790
+        },
+        {
+          "title": "Waiters and waitresses",
+          "workers": 42470
+        },
+        {
+          "title": "General office clerks",
+          "workers": 40170
+        }
+      ],
+      "avg_pay": 53024,
+      "avg_exposure": 5.4
+    },
+    "SD": {
+      "name": "South Dakota",
+      "abbr": "SD",
+      "total_workers": 202320,
+      "top_occupations": [
+        {
+          "title": "Registered nurses",
+          "workers": 14600
+        },
+        {
+          "title": "Cashiers",
+          "workers": 12530
+        },
+        {
+          "title": "Bookkeeping, accounting, and auditing clerks",
+          "workers": 9480
+        },
+        {
+          "title": "Janitors and building cleaners",
+          "workers": 8110
+        },
+        {
+          "title": "Customer service representatives",
+          "workers": 7660
+        }
+      ],
+      "avg_pay": 51411,
+      "avg_exposure": 5.2
+    },
+    "TN": {
+      "name": "Tennessee",
+      "abbr": "TN",
+      "total_workers": 1324720,
+      "top_occupations": [
+        {
+          "title": "Customer service representatives",
+          "workers": 70950
+        },
+        {
+          "title": "Cashiers",
+          "workers": 69980
+        },
+        {
+          "title": "Registered nurses",
+          "workers": 63460
+        },
+        {
+          "title": "Heavy and tractor-trailer truck drivers",
+          "workers": 61080
+        },
+        {
+          "title": "General office clerks",
+          "workers": 54550
+        }
+      ],
+      "avg_pay": 53858,
+      "avg_exposure": 5.5
+    },
+    "TX": {
+      "name": "Texas",
+      "abbr": "TX",
+      "total_workers": 5911980,
+      "top_occupations": [
+        {
+          "title": "Customer service representatives",
+          "workers": 336110
+        },
+        {
+          "title": "Home health and personal care aides",
+          "workers": 312420
+        },
+        {
+          "title": "Cashiers",
+          "workers": 282140
+        },
+        {
+          "title": "Registered nurses",
+          "workers": 251840
+        },
+        {
+          "title": "Heavy and tractor-trailer truck drivers",
+          "workers": 212770
+        }
+      ],
+      "avg_pay": 58410,
+      "avg_exposure": 5.4
+    },
+    "UT": {
+      "name": "Utah",
+      "abbr": "UT",
+      "total_workers": 732300,
+      "top_occupations": [
+        {
+          "title": "Customer service representatives",
+          "workers": 56470
+        },
+        {
+          "title": "General office clerks",
+          "workers": 34620
+        },
+        {
+          "title": "Cashiers",
+          "workers": 29560
+        },
+        {
+          "title": "Registered nurses",
+          "workers": 24730
+        },
+        {
+          "title": "Janitors and building cleaners",
+          "workers": 24160
+        }
+      ],
+      "avg_pay": 57188,
+      "avg_exposure": 5.7
+    },
+    "VT": {
+      "name": "Vermont",
+      "abbr": "VT",
+      "total_workers": 134790,
+      "top_occupations": [
+        {
+          "title": "Home health and personal care aides",
+          "workers": 7500
+        },
+        {
+          "title": "Registered nurses",
+          "workers": 7260
+        },
+        {
+          "title": "Cashiers",
+          "workers": 6940
+        },
+        {
+          "title": "Teacher assistants",
+          "workers": 5540
+        },
+        {
+          "title": "Janitors and building cleaners",
+          "workers": 4760
+        }
+      ],
+      "avg_pay": 58808,
+      "avg_exposure": 5.1
+    },
+    "VA": {
+      "name": "Virginia",
+      "abbr": "VA",
+      "total_workers": 1791160,
+      "top_occupations": [
+        {
+          "title": "Cashiers",
+          "workers": 93280
+        },
+        {
+          "title": "Customer service representatives",
+          "workers": 71720
+        },
+        {
+          "title": "Registered nurses",
+          "workers": 70650
+        },
+        {
+          "title": "General office clerks",
+          "workers": 67140
+        },
+        {
+          "title": "Management analysts",
+          "workers": 66840
+        }
+      ],
+      "avg_pay": 61599,
+      "avg_exposure": 5.6
+    },
+    "WA": {
+      "name": "Washington",
+      "abbr": "WA",
+      "total_workers": 1523960,
+      "top_occupations": [
+        {
+          "title": "Home health and personal care aides",
+          "workers": 79080
+        },
+        {
+          "title": "Registered nurses",
+          "workers": 65030
+        },
+        {
+          "title": "Cashiers",
+          "workers": 62930
+        },
+        {
+          "title": "General office clerks",
+          "workers": 49790
+        },
+        {
+          "title": "Customer service representatives",
+          "workers": 49130
+        }
+      ],
+      "avg_pay": 74626,
+      "avg_exposure": 5.4
+    },
+    "WV": {
+      "name": "West Virginia",
+      "abbr": "WV",
+      "total_workers": 292510,
+      "top_occupations": [
+        {
+          "title": "Registered nurses",
+          "workers": 20860
+        },
+        {
+          "title": "Home health and personal care aides",
+          "workers": 19790
+        },
+        {
+          "title": "Cashiers",
+          "workers": 17890
+        },
+        {
+          "title": "General office clerks",
+          "workers": 12370
+        },
+        {
+          "title": "Heavy and tractor-trailer truck drivers",
+          "workers": 10460
+        }
+      ],
+      "avg_pay": 48743,
+      "avg_exposure": 5.1
+    },
+    "WI": {
+      "name": "Wisconsin",
+      "abbr": "WI",
+      "total_workers": 1285110,
+      "top_occupations": [
+        {
+          "title": "Home health and personal care aides",
+          "workers": 74960
+        },
+        {
+          "title": "Cashiers",
+          "workers": 71760
+        },
+        {
+          "title": "Registered nurses",
+          "workers": 61870
+        },
+        {
+          "title": "Customer service representatives",
+          "workers": 56160
+        },
+        {
+          "title": "Heavy and tractor-trailer truck drivers",
+          "workers": 52200
+        }
+      ],
+      "avg_pay": 57111,
+      "avg_exposure": 5.3
+    },
+    "WY": {
+      "name": "Wyoming",
+      "abbr": "WY",
+      "total_workers": 116970,
+      "top_occupations": [
+        {
+          "title": "General office clerks",
+          "workers": 7100
+        },
+        {
+          "title": "Heavy and tractor-trailer truck drivers",
+          "workers": 6250
+        },
+        {
+          "title": "Cashiers",
+          "workers": 5960
+        },
+        {
+          "title": "Registered nurses",
+          "workers": 5350
+        },
+        {
+          "title": "Janitors and building cleaners",
+          "workers": 4150
+        }
+      ],
+      "avg_pay": 52212,
+      "avg_exposure": 5.0
+    }
+  },
+  "demographics": {
+    "total_male": 44979502,
+    "total_female": 44975831,
+    "total_white": 64576794,
+    "total_black": 11194062,
+    "total_asian": 6009016,
+    "total_hispanic": 17270355,
+    "workers_with_demographics": 89955333,
+    "high_risk_male": 24317895,
+    "high_risk_female": 24314491,
+    "pct_high_risk_male": 54.1,
+    "pct_high_risk_female": 54.1
   }
 }

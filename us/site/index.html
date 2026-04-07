@@ -8,6 +8,7 @@
 <meta property="og:description" content="Analysis of 342 occupations and the impact of artificial intelligence on the US labor market.">
 <meta property="og:type" content="website">
 <title>AI & Jobs in America</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,700;0,8..60,800;1,8..60,400&display=swap" rel="stylesheet">
@@ -510,6 +511,117 @@ canvas#scatterCanvas { display: block; cursor: crosshair; }
 }
 .comparison-table tr:hover td { background: var(--row-border); }
 
+/* Demographics */
+.demo-summary {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+.demo-stat {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  min-width: 180px;
+}
+.demo-stat .ds-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--fg2); margin-bottom: 8px; }
+.demo-stat .ds-value { font-size: 28px; font-weight: 700; }
+.demo-stat .ds-sub { font-size: 12px; color: var(--fg2); margin-top: 4px; }
+
+.demo-charts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+.demo-chart-box {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+.demo-chart-box h3 { font-size: 14px; font-weight: 600; margin-bottom: 16px; }
+
+.demo-hbar { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.demo-hbar .dh-label { width: 100px; font-size: 13px; color: var(--fg2); text-align: right; flex-shrink: 0; }
+.demo-hbar .dh-track { flex: 1; height: 24px; background: var(--row-border); border-radius: 0; overflow: hidden; position: relative; }
+.demo-hbar .dh-fill { height: 100%; border-radius: 0; transition: width 0.3s; }
+.demo-hbar .dh-val { width: 50px; font-size: 13px; font-weight: 600; flex-shrink: 0; }
+
+.demo-table-section { margin-top: 24px; }
+.demo-table-section h3 { font-size: 16px; font-weight: 600; margin-bottom: 12px; }
+
+/* Regional Map */
+.regional-controls {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.regional-controls button {
+  padding: 8px 16px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid var(--border-chip);
+  border-radius: 0;
+  background: transparent;
+  color: var(--fg2);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.regional-controls button.active {
+  background: var(--overlay-hover);
+  color: var(--fg);
+  border-color: var(--border-chip-hover);
+}
+.regional-controls button:hover:not(.active) { background: var(--row-border); }
+.regional-controls button:active { transform: scale(0.96); }
+
+.state-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.state-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.state-card:hover { border-color: var(--border-hover); transform: translateY(-1px); }
+.state-card .sc-abbr { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+.state-card .sc-row { display: flex; justify-content: space-between; font-size: 12px; color: var(--fg2); margin-bottom: 4px; }
+.state-card .sc-row .sc-val { color: var(--fg); font-weight: 500; }
+
+.state-detail {
+  background: var(--bg2);
+  border: 1px solid var(--overlay-hover);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 24px;
+  display: none;
+}
+.state-detail.open { display: block; }
+.state-detail h3 { font-size: 18px; font-weight: 700; margin-bottom: 16px; }
+.state-detail .sd-close { float: right; background: none; border: none; color: var(--fg2); cursor: pointer; font-size: 18px; }
+
+.demo-bars {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 16px;
+}
+.demo-bar-section h4 { font-size: 13px; font-weight: 600; margin-bottom: 10px; color: var(--fg2); }
+.demo-bar-item { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; font-size: 13px; }
+.demo-bar-item .dbl { width: 80px; text-align: right; color: var(--fg2); font-size: 12px; flex-shrink: 0; }
+.demo-bar-item .dbt { flex: 1; height: 18px; background: var(--row-border); border-radius: 0; overflow: hidden; }
+.demo-bar-item .dbf { height: 100%; border-radius: 0; }
+.demo-bar-item .dbv { width: 50px; font-size: 12px; flex-shrink: 0; }
+
 /* Ranking */
 .ranking-controls {
   display: flex;
@@ -998,6 +1110,25 @@ body.on-landing .nav-home { border-bottom-color: var(--accent); }
 .footer-credits a:hover { color: var(--fg); }
 .footer-credits strong { color: var(--fg); font-weight: 600; }
 
+.country-link {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+.country-link a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--fg2);
+  text-decoration: none;
+  font-size: 13px;
+  line-height: 1.4;
+  transition: color 0.15s;
+}
+.country-link a:hover { color: var(--fg); }
+.country-link .flag { font-size: 20px; flex-shrink: 0; }
+.country-link .cl-title { color: var(--fg); font-weight: 600; font-size: 13px; }
+
 /* Responsive */
 @media (max-width: 700px) {
   #nav { padding: 0 12px; overflow: visible; position: relative; }
@@ -1022,6 +1153,16 @@ body.on-landing .nav-home { border-bottom-color: var(--accent); }
   .hbar-val { width: 36px; font-size: 10px; }
 
   .search-box input { font-size: 16px; padding: 14px 14px; }
+
+  .demo-charts { grid-template-columns: 1fr; }
+  .demo-summary { gap: 12px; }
+  .demo-stat { padding: 16px; min-width: 0; }
+  .demo-stat .ds-value { font-size: 24px; }
+  .demo-bars { grid-template-columns: 1fr; }
+
+  .state-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+  .state-detail { padding: 16px; }
+  .regional-controls button { min-height: 40px; }
 
   .ranking-controls { gap: 8px; }
   .ranking-controls input { min-width: 0; max-width: none; font-size: 16px; }
@@ -1099,9 +1240,12 @@ body.on-landing .nav-home { border-bottom-color: var(--accent); }
     <button data-view="map">Map</button>
     <button data-view="scatter">Risk &times; Opportunity</button>
     <button data-view="painel">My Job</button>
+    <button data-view="demo">Demographics</button>
+    <button data-view="regional">Regional</button>
     <button data-view="ranking">Ranking</button>
     <button data-view="ask">Ask</button>
   </span>
+  <a href="insights.html">Insights</a>
   <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme">
     <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
     <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -1114,8 +1258,11 @@ body.on-landing .nav-home { border-bottom-color: var(--accent); }
     <button data-view="map">Map</button>
     <button data-view="scatter">Risk &times; Opportunity</button>
     <button data-view="painel">My Job</button>
+    <button data-view="demo">Demographics</button>
+    <button data-view="regional">Regional</button>
     <button data-view="ranking">Ranking</button>
     <button data-view="ask">Ask</button>
+    <a href="insights.html">Insights</a>
   </div>
 </nav>
 
@@ -1185,9 +1332,9 @@ body.on-landing .nav-home { border-bottom-color: var(--accent); }
       <span class="section-eyebrow">Tools</span>
       <h2 style="margin-bottom:24px">Explore the data</h2>
       <div class="tools-row">
-        <div class="tool-card" data-goto="painel">
-          <h3>My Job</h3>
-          <p>Search your occupation for a personalized risk assessment and recommendations.</p>
+        <div class="tool-card" data-goto="regional">
+          <h3>Regional Map</h3>
+          <p>Compare states by exposure, pay, and employment volume.</p>
         </div>
         <div class="tool-card" data-goto="ranking">
           <h3>Full Ranking</h3>
@@ -1214,19 +1361,29 @@ body.on-landing .nav-home { border-bottom-color: var(--accent); }
           <li><button data-goto="map">Map</button></li>
           <li><button data-goto="scatter">Risk &times; Opportunity</button></li>
           <li><button data-goto="painel">My Job</button></li>
+          <li><button data-goto="demo">Demographics</button></li>
         </ul>
       </div>
       <div>
         <div class="footer-heading">More</div>
         <ul class="footer-links">
+          <li><button data-goto="regional">Regional</button></li>
           <li><button data-goto="ranking">Ranking</button></li>
           <li><button data-goto="ask">Ask</button></li>
+          <li><a href="insights.html">Insights</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-credits">
       <span>Built by</span>
-      <a href="https://www.linkedin.com/in/sidney-hori/" target="_blank" rel="noopener"><strong>Sidney Hori Hawthorne</strong> &middot; Aeonix Tech</a>
+      <a href="https://www.linkedin.com/in/joao-alqueres/" target="_blank" rel="noopener"><strong>Jo&atilde;o Paulo Alqueres</strong></a>
+      <a href="https://www.linkedin.com/in/sidney-hori/" target="_blank" rel="noopener"><strong>Sidney Hori Hawthorne</strong></a>
+    </div>
+    <div class="country-link">
+      <a href="https://mapadaianobrasil.com.br" target="_blank" rel="noopener">
+        <span class="flag">&#127463;&#127479;</span>
+        <span><span class="cl-title">Mapa da IA no Brasil</span><br>626 occupa&ccedil;&otilde;es &middot; 19 milh&otilde;es de empregos formais &middot; Dados do CAGED</span>
+      </a>
     </div>
   </footer>
 
@@ -1296,7 +1453,31 @@ body.on-landing .nav-home { border-bottom-color: var(--accent); }
   <div id="painelContent"></div>
 </div>
 
-<!-- View 4: Ranking -->
+<!-- View 4: Demographics -->
+<div id="view-demo" class="view">
+  <h2 class="section-title">Demographics & AI Impact</h2>
+  <p class="section-desc">Analysis of AI's differential impact by gender and race in the US labor market.</p>
+  <div id="demoContent"></div>
+</div>
+
+<!-- View 5: Regional -->
+<div id="view-regional" class="view">
+  <h2 class="section-title">Regional Map</h2>
+  <p class="section-desc">State-by-state view of the labor market and AI exposure.</p>
+  <div class="regional-controls" id="regionalControls">
+    <button class="active" data-sort="exposure">Sort by Exposure</button>
+    <button data-sort="workers">Sort by Workers</button>
+    <button data-sort="pay">Sort by Pay</button>
+  </div>
+  <div class="state-detail" id="stateDetail">
+    <button class="sd-close" id="stateDetailClose">&times;</button>
+    <h3 id="stateDetailTitle"></h3>
+    <div id="stateDetailContent"></div>
+  </div>
+  <div class="state-grid" id="stateGrid"></div>
+</div>
+
+<!-- View 6: Ranking -->
 <div id="view-ranking" class="view">
   <h2 class="section-title">Occupation Ranking</h2>
   <p class="section-desc">Complete table with all 342 occupations. Click column headers to sort.</p>
@@ -1420,6 +1601,8 @@ function switchView(view) {
   document.querySelectorAll(".view").forEach(function(v) { v.classList.toggle("active", v.id === "view-" + view); });
   if (view === "map") treemapResize();
   if (view === "scatter") initScatter();
+  if (view === "demo") initDemo();
+  if (view === "regional") initRegional();
   if (view === "ranking") initRanking();
   if (view === "ask") initAsk();
 }
@@ -2291,7 +2474,155 @@ function buildComparisonTable(occs, current) {
 }
 
 // ======================================================================
-// VIEW 4: RANKING
+// VIEW 4: DEMOGRAPHICS
+// ======================================================================
+var demoInited = false;
+
+function initDemo() {
+  if (demoInited || !summaryData || !summaryData.demographics) return;
+  demoInited = true;
+
+  var dem = summaryData.demographics;
+  var totalWorkers = dem.total_male + dem.total_female;
+  if (totalWorkers === 0) {
+    document.getElementById("demoContent").innerHTML = '<div class="card" style="text-align:center;padding:32px"><p style="color:var(--fg2)">Demographics data not available. Run the enrichment script to add ACS data.</p></div>';
+    return;
+  }
+  var pctFem = dem.total_female / totalWorkers * 100;
+  var pctWhite = dem.total_white / totalWorkers * 100;
+  var pctBlack = dem.total_black / totalWorkers * 100;
+  var pctHispanic = dem.total_hispanic / totalWorkers * 100;
+  var pctAsian = dem.total_asian / totalWorkers * 100;
+
+  var html = '<div class="demo-summary">' +
+    '<div class="demo-stat"><div class="ds-label">Total workers</div><div class="ds-value">' + (totalWorkers / 1e6).toFixed(1) + 'M</div><div class="ds-sub">with demographic data</div></div>' +
+    '<div class="demo-stat"><div class="ds-label">Female</div><div class="ds-value" style="color:rgba(186,104,200,1)">' + formatPct(pctFem) + '</div><div class="ds-sub">' + formatNumber(dem.total_female) + ' workers</div></div>' +
+    '<div class="demo-stat"><div class="ds-label">Hispanic/Latino</div><div class="ds-value" style="color:rgba(255,183,77,1)">' + formatPct(pctHispanic) + '</div><div class="ds-sub">' + formatNumber(dem.total_hispanic) + ' workers</div></div>' +
+    '<div class="demo-stat"><div class="ds-label">Black</div><div class="ds-value" style="color:rgba(129,199,132,1)">' + formatPct(pctBlack) + '</div><div class="ds-sub">' + formatNumber(dem.total_black) + ' workers</div></div>' +
+    '</div>';
+
+  // Risk by gender
+  html += '<div class="demo-charts">' +
+    '<div class="demo-chart-box"><h3>Risk by Gender</h3>' +
+    '<p style="font-size:12px;color:var(--fg2);margin-bottom:14px">% in high-risk occupations (exposure >= 6)</p>' +
+    '<div class="demo-hbar"><span class="dh-label">Female</span><div class="dh-track"><div class="dh-fill" style="width:' + dem.pct_high_risk_female + '%;background:rgba(186,104,200,0.7)"></div></div><span class="dh-val" style="color:rgba(186,104,200,1)">' + formatPct(dem.pct_high_risk_female) + '</span></div>' +
+    '<div class="demo-hbar"><span class="dh-label">Male</span><div class="dh-track"><div class="dh-fill" style="width:' + dem.pct_high_risk_male + '%;background:rgba(66,165,245,0.7)"></div></div><span class="dh-val" style="color:rgba(66,165,245,1)">' + formatPct(dem.pct_high_risk_male) + '</span></div>' +
+    '</div>' +
+    '<div class="demo-chart-box"><h3>Workforce by Race</h3>' +
+    '<p style="font-size:12px;color:var(--fg2);margin-bottom:14px">Share of civilian employed population</p>' +
+    '<div class="demo-hbar"><span class="dh-label">White</span><div class="dh-track"><div class="dh-fill" style="width:' + pctWhite + '%;background:rgba(158,158,158,0.7)"></div></div><span class="dh-val">' + formatPct(pctWhite) + '</span></div>' +
+    '<div class="demo-hbar"><span class="dh-label">Hispanic</span><div class="dh-track"><div class="dh-fill" style="width:' + pctHispanic + '%;background:rgba(255,183,77,0.7)"></div></div><span class="dh-val">' + formatPct(pctHispanic) + '</span></div>' +
+    '<div class="demo-hbar"><span class="dh-label">Black</span><div class="dh-track"><div class="dh-fill" style="width:' + pctBlack + '%;background:rgba(129,199,132,0.7)"></div></div><span class="dh-val">' + formatPct(pctBlack) + '</span></div>' +
+    '<div class="demo-hbar"><span class="dh-label">Asian</span><div class="dh-track"><div class="dh-fill" style="width:' + pctAsian + '%;background:rgba(66,165,245,0.7)"></div></div><span class="dh-val">' + formatPct(pctAsian) + '</span></div>' +
+    '</div></div>';
+
+  // Top high-risk occupations by gender
+  var highRisk = data.filter(function(d) { return d.demographics && d.exposure != null && d.exposure >= 6; });
+
+  var womenRisk = highRisk
+    .filter(function(d) { return d.demographics.total_female > 0; })
+    .map(function(d) { var t = d.demographics.total_female + d.demographics.total_male; return Object.assign({}, d, { pctFem: t > 0 ? d.demographics.total_female / t * 100 : 0, femWorkers: d.demographics.total_female }); })
+    .sort(function(a, b) { return b.femWorkers - a.femWorkers; })
+    .slice(0, 10);
+
+  html += '<div class="demo-table-section"><h3>High-risk occupations with the most women</h3>' +
+    '<div class="ranking-table-wrap"><table class="comparison-table">' +
+    '<thead><tr><th>Occupation</th><th>Exposure</th><th>Women</th><th>% Female</th><th>Pay</th></tr></thead><tbody>';
+  for (var i = 0; i < womenRisk.length; i++) {
+    var o = womenRisk[i];
+    html += '<tr><td>' + o.title + '</td>' +
+      '<td><span class="score-cell" style="background:' + exposureColor(o.exposure, 0.2) + ';color:' + exposureColor(o.exposure, 1) + '">' + o.exposure + '</span></td>' +
+      '<td>' + formatNumber(o.femWorkers) + '</td><td>' + formatPct(o.pctFem) + '</td><td>' + formatPayFull(o.pay) + '</td></tr>';
+  }
+  html += '</tbody></table></div></div>';
+
+  document.getElementById("demoContent").innerHTML = html;
+}
+
+// ======================================================================
+// VIEW 5: REGIONAL
+// ======================================================================
+var regionalInited = false;
+var regionalSort = "exposure";
+
+function initRegional() {
+  if (!summaryData || !summaryData.by_state) {
+    return;
+  }
+  if (!regionalInited) {
+    regionalInited = true;
+    document.getElementById("regionalControls").addEventListener("click", function(e) {
+      var btn = e.target.closest("button");
+      if (!btn || !btn.dataset.sort) return;
+      regionalSort = btn.dataset.sort;
+      this.querySelectorAll("button").forEach(function(b) { b.classList.toggle("active", b.dataset.sort === regionalSort); });
+      renderRegional();
+    });
+    document.getElementById("stateDetailClose").addEventListener("click", function() {
+      document.getElementById("stateDetail").classList.remove("open");
+    });
+  }
+  renderRegional();
+}
+
+function renderRegional() {
+  var byState = summaryData.by_state;
+  var states = Object.keys(byState).map(function(abbr) {
+    return Object.assign({ abbr: abbr }, byState[abbr]);
+  });
+
+  if (regionalSort === "exposure") states.sort(function(a, b) { return b.avg_exposure - a.avg_exposure; });
+  else if (regionalSort === "workers") states.sort(function(a, b) { return b.total_workers - a.total_workers; });
+  else if (regionalSort === "pay") states.sort(function(a, b) { return b.avg_pay - a.avg_pay; });
+
+  var grid = document.getElementById("stateGrid");
+  grid.innerHTML = states.map(function(s) {
+    var expColor = exposureColor(s.avg_exposure, 1);
+    return '<div class="state-card" data-abbr="' + s.abbr + '">' +
+      '<div class="sc-abbr" style="color:' + expColor + '">' + s.abbr + '</div>' +
+      '<div class="sc-row"><span>Workers</span><span class="sc-val">' + formatNumber(s.total_workers) + '</span></div>' +
+      '<div class="sc-row"><span>Avg pay</span><span class="sc-val">' + formatPay(s.avg_pay) + '</span></div>' +
+      '<div class="sc-row"><span>Avg exposure</span><span class="sc-val" style="color:' + expColor + '">' + s.avg_exposure.toFixed(1) + '</span></div>' +
+      '</div>';
+  }).join("");
+
+  grid.onclick = function(e) {
+    var card = e.target.closest(".state-card");
+    if (!card) return;
+    showStateDetail(card.dataset.abbr);
+  };
+}
+
+function showStateDetail(abbr) {
+  var s = summaryData.by_state[abbr];
+  if (!s) return;
+  var detail = document.getElementById("stateDetail");
+  document.getElementById("stateDetailTitle").textContent = abbr + " \u2014 " + s.name;
+
+  var html = '<div class="metric-cards" style="margin-bottom:16px">' +
+    '<div class="metric-card"><div class="metric-label">Workers</div><div class="metric-value">' + formatNumber(s.total_workers) + '</div></div>' +
+    '<div class="metric-card"><div class="metric-label">Avg pay</div><div class="metric-value">' + formatPay(s.avg_pay) + '</div></div>' +
+    '<div class="metric-card"><div class="metric-label">Avg exposure</div><div class="metric-value" style="color:' + exposureColor(s.avg_exposure, 1) + '">' + s.avg_exposure.toFixed(1) + '</div></div>' +
+    '</div>';
+
+  if (s.top_occupations && s.top_occupations.length > 0) {
+    html += '<h4 style="font-size:14px;font-weight:600;margin-bottom:10px">Top occupations</h4>' +
+      '<div class="ranking-table-wrap"><table class="comparison-table">' +
+      '<thead><tr><th>Occupation</th><th>Workers</th></tr></thead><tbody>';
+    for (var i = 0; i < s.top_occupations.length; i++) {
+      var o = s.top_occupations[i];
+      html += '<tr><td>' + o.title + '</td><td>' + formatNumber(o.workers) + '</td></tr>';
+    }
+    html += '</tbody></table></div>';
+  }
+
+  document.getElementById("stateDetailContent").innerHTML = html;
+  detail.classList.add("open");
+  detail.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+// ======================================================================
+// VIEW 6: RANKING
 // ======================================================================
 var rankingInited = false;
 var rankingSortKey = "jobs";
