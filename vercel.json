@@ -2,7 +2,6 @@
   "framework": null,
   "buildCommand": "npm install",
   "installCommand": "npm install",
-  "outputDirectory": "brazil/site",
   "functions": {
     "api/ask.js": {
       "maxDuration": 30,
