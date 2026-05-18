@@ -1326,6 +1326,10 @@ body.on-landing .nav-home { border-bottom-color: var(--accent); }
         <div class="hero-stat-val" style="color:var(--green)" id="heroStatOpportunity">&mdash;</div>
         <div class="hero-stat-label">em ocupa&ccedil;&otilde;es com<br>alta oportunidade</div>
       </div>
+      <div class="hero-stat-item">
+        <div class="hero-stat-val" style="color:var(--accent)" id="heroStatHigherEd">&mdash;</div>
+        <div class="hero-stat-label">IES e cursos<br>analisados</div>
+      </div>
     </div>
 
     <div style="margin-top:34px">
@@ -3707,6 +3711,12 @@ function updateLandingStats() {
   let highOppJobs = 0;
   for (const d of data) { if (d.oportunidade != null && d.oportunidade >= 7 && d.empregados) highOppJobs += d.empregados; }
   document.getElementById("heroStatOpportunity").textContent = (highOppJobs / 1e6).toFixed(1).replace(".", ",") + "M";
+
+  if (window.courseExposureData && window.courseExposureData.rows) {
+    const iesCount = 2561;
+    const courseCount = 2396;
+    document.getElementById("heroStatHigherEd").textContent = `${iesCount.toLocaleString('pt-BR')} / ${courseCount.toLocaleString('pt-BR')}`;
+  }
 
   // Demographics preview — % of women in high exposure occupations
   if (summaryData && summaryData.demographics) {
