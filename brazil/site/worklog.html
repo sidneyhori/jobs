@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Worklog — Ensino Superior × IA</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <style>
+    :root {
+      --bg: #141210;
+      --bg2: #1c1a17;
+      --bg3: #26231f;
+      --fg: #e8e4dc;
+      --fg2: #9a9590;
+      --accent: #c49a5c;
+      --green: #5a9a5a;
+      --red: #c06a5a;
+      --yellow: #b59a61;
+      --border: rgba(255,255,255,0.08);
+    }
+    body { margin:0; background:var(--bg); color:var(--fg); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 28px 20px 60px; }
+    .top { display:flex; justify-content:space-between; gap:16px; align-items:flex-start; margin-bottom: 26px; }
+    .eyebrow { font-size:11px; text-transform:uppercase; letter-spacing:.12em; color:var(--accent); margin-bottom:10px; }
+    h1,h2,h3,p { margin:0; }
+    h1 { font-size:42px; line-height:1; letter-spacing:-.03em; max-width: 700px; }
+    .sub { margin-top:12px; color:var(--fg2); font-size:15px; line-height:1.6; max-width:800px; }
+    .btn { color:var(--fg); text-decoration:none; border:1px solid var(--border); padding:10px 14px; display:inline-block; }
+    .grid { display:grid; grid-template-columns: 1.2fr .8fr; gap:20px; }
+    .stack { display:grid; gap:20px; }
+    .card { background:var(--bg2); border:1px solid var(--border); padding:20px; }
+    .meta { color:var(--fg2); font-size:13px; line-height:1.5; }
+    .kpis { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:18px; }
+    .kpi { border-top:1px solid var(--border); padding-top:12px; }
+    .kpi .label { color:var(--fg2); font-size:11px; text-transform:uppercase; letter-spacing:.08em; }
+    .kpi .value { font-size:28px; margin-top:6px; }
+    .list { display:grid; gap:10px; margin-top:14px; }
+    .item { border-top:1px solid var(--border); padding-top:12px; }
+    .item:first-child { border-top:none; padding-top:0; }
+    .row { display:flex; justify-content:space-between; gap:10px; align-items:flex-start; }
+    .badge { font-size:11px; text-transform:uppercase; letter-spacing:.08em; padding:4px 8px; border:1px solid var(--border); }
+    .done { color:var(--green); }
+    .doing { color:var(--accent); }
+    .next { color:var(--yellow); }
+    .todo { color:var(--fg2); }
+    .muted { color:var(--fg2); }
+    ul { margin:8px 0 0 18px; color:var(--fg2); }
+    li { margin:4px 0; }
+    .section-title { font-size:24px; letter-spacing:-.02em; }
+    .small { font-size:12px; color:var(--fg2); }
+    @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } .kpis { grid-template-columns:1fr 1fr; } h1 { font-size:34px; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <div class="eyebrow">Spark worklog</div>
+        <h1>Ensino superior × IA</h1>
+        <p class="sub">Página de acompanhamento do que já foi feito, o que está sendo feito agora e o roadmap imediato da camada de formação superior no Mapa. Feita para vocês não precisarem adivinhar o que está andando.</p>
+      </div>
+      <a class="btn" href="index.html">← Voltar para o site</a>
+    </div>
+
+    <div class="card" style="margin-bottom:20px;">
+      <div class="eyebrow">Agora</div>
+      <div class="row">
+        <div>
+          <h2 class="section-title">Sequência aprovada</h2>
+          <p class="meta" style="margin-top:8px;">1) expandir cobertura de cursos → 2) curso × UF / região → 3) modalidade e rede → 4) insights editoriais pra landing → 5) camada robusta formação → ocupação → exposição/oportunidade.</p>
+        </div>
+        <div class="badge doing">fazendo agora</div>
+      </div>
+      <div class="kpis">
+        <div class="kpi"><div class="label">base INEP</div><div class="value">2024</div></div>
+        <div class="kpi"><div class="label">concluintes</div><div class="value">1,33M</div></div>
+        <div class="kpi"><div class="label">chaves curso</div><div class="value">2.396</div></div>
+        <div class="kpi"><div class="label">cobertura inicial</div><div class="value">137 cursos</div></div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="stack">
+        <div class="card">
+          <div class="row">
+            <div>
+              <div class="eyebrow">Feito</div>
+              <h2 class="section-title">O que já está pronto</h2>
+            </div>
+            <div class="badge done">feito</div>
+          </div>
+          <div class="list">
+            <div class="item"><strong>Download e inspeção do Censo 2024</strong><div class="meta">Base do INEP baixada, validada e agregada a partir do cadastro de cursos.</div></div>
+            <div class="item"><strong>Agregado por curso</strong><div class="meta">Curso / grau / modalidade / rede / área CINE com matriculados, ingressantes e concluintes.</div></div>
+            <div class="item"><strong>Agregado por UF e região</strong><div class="meta">Estrutura pronta para recortes territoriais.</div></div>
+            <div class="item"><strong>Score inicial de exposição por curso</strong><div class="meta">Mapeamento manual seed curso → famílias CBO para cursos de maior volume.</div></div>
+            <div class="item"><strong>Preview de Ensino Superior na landing</strong><div class="meta">Bloco inserido localmente na home do site BR para mostrar o início da narrativa.</div></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="row">
+            <div>
+              <div class="eyebrow">Fazendo agora</div>
+              <h2 class="section-title">Trabalho em curso</h2>
+            </div>
+            <div class="badge doing">em andamento</div>
+          </div>
+          <div class="list">
+            <div class="item"><strong>Expandir cobertura de cursos</strong><div class="meta">Cobertura inicial ampliada para 137 cursos com mapeamento heurístico curso → famílias CBO. Próximo passo: reduzir arbitrariedade e melhorar cobertura longa.</div></div>
+            <div class="item"><strong>Limpar o recorte curso × UF / região</strong><div class="meta">Primeiros rankings por UF e região já gerados. Agora é editorializar e testar recortes mais robustos por massa crítica.</div></div>
+            <div class="item"><strong>Organizar modalidade e rede</strong><div class="meta">Primeira leitura pronta: EAD aparece mais exposto que presencial; rede privada concentra o maior volume de concluintes nas trilhas expostas.</div></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="row">
+            <div>
+              <div class="eyebrow">Próximo</div>
+              <h2 class="section-title">Entregas imediatas</h2>
+            </div>
+            <div class="badge next">próximo</div>
+          </div>
+          <div class="list">
+            <div class="item"><strong>Top cursos por exposição × volume</strong><div class="meta">Encontrar onde há muito concluinte + alta exposição + boa oportunidade.</div></div>
+            <div class="item"><strong>Recorte por UF</strong><div class="meta">Ex.: quais UFs formam mais gente em trilhas altamente expostas.</div></div>
+            <div class="item"><strong>Insights editoriais pra landing</strong><div class="meta">Traduzir achados em linguagem de headline, sem sensacionalismo barato.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stack">
+        <div class="card">
+          <div class="eyebrow">Primeiros sinais</div>
+          <h2 class="section-title">Cursos que já apareceram</h2>
+          <div class="list">
+            <div class="item"><strong>ADS</strong><div class="meta">Exposição muito alta + oportunidade muito alta.</div></div>
+            <div class="item"><strong>Ciências Contábeis</strong><div class="meta">Exposição muito alta.</div></div>
+            <div class="item"><strong>Gestão de RH</strong><div class="meta">Exposição muito alta.</div></div>
+            <div class="item"><strong>Direito / Administração</strong><div class="meta">Exposição alta com massa crítica de concluintes.</div></div>
+            <div class="item"><strong>Pedagogia</strong><div class="meta">Exposição moderada, oportunidade alta.</div></div>
+            <div class="item"><strong>Enfermagem</strong><div class="meta">Exposição baixa.</div></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="eyebrow">Backlog estruturado</div>
+          <h2 class="section-title">O que eu quero fazer depois</h2>
+          <ul>
+            <li>Ampliar o mapping curso → ocupações com menos arbitrariedade</li>
+            <li>Criar camada de formação → ocupação → exposição/oportunidade mais robusta</li>
+            <li>Levar isso para insights.html com blocos editoriais próprios de ensino superior</li>
+            <li>Criar ranking navegável de cursos expostos / amplificados / protegidos</li>
+            <li>Adicionar método e caveats claros para não parecer ranking determinístico</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="eyebrow">Nota honesta</div>
+          <h2 class="section-title">O que está difícil</h2>
+          <div class="meta">O ponto mais frágil é o mapeamento curso → destino ocupacional. O INEP dá muito bem o <em>volume</em>, mas não dá o <em>destino</em>. Então o valor aqui depende de um mapping disciplinado, transparente e suficientemente agregado para não virar chute vestido de ciência.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="small" style="margin-top:18px;">Atualizado manualmente por Spark no fluxo de trabalho. Se essa página ficar velha, cobrem.</div>
+  </div>
+</body>
+</html>
