@@ -3772,7 +3772,7 @@ function drawMiniScatter() {
 Promise.all([
   fetch("data.json").then(r => r.json()),
   fetch("summary.json").then(r => r.json()),
-  fetch("../data/course_exposure_analysis_2024.json").then(r => r.json()).catch(() => null)
+  fetch("data/course_exposure_analysis_2024.json").then(r => r.json()).catch(() => null)
 ]).then(([d, s, c]) => {
   data = d;
   allDataRef = d;
