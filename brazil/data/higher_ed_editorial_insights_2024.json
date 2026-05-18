@@ -1,0 +1,136 @@
+[
+  {
+    "id": "course-pipeline-shift",
+    "title": "O pipeline universitário já mostra onde a IA vai bater primeiro",
+    "summary": "Entre cursos de grande volume, 3 já aparecem com exposição muito alta. ADS, Ciências Contábeis e Gestão de RH lideram o grupo de formações que alimentam trilhas profissionais mais reconfiguráveis.",
+    "evidence": [
+      {
+        "curso": "Gestão De Recursos Humanos",
+        "concluintes": 39831,
+        "exposicao": 8.9
+      },
+      {
+        "curso": "Análise E Desenvolvimento De Sistemas",
+        "concluintes": 36577,
+        "exposicao": 8.8
+      },
+      {
+        "curso": "Ciências Contábeis",
+        "concluintes": 25601,
+        "exposicao": 8.6
+      }
+    ]
+  },
+  {
+    "id": "pedagogia-not-doom",
+    "title": "Pedagogia não aparece como colapso; aparece como reconfiguração",
+    "summary": "Pedagogia surge com exposição moderada e oportunidade relativamente alta. A leitura menos burra aqui não é substituição em massa, mas amplificação: planejamento, personalização, conteúdo e coordenação pedagógica devem mudar mais do que desaparecer.",
+    "evidence": [
+      {
+        "curso": "Pedagogia",
+        "concluintes": 76978,
+        "exposicao": 5.9,
+        "oportunidade": 6.9
+      }
+    ]
+  },
+  {
+    "id": "care-vs-symbolic",
+    "title": "Cursos do cuidado seguem mais protegidos do que cursos simbólico-cognitivos",
+    "summary": "Enfermagem e Fisioterapia aparecem bem mais protegidos do que Direito, Contábeis, RH e ADS. Isso reforça a tese de que tarefas físicas, relacionais e reguladas seguram melhor a pancada do que trabalho documental, analítico e padronizável.",
+    "evidence": [
+      {
+        "curso": "Direito",
+        "exposicao": 7.6
+      },
+      {
+        "curso": "Gestão De Recursos Humanos",
+        "exposicao": 8.9
+      },
+      {
+        "curso": "Enfermagem",
+        "exposicao": 3.8
+      },
+      {
+        "curso": "Análise E Desenvolvimento De Sistemas",
+        "exposicao": 8.8
+      },
+      {
+        "curso": "Ciências Contábeis",
+        "exposicao": 8.6
+      },
+      {
+        "curso": "Fisioterapia",
+        "exposicao": 3.8
+      }
+    ]
+  },
+  {
+    "id": "ead-private-concentration",
+    "title": "O epicentro do volume exposto passa por EAD e rede privada",
+    "summary": "Os maiores volumes de concluintes nas trilhas mais expostas estão concentrados em ofertas EAD e privadas. Isso sugere que o choque da IA pode aparecer primeiro onde a formação já é mais escalável, padronizada e massificada.",
+    "evidence": [
+      {
+        "modalidade": "Educação a Distância",
+        "concluintes": 471389,
+        "avg_exposure": 6.8,
+        "avg_opportunity": 6.7
+      },
+      {
+        "modalidade": "Presencial",
+        "concluintes": 611603,
+        "avg_exposure": 6.2,
+        "avg_opportunity": 6.7
+      },
+      {
+        "rede": "Privada",
+        "concluintes": 915138,
+        "avg_exposure": 6.5,
+        "avg_opportunity": 6.7
+      },
+      {
+        "rede": "Pública",
+        "concluintes": 167854,
+        "avg_exposure": 6.4,
+        "avg_opportunity": 6.9
+      }
+    ]
+  },
+  {
+    "id": "regional-pipeline",
+    "title": "O risco não está só no emprego atual; está no pipeline regional de formação",
+    "summary": "Cruzar exposição com concluintes por UF/região permite ver onde o mercado futuro já nasce mais pressionado. Essa camada é mais estratégica do que só olhar o estoque de ocupações atuais.",
+    "evidence": [
+      {
+        "regiao": "Sudeste",
+        "concluintes": 500434,
+        "avg_exposure": 6.5,
+        "avg_opportunity": 6.7
+      },
+      {
+        "regiao": "Sul",
+        "concluintes": 172959,
+        "avg_exposure": 6.5,
+        "avg_opportunity": 6.7
+      },
+      {
+        "regiao": "Centro-Oeste",
+        "concluintes": 78933,
+        "avg_exposure": 6.4,
+        "avg_opportunity": 6.6
+      },
+      {
+        "regiao": "Nordeste",
+        "concluintes": 209907,
+        "avg_exposure": 6.2,
+        "avg_opportunity": 6.6
+      },
+      {
+        "regiao": "Norte",
+        "concluintes": 67953,
+        "avg_exposure": 6.1,
+        "avg_opportunity": 6.5
+      }
+    ]
+  }
+]
