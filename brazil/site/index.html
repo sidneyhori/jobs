@@ -1404,7 +1404,7 @@ body.on-landing .nav-home { border-bottom-color: var(--accent); }
           <span class="section-eyebrow">Ensino superior</span>
           <h2>Quais cursos est&atilde;o formando gente para trilhas mais expostas &agrave; IA?</h2>
           <p>Cruzamos o Censo da Educa&ccedil;&atilde;o Superior 2024 com a metodologia do Mapa para criar um primeiro score de exposi&ccedil;&atilde;o e oportunidade por curso. Isso mostra n&atilde;o s&oacute; quem j&aacute; est&aacute; no mercado, mas quem est&aacute; entrando nele.</p>
-          <button class="section-cta" data-goto="ranking">Ver ranking ocupacional</button>
+          <button class="section-cta" data-goto="ranking-cursos">Ver ranking de cursos</button>
         </div>
         <div class="section-preview" id="previewHigherEd" style="padding:24px;display:flex;flex-direction:column;gap:12px;justify-content:center"></div>
       </div>
@@ -1605,7 +1605,33 @@ body.on-landing .nav-home { border-bottom-color: var(--accent); }
   <div class="ranking-pagination" id="rankingPagination"></div>
 </div>
 
-<!-- View 7: Perguntar -->
+<!-- View 7: Ranking de Cursos -->
+<div id="view-ranking-cursos" class="view">
+  <h2 class="section-title">Ranking de Cursos</h2>
+  <p class="section-desc">Primeira camada de cursos do ensino superior com volume de concluintes e score inicial de exposição/oportunidade. Use como preview analítico, não como ranking final metodologicamente fechado.</p>
+  <div class="ranking-controls">
+    <input type="text" id="courseRankingSearch" placeholder="Filtrar cursos..." aria-label="Filtrar cursos">
+  </div>
+  <div class="ranking-table-wrap">
+    <table class="ranking-table" id="courseRankingTable">
+      <thead>
+        <tr>
+          <th>Curso</th>
+          <th>Grau</th>
+          <th>Modalidade</th>
+          <th>Rede</th>
+          <th>Concluintes</th>
+          <th>Exposição</th>
+          <th>Oportunidade</th>
+          <th>Faixa</th>
+        </tr>
+      </thead>
+      <tbody id="courseRankingBody"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- View 8: Perguntar -->
 <div id="view-perguntar" class="view">
   <h2 class="section-title">Pergunte sobre o mercado de trabalho</h2>
   <p class="section-desc">Fa&ccedil;a perguntas em portugu&ecirc;s sobre ocupa&ccedil;&otilde;es, sal&aacute;rios, risco de automa&ccedil;&atilde;o e demografia.</p>
@@ -1633,6 +1659,7 @@ body.on-landing .nav-home { border-bottom-color: var(--accent); }
 // ══════════════════════════════════════════════════════════════════════════
 let data = [];
 let summaryData = null;
+let courseData = null;
 let currentView = "landing";
 
 // ══════════════════════════════════════════════════════════════════════════
@@ -1720,6 +1747,7 @@ function switchView(view) {
   if (view === "demo") initDemo();
   if (view === "regional") initRegional();
   if (view === "ranking") initRanking();
+  if (view === "ranking-cursos") initCourseRanking();
   if (view === "perguntar") initPerguntar();
 }
 
@@ -3558,6 +3586,37 @@ function renderLLMAnswer(markdown) {
   container.innerHTML = `<div class="card" style="padding:24px 28px">${html}<div style="margin-top:20px;padding-top:14px;border-top:1px solid var(--border);font-size:11px;color:var(--fg2);opacity:0.7">Resposta gerada por intelig\u00eancia artificial com base nos dados do CAGED/CBO. Pode conter imprecis\u00f5es \u2014 verifique os n\u00fameros nas demais abas.</div></div>`;
 }
 
+function initCourseRanking() {
+  const body = document.getElementById('courseRankingBody');
+  const input = document.getElementById('courseRankingSearch');
+  if (!body || !courseData || !courseData.rows) return;
+
+  function render() {
+    const q = (input.value || '').toLowerCase().trim();
+    const rows = courseData.rows
+      .filter(r => !q || [r.curso, r.grau, r.modalidade, r.rede, r.cine_area].join(' ').toLowerCase().includes(q))
+      .slice(0, 200);
+    body.innerHTML = rows.map(r => `
+      <tr>
+        <td><strong>${r.curso}</strong><br><span style="color:var(--fg2);font-size:12px">${r.cine_area || ''}</span></td>
+        <td>${r.grau || '—'}</td>
+        <td>${r.modalidade || '—'}</td>
+        <td>${r.rede || '—'}</td>
+        <td>${(r.concluintes || 0).toLocaleString('pt-BR')}</td>
+        <td style="color:${scoreColor(r.course_exposure_score,10,false)}">${String(r.course_exposure_score ?? '—').replace('.', ',')}</td>
+        <td style="color:${scoreColor(r.course_opportunity_score,10,true)}">${String(r.course_opportunity_score ?? '—').replace('.', ',')}</td>
+        <td>${r.exposure_band || '—'}</td>
+      </tr>
+    `).join('');
+  }
+
+  if (!input.dataset.bound) {
+    input.addEventListener('input', render);
+    input.dataset.bound = '1';
+  }
+  render();
+}
+
 function initPerguntar() {
   if (perguntarInited) return;
   perguntarInited = true;
@@ -3778,6 +3837,7 @@ Promise.all([
   allDataRef = d;
   summaryData = s;
   window.courseExposureData = c;
+  courseData = c;
   updateStats();
   drawGradientLegend();
   updateLandingStats();
