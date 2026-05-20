@@ -1335,9 +1335,9 @@ body.on-landing .nav-home { border-bottom-color: var(--accent); }
           @keyframes sourcesMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
           .sources-track { display:flex; width:max-content; gap:14px; animation:sourcesMarquee 30s linear infinite; }
           .sources-track:hover { animation-play-state: paused; }
-          .source-card { min-width:220px; height:108px; background:#fff; border:1px solid var(--border); border-radius:4px; padding:10px; display:flex; align-items:center; justify-content:center; position:relative; flex-shrink:0; }
-          .source-card img { max-height:72px; max-width:100%; width:auto; display:block; }
-          .source-card.source-b3 { background:#0f3f86; }
+          .source-card { min-width:220px; height:108px; background:transparent; border:none; border-radius:0; padding:10px; display:flex; align-items:center; justify-content:center; position:relative; flex-shrink:0; }
+          .source-card img { max-height:72px; max-width:100%; width:auto; display:block; filter: grayscale(100%); opacity: .9; }
+          .source-card.source-b3 { background:transparent; }
           .source-badge { position:absolute; top:8px; right:8px; font-size:10px; line-height:1; padding:4px 6px; border-radius:999px; background:#1f6fb2; color:#fff; text-transform:uppercase; letter-spacing:.08em; }
           .source-badge.light { background:rgba(255,255,255,.18); }
           @media (max-width: 768px) { .sources-track { animation-duration: 38s; } .source-card { min-width:180px; height:96px; } .source-card img { max-height:64px; } }
