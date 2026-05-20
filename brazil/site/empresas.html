@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="pt-BR" data-theme="light"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Empresas — Mapa da IA</title><link rel="icon" type="image/svg+xml" href="favicon.svg"><style>:root{--bg:#141210;--bg2:#1c1a17;--fg:#e8e4dc;--fg2:#9a9590;--accent:#c49a5c;--border:rgba(255,255,255,.08)}body{margin:0;background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif}nav{position:sticky;top:0;background:rgba(20,18,16,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);display:flex;gap:4px;padding:0 14px;overflow:auto}nav a{color:var(--fg2);text-decoration:none;padding:14px 12px;white-space:nowrap;font-size:13px}nav a.active{color:var(--fg);border-bottom:2px solid var(--accent)}.wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--accent)}h1,h2{font-family:'Source Serif 4', Georgia, serif;letter-spacing:-.03em}h1{font-size:48px;margin:8px 0 12px}h2{font-size:28px;margin:0 0 10px}p{color:var(--fg2);line-height:1.65}.subnav{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.subnav a{color:var(--fg);text-decoration:none;border:1px solid var(--border);padding:8px 10px;font-size:13px}section{padding:34px 0;border-top:1px solid var(--border)}.card{background:var(--bg2);border:1px solid var(--border);padding:18px}
-    .site-nav { position:sticky; top:0; z-index:100; background:var(--nav-bg); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid var(--border); }
-    .site-nav-inner { display:flex; align-items:center; gap:0; padding:0 16px; min-height:52px; }
+    .site-nav { position:sticky; top:0; z-index:100; background:var(--nav-bg); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid var(--border); display:block !important; padding:0 !important; overflow:visible !important; }
+    .site-nav-inner { display:flex; align-items:center; gap:0; padding:0 16px; min-height:52px; width:100%; }
     .site-nav-brand { display:flex; align-items:center; gap:10px; color:var(--fg); text-decoration:none; padding:12px 0; white-space:nowrap; font-size:13px; font-weight:600; }
     .site-nav-logo { flex-shrink:0; }
     .site-nav-links { display:flex; align-items:center; margin-left:14px; overflow:auto; }
@@ -16,9 +16,10 @@
     .site-burger .icon-close { display:none; }
     .site-nav.open .site-burger .icon-menu { display:none; }
     .site-nav.open .site-burger .icon-close { display:block; }
-    .site-mobile-menu { display:none; flex-direction:column; border-top:1px solid var(--border); padding:8px 0; }
+    .site-mobile-menu { display:none; flex-direction:column; border-top:1px solid var(--border); padding:10px 0 12px; background:var(--nav-bg); width:100%; }
     .site-nav.open .site-mobile-menu { display:flex; }
-    @media (max-width: 900px) { .site-nav-links { display:none; } .site-burger { display:flex; } }
+    .site-mobile-menu a { text-align:center; }
+    @media (max-width: 900px) { .site-nav-links { display:none !important; } .site-burger { display:flex !important; } .site-theme-toggle { margin-left:auto; } }
     @media (min-width: 901px) { .site-mobile-menu { display:none !important; } }
 
   </style>  <style>
@@ -32,8 +33,8 @@
       .nav-links { display:flex !important; }
     }
   
-    .site-nav { position:sticky; top:0; z-index:100; background:var(--nav-bg); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid var(--border); }
-    .site-nav-inner { display:flex; align-items:center; gap:0; padding:0 16px; min-height:52px; }
+    .site-nav { position:sticky; top:0; z-index:100; background:var(--nav-bg); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid var(--border); display:block !important; padding:0 !important; overflow:visible !important; }
+    .site-nav-inner { display:flex; align-items:center; gap:0; padding:0 16px; min-height:52px; width:100%; }
     .site-nav-brand { display:flex; align-items:center; gap:10px; color:var(--fg); text-decoration:none; padding:12px 0; white-space:nowrap; font-size:13px; font-weight:600; }
     .site-nav-logo { flex-shrink:0; }
     .site-nav-links { display:flex; align-items:center; margin-left:14px; overflow:auto; }
@@ -49,9 +50,10 @@
     .site-burger .icon-close { display:none; }
     .site-nav.open .site-burger .icon-menu { display:none; }
     .site-nav.open .site-burger .icon-close { display:block; }
-    .site-mobile-menu { display:none; flex-direction:column; border-top:1px solid var(--border); padding:8px 0; }
+    .site-mobile-menu { display:none; flex-direction:column; border-top:1px solid var(--border); padding:10px 0 12px; background:var(--nav-bg); width:100%; }
     .site-nav.open .site-mobile-menu { display:flex; }
-    @media (max-width: 900px) { .site-nav-links { display:none; } .site-burger { display:flex; } }
+    .site-mobile-menu a { text-align:center; }
+    @media (max-width: 900px) { .site-nav-links { display:none !important; } .site-burger { display:flex !important; } .site-theme-toggle { margin-left:auto; } }
     @media (min-width: 901px) { .site-mobile-menu { display:none !important; } }
 
   </style>
