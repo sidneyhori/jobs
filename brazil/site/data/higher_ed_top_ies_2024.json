@@ -1,0 +1,1804 @@
+{
+  "rows": [
+    {
+      "co_ies": "298",
+      "concluintes": 106517,
+      "matriculados": 843645,
+      "ingressantes": 596991,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "163",
+      "concluintes": 60035,
+      "matriculados": 431249,
+      "ingressantes": 268500,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "1196",
+      "concluintes": 47540,
+      "matriculados": 486219,
+      "ingressantes": 459523,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "322",
+      "concluintes": 43632,
+      "matriculados": 260362,
+      "ingressantes": 121391,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "1491",
+      "concluintes": 42694,
+      "matriculados": 286484,
+      "ingressantes": 174612,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "1472",
+      "concluintes": 39436,
+      "matriculados": 580086,
+      "ingressantes": 298153,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "316",
+      "concluintes": 29877,
+      "matriculados": 162714,
+      "ingressantes": 62798,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "221",
+      "concluintes": 25369,
+      "matriculados": 204027,
+      "ingressantes": 128424,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "466",
+      "concluintes": 17061,
+      "matriculados": 85951,
+      "ingressantes": 36022,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "417",
+      "concluintes": 16302,
+      "matriculados": 117562,
+      "ingressantes": 69571,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "1270",
+      "concluintes": 12998,
+      "matriculados": 102865,
+      "ingressantes": 78160,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "1510",
+      "concluintes": 12210,
+      "matriculados": 99781,
+      "ingressantes": 77704,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "2835",
+      "concluintes": 11227,
+      "matriculados": 104403,
+      "ingressantes": 51595,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "385",
+      "concluintes": 10169,
+      "matriculados": 26495,
+      "ingressantes": 9849,
+      "nome": "",
+      "uf": "GO",
+      "municipio": "Goiânia"
+    },
+    {
+      "co_ies": "55",
+      "concluintes": 9059,
+      "matriculados": 62173,
+      "ingressantes": 11751,
+      "nome": "",
+      "uf": "SP",
+      "municipio": "Bauru"
+    },
+    {
+      "co_ies": "496",
+      "concluintes": 9013,
+      "matriculados": 62539,
+      "ingressantes": 36169,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "1205",
+      "concluintes": 8899,
+      "matriculados": 55428,
+      "ingressantes": 21260,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "3840",
+      "concluintes": 8550,
+      "matriculados": 55176,
+      "ingressantes": 28655,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "712",
+      "concluintes": 7760,
+      "matriculados": 22511,
+      "ingressantes": 10102,
+      "nome": "",
+      "uf": "GO",
+      "municipio": "Goiânia"
+    },
+    {
+      "co_ies": "203",
+      "concluintes": 7555,
+      "matriculados": 39730,
+      "ingressantes": 20308,
+      "nome": "",
+      "uf": "MS",
+      "municipio": "Ponta Porã"
+    },
+    {
+      "co_ies": "1294",
+      "concluintes": 7394,
+      "matriculados": 37231,
+      "ingressantes": 16807,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "374",
+      "concluintes": 7238,
+      "matriculados": 63561,
+      "ingressantes": 36675,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "338",
+      "concluintes": 7016,
+      "matriculados": 41876,
+      "ingressantes": 12505,
+      "nome": "",
+      "uf": "MG",
+      "municipio": "Arcos"
+    },
+    {
+      "co_ies": "448",
+      "concluintes": 6868,
+      "matriculados": 18883,
+      "ingressantes": 7435,
+      "nome": "",
+      "uf": "AM",
+      "municipio": "Manaus"
+    },
+    {
+      "co_ies": "586",
+      "concluintes": 6249,
+      "matriculados": 50105,
+      "ingressantes": 11159,
+      "nome": "",
+      "uf": "RJ",
+      "municipio": "Angra dos Reis"
+    },
+    {
+      "co_ies": "1446",
+      "concluintes": 5874,
+      "matriculados": 47240,
+      "ingressantes": 7041,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "56",
+      "concluintes": 5851,
+      "matriculados": 35169,
+      "ingressantes": 7173,
+      "nome": "",
+      "uf": "SP",
+      "municipio": "Araraquara"
+    },
+    {
+      "co_ies": "572",
+      "concluintes": 5358,
+      "matriculados": 43774,
+      "ingressantes": 12159,
+      "nome": "",
+      "uf": "RJ",
+      "municipio": "Angra dos Reis"
+    },
+    {
+      "co_ies": "375",
+      "concluintes": 4961,
+      "matriculados": 34320,
+      "ingressantes": 16631,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "575",
+      "concluintes": 4942,
+      "matriculados": 33909,
+      "ingressantes": 7817,
+      "nome": "",
+      "uf": "MG",
+      "municipio": "Belo Horizonte"
+    },
+    {
+      "co_ies": "3649",
+      "concluintes": 4822,
+      "matriculados": 45360,
+      "ingressantes": 26081,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "2",
+      "concluintes": 4660,
+      "matriculados": 39509,
+      "ingressantes": 7222,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "18165",
+      "concluintes": 4575,
+      "matriculados": 69717,
+      "ingressantes": 34221,
+      "nome": "",
+      "uf": "SP",
+      "municipio": "Adamantina"
+    },
+    {
+      "co_ies": "569",
+      "concluintes": 4477,
+      "matriculados": 36068,
+      "ingressantes": 7459,
+      "nome": "",
+      "uf": "PA",
+      "municipio": "Abaetetuba"
+    },
+    {
+      "co_ies": "718",
+      "concluintes": 4435,
+      "matriculados": 23491,
+      "ingressantes": 8969,
+      "nome": "",
+      "uf": "CE",
+      "municipio": "Aracati"
+    },
+    {
+      "co_ies": "22",
+      "concluintes": 4298,
+      "matriculados": 25754,
+      "ingressantes": 8634,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "383",
+      "concluintes": 4245,
+      "matriculados": 39644,
+      "ingressantes": 14681,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "2147",
+      "concluintes": 4143,
+      "matriculados": 38578,
+      "ingressantes": 10977,
+      "nome": "",
+      "uf": "AM",
+      "municipio": "Anori"
+    },
+    {
+      "co_ies": "570",
+      "concluintes": 4130,
+      "matriculados": 30420,
+      "ingressantes": 7756,
+      "nome": "",
+      "uf": "RN",
+      "municipio": "Caicó"
+    },
+    {
+      "co_ies": "344",
+      "concluintes": 4130,
+      "matriculados": 24350,
+      "ingressantes": 14186,
+      "nome": "",
+      "uf": "GO",
+      "municipio": "Anápolis"
+    },
+    {
+      "co_ies": "277",
+      "concluintes": 4115,
+      "matriculados": 32911,
+      "ingressantes": 13178,
+      "nome": "",
+      "uf": "RJ",
+      "municipio": "Barra do Piraí"
+    },
+    {
+      "co_ies": "165",
+      "concluintes": 4104,
+      "matriculados": 40504,
+      "ingressantes": 20221,
+      "nome": "",
+      "uf": "MG",
+      "municipio": "Uberaba"
+    },
+    {
+      "co_ies": "143",
+      "concluintes": 4104,
+      "matriculados": 38425,
+      "ingressantes": 18658,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "3985",
+      "concluintes": 4076,
+      "matriculados": 20888,
+      "ingressantes": 13245,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "242",
+      "concluintes": 3947,
+      "matriculados": 39073,
+      "ingressantes": 31641,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "10",
+      "concluintes": 3892,
+      "matriculados": 29041,
+      "ingressantes": 16919,
+      "nome": "",
+      "uf": "PR",
+      "municipio": "Curitiba"
+    },
+    {
+      "co_ies": "583",
+      "concluintes": 3871,
+      "matriculados": 27780,
+      "ingressantes": 6744,
+      "nome": "",
+      "uf": "CE",
+      "municipio": "Aracoiaba"
+    },
+    {
+      "co_ies": "580",
+      "concluintes": 3716,
+      "matriculados": 31142,
+      "ingressantes": 6864,
+      "nome": "",
+      "uf": "PE",
+      "municipio": "Afrânio"
+    },
+    {
+      "co_ies": "578",
+      "concluintes": 3643,
+      "matriculados": 29457,
+      "ingressantes": 7632,
+      "nome": "",
+      "uf": "BA",
+      "municipio": "Alagoinhas"
+    },
+    {
+      "co_ies": "1716",
+      "concluintes": 3640,
+      "matriculados": 21770,
+      "ingressantes": 11619,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "571",
+      "concluintes": 3565,
+      "matriculados": 28197,
+      "ingressantes": 7317,
+      "nome": "",
+      "uf": "PR",
+      "municipio": "Curitiba"
+    },
+    {
+      "co_ies": "4",
+      "concluintes": 3519,
+      "matriculados": 21034,
+      "ingressantes": 2867,
+      "nome": "",
+      "uf": "AM",
+      "municipio": "Benjamin Constant"
+    },
+    {
+      "co_ies": "1042",
+      "concluintes": 3508,
+      "matriculados": 33731,
+      "ingressantes": 21364,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "1430",
+      "concluintes": 3456,
+      "matriculados": 31226,
+      "ingressantes": 17502,
+      "nome": "",
+      "uf": "MS",
+      "municipio": "Amambai"
+    },
+    {
+      "co_ies": "719",
+      "concluintes": 3408,
+      "matriculados": 18954,
+      "ingressantes": 5269,
+      "nome": "",
+      "uf": "MT",
+      "municipio": "Alta Floresta"
+    },
+    {
+      "co_ies": "585",
+      "concluintes": 3378,
+      "matriculados": 26458,
+      "ingressantes": 6849,
+      "nome": "",
+      "uf": "CE",
+      "municipio": "Fortaleza"
+    },
+    {
+      "co_ies": "420",
+      "concluintes": 3360,
+      "matriculados": 18610,
+      "ingressantes": 8417,
+      "nome": "",
+      "uf": "GO",
+      "municipio": "Goiânia"
+    },
+    {
+      "co_ies": "526",
+      "concluintes": 3338,
+      "matriculados": 29911,
+      "ingressantes": 16762,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "673",
+      "concluintes": 3230,
+      "matriculados": 19482,
+      "ingressantes": 8202,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "547",
+      "concluintes": 3222,
+      "matriculados": 33636,
+      "ingressantes": 7242,
+      "nome": "",
+      "uf": "RJ",
+      "municipio": "Angra dos Reis"
+    },
+    {
+      "co_ies": "670",
+      "concluintes": 3212,
+      "matriculados": 24978,
+      "ingressantes": 10410,
+      "nome": "",
+      "uf": "MG",
+      "municipio": "Cambuí"
+    },
+    {
+      "co_ies": "577",
+      "concluintes": 3187,
+      "matriculados": 23894,
+      "ingressantes": 5973,
+      "nome": "",
+      "uf": "AL",
+      "municipio": "Arapiraca"
+    },
+    {
+      "co_ies": "1775",
+      "concluintes": 3173,
+      "matriculados": 18550,
+      "ingressantes": 12209,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "671",
+      "concluintes": 3163,
+      "matriculados": 20450,
+      "ingressantes": 12509,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "926",
+      "concluintes": 3136,
+      "matriculados": 34942,
+      "ingressantes": 41050,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "4751",
+      "concluintes": 3131,
+      "matriculados": 84619,
+      "ingressantes": 38175,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "398",
+      "concluintes": 3087,
+      "matriculados": 18028,
+      "ingressantes": 5937,
+      "nome": "",
+      "uf": "AL",
+      "municipio": "Arapiraca"
+    },
+    {
+      "co_ies": "579",
+      "concluintes": 3086,
+      "matriculados": 27958,
+      "ingressantes": 6547,
+      "nome": "",
+      "uf": "BA",
+      "municipio": "Camaçari"
+    },
+    {
+      "co_ies": "548",
+      "concluintes": 3071,
+      "matriculados": 37212,
+      "ingressantes": 5661,
+      "nome": "",
+      "uf": "MA",
+      "municipio": "Alto Parnaíba"
+    },
+    {
+      "co_ies": "494",
+      "concluintes": 3071,
+      "matriculados": 15722,
+      "ingressantes": 6006,
+      "nome": "",
+      "uf": "GO",
+      "municipio": "Goiânia"
+    },
+    {
+      "co_ies": "588",
+      "concluintes": 3060,
+      "matriculados": 27658,
+      "ingressantes": 7393,
+      "nome": "",
+      "uf": "PR",
+      "municipio": "Apucarana"
+    },
+    {
+      "co_ies": "573",
+      "concluintes": 3031,
+      "matriculados": 22847,
+      "ingressantes": 5865,
+      "nome": "",
+      "uf": "ES",
+      "municipio": "Afonso Cláudio"
+    },
+    {
+      "co_ies": "135",
+      "concluintes": 2992,
+      "matriculados": 10852,
+      "ingressantes": 6858,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "581",
+      "concluintes": 2968,
+      "matriculados": 27917,
+      "ingressantes": 6143,
+      "nome": "",
+      "uf": "RS",
+      "municipio": "Arroio dos Ratos"
+    },
+    {
+      "co_ies": "952",
+      "concluintes": 2956,
+      "matriculados": 12278,
+      "ingressantes": 7632,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "54",
+      "concluintes": 2947,
+      "matriculados": 19421,
+      "ingressantes": 4224,
+      "nome": "",
+      "uf": "SP",
+      "municipio": "Campinas"
+    },
+    {
+      "co_ies": "1060",
+      "concluintes": 2915,
+      "matriculados": 18417,
+      "ingressantes": 9860,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "756",
+      "concluintes": 2807,
+      "matriculados": 19340,
+      "ingressantes": 5798,
+      "nome": "",
+      "uf": "PI",
+      "municipio": "Altos"
+    },
+    {
+      "co_ies": "518",
+      "concluintes": 2800,
+      "matriculados": 18048,
+      "ingressantes": 7646,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "3",
+      "concluintes": 2779,
+      "matriculados": 23216,
+      "ingressantes": 7126,
+      "nome": "",
+      "uf": "SE",
+      "municipio": "Aracaju"
+    },
+    {
+      "co_ies": "40",
+      "concluintes": 2754,
+      "matriculados": 17471,
+      "ingressantes": 4054,
+      "nome": "",
+      "uf": "BA",
+      "municipio": "Alagoinhas"
+    },
+    {
+      "co_ies": "472",
+      "concluintes": 2751,
+      "matriculados": 22431,
+      "ingressantes": 11566,
+      "nome": "",
+      "uf": "AL",
+      "municipio": "Maceió"
+    },
+    {
+      "co_ies": "555",
+      "concluintes": 2748,
+      "matriculados": 20095,
+      "ingressantes": 5798,
+      "nome": "",
+      "uf": "CE",
+      "municipio": "Fortaleza"
+    },
+    {
+      "co_ies": "5",
+      "concluintes": 2733,
+      "matriculados": 20031,
+      "ingressantes": 4808,
+      "nome": "",
+      "uf": "BA",
+      "municipio": "Campo Alegre de Lourdes"
+    },
+    {
+      "co_ies": "376",
+      "concluintes": 2715,
+      "matriculados": 17884,
+      "ingressantes": 11053,
+      "nome": "",
+      "uf": "SP",
+      "municipio": "Osasco"
+    },
+    {
+      "co_ies": "574",
+      "concluintes": 2706,
+      "matriculados": 19708,
+      "ingressantes": 5091,
+      "nome": "",
+      "uf": "RJ",
+      "municipio": "Angra dos Reis"
+    },
+    {
+      "co_ies": "694",
+      "concluintes": 2699,
+      "matriculados": 26636,
+      "ingressantes": 10148,
+      "nome": "",
+      "uf": "MS",
+      "municipio": "Aquidauana"
+    },
+    {
+      "co_ies": "437",
+      "concluintes": 2696,
+      "matriculados": 20212,
+      "ingressantes": 8638,
+      "nome": "",
+      "uf": "MT",
+      "municipio": "Primavera do Leste"
+    },
+    {
+      "co_ies": "582",
+      "concluintes": 2662,
+      "matriculados": 18517,
+      "ingressantes": 5798,
+      "nome": "",
+      "uf": "RS",
+      "municipio": "Agudo"
+    },
+    {
+      "co_ies": "330",
+      "concluintes": 2627,
+      "matriculados": 17056,
+      "ingressantes": 6154,
+      "nome": "",
+      "uf": "ES",
+      "municipio": "Vila Velha"
+    },
+    {
+      "co_ies": "17",
+      "concluintes": 2597,
+      "matriculados": 21716,
+      "ingressantes": 5852,
+      "nome": "",
+      "uf": "ES",
+      "municipio": "Vitória"
+    },
+    {
+      "co_ies": "402",
+      "concluintes": 2572,
+      "matriculados": 14718,
+      "ingressantes": 4766,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "663",
+      "concluintes": 2517,
+      "matriculados": 16876,
+      "ingressantes": 7427,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "522",
+      "concluintes": 2514,
+      "matriculados": 24760,
+      "ingressantes": 13250,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "1810",
+      "concluintes": 2499,
+      "matriculados": 18754,
+      "ingressantes": 7402,
+      "nome": "",
+      "uf": "SP",
+      "municipio": "Araraquara"
+    },
+    {
+      "co_ies": "584",
+      "concluintes": 2491,
+      "matriculados": 17877,
+      "ingressantes": 4722,
+      "nome": "",
+      "uf": "GO",
+      "municipio": "Anápolis"
+    },
+    {
+      "co_ies": "953",
+      "concluintes": 2425,
+      "matriculados": 10138,
+      "ingressantes": 4387,
+      "nome": "",
+      "uf": "MT",
+      "municipio": "Cuiabá"
+    },
+    {
+      "co_ies": "576",
+      "concluintes": 2376,
+      "matriculados": 19145,
+      "ingressantes": 3938,
+      "nome": "",
+      "uf": "MG",
+      "municipio": "Andrelândia"
+    },
+    {
+      "co_ies": "852",
+      "concluintes": 2347,
+      "matriculados": 10296,
+      "ingressantes": 5639,
+      "nome": "",
+      "uf": "SP",
+      "municipio": "São Paulo"
+    },
+    {
+      "co_ies": "515",
+      "concluintes": 2339,
+      "matriculados": 22140,
+      "ingressantes": 20102,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "13",
+      "concluintes": 2303,
+      "matriculados": 15192,
+      "ingressantes": 5894,
+      "nome": "",
+      "uf": "RS",
+      "municipio": "Bento Gonçalves"
+    },
+    {
+      "co_ies": "609",
+      "concluintes": 2289,
+      "matriculados": 11214,
+      "ingressantes": 3769,
+      "nome": "",
+      "uf": "PR",
+      "municipio": "Cascavel"
+    },
+    {
+      "co_ies": "206",
+      "concluintes": 2286,
+      "matriculados": 15482,
+      "ingressantes": 10366,
+      "nome": "",
+      "uf": "PA",
+      "municipio": "Altamira"
+    },
+    {
+      "co_ies": "481",
+      "concluintes": 2259,
+      "matriculados": 14867,
+      "ingressantes": 6494,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "550",
+      "concluintes": 2237,
+      "matriculados": 18165,
+      "ingressantes": 5478,
+      "nome": "",
+      "uf": "PB",
+      "municipio": "Araruna"
+    },
+    {
+      "co_ies": "19",
+      "concluintes": 2189,
+      "matriculados": 13744,
+      "ingressantes": 3891,
+      "nome": "",
+      "uf": "SP",
+      "municipio": "Campinas"
+    },
+    {
+      "co_ies": "29",
+      "concluintes": 2151,
+      "matriculados": 18104,
+      "ingressantes": 4026,
+      "nome": "",
+      "uf": "CE",
+      "municipio": "Aracati"
+    },
+    {
+      "co_ies": "1107",
+      "concluintes": 2133,
+      "matriculados": 11818,
+      "ingressantes": 4729,
+      "nome": "",
+      "uf": "CE",
+      "municipio": "Fortaleza"
+    },
+    {
+      "co_ies": "409",
+      "concluintes": 2112,
+      "matriculados": 15071,
+      "ingressantes": 3290,
+      "nome": "",
+      "uf": "PE",
+      "municipio": "Afrânio"
+    },
+    {
+      "co_ies": "9",
+      "concluintes": 2110,
+      "matriculados": 13523,
+      "ingressantes": 3264,
+      "nome": "",
+      "uf": "PR",
+      "municipio": "Apucarana"
+    },
+    {
+      "co_ies": "4702",
+      "concluintes": 2108,
+      "matriculados": 15520,
+      "ingressantes": 5125,
+      "nome": "",
+      "uf": "PE",
+      "municipio": "Recife"
+    },
+    {
+      "co_ies": "1422",
+      "concluintes": 2106,
+      "matriculados": 15687,
+      "ingressantes": 5933,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "2111",
+      "concluintes": 2098,
+      "matriculados": 19707,
+      "ingressantes": 6323,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "1805",
+      "concluintes": 2095,
+      "matriculados": 6557,
+      "ingressantes": 2891,
+      "nome": "",
+      "uf": "GO",
+      "municipio": "Goiânia"
+    },
+    {
+      "co_ies": "82",
+      "concluintes": 2078,
+      "matriculados": 14050,
+      "ingressantes": 5386,
+      "nome": "",
+      "uf": "SC",
+      "municipio": "Campos Novos"
+    },
+    {
+      "co_ies": "449",
+      "concluintes": 2065,
+      "matriculados": 14301,
+      "ingressantes": 6609,
+      "nome": "",
+      "uf": "GO",
+      "municipio": "Goiatuba"
+    },
+    {
+      "co_ies": "403",
+      "concluintes": 2048,
+      "matriculados": 20035,
+      "ingressantes": 8966,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "14",
+      "concluintes": 2040,
+      "matriculados": 18388,
+      "ingressantes": 9261,
+      "nome": "",
+      "uf": "MG",
+      "municipio": "Belo Horizonte"
+    },
+    {
+      "co_ies": "634",
+      "concluintes": 2008,
+      "matriculados": 15285,
+      "ingressantes": 4559,
+      "nome": "",
+      "uf": "RS",
+      "municipio": "Agudo"
+    },
+    {
+      "co_ies": "352",
+      "concluintes": 2003,
+      "matriculados": 15460,
+      "ingressantes": 8327,
+      "nome": "",
+      "uf": "PB",
+      "municipio": "Alhandra"
+    },
+    {
+      "co_ies": "1036",
+      "concluintes": 1996,
+      "matriculados": 20325,
+      "ingressantes": 5824,
+      "nome": "",
+      "uf": "MG",
+      "municipio": "Abaeté"
+    },
+    {
+      "co_ies": "527",
+      "concluintes": 1978,
+      "matriculados": 16153,
+      "ingressantes": 5504,
+      "nome": "",
+      "uf": "GO",
+      "municipio": "Goiânia"
+    },
+    {
+      "co_ies": "591",
+      "concluintes": 1978,
+      "matriculados": 12151,
+      "ingressantes": 3183,
+      "nome": "",
+      "uf": "SP",
+      "municipio": "Diadema"
+    },
+    {
+      "co_ies": "47",
+      "concluintes": 1973,
+      "matriculados": 12206,
+      "ingressantes": 4847,
+      "nome": "",
+      "uf": "GO",
+      "municipio": "Alexânia"
+    },
+    {
+      "co_ies": "3172",
+      "concluintes": 1968,
+      "matriculados": 15424,
+      "ingressantes": 2592,
+      "nome": "",
+      "uf": "AM",
+      "municipio": "Apuí"
+    },
+    {
+      "co_ies": "8",
+      "concluintes": 1967,
+      "matriculados": 13257,
+      "ingressantes": 3450,
+      "nome": "",
+      "uf": "MG",
+      "municipio": "Florestal"
+    },
+    {
+      "co_ies": "38",
+      "concluintes": 1954,
+      "matriculados": 15560,
+      "ingressantes": 3107,
+      "nome": "",
+      "uf": "PA",
+      "municipio": "Altamira"
+    },
+    {
+      "co_ies": "83",
+      "concluintes": 1942,
+      "matriculados": 12827,
+      "ingressantes": 7202,
+      "nome": "",
+      "uf": "SC",
+      "municipio": "Balneário Camboriú"
+    },
+    {
+      "co_ies": "15859",
+      "concluintes": 1909,
+      "matriculados": 10329,
+      "ingressantes": 2147,
+      "nome": "",
+      "uf": "GO",
+      "municipio": "Novo Gama"
+    },
+    {
+      "co_ies": "568",
+      "concluintes": 1895,
+      "matriculados": 18909,
+      "ingressantes": 4103,
+      "nome": "",
+      "uf": "MA",
+      "municipio": "Alcântara"
+    },
+    {
+      "co_ies": "546",
+      "concluintes": 1891,
+      "matriculados": 10232,
+      "ingressantes": 2464,
+      "nome": "",
+      "uf": "SP",
+      "municipio": "Sorocaba"
+    },
+    {
+      "co_ies": "271",
+      "concluintes": 1830,
+      "matriculados": 11561,
+      "ingressantes": 3596,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "2564",
+      "concluintes": 1826,
+      "matriculados": 14135,
+      "ingressantes": 4018,
+      "nome": "",
+      "uf": "PB",
+      "municipio": "Cajazeiras"
+    },
+    {
+      "co_ies": "664",
+      "concluintes": 1813,
+      "matriculados": 13151,
+      "ingressantes": 5807,
+      "nome": "",
+      "uf": "GO",
+      "municipio": "Valparaíso de Goiás"
+    },
+    {
+      "co_ies": "21",
+      "concluintes": 1811,
+      "matriculados": 13994,
+      "ingressantes": 5918,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "11",
+      "concluintes": 1808,
+      "matriculados": 8113,
+      "ingressantes": 2187,
+      "nome": "",
+      "uf": "CE",
+      "municipio": "Aracoiaba"
+    },
+    {
+      "co_ies": "57",
+      "concluintes": 1803,
+      "matriculados": 12808,
+      "ingressantes": 4328,
+      "nome": "",
+      "uf": "PR",
+      "municipio": "Arapongas"
+    },
+    {
+      "co_ies": "823",
+      "concluintes": 1782,
+      "matriculados": 11005,
+      "ingressantes": 3588,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "7",
+      "concluintes": 1780,
+      "matriculados": 13363,
+      "ingressantes": 3562,
+      "nome": "",
+      "uf": "SP",
+      "municipio": "Apiaí"
+    },
+    {
+      "co_ies": "1185",
+      "concluintes": 1713,
+      "matriculados": 16195,
+      "ingressantes": 9653,
+      "nome": "",
+      "uf": "BA",
+      "municipio": "Alagoinhas"
+    },
+    {
+      "co_ies": "1660",
+      "concluintes": 1711,
+      "matriculados": 16842,
+      "ingressantes": 13869,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "343",
+      "concluintes": 1709,
+      "matriculados": 8144,
+      "ingressantes": 3392,
+      "nome": "",
+      "uf": "MG",
+      "municipio": "Belo Horizonte"
+    },
+    {
+      "co_ies": "1892",
+      "concluintes": 1704,
+      "matriculados": 12200,
+      "ingressantes": 4962,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "6",
+      "concluintes": 1692,
+      "matriculados": 11982,
+      "ingressantes": 3503,
+      "nome": "",
+      "uf": "BA",
+      "municipio": "Esplanada"
+    },
+    {
+      "co_ies": "1149",
+      "concluintes": 1657,
+      "matriculados": 8900,
+      "ingressantes": 3937,
+      "nome": "",
+      "uf": "SP",
+      "municipio": "Itu"
+    },
+    {
+      "co_ies": "521",
+      "concluintes": 1637,
+      "matriculados": 13742,
+      "ingressantes": 6101,
+      "nome": "",
+      "uf": "SP",
+      "municipio": "Mogi das Cruzes"
+    },
+    {
+      "co_ies": "693",
+      "concluintes": 1631,
+      "matriculados": 12554,
+      "ingressantes": 3423,
+      "nome": "",
+      "uf": "RJ",
+      "municipio": "Barra do Piraí"
+    },
+    {
+      "co_ies": "1427",
+      "concluintes": 1595,
+      "matriculados": 11934,
+      "ingressantes": 7092,
+      "nome": "",
+      "uf": "RS",
+      "municipio": "Bagé"
+    },
+    {
+      "co_ies": "482",
+      "concluintes": 1580,
+      "matriculados": 11655,
+      "ingressantes": 4033,
+      "nome": "",
+      "uf": "MG",
+      "municipio": "Rio Pomba"
+    },
+    {
+      "co_ies": "1153",
+      "concluintes": 1578,
+      "matriculados": 17537,
+      "ingressantes": 8850,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "384",
+      "concluintes": 1573,
+      "matriculados": 10727,
+      "ingressantes": 2907,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "1807",
+      "concluintes": 1560,
+      "matriculados": 18354,
+      "ingressantes": 5128,
+      "nome": "",
+      "uf": "CE",
+      "municipio": "Acaraú"
+    },
+    {
+      "co_ies": "34",
+      "concluintes": 1519,
+      "matriculados": 11089,
+      "ingressantes": 6361,
+      "nome": "",
+      "uf": "SP",
+      "municipio": "Adamantina"
+    },
+    {
+      "co_ies": "17854",
+      "concluintes": 1509,
+      "matriculados": 34469,
+      "ingressantes": 37991,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "1",
+      "concluintes": 1507,
+      "matriculados": 15397,
+      "ingressantes": 5095,
+      "nome": "",
+      "uf": "MT",
+      "municipio": "Alto Araguaia"
+    },
+    {
+      "co_ies": "167",
+      "concluintes": 1487,
+      "matriculados": 5118,
+      "ingressantes": 1233,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "605",
+      "concluintes": 1484,
+      "matriculados": 10823,
+      "ingressantes": 5064,
+      "nome": "",
+      "uf": "SP",
+      "municipio": "Itapetininga"
+    },
+    {
+      "co_ies": "528",
+      "concluintes": 1479,
+      "matriculados": 9244,
+      "ingressantes": 2115,
+      "nome": "",
+      "uf": "RJ",
+      "municipio": "Rio de Janeiro"
+    },
+    {
+      "co_ies": "423",
+      "concluintes": 1448,
+      "matriculados": 8044,
+      "ingressantes": 2417,
+      "nome": "",
+      "uf": "RS",
+      "municipio": "Cerro Largo"
+    },
+    {
+      "co_ies": "349",
+      "concluintes": 1439,
+      "matriculados": 6709,
+      "ingressantes": 2342,
+      "nome": "",
+      "uf": "MG",
+      "municipio": "Belo Horizonte"
+    },
+    {
+      "co_ies": "4017",
+      "concluintes": 1436,
+      "matriculados": 12139,
+      "ingressantes": 6463,
+      "nome": "",
+      "uf": "SP",
+      "municipio": "Jundiaí"
+    },
+    {
+      "co_ies": "43",
+      "concluintes": 1435,
+      "matriculados": 10386,
+      "ingressantes": 3344,
+      "nome": "",
+      "uf": "SC",
+      "municipio": "Araranguá"
+    },
+    {
+      "co_ies": "1326",
+      "concluintes": 1432,
+      "matriculados": 24550,
+      "ingressantes": 26770,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "669",
+      "concluintes": 1415,
+      "matriculados": 12012,
+      "ingressantes": 4209,
+      "nome": "",
+      "uf": "CE",
+      "municipio": "Fortaleza"
+    },
+    {
+      "co_ies": "1487",
+      "concluintes": 1413,
+      "matriculados": 18663,
+      "ingressantes": 10524,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "3876",
+      "concluintes": 1393,
+      "matriculados": 7761,
+      "ingressantes": 4189,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "71",
+      "concluintes": 1377,
+      "matriculados": 11369,
+      "ingressantes": 2693,
+      "nome": "",
+      "uf": "RN",
+      "municipio": "Açu"
+    },
+    {
+      "co_ies": "430",
+      "concluintes": 1368,
+      "matriculados": 7771,
+      "ingressantes": 3996,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "355",
+      "concluintes": 1367,
+      "matriculados": 6861,
+      "ingressantes": 2197,
+      "nome": "",
+      "uf": "PR",
+      "municipio": "Colombo"
+    },
+    {
+      "co_ies": "1075",
+      "concluintes": 1365,
+      "matriculados": 7118,
+      "ingressantes": 2383,
+      "nome": "",
+      "uf": "PB",
+      "municipio": "Cabedelo"
+    },
+    {
+      "co_ies": "730",
+      "concluintes": 1348,
+      "matriculados": 8823,
+      "ingressantes": 2986,
+      "nome": "",
+      "uf": "SP",
+      "municipio": "Tarumã"
+    },
+    {
+      "co_ies": "1336",
+      "concluintes": 1347,
+      "matriculados": 7804,
+      "ingressantes": 3024,
+      "nome": "",
+      "uf": "MT",
+      "municipio": "Cuiabá"
+    },
+    {
+      "co_ies": "592",
+      "concluintes": 1328,
+      "matriculados": 9196,
+      "ingressantes": 2493,
+      "nome": "",
+      "uf": "MG",
+      "municipio": "Bom Despacho"
+    },
+    {
+      "co_ies": "596",
+      "concluintes": 1316,
+      "matriculados": 7773,
+      "ingressantes": 1847,
+      "nome": "",
+      "uf": "MG",
+      "municipio": "Almenara"
+    },
+    {
+      "co_ies": "140",
+      "concluintes": 1299,
+      "matriculados": 14545,
+      "ingressantes": 5964,
+      "nome": "",
+      "uf": "RJ",
+      "municipio": "Araruama"
+    },
+    {
+      "co_ies": "590",
+      "concluintes": 1289,
+      "matriculados": 9133,
+      "ingressantes": 2979,
+      "nome": "",
+      "uf": "PA",
+      "municipio": "Belém"
+    },
+    {
+      "co_ies": "3849",
+      "concluintes": 1286,
+      "matriculados": 10104,
+      "ingressantes": 1838,
+      "nome": "",
+      "uf": "TO",
+      "municipio": "Alvorada"
+    },
+    {
+      "co_ies": "4925",
+      "concluintes": 1285,
+      "matriculados": 15412,
+      "ingressantes": 2290,
+      "nome": "",
+      "uf": "SP",
+      "municipio": "Santo André"
+    },
+    {
+      "co_ies": "23",
+      "concluintes": 1284,
+      "matriculados": 7567,
+      "ingressantes": 2303,
+      "nome": "",
+      "uf": "RS",
+      "municipio": "Campo Bom"
+    },
+    {
+      "co_ies": "1818",
+      "concluintes": 1282,
+      "matriculados": 6455,
+      "ingressantes": 3787,
+      "nome": "",
+      "uf": "MG",
+      "municipio": "Belo Horizonte"
+    },
+    {
+      "co_ies": "1978",
+      "concluintes": 1258,
+      "matriculados": 6349,
+      "ingressantes": 1559,
+      "nome": "",
+      "uf": "CE",
+      "municipio": "Cascavel"
+    },
+    {
+      "co_ies": "150",
+      "concluintes": 1252,
+      "matriculados": 8285,
+      "ingressantes": 2999,
+      "nome": "",
+      "uf": "SP",
+      "municipio": "Sorocaba"
+    },
+    {
+      "co_ies": "1853",
+      "concluintes": 1250,
+      "matriculados": 18231,
+      "ingressantes": 9907,
+      "nome": "",
+      "uf": "DF",
+      "municipio": "Brasília"
+    },
+    {
+      "co_ies": "14321",
+      "concluintes": 1247,
+      "matriculados": 11469,
+      "ingressantes": 4153,
+      "nome": "",
+      "uf": "CE",
+      "municipio": "Fortaleza"
+    },
+    {
+      "co_ies": "1822",
+      "concluintes": 1237,
+      "matriculados": 2901,
+      "ingressantes": 940,
+      "nome": "",
+      "uf": "GO",
+      "municipio": "Caldas Novas"
+    },
+    {
+      "co_ies": "2402",
+      "concluintes": 1222,
+      "matriculados": 8258,
+      "ingressantes": 2657,
+      "nome": "",
+      "uf": "BA",
+      "municipio": "Salvador"
+    },
+    {
+      "co_ies": "20",
+      "concluintes": 1206,
+      "matriculados": 6734,
+      "ingressantes": 2125,
+      "nome": "",
+      "uf": "RS",
+      "municipio": "Carazinho"
+    },
+    {
+      "co_ies": "18492",
+      "concluintes": 1203,
+      "matriculados": 8718,
+      "ingressantes": 3301,
+      "nome": "",
+      "uf": "PR",
+      "municipio": "Apucarana"
+    },
+    {
+      "co_ies": "621",
+      "concluintes": 1201,
+      "matriculados": 8657,
+      "ingressantes": 2439,
+      "nome": "",
+      "uf": "AL",
+      "municipio": "Arapiraca"
+    },
+    {
+      "co_ies": "1988",
+      "concluintes": 1191,
+      "matriculados": 5119,
+      "ingressantes": 1847,
+      "nome": "",
+      "uf": "CE",
+      "municipio": "Fortaleza"
+    },
+    {
+      "co_ies": "30",
+      "concluintes": 1188,
+      "matriculados": 6991,
+      "ingressantes": 1797,
+      "nome": "",
+      "uf": "MG",
+      "municipio": "Alfenas"
+    },
+    {
+      "co_ies": "1043",
+      "concluintes": 1173,
+      "matriculados": 6383,
+      "ingressantes": 1818,
+      "nome": "",
+      "uf": "SP",
+      "municipio": "Araras"
+    },
+    {
+      "co_ies": "665",
+      "concluintes": 1166,
+      "matriculados": 6765,
+      "ingressantes": 2431,
+      "nome": "",
+      "uf": "MT",
+      "municipio": "Colíder"
+    },
+    {
+      "co_ies": "780",
+      "concluintes": 1164,
+      "matriculados": 9840,
+      "ingressantes": 5111,
+      "nome": "",
+      "uf": "MT",
+      "municipio": "Cuiabá"
+    },
+    {
+      "co_ies": "1126",
+      "concluintes": 1160,
+      "matriculados": 6674,
+      "ingressantes": 1554,
+      "nome": "",
+      "uf": "PR",
+      "municipio": "Apucarana"
+    },
+    {
+      "co_ies": "746",
+      "concluintes": 1159,
+      "matriculados": 9659,
+      "ingressantes": 1544,
+      "nome": "",
+      "uf": "CE",
+      "municipio": "Campos Sales"
+    },
+    {
+      "co_ies": "107",
+      "concluintes": 1158,
+      "matriculados": 13832,
+      "ingressantes": 2750,
+      "nome": "",
+      "uf": "MG",
+      "municipio": "Barroso"
+    },
+    {
+      "co_ies": "367",
+      "concluintes": 1157,
+      "matriculados": 10721,
+      "ingressantes": 2636,
+      "nome": "",
+      "uf": "MG",
+      "municipio": "Almenara"
+    },
+    {
+      "co_ies": "4503",
+      "concluintes": 1138,
+      "matriculados": 8513,
+      "ingressantes": 2130,
+      "nome": "",
+      "uf": "BA",
+      "municipio": "Amargosa"
+    },
+    {
+      "co_ies": "1351",
+      "concluintes": 1129,
+      "matriculados": 5435,
+      "ingressantes": 3250,
+      "nome": "",
+      "uf": "PR",
+      "municipio": "Bituruna"
+    }
+  ]
+}

@@ -185,8 +185,8 @@
     }
 
     Promise.all([
-      fetch('../data/higher_ed_full_analysis_2024.json').then(r=>r.json()),
-      fetch('../data/higher_ed_top_ies_2024.json').then(r=>r.json()).catch(()=>({rows:[]}))
+      fetch('data/higher_ed_full_analysis_2024.json').then(r=>r.json()),
+      fetch('data/higher_ed_top_ies_2024.json').then(r=>r.json()).catch(()=>({rows:[]}))
     ]).then(([a,i]) => {
       analysis = a; ies = i;
       renderCourses();

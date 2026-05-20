@@ -1,0 +1,4034 @@
+{
+  "source": "INEP 2024 + Mapa da IA Brasil",
+  "coverage_courses": 137,
+  "mapped_course_names": [
+    "Administração",
+    "Agronomia",
+    "Análise E Desenvolvimento De Sistemas",
+    "Arquitetura E Urbanismo",
+    "Biblioteconomia",
+    "Biomedicina",
+    "Ciência Da Computação",
+    "Ciências Biológicas",
+    "Ciências Contábeis",
+    "Ciências Econômicas",
+    "Comunicação Social - Publicidade E Propaganda",
+    "Design",
+    "Design De Interiores",
+    "Design De Moda",
+    "Design Gráfico",
+    "Direito",
+    "Educação Física",
+    "Enfermagem",
+    "Engenharia Civil",
+    "Engenharia De Controle E Automação",
+    "Engenharia De Produção",
+    "Engenharia Elétrica",
+    "Engenharia Mecânica",
+    "Estética E Cosmética",
+    "Farmácia",
+    "Filosofia",
+    "Fisioterapia",
+    "Geografia",
+    "Gestão Comercial",
+    "Gestão De Recursos Humanos",
+    "Gestão Financeira",
+    "Gestão Pública",
+    "História",
+    "Jornalismo",
+    "Letras",
+    "Letras - Inglês",
+    "Letras - Língua Portuguesa",
+    "Letras - Português",
+    "Letras - Português E Inglês",
+    "Logística",
+    "Marketing",
+    "Marketing Digital",
+    "Matemática",
+    "Medicina",
+    "Medicina Veterinária",
+    "Nutrição",
+    "Odontologia",
+    "Pedagogia",
+    "Processos Gerenciais",
+    "Psicologia",
+    "Psicopedagogia",
+    "Publicidade E Propaganda",
+    "Serviço Social",
+    "Sistemas De Informação",
+    "Sistemas Para Internet",
+    "Zootecnia"
+  ],
+  "top_courses": [
+    {
+      "curso": "Direito",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Privada",
+      "cine_area": "Direito",
+      "matriculados": 565646,
+      "concluintes": 85227,
+      "ingressantes": 205096,
+      "cursos": 1633,
+      "mapped_cbo_codes": [
+        "2410",
+        "2412",
+        "2413",
+        "2422",
+        "2423"
+      ],
+      "mapped_cbo_titles": [
+        "Advogados",
+        "Procuradores e advogados públicos",
+        "Tabeliães e registradores",
+        "Membros do ministério público",
+        "Delegados de polícia"
+      ],
+      "course_exposure_score": 7.6,
+      "course_opportunity_score": 6.5,
+      "course_advantage_score": 7.0,
+      "course_growth_score": 5.9,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Pedagogia",
+      "grau": "Licenciatura",
+      "modalidade": "Educação a Distância",
+      "rede": "Privada",
+      "cine_area": "Formação de professores sem áreas específicas",
+      "matriculados": 678849,
+      "concluintes": 76978,
+      "ingressantes": 356809,
+      "cursos": 18355,
+      "mapped_cbo_codes": [
+        "2311",
+        "2312",
+        "2313",
+        "2345",
+        "2392"
+      ],
+      "mapped_cbo_titles": [
+        "Professores de nível superior na educação infantil",
+        "Professores de nível superior do ensino fundamental (primeira a quarta séries)",
+        "Professores de nível superior no ensino fundamental de quinta a oitava série",
+        "Professores na área de formação pedagógica do ensino superior",
+        "Professores de educação especial"
+      ],
+      "course_exposure_score": 5.9,
+      "course_opportunity_score": 6.9,
+      "course_advantage_score": 6.9,
+      "course_growth_score": 7.0,
+      "exposure_band": "Moderada"
+    },
+    {
+      "curso": "Administração",
+      "grau": "Bacharelado",
+      "modalidade": "Educação a Distância",
+      "rede": "Privada",
+      "cine_area": "Gestão e administração",
+      "matriculados": 420068,
+      "concluintes": 44477,
+      "ingressantes": 251344,
+      "cursos": 16868,
+      "mapped_cbo_codes": [
+        "2521",
+        "2523",
+        "1423",
+        "1424",
+        "1233"
+      ],
+      "mapped_cbo_titles": [
+        "Administradores",
+        "Secretárias(os) executivas(os) e afins",
+        "Gerentes de comercialização, marketing e comunicação",
+        "Gerentes de suprimentos e afins",
+        "Diretores de comercialização e marketing"
+      ],
+      "course_exposure_score": 7.2,
+      "course_opportunity_score": 7.2,
+      "course_advantage_score": 8.2,
+      "course_growth_score": 6.2,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Psicologia",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Privada",
+      "cine_area": "Psicologia",
+      "matriculados": 346328,
+      "concluintes": 44387,
+      "ingressantes": 131696,
+      "cursos": 1145,
+      "mapped_cbo_codes": [
+        "2515",
+        "2035",
+        "2394"
+      ],
+      "mapped_cbo_titles": [
+        "Psicólogos e psicanalistas",
+        "Pesquisadores das ciências sociais e humanas",
+        "Programadores, avaliadores e orientadores de ensino"
+      ],
+      "course_exposure_score": 6.5,
+      "course_opportunity_score": 7.3,
+      "course_advantage_score": 7.5,
+      "course_growth_score": 7.0,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Gestão De Recursos Humanos",
+      "grau": "Tecnológico",
+      "modalidade": "Educação a Distância",
+      "rede": "Privada",
+      "cine_area": "Gestão e administração",
+      "matriculados": 194418,
+      "concluintes": 39831,
+      "ingressantes": 139895,
+      "cursos": 14408,
+      "mapped_cbo_codes": [
+        "2524",
+        "1422",
+        "4110"
+      ],
+      "mapped_cbo_titles": [
+        "Profissionais de recursos humanos",
+        "Gerentes de recursos humanos e de relações do trabalho",
+        "Agentes, assistentes e auxiliares administrativos"
+      ],
+      "course_exposure_score": 8.9,
+      "course_opportunity_score": 6.5,
+      "course_advantage_score": 8.9,
+      "course_growth_score": 4.1,
+      "exposure_band": "Muito alta"
+    },
+    {
+      "curso": "Enfermagem",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Privada",
+      "cine_area": "Enfermagem",
+      "matriculados": 237672,
+      "concluintes": 36910,
+      "ingressantes": 82894,
+      "cursos": 1114,
+      "mapped_cbo_codes": [
+        "2235",
+        "3222",
+        "5151"
+      ],
+      "mapped_cbo_titles": [
+        "Enfermeiros e afins",
+        "Técnicos e auxiliares de enfermagem",
+        "Trabalhadores em serviços de promoção e apoio à saúde"
+      ],
+      "course_exposure_score": 3.8,
+      "course_opportunity_score": 5.6,
+      "course_advantage_score": 4.2,
+      "course_growth_score": 7.0,
+      "exposure_band": "Baixa"
+    },
+    {
+      "curso": "Análise E Desenvolvimento De Sistemas",
+      "grau": "Tecnológico",
+      "modalidade": "Educação a Distância",
+      "rede": "Privada",
+      "cine_area": "Análise e desenvolvimento de algoritmos e aplicações",
+      "matriculados": 234804,
+      "concluintes": 36577,
+      "ingressantes": 161041,
+      "cursos": 13328,
+      "mapped_cbo_codes": [
+        "2124",
+        "3171",
+        "3172",
+        "1236"
+      ],
+      "mapped_cbo_titles": [
+        "Analistas de tecnologia da informação",
+        "Técnicos de desenvolvimento de sistemas e aplicações",
+        "Técnicos de suporte e monitoração ao usuário de tecnologia da informação.",
+        "Diretores de tecnologia da informação"
+      ],
+      "course_exposure_score": 8.8,
+      "course_opportunity_score": 8.7,
+      "course_advantage_score": 8.8,
+      "course_growth_score": 8.5,
+      "exposure_band": "Muito alta"
+    },
+    {
+      "curso": "Medicina",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Privada",
+      "cine_area": "Medicina",
+      "matriculados": 207838,
+      "concluintes": 27650,
+      "ingressantes": 45900,
+      "cursos": 312,
+      "mapped_cbo_codes": [
+        "2251",
+        "2252",
+        "2231"
+      ],
+      "mapped_cbo_titles": [
+        "Médicos clínicos",
+        "Médicos em especialidades cirúrgicas"
+      ],
+      "course_exposure_score": 4.9,
+      "course_opportunity_score": 6.9,
+      "course_advantage_score": 6.8,
+      "course_growth_score": 7.0,
+      "exposure_band": "Moderada"
+    },
+    {
+      "curso": "Ciências Contábeis",
+      "grau": "Bacharelado",
+      "modalidade": "Educação a Distância",
+      "rede": "Privada",
+      "cine_area": "Contabilidade e tributação",
+      "matriculados": 213567,
+      "concluintes": 25601,
+      "ingressantes": 119821,
+      "cursos": 14867,
+      "mapped_cbo_codes": [
+        "2522",
+        "3511",
+        "4131",
+        "2541"
+      ],
+      "mapped_cbo_titles": [
+        "Contadores e afins",
+        "Técnicos em contabilidade",
+        "Auxiliares de contabilidade",
+        "Auditores fiscais e técnicos da receita federal"
+      ],
+      "course_exposure_score": 8.6,
+      "course_opportunity_score": 6.0,
+      "course_advantage_score": 7.6,
+      "course_growth_score": 4.5,
+      "exposure_band": "Muito alta"
+    },
+    {
+      "curso": "Logística",
+      "grau": "Tecnológico",
+      "modalidade": "Educação a Distância",
+      "rede": "Privada",
+      "cine_area": "Gestão e administração",
+      "matriculados": 122505,
+      "concluintes": 23376,
+      "ingressantes": 87405,
+      "cursos": 11160,
+      "mapped_cbo_codes": [
+        "3421",
+        "4141",
+        "1416",
+        "3911"
+      ],
+      "mapped_cbo_titles": [
+        "Especialistas em logística de transportes",
+        "Almoxarifes e armazenistas",
+        "Gerentes de operações de serviços em empresa de transporte, de comunicação e de logística (armazenagem e distribuição)",
+        "Planejadores, programadores e controladores de produção e manutenção"
+      ],
+      "course_exposure_score": 5.6,
+      "course_opportunity_score": 4.8,
+      "course_advantage_score": 5.6,
+      "course_growth_score": 3.9,
+      "exposure_band": "Moderada"
+    },
+    {
+      "curso": "Odontologia",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Privada",
+      "cine_area": "Odontologia",
+      "matriculados": 140139,
+      "concluintes": 22914,
+      "ingressantes": 41496,
+      "cursos": 582,
+      "mapped_cbo_codes": [
+        "2232",
+        "3224"
+      ],
+      "mapped_cbo_titles": [
+        "Cirurgiões-dentistas",
+        "Técnicos de odontologia"
+      ],
+      "course_exposure_score": 4.0,
+      "course_opportunity_score": 5.8,
+      "course_advantage_score": 5.0,
+      "course_growth_score": 6.6,
+      "exposure_band": "Moderada"
+    },
+    {
+      "curso": "Educação Física",
+      "grau": "Bacharelado",
+      "modalidade": "Educação a Distância",
+      "rede": "Privada",
+      "cine_area": "Promoção, prevenção, terapia e reabilitação",
+      "matriculados": 225932,
+      "concluintes": 21116,
+      "ingressantes": 125978,
+      "cursos": 9089,
+      "mapped_cbo_codes": [
+        "2241",
+        "3331"
+      ],
+      "mapped_cbo_titles": [
+        "Profissionais da educação física",
+        "Instrutores e professores de cursos livres"
+      ],
+      "course_exposure_score": 5.7,
+      "course_opportunity_score": 6.6,
+      "course_advantage_score": 6.2,
+      "course_growth_score": 7.0,
+      "exposure_band": "Moderada"
+    },
+    {
+      "curso": "Administração",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Privada",
+      "cine_area": "Gestão e administração",
+      "matriculados": 142029,
+      "concluintes": 20947,
+      "ingressantes": 57930,
+      "cursos": 1434,
+      "mapped_cbo_codes": [
+        "2521",
+        "2523",
+        "1423",
+        "1424",
+        "1233"
+      ],
+      "mapped_cbo_titles": [
+        "Administradores",
+        "Secretárias(os) executivas(os) e afins",
+        "Gerentes de comercialização, marketing e comunicação",
+        "Gerentes de suprimentos e afins",
+        "Diretores de comercialização e marketing"
+      ],
+      "course_exposure_score": 7.2,
+      "course_opportunity_score": 7.2,
+      "course_advantage_score": 8.2,
+      "course_growth_score": 6.2,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Fisioterapia",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Privada",
+      "cine_area": "Promoção, prevenção, terapia e reabilitação",
+      "matriculados": 128044,
+      "concluintes": 19396,
+      "ingressantes": 44845,
+      "cursos": 840,
+      "mapped_cbo_codes": [
+        "2236",
+        "3221"
+      ],
+      "mapped_cbo_titles": [
+        "Fisioterapeutas",
+        "Tecnólogos e técnicos em terapias complementares e estéticas"
+      ],
+      "course_exposure_score": 3.8,
+      "course_opportunity_score": 6.0,
+      "course_advantage_score": 5.0,
+      "course_growth_score": 7.0,
+      "exposure_band": "Baixa"
+    },
+    {
+      "curso": "Farmácia",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Privada",
+      "cine_area": "Farmácia",
+      "matriculados": 95024,
+      "concluintes": 15942,
+      "ingressantes": 30540,
+      "cursos": 641,
+      "mapped_cbo_codes": [
+        "2234",
+        "3252"
+      ],
+      "mapped_cbo_titles": [
+        "Farmacêuticos",
+        "Técnicos em produção, conservação  e de qualidade de alimentos"
+      ],
+      "course_exposure_score": 5.0,
+      "course_opportunity_score": 6.5,
+      "course_advantage_score": 6.0,
+      "course_growth_score": 6.9,
+      "exposure_band": "Moderada"
+    },
+    {
+      "curso": "Medicina Veterinária",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Privada",
+      "cine_area": "Veterinária",
+      "matriculados": 128364,
+      "concluintes": 15833,
+      "ingressantes": 41553,
+      "cursos": 455,
+      "mapped_cbo_codes": [
+        "2233",
+        "3243",
+        "5193"
+      ],
+      "mapped_cbo_titles": [
+        "Veterinários e zootecnistas",
+        "Trabalhadores de serviços veterinários, de higiene e estética de animais domésticos"
+      ],
+      "course_exposure_score": 3.9,
+      "course_opportunity_score": 5.2,
+      "course_advantage_score": 3.9,
+      "course_growth_score": 6.4,
+      "exposure_band": "Baixa"
+    },
+    {
+      "curso": "Gestão Pública",
+      "grau": "Tecnológico",
+      "modalidade": "Educação a Distância",
+      "rede": "Privada",
+      "cine_area": "Gestão e administração",
+      "matriculados": 69312,
+      "concluintes": 13999,
+      "ingressantes": 43399,
+      "cursos": 10711,
+      "mapped_cbo_codes": [
+        "1114",
+        "2521",
+        "4110"
+      ],
+      "mapped_cbo_titles": [
+        "Dirigentes do serviço público",
+        "Administradores",
+        "Agentes, assistentes e auxiliares administrativos"
+      ],
+      "course_exposure_score": 8.5,
+      "course_opportunity_score": 6.5,
+      "course_advantage_score": 8.6,
+      "course_growth_score": 4.4,
+      "exposure_band": "Muito alta"
+    },
+    {
+      "curso": "Gestão Financeira",
+      "grau": "Tecnológico",
+      "modalidade": "Educação a Distância",
+      "rede": "Privada",
+      "cine_area": "Finanças, bancos e seguros",
+      "matriculados": 73025,
+      "concluintes": 13664,
+      "ingressantes": 54210,
+      "cursos": 11421,
+      "mapped_cbo_codes": [
+        "2522",
+        "4131",
+        "3511"
+      ],
+      "mapped_cbo_titles": [
+        "Contadores e afins",
+        "Auxiliares de contabilidade",
+        "Técnicos em contabilidade"
+      ],
+      "course_exposure_score": 8.6,
+      "course_opportunity_score": 6.0,
+      "course_advantage_score": 7.6,
+      "course_growth_score": 4.4,
+      "exposure_band": "Muito alta"
+    },
+    {
+      "curso": "Processos Gerenciais",
+      "grau": "Tecnológico",
+      "modalidade": "Educação a Distância",
+      "rede": "Privada",
+      "cine_area": "Gestão e administração",
+      "matriculados": 66448,
+      "concluintes": 13302,
+      "ingressantes": 43749,
+      "cursos": 9544,
+      "mapped_cbo_codes": [
+        "2521",
+        "1423",
+        "1424",
+        "3541"
+      ],
+      "mapped_cbo_titles": [
+        "Administradores",
+        "Gerentes de comercialização, marketing e comunicação",
+        "Gerentes de suprimentos e afins",
+        "Especialistas em promoção de produtos e vendas"
+      ],
+      "course_exposure_score": 7.0,
+      "course_opportunity_score": 7.1,
+      "course_advantage_score": 7.8,
+      "course_growth_score": 6.4,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Direito",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Pública",
+      "cine_area": "Direito",
+      "matriculados": 85396,
+      "concluintes": 12886,
+      "ingressantes": 19581,
+      "cursos": 231,
+      "mapped_cbo_codes": [
+        "2410",
+        "2412",
+        "2413",
+        "2422",
+        "2423"
+      ],
+      "mapped_cbo_titles": [
+        "Advogados",
+        "Procuradores e advogados públicos",
+        "Tabeliães e registradores",
+        "Membros do ministério público",
+        "Delegados de polícia"
+      ],
+      "course_exposure_score": 7.6,
+      "course_opportunity_score": 6.5,
+      "course_advantage_score": 7.0,
+      "course_growth_score": 5.9,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Gestão Comercial",
+      "grau": "Tecnológico",
+      "modalidade": "Educação a Distância",
+      "rede": "Privada",
+      "cine_area": "Gestão comercial",
+      "matriculados": 76487,
+      "concluintes": 12596,
+      "ingressantes": 60097,
+      "cursos": 10366,
+      "mapped_cbo_codes": [
+        "3541",
+        "5211",
+        "1423"
+      ],
+      "mapped_cbo_titles": [
+        "Especialistas em promoção de produtos e vendas",
+        "Operadores do comércio em lojas e mercados",
+        "Gerentes de comercialização, marketing e comunicação"
+      ],
+      "course_exposure_score": 3.8,
+      "course_opportunity_score": 4.3,
+      "course_advantage_score": 4.8,
+      "course_growth_score": 3.7,
+      "exposure_band": "Baixa"
+    },
+    {
+      "curso": "Análise E Desenvolvimento De Sistemas",
+      "grau": "Tecnológico",
+      "modalidade": "Presencial",
+      "rede": "Privada",
+      "cine_area": "Análise e desenvolvimento de algoritmos e aplicações",
+      "matriculados": 68970,
+      "concluintes": 12569,
+      "ingressantes": 42986,
+      "cursos": 440,
+      "mapped_cbo_codes": [
+        "2124",
+        "3171",
+        "3172",
+        "1236"
+      ],
+      "mapped_cbo_titles": [
+        "Analistas de tecnologia da informação",
+        "Técnicos de desenvolvimento de sistemas e aplicações",
+        "Técnicos de suporte e monitoração ao usuário de tecnologia da informação.",
+        "Diretores de tecnologia da informação"
+      ],
+      "course_exposure_score": 8.8,
+      "course_opportunity_score": 8.7,
+      "course_advantage_score": 8.8,
+      "course_growth_score": 8.5,
+      "exposure_band": "Muito alta"
+    },
+    {
+      "curso": "Pedagogia",
+      "grau": "Licenciatura",
+      "modalidade": "Presencial",
+      "rede": "Pública",
+      "cine_area": "Formação de professores sem áreas específicas",
+      "matriculados": 84722,
+      "concluintes": 12388,
+      "ingressantes": 21373,
+      "cursos": 395,
+      "mapped_cbo_codes": [
+        "2311",
+        "2312",
+        "2313",
+        "2345",
+        "2392"
+      ],
+      "mapped_cbo_titles": [
+        "Professores de nível superior na educação infantil",
+        "Professores de nível superior do ensino fundamental (primeira a quarta séries)",
+        "Professores de nível superior no ensino fundamental de quinta a oitava série",
+        "Professores na área de formação pedagógica do ensino superior",
+        "Professores de educação especial"
+      ],
+      "course_exposure_score": 5.9,
+      "course_opportunity_score": 6.9,
+      "course_advantage_score": 6.9,
+      "course_growth_score": 7.0,
+      "exposure_band": "Moderada"
+    },
+    {
+      "curso": "Engenharia Civil",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Privada",
+      "cine_area": "Engenharia civil e construção",
+      "matriculados": 61000,
+      "concluintes": 12244,
+      "ingressantes": 19084,
+      "cursos": 812,
+      "mapped_cbo_codes": [
+        "2142",
+        "3121",
+        "3181",
+        "2149"
+      ],
+      "mapped_cbo_titles": [
+        "Engenheiros civis e afins",
+        "Técnicos em construção civil (edificações)",
+        "Desenhistas técnicos da construção civil e arquitetura",
+        "Engenheiros de produção, qualidade, segurança e afins"
+      ],
+      "course_exposure_score": 6.0,
+      "course_opportunity_score": 6.9,
+      "course_advantage_score": 7.0,
+      "course_growth_score": 6.8,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Biomedicina",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Privada",
+      "cine_area": "Tecnologia de diagnóstico e tratamento médico",
+      "matriculados": 96873,
+      "concluintes": 12127,
+      "ingressantes": 42727,
+      "cursos": 617,
+      "mapped_cbo_codes": [
+        "2212",
+        "2211",
+        "5152"
+      ],
+      "mapped_cbo_titles": [
+        "Biomédicos",
+        "Biólogos e afins",
+        "Auxiliares de laboratório da saúde"
+      ],
+      "course_exposure_score": 4.4,
+      "course_opportunity_score": 5.5,
+      "course_advantage_score": 4.8,
+      "course_growth_score": 6.3,
+      "exposure_band": "Moderada"
+    },
+    {
+      "curso": "Enfermagem",
+      "grau": "Bacharelado",
+      "modalidade": "Educação a Distância",
+      "rede": "Privada",
+      "cine_area": "Enfermagem",
+      "matriculados": 201978,
+      "concluintes": 11369,
+      "ingressantes": 106684,
+      "cursos": 3408,
+      "mapped_cbo_codes": [
+        "2235",
+        "3222",
+        "5151"
+      ],
+      "mapped_cbo_titles": [
+        "Enfermeiros e afins",
+        "Técnicos e auxiliares de enfermagem",
+        "Trabalhadores em serviços de promoção e apoio à saúde"
+      ],
+      "course_exposure_score": 3.8,
+      "course_opportunity_score": 5.6,
+      "course_advantage_score": 4.2,
+      "course_growth_score": 7.0,
+      "exposure_band": "Baixa"
+    },
+    {
+      "curso": "Arquitetura E Urbanismo",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Privada",
+      "cine_area": "Arquitetura e planejamento urbano",
+      "matriculados": 73871,
+      "concluintes": 11344,
+      "ingressantes": 21855,
+      "cursos": 575,
+      "mapped_cbo_codes": [
+        "2141",
+        "3181",
+        "2629"
+      ],
+      "mapped_cbo_titles": [
+        "Arquitetos e urbanistas",
+        "Desenhistas técnicos da construção civil e arquitetura",
+        "Designer de interiores de nível superior"
+      ],
+      "course_exposure_score": 7.2,
+      "course_opportunity_score": 6.8,
+      "course_advantage_score": 8.0,
+      "course_growth_score": 5.5,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Nutrição",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Privada",
+      "cine_area": "Promoção, prevenção, terapia e reabilitação",
+      "matriculados": 71023,
+      "concluintes": 11339,
+      "ingressantes": 28341,
+      "cursos": 657,
+      "mapped_cbo_codes": [
+        "2237",
+        "3251"
+      ],
+      "mapped_cbo_titles": [
+        "Nutricionistas",
+        "Técnico em farmácia e em manipulação farmacêutica"
+      ],
+      "course_exposure_score": 5.3,
+      "course_opportunity_score": 6.5,
+      "course_advantage_score": 6.3,
+      "course_growth_score": 6.7,
+      "exposure_band": "Moderada"
+    },
+    {
+      "curso": "Serviço Social",
+      "grau": "Bacharelado",
+      "modalidade": "Educação a Distância",
+      "rede": "Privada",
+      "cine_area": "Serviço social",
+      "matriculados": 93138,
+      "concluintes": 11029,
+      "ingressantes": 51594,
+      "cursos": 11512,
+      "mapped_cbo_codes": [
+        "2516",
+        "5153"
+      ],
+      "mapped_cbo_titles": [
+        "Assistentes sociais e economistas domésticos",
+        "Trabalhadores de atenção, defesa e proteção a pessoas em situação de risco e adolescentes em conflito com a lei"
+      ],
+      "course_exposure_score": 4.0,
+      "course_opportunity_score": 5.8,
+      "course_advantage_score": 5.5,
+      "course_growth_score": 6.0,
+      "exposure_band": "Moderada"
+    },
+    {
+      "curso": "Medicina",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Pública",
+      "cine_area": "Medicina",
+      "matriculados": 75756,
+      "concluintes": 10851,
+      "ingressantes": 14466,
+      "cursos": 155,
+      "mapped_cbo_codes": [
+        "2251",
+        "2252",
+        "2231"
+      ],
+      "mapped_cbo_titles": [
+        "Médicos clínicos",
+        "Médicos em especialidades cirúrgicas"
+      ],
+      "course_exposure_score": 4.9,
+      "course_opportunity_score": 6.9,
+      "course_advantage_score": 6.8,
+      "course_growth_score": 7.0,
+      "exposure_band": "Moderada"
+    },
+    {
+      "curso": "Ciências Contábeis",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Privada",
+      "cine_area": "Contabilidade e tributação",
+      "matriculados": 66402,
+      "concluintes": 10831,
+      "ingressantes": 26735,
+      "cursos": 1006,
+      "mapped_cbo_codes": [
+        "2522",
+        "3511",
+        "4131",
+        "2541"
+      ],
+      "mapped_cbo_titles": [
+        "Contadores e afins",
+        "Técnicos em contabilidade",
+        "Auxiliares de contabilidade",
+        "Auditores fiscais e técnicos da receita federal"
+      ],
+      "course_exposure_score": 8.6,
+      "course_opportunity_score": 6.0,
+      "course_advantage_score": 7.6,
+      "course_growth_score": 4.5,
+      "exposure_band": "Muito alta"
+    },
+    {
+      "curso": "Marketing",
+      "grau": "Tecnológico",
+      "modalidade": "Educação a Distância",
+      "rede": "Privada",
+      "cine_area": "Marketing e propaganda",
+      "matriculados": 58364,
+      "concluintes": 10424,
+      "ingressantes": 44647,
+      "cursos": 9734,
+      "mapped_cbo_codes": [
+        "2531",
+        "1423",
+        "3541"
+      ],
+      "mapped_cbo_titles": [
+        "Profissionais de publicidade",
+        "Gerentes de comercialização, marketing e comunicação",
+        "Especialistas em promoção de produtos e vendas"
+      ],
+      "course_exposure_score": 7.1,
+      "course_opportunity_score": 7.4,
+      "course_advantage_score": 8.2,
+      "course_growth_score": 6.6,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Pedagogia",
+      "grau": "Licenciatura",
+      "modalidade": "Presencial",
+      "rede": "Privada",
+      "cine_area": "Formação de professores sem áreas específicas",
+      "matriculados": 69069,
+      "concluintes": 10012,
+      "ingressantes": 26191,
+      "cursos": 871,
+      "mapped_cbo_codes": [
+        "2311",
+        "2312",
+        "2313",
+        "2345",
+        "2392"
+      ],
+      "mapped_cbo_titles": [
+        "Professores de nível superior na educação infantil",
+        "Professores de nível superior do ensino fundamental (primeira a quarta séries)",
+        "Professores de nível superior no ensino fundamental de quinta a oitava série",
+        "Professores na área de formação pedagógica do ensino superior",
+        "Professores de educação especial"
+      ],
+      "course_exposure_score": 5.9,
+      "course_opportunity_score": 6.9,
+      "course_advantage_score": 6.9,
+      "course_growth_score": 7.0,
+      "exposure_band": "Moderada"
+    },
+    {
+      "curso": "Administração",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Pública",
+      "cine_area": "Gestão e administração",
+      "matriculados": 71173,
+      "concluintes": 9515,
+      "ingressantes": 18832,
+      "cursos": 320,
+      "mapped_cbo_codes": [
+        "2521",
+        "2523",
+        "1423",
+        "1424",
+        "1233"
+      ],
+      "mapped_cbo_titles": [
+        "Administradores",
+        "Secretárias(os) executivas(os) e afins",
+        "Gerentes de comercialização, marketing e comunicação",
+        "Gerentes de suprimentos e afins",
+        "Diretores de comercialização e marketing"
+      ],
+      "course_exposure_score": 7.2,
+      "course_opportunity_score": 7.2,
+      "course_advantage_score": 8.2,
+      "course_growth_score": 6.2,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Educação Física",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Privada",
+      "cine_area": "Promoção, prevenção, terapia e reabilitação",
+      "matriculados": 61635,
+      "concluintes": 8740,
+      "ingressantes": 27144,
+      "cursos": 628,
+      "mapped_cbo_codes": [
+        "2241",
+        "3331"
+      ],
+      "mapped_cbo_titles": [
+        "Profissionais da educação física",
+        "Instrutores e professores de cursos livres"
+      ],
+      "course_exposure_score": 5.7,
+      "course_opportunity_score": 6.6,
+      "course_advantage_score": 6.2,
+      "course_growth_score": 7.0,
+      "exposure_band": "Moderada"
+    },
+    {
+      "curso": "Nutrição",
+      "grau": "Bacharelado",
+      "modalidade": "Educação a Distância",
+      "rede": "Privada",
+      "cine_area": "Promoção, prevenção, terapia e reabilitação",
+      "matriculados": 102367,
+      "concluintes": 8285,
+      "ingressantes": 65423,
+      "cursos": 5825,
+      "mapped_cbo_codes": [
+        "2237",
+        "3251"
+      ],
+      "mapped_cbo_titles": [
+        "Nutricionistas",
+        "Técnico em farmácia e em manipulação farmacêutica"
+      ],
+      "course_exposure_score": 5.3,
+      "course_opportunity_score": 6.5,
+      "course_advantage_score": 6.3,
+      "course_growth_score": 6.7,
+      "exposure_band": "Moderada"
+    },
+    {
+      "curso": "Estética E Cosmética",
+      "grau": "Tecnológico",
+      "modalidade": "Educação a Distância",
+      "rede": "Privada",
+      "cine_area": "Serviços de beleza",
+      "matriculados": 48195,
+      "concluintes": 7207,
+      "ingressantes": 38460,
+      "cursos": 6440,
+      "mapped_cbo_codes": [
+        "3221",
+        "5169"
+      ],
+      "mapped_cbo_titles": [
+        "Tecnólogos e técnicos em terapias complementares e estéticas",
+        "Trabalhadores nos serviços de arte corporal"
+      ],
+      "course_exposure_score": 3.0,
+      "course_opportunity_score": 6.0,
+      "course_advantage_score": 5.0,
+      "course_growth_score": 7.0,
+      "exposure_band": "Baixa"
+    },
+    {
+      "curso": "Educação Física",
+      "grau": "Licenciatura",
+      "modalidade": "Educação a Distância",
+      "rede": "Privada",
+      "cine_area": "Formação de professores em áreas específicas (exceto Letras)",
+      "matriculados": 79965,
+      "concluintes": 7046,
+      "ingressantes": 54330,
+      "cursos": 9241,
+      "mapped_cbo_codes": [
+        "2241",
+        "3331"
+      ],
+      "mapped_cbo_titles": [
+        "Profissionais da educação física",
+        "Instrutores e professores de cursos livres"
+      ],
+      "course_exposure_score": 5.7,
+      "course_opportunity_score": 6.6,
+      "course_advantage_score": 6.2,
+      "course_growth_score": 7.0,
+      "exposure_band": "Moderada"
+    },
+    {
+      "curso": "Biomedicina",
+      "grau": "Bacharelado",
+      "modalidade": "Educação a Distância",
+      "rede": "Privada",
+      "cine_area": "Tecnologia de diagnóstico e tratamento médico",
+      "matriculados": 97674,
+      "concluintes": 6740,
+      "ingressantes": 70162,
+      "cursos": 6531,
+      "mapped_cbo_codes": [
+        "2212",
+        "2211",
+        "5152"
+      ],
+      "mapped_cbo_titles": [
+        "Biomédicos",
+        "Biólogos e afins",
+        "Auxiliares de laboratório da saúde"
+      ],
+      "course_exposure_score": 4.4,
+      "course_opportunity_score": 5.5,
+      "course_advantage_score": 4.8,
+      "course_growth_score": 6.3,
+      "exposure_band": "Moderada"
+    },
+    {
+      "curso": "História",
+      "grau": "Licenciatura",
+      "modalidade": "Educação a Distância",
+      "rede": "Privada",
+      "cine_area": "Formação de professores em áreas específicas (exceto Letras)",
+      "matriculados": 48505,
+      "concluintes": 6608,
+      "ingressantes": 28305,
+      "cursos": 10855,
+      "mapped_cbo_codes": [
+        "2321",
+        "2347",
+        "2035"
+      ],
+      "mapped_cbo_titles": [
+        "Professores do ensino médio",
+        "Professores de ciências humanas do ensino superior",
+        "Pesquisadores das ciências sociais e humanas"
+      ],
+      "course_exposure_score": 7.0,
+      "course_opportunity_score": 6.5,
+      "course_advantage_score": 7.0,
+      "course_growth_score": 6.0,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Gestão De Recursos Humanos",
+      "grau": "Tecnológico",
+      "modalidade": "Presencial",
+      "rede": "Privada",
+      "cine_area": "Gestão e administração",
+      "matriculados": 19837,
+      "concluintes": 6410,
+      "ingressantes": 10892,
+      "cursos": 461,
+      "mapped_cbo_codes": [
+        "2524",
+        "1422",
+        "4110"
+      ],
+      "mapped_cbo_titles": [
+        "Profissionais de recursos humanos",
+        "Gerentes de recursos humanos e de relações do trabalho",
+        "Agentes, assistentes e auxiliares administrativos"
+      ],
+      "course_exposure_score": 8.9,
+      "course_opportunity_score": 6.5,
+      "course_advantage_score": 8.9,
+      "course_growth_score": 4.1,
+      "exposure_band": "Muito alta"
+    },
+    {
+      "curso": "Engenharia Mecânica",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Privada",
+      "cine_area": "Engenharia mecânica e metalurgia",
+      "matriculados": 34329,
+      "concluintes": 6409,
+      "ingressantes": 11135,
+      "cursos": 429,
+      "mapped_cbo_codes": [
+        "2144",
+        "2149"
+      ],
+      "mapped_cbo_titles": [
+        "Engenheiros mecânicos e afins",
+        "Engenheiros de produção, qualidade, segurança e afins"
+      ],
+      "course_exposure_score": 7.0,
+      "course_opportunity_score": 7.3,
+      "course_advantage_score": 7.0,
+      "course_growth_score": 7.6,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Enfermagem",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Pública",
+      "cine_area": "Enfermagem",
+      "matriculados": 36034,
+      "concluintes": 6089,
+      "ingressantes": 8294,
+      "cursos": 165,
+      "mapped_cbo_codes": [
+        "2235",
+        "3222",
+        "5151"
+      ],
+      "mapped_cbo_titles": [
+        "Enfermeiros e afins",
+        "Técnicos e auxiliares de enfermagem",
+        "Trabalhadores em serviços de promoção e apoio à saúde"
+      ],
+      "course_exposure_score": 3.8,
+      "course_opportunity_score": 5.6,
+      "course_advantage_score": 4.2,
+      "course_growth_score": 7.0,
+      "exposure_band": "Baixa"
+    },
+    {
+      "curso": "Estética E Cosmética",
+      "grau": "Tecnológico",
+      "modalidade": "Presencial",
+      "rede": "Privada",
+      "cine_area": "Serviços de beleza",
+      "matriculados": 22408,
+      "concluintes": 5852,
+      "ingressantes": 10787,
+      "cursos": 325,
+      "mapped_cbo_codes": [
+        "3221",
+        "5169"
+      ],
+      "mapped_cbo_titles": [
+        "Tecnólogos e técnicos em terapias complementares e estéticas",
+        "Trabalhadores nos serviços de arte corporal"
+      ],
+      "course_exposure_score": 3.0,
+      "course_opportunity_score": 6.0,
+      "course_advantage_score": 5.0,
+      "course_growth_score": 7.0,
+      "exposure_band": "Baixa"
+    },
+    {
+      "curso": "Matemática",
+      "grau": "Licenciatura",
+      "modalidade": "Educação a Distância",
+      "rede": "Privada",
+      "cine_area": "Formação de professores em áreas específicas (exceto Letras)",
+      "matriculados": 36049,
+      "concluintes": 5797,
+      "ingressantes": 21628,
+      "cursos": 9647,
+      "mapped_cbo_codes": [
+        "2111",
+        "2112",
+        "2124"
+      ],
+      "mapped_cbo_titles": [
+        "Profissionais da matemática",
+        "Profissionais de estatística e afins",
+        "Analistas de tecnologia da informação"
+      ],
+      "course_exposure_score": 9.0,
+      "course_opportunity_score": 9.0,
+      "course_advantage_score": 9.0,
+      "course_growth_score": 9.0,
+      "exposure_band": "Muito alta"
+    },
+    {
+      "curso": "Engenharia De Produção",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Privada",
+      "cine_area": "Produção e processos de fabricação",
+      "matriculados": 25857,
+      "concluintes": 5771,
+      "ingressantes": 7001,
+      "cursos": 552,
+      "mapped_cbo_codes": [
+        "2149",
+        "3912",
+        "1412"
+      ],
+      "mapped_cbo_titles": [
+        "Engenheiros de produção, qualidade, segurança e afins",
+        "Técnicos de controle da produção",
+        "Gerentes de produção e operações em empresa da indústria extrativa, de transformação e de serviços de utilidade pública"
+      ],
+      "course_exposure_score": 6.1,
+      "course_opportunity_score": 6.4,
+      "course_advantage_score": 6.4,
+      "course_growth_score": 6.5,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Ciências Biológicas",
+      "grau": "Licenciatura",
+      "modalidade": "Presencial",
+      "rede": "Pública",
+      "cine_area": "Formação de professores em áreas específicas (exceto Letras)",
+      "matriculados": 40925,
+      "concluintes": 5629,
+      "ingressantes": 10418,
+      "cursos": 312,
+      "mapped_cbo_codes": [
+        "2211",
+        "2030",
+        "2344"
+      ],
+      "mapped_cbo_titles": [
+        "Biólogos e afins",
+        "Pesquisadores das ciências biológicas",
+        "Professores de ciências biológicas e da saúde do ensino superior"
+      ],
+      "course_exposure_score": 6.8,
+      "course_opportunity_score": 7.2,
+      "course_advantage_score": 7.2,
+      "course_growth_score": 7.2,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Agronomia",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Pública",
+      "cine_area": "Produção agrícola, agropecuária e zootecnia",
+      "matriculados": 45304,
+      "concluintes": 5440,
+      "ingressantes": 11123,
+      "cursos": 195,
+      "mapped_cbo_codes": [
+        "2221",
+        "3211",
+        "2032"
+      ],
+      "mapped_cbo_titles": [
+        "Engenheiros agrossilvipecuários",
+        "Técnicos agrícolas",
+        "Pesquisadores de engenharia e tecnologia"
+      ],
+      "course_exposure_score": 5.9,
+      "course_opportunity_score": 7.3,
+      "course_advantage_score": 6.9,
+      "course_growth_score": 7.7,
+      "exposure_band": "Moderada"
+    },
+    {
+      "curso": "Engenharia Civil",
+      "grau": "Bacharelado",
+      "modalidade": "Educação a Distância",
+      "rede": "Privada",
+      "cine_area": "Engenharia civil e construção",
+      "matriculados": 60311,
+      "concluintes": 5341,
+      "ingressantes": 38338,
+      "cursos": 7453,
+      "mapped_cbo_codes": [
+        "2142",
+        "3121",
+        "3181",
+        "2149"
+      ],
+      "mapped_cbo_titles": [
+        "Engenheiros civis e afins",
+        "Técnicos em construção civil (edificações)",
+        "Desenhistas técnicos da construção civil e arquitetura",
+        "Engenheiros de produção, qualidade, segurança e afins"
+      ],
+      "course_exposure_score": 6.0,
+      "course_opportunity_score": 6.9,
+      "course_advantage_score": 7.0,
+      "course_growth_score": 6.8,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Ciências Contábeis",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Pública",
+      "cine_area": "Contabilidade e tributação",
+      "matriculados": 40248,
+      "concluintes": 5137,
+      "ingressantes": 10234,
+      "cursos": 166,
+      "mapped_cbo_codes": [
+        "2522",
+        "3511",
+        "4131",
+        "2541"
+      ],
+      "mapped_cbo_titles": [
+        "Contadores e afins",
+        "Técnicos em contabilidade",
+        "Auxiliares de contabilidade",
+        "Auditores fiscais e técnicos da receita federal"
+      ],
+      "course_exposure_score": 8.6,
+      "course_opportunity_score": 6.0,
+      "course_advantage_score": 7.6,
+      "course_growth_score": 4.5,
+      "exposure_band": "Muito alta"
+    },
+    {
+      "curso": "Engenharia Civil",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Pública",
+      "cine_area": "Engenharia civil e construção",
+      "matriculados": 44250,
+      "concluintes": 4894,
+      "ingressantes": 10540,
+      "cursos": 196,
+      "mapped_cbo_codes": [
+        "2142",
+        "3121",
+        "3181",
+        "2149"
+      ],
+      "mapped_cbo_titles": [
+        "Engenheiros civis e afins",
+        "Técnicos em construção civil (edificações)",
+        "Desenhistas técnicos da construção civil e arquitetura",
+        "Engenheiros de produção, qualidade, segurança e afins"
+      ],
+      "course_exposure_score": 6.0,
+      "course_opportunity_score": 6.9,
+      "course_advantage_score": 7.0,
+      "course_growth_score": 6.8,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Marketing Digital",
+      "grau": "Tecnológico",
+      "modalidade": "Educação a Distância",
+      "rede": "Privada",
+      "cine_area": "Marketing e propaganda",
+      "matriculados": 32707,
+      "concluintes": 4842,
+      "ingressantes": 28711,
+      "cursos": 6111,
+      "mapped_cbo_codes": [
+        "2531",
+        "1233",
+        "1423",
+        "3541"
+      ],
+      "mapped_cbo_titles": [
+        "Profissionais de publicidade",
+        "Diretores de comercialização e marketing",
+        "Gerentes de comercialização, marketing e comunicação",
+        "Especialistas em promoção de produtos e vendas"
+      ],
+      "course_exposure_score": 7.1,
+      "course_opportunity_score": 7.4,
+      "course_advantage_score": 8.2,
+      "course_growth_score": 6.6,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "História",
+      "grau": "Licenciatura",
+      "modalidade": "Presencial",
+      "rede": "Pública",
+      "cine_area": "Formação de professores em áreas específicas (exceto Letras)",
+      "matriculados": 33401,
+      "concluintes": 4493,
+      "ingressantes": 7998,
+      "cursos": 212,
+      "mapped_cbo_codes": [
+        "2321",
+        "2347",
+        "2035"
+      ],
+      "mapped_cbo_titles": [
+        "Professores do ensino médio",
+        "Professores de ciências humanas do ensino superior",
+        "Pesquisadores das ciências sociais e humanas"
+      ],
+      "course_exposure_score": 7.0,
+      "course_opportunity_score": 6.5,
+      "course_advantage_score": 7.0,
+      "course_growth_score": 6.0,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Farmácia",
+      "grau": "Bacharelado",
+      "modalidade": "Educação a Distância",
+      "rede": "Privada",
+      "cine_area": "Farmácia",
+      "matriculados": 104558,
+      "concluintes": 4461,
+      "ingressantes": 60129,
+      "cursos": 6593,
+      "mapped_cbo_codes": [
+        "2234",
+        "3252"
+      ],
+      "mapped_cbo_titles": [
+        "Farmacêuticos",
+        "Técnicos em produção, conservação  e de qualidade de alimentos"
+      ],
+      "course_exposure_score": 5.0,
+      "course_opportunity_score": 6.5,
+      "course_advantage_score": 6.0,
+      "course_growth_score": 6.9,
+      "exposure_band": "Moderada"
+    },
+    {
+      "curso": "Engenharia De Produção",
+      "grau": "Bacharelado",
+      "modalidade": "Educação a Distância",
+      "rede": "Privada",
+      "cine_area": "Produção e processos de fabricação",
+      "matriculados": 56430,
+      "concluintes": 4436,
+      "ingressantes": 33901,
+      "cursos": 7826,
+      "mapped_cbo_codes": [
+        "2149",
+        "3912",
+        "1412"
+      ],
+      "mapped_cbo_titles": [
+        "Engenheiros de produção, qualidade, segurança e afins",
+        "Técnicos de controle da produção",
+        "Gerentes de produção e operações em empresa da indústria extrativa, de transformação e de serviços de utilidade pública"
+      ],
+      "course_exposure_score": 6.1,
+      "course_opportunity_score": 6.4,
+      "course_advantage_score": 6.4,
+      "course_growth_score": 6.5,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Psicologia",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Pública",
+      "cine_area": "Psicologia",
+      "matriculados": 28013,
+      "concluintes": 4419,
+      "ingressantes": 6586,
+      "cursos": 107,
+      "mapped_cbo_codes": [
+        "2515",
+        "2035",
+        "2394"
+      ],
+      "mapped_cbo_titles": [
+        "Psicólogos e psicanalistas",
+        "Pesquisadores das ciências sociais e humanas",
+        "Programadores, avaliadores e orientadores de ensino"
+      ],
+      "course_exposure_score": 6.5,
+      "course_opportunity_score": 7.3,
+      "course_advantage_score": 7.5,
+      "course_growth_score": 7.0,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Comunicação Social - Publicidade E Propaganda",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Privada",
+      "cine_area": "Marketing e propaganda",
+      "matriculados": 28178,
+      "concluintes": 4285,
+      "ingressantes": 10374,
+      "cursos": 181,
+      "mapped_cbo_codes": [
+        "2531",
+        "2611",
+        "2612",
+        "1233"
+      ],
+      "mapped_cbo_titles": [
+        "Profissionais de publicidade",
+        "Profissionais do jornalismo",
+        "Profissionais da informação",
+        "Diretores de comercialização e marketing"
+      ],
+      "course_exposure_score": 8.2,
+      "course_opportunity_score": 7.5,
+      "course_advantage_score": 8.6,
+      "course_growth_score": 6.4,
+      "exposure_band": "Muito alta"
+    },
+    {
+      "curso": "Ciência Da Computação",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Privada",
+      "cine_area": "Análise e desenvolvimento de algoritmos e aplicações",
+      "matriculados": 48955,
+      "concluintes": 4278,
+      "ingressantes": 21653,
+      "cursos": 266,
+      "mapped_cbo_codes": [
+        "2122",
+        "2123",
+        "2124",
+        "1236",
+        "1425"
+      ],
+      "mapped_cbo_titles": [
+        "Engenheiros em computação",
+        "Administradores de tecnologia da informação",
+        "Analistas de tecnologia da informação",
+        "Diretores de tecnologia da informação",
+        "Gerentes de tecnologia da informação"
+      ],
+      "course_exposure_score": 8.9,
+      "course_opportunity_score": 9.0,
+      "course_advantage_score": 9.0,
+      "course_growth_score": 8.9,
+      "exposure_band": "Muito alta"
+    },
+    {
+      "curso": "Medicina Veterinária",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Pública",
+      "cine_area": "Veterinária",
+      "matriculados": 28238,
+      "concluintes": 4089,
+      "ingressantes": 6025,
+      "cursos": 90,
+      "mapped_cbo_codes": [
+        "2233",
+        "3243",
+        "5193"
+      ],
+      "mapped_cbo_titles": [
+        "Veterinários e zootecnistas",
+        "Trabalhadores de serviços veterinários, de higiene e estética de animais domésticos"
+      ],
+      "course_exposure_score": 3.9,
+      "course_opportunity_score": 5.2,
+      "course_advantage_score": 3.9,
+      "course_growth_score": 6.4,
+      "exposure_band": "Baixa"
+    },
+    {
+      "curso": "Engenharia Elétrica",
+      "grau": "Bacharelado",
+      "modalidade": "Educação a Distância",
+      "rede": "Privada",
+      "cine_area": "Eletricidade e energia",
+      "matriculados": 44964,
+      "concluintes": 4064,
+      "ingressantes": 26325,
+      "cursos": 6332,
+      "mapped_cbo_codes": [
+        "2143",
+        "2021"
+      ],
+      "mapped_cbo_titles": [
+        "Engenheiros eletricistas, eletrônicos e afins",
+        "Engenheiros de controle e automação, engenheiros mecatrônicos e afins"
+      ],
+      "course_exposure_score": 7.2,
+      "course_opportunity_score": 7.7,
+      "course_advantage_score": 7.2,
+      "course_growth_score": 8.2,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Matemática",
+      "grau": "Licenciatura",
+      "modalidade": "Presencial",
+      "rede": "Pública",
+      "cine_area": "Formação de professores em áreas específicas (exceto Letras)",
+      "matriculados": 36371,
+      "concluintes": 4044,
+      "ingressantes": 11153,
+      "cursos": 356,
+      "mapped_cbo_codes": [
+        "2111",
+        "2112",
+        "2124"
+      ],
+      "mapped_cbo_titles": [
+        "Profissionais da matemática",
+        "Profissionais de estatística e afins",
+        "Analistas de tecnologia da informação"
+      ],
+      "course_exposure_score": 9.0,
+      "course_opportunity_score": 9.0,
+      "course_advantage_score": 9.0,
+      "course_growth_score": 9.0,
+      "exposure_band": "Muito alta"
+    },
+    {
+      "curso": "Análise E Desenvolvimento De Sistemas",
+      "grau": "Tecnológico",
+      "modalidade": "Presencial",
+      "rede": "Pública",
+      "cine_area": "Análise e desenvolvimento de algoritmos e aplicações",
+      "matriculados": 32505,
+      "concluintes": 4031,
+      "ingressantes": 12902,
+      "cursos": 196,
+      "mapped_cbo_codes": [
+        "2124",
+        "3171",
+        "3172",
+        "1236"
+      ],
+      "mapped_cbo_titles": [
+        "Analistas de tecnologia da informação",
+        "Técnicos de desenvolvimento de sistemas e aplicações",
+        "Técnicos de suporte e monitoração ao usuário de tecnologia da informação.",
+        "Diretores de tecnologia da informação"
+      ],
+      "course_exposure_score": 8.8,
+      "course_opportunity_score": 8.7,
+      "course_advantage_score": 8.8,
+      "course_growth_score": 8.5,
+      "exposure_band": "Muito alta"
+    },
+    {
+      "curso": "Design Gráfico",
+      "grau": "Tecnológico",
+      "modalidade": "Educação a Distância",
+      "rede": "Privada",
+      "cine_area": "Produção audiovisual, de mídia e cultural",
+      "matriculados": 24410,
+      "concluintes": 4012,
+      "ingressantes": 19644,
+      "cursos": 5564,
+      "mapped_cbo_codes": [
+        "2624",
+        "2531",
+        "1233"
+      ],
+      "mapped_cbo_titles": [
+        "Artistas visuais,desenhistas industriais e conservadores-restauradores de bens culturais",
+        "Profissionais de publicidade",
+        "Diretores de comercialização e marketing"
+      ],
+      "course_exposure_score": 8.3,
+      "course_opportunity_score": 7.5,
+      "course_advantage_score": 8.4,
+      "course_growth_score": 6.5,
+      "exposure_band": "Muito alta"
+    },
+    {
+      "curso": "Engenharia Elétrica",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Privada",
+      "cine_area": "Eletricidade e energia",
+      "matriculados": 21224,
+      "concluintes": 4006,
+      "ingressantes": 7082,
+      "cursos": 390,
+      "mapped_cbo_codes": [
+        "2143",
+        "2021"
+      ],
+      "mapped_cbo_titles": [
+        "Engenheiros eletricistas, eletrônicos e afins",
+        "Engenheiros de controle e automação, engenheiros mecatrônicos e afins"
+      ],
+      "course_exposure_score": 7.2,
+      "course_opportunity_score": 7.7,
+      "course_advantage_score": 7.2,
+      "course_growth_score": 8.2,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Odontologia",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Pública",
+      "cine_area": "Odontologia",
+      "matriculados": 22611,
+      "concluintes": 3969,
+      "ingressantes": 4887,
+      "cursos": 68,
+      "mapped_cbo_codes": [
+        "2232",
+        "3224"
+      ],
+      "mapped_cbo_titles": [
+        "Cirurgiões-dentistas",
+        "Técnicos de odontologia"
+      ],
+      "course_exposure_score": 4.0,
+      "course_opportunity_score": 5.8,
+      "course_advantage_score": 5.0,
+      "course_growth_score": 6.6,
+      "exposure_band": "Moderada"
+    },
+    {
+      "curso": "Pedagogia",
+      "grau": "Licenciatura",
+      "modalidade": "Educação a Distância",
+      "rede": "Pública",
+      "cine_area": "Formação de professores sem áreas específicas",
+      "matriculados": 42356,
+      "concluintes": 3826,
+      "ingressantes": 15284,
+      "cursos": 1088,
+      "mapped_cbo_codes": [
+        "2311",
+        "2312",
+        "2313",
+        "2345",
+        "2392"
+      ],
+      "mapped_cbo_titles": [
+        "Professores de nível superior na educação infantil",
+        "Professores de nível superior do ensino fundamental (primeira a quarta séries)",
+        "Professores de nível superior no ensino fundamental de quinta a oitava série",
+        "Professores na área de formação pedagógica do ensino superior",
+        "Professores de educação especial"
+      ],
+      "course_exposure_score": 5.9,
+      "course_opportunity_score": 6.9,
+      "course_advantage_score": 6.9,
+      "course_growth_score": 7.0,
+      "exposure_band": "Moderada"
+    },
+    {
+      "curso": "Farmácia",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Pública",
+      "cine_area": "Farmácia",
+      "matriculados": 27333,
+      "concluintes": 3737,
+      "ingressantes": 5670,
+      "cursos": 79,
+      "mapped_cbo_codes": [
+        "2234",
+        "3252"
+      ],
+      "mapped_cbo_titles": [
+        "Farmacêuticos",
+        "Técnicos em produção, conservação  e de qualidade de alimentos"
+      ],
+      "course_exposure_score": 5.0,
+      "course_opportunity_score": 6.5,
+      "course_advantage_score": 6.0,
+      "course_growth_score": 6.9,
+      "exposure_band": "Moderada"
+    },
+    {
+      "curso": "Agronomia",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Privada",
+      "cine_area": "Produção agrícola, agropecuária e zootecnia",
+      "matriculados": 31025,
+      "concluintes": 3682,
+      "ingressantes": 11483,
+      "cursos": 189,
+      "mapped_cbo_codes": [
+        "2221",
+        "3211",
+        "2032"
+      ],
+      "mapped_cbo_titles": [
+        "Engenheiros agrossilvipecuários",
+        "Técnicos agrícolas",
+        "Pesquisadores de engenharia e tecnologia"
+      ],
+      "course_exposure_score": 5.9,
+      "course_opportunity_score": 7.3,
+      "course_advantage_score": 6.9,
+      "course_growth_score": 7.7,
+      "exposure_band": "Moderada"
+    },
+    {
+      "curso": "Geografia",
+      "grau": "Licenciatura",
+      "modalidade": "Presencial",
+      "rede": "Pública",
+      "cine_area": "Formação de professores em áreas específicas (exceto Letras)",
+      "matriculados": 24829,
+      "concluintes": 3521,
+      "ingressantes": 5930,
+      "cursos": 191,
+      "mapped_cbo_codes": [
+        "2321",
+        "2347",
+        "2035"
+      ],
+      "mapped_cbo_titles": [
+        "Professores do ensino médio",
+        "Professores de ciências humanas do ensino superior",
+        "Pesquisadores das ciências sociais e humanas"
+      ],
+      "course_exposure_score": 7.0,
+      "course_opportunity_score": 6.5,
+      "course_advantage_score": 7.0,
+      "course_growth_score": 6.0,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Logística",
+      "grau": "Tecnológico",
+      "modalidade": "Presencial",
+      "rede": "Privada",
+      "cine_area": "Gestão e administração",
+      "matriculados": 10280,
+      "concluintes": 3427,
+      "ingressantes": 5589,
+      "cursos": 287,
+      "mapped_cbo_codes": [
+        "3421",
+        "4141",
+        "1416",
+        "3911"
+      ],
+      "mapped_cbo_titles": [
+        "Especialistas em logística de transportes",
+        "Almoxarifes e armazenistas",
+        "Gerentes de operações de serviços em empresa de transporte, de comunicação e de logística (armazenagem e distribuição)",
+        "Planejadores, programadores e controladores de produção e manutenção"
+      ],
+      "course_exposure_score": 5.6,
+      "course_opportunity_score": 4.8,
+      "course_advantage_score": 5.6,
+      "course_growth_score": 3.9,
+      "exposure_band": "Moderada"
+    },
+    {
+      "curso": "Design De Interiores",
+      "grau": "Tecnológico",
+      "modalidade": "Educação a Distância",
+      "rede": "Privada",
+      "cine_area": "Moda, design de interiores e desenho industrial",
+      "matriculados": 21122,
+      "concluintes": 3229,
+      "ingressantes": 16936,
+      "cursos": 6378,
+      "mapped_cbo_codes": [
+        "2624",
+        "2531",
+        "1233"
+      ],
+      "mapped_cbo_titles": [
+        "Artistas visuais,desenhistas industriais e conservadores-restauradores de bens culturais",
+        "Profissionais de publicidade",
+        "Diretores de comercialização e marketing"
+      ],
+      "course_exposure_score": 8.3,
+      "course_opportunity_score": 7.5,
+      "course_advantage_score": 8.4,
+      "course_growth_score": 6.5,
+      "exposure_band": "Muito alta"
+    },
+    {
+      "curso": "Agronomia",
+      "grau": "Bacharelado",
+      "modalidade": "Educação a Distância",
+      "rede": "Privada",
+      "cine_area": "Produção agrícola, agropecuária e zootecnia",
+      "matriculados": 47338,
+      "concluintes": 3221,
+      "ingressantes": 29065,
+      "cursos": 2886,
+      "mapped_cbo_codes": [
+        "2221",
+        "3211",
+        "2032"
+      ],
+      "mapped_cbo_titles": [
+        "Engenheiros agrossilvipecuários",
+        "Técnicos agrícolas",
+        "Pesquisadores de engenharia e tecnologia"
+      ],
+      "course_exposure_score": 5.9,
+      "course_opportunity_score": 7.3,
+      "course_advantage_score": 6.9,
+      "course_growth_score": 7.7,
+      "exposure_band": "Moderada"
+    },
+    {
+      "curso": "Ciência Da Computação",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Pública",
+      "cine_area": "Análise e desenvolvimento de algoritmos e aplicações",
+      "matriculados": 34599,
+      "concluintes": 3151,
+      "ingressantes": 8427,
+      "cursos": 140,
+      "mapped_cbo_codes": [
+        "2122",
+        "2123",
+        "2124",
+        "1236",
+        "1425"
+      ],
+      "mapped_cbo_titles": [
+        "Engenheiros em computação",
+        "Administradores de tecnologia da informação",
+        "Analistas de tecnologia da informação",
+        "Diretores de tecnologia da informação",
+        "Gerentes de tecnologia da informação"
+      ],
+      "course_exposure_score": 8.9,
+      "course_opportunity_score": 9.0,
+      "course_advantage_score": 9.0,
+      "course_growth_score": 8.9,
+      "exposure_band": "Muito alta"
+    },
+    {
+      "curso": "Arquitetura E Urbanismo",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Pública",
+      "cine_area": "Arquitetura e planejamento urbano",
+      "matriculados": 22787,
+      "concluintes": 3145,
+      "ingressantes": 4520,
+      "cursos": 79,
+      "mapped_cbo_codes": [
+        "2141",
+        "3181",
+        "2629"
+      ],
+      "mapped_cbo_titles": [
+        "Arquitetos e urbanistas",
+        "Desenhistas técnicos da construção civil e arquitetura",
+        "Designer de interiores de nível superior"
+      ],
+      "course_exposure_score": 7.2,
+      "course_opportunity_score": 6.8,
+      "course_advantage_score": 8.0,
+      "course_growth_score": 5.5,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Geografia",
+      "grau": "Licenciatura",
+      "modalidade": "Educação a Distância",
+      "rede": "Privada",
+      "cine_area": "Formação de professores em áreas específicas (exceto Letras)",
+      "matriculados": 17721,
+      "concluintes": 3126,
+      "ingressantes": 10344,
+      "cursos": 7306,
+      "mapped_cbo_codes": [
+        "2321",
+        "2347",
+        "2035"
+      ],
+      "mapped_cbo_titles": [
+        "Professores do ensino médio",
+        "Professores de ciências humanas do ensino superior",
+        "Pesquisadores das ciências sociais e humanas"
+      ],
+      "course_exposure_score": 7.0,
+      "course_opportunity_score": 6.5,
+      "course_advantage_score": 7.0,
+      "course_growth_score": 6.0,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Educação Física",
+      "grau": "Licenciatura",
+      "modalidade": "Presencial",
+      "rede": "Pública",
+      "cine_area": "Formação de professores em áreas específicas (exceto Letras)",
+      "matriculados": 23620,
+      "concluintes": 3124,
+      "ingressantes": 4463,
+      "cursos": 156,
+      "mapped_cbo_codes": [
+        "2241",
+        "3331"
+      ],
+      "mapped_cbo_titles": [
+        "Profissionais da educação física",
+        "Instrutores e professores de cursos livres"
+      ],
+      "course_exposure_score": 5.7,
+      "course_opportunity_score": 6.6,
+      "course_advantage_score": 6.2,
+      "course_growth_score": 7.0,
+      "exposure_band": "Moderada"
+    },
+    {
+      "curso": "Engenharia Mecânica",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Pública",
+      "cine_area": "Engenharia mecânica e metalurgia",
+      "matriculados": 31762,
+      "concluintes": 3034,
+      "ingressantes": 7338,
+      "cursos": 127,
+      "mapped_cbo_codes": [
+        "2144",
+        "2149"
+      ],
+      "mapped_cbo_titles": [
+        "Engenheiros mecânicos e afins",
+        "Engenheiros de produção, qualidade, segurança e afins"
+      ],
+      "course_exposure_score": 7.0,
+      "course_opportunity_score": 7.3,
+      "course_advantage_score": 7.0,
+      "course_growth_score": 7.6,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Ciências Econômicas",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Pública",
+      "cine_area": "Economia",
+      "matriculados": 26928,
+      "concluintes": 3025,
+      "ingressantes": 7002,
+      "cursos": 95,
+      "mapped_cbo_codes": [
+        "2512",
+        "2521",
+        "2522",
+        "1421"
+      ],
+      "mapped_cbo_titles": [
+        "Economistas",
+        "Administradores",
+        "Contadores e afins",
+        "Gerentes administrativos, financeiros, de riscos e afins"
+      ],
+      "course_exposure_score": 7.2,
+      "course_opportunity_score": 6.9,
+      "course_advantage_score": 7.1,
+      "course_growth_score": 6.7,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Engenharia De Produção",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Pública",
+      "cine_area": "Produção e processos de fabricação",
+      "matriculados": 24248,
+      "concluintes": 2960,
+      "ingressantes": 5648,
+      "cursos": 122,
+      "mapped_cbo_codes": [
+        "2149",
+        "3912",
+        "1412"
+      ],
+      "mapped_cbo_titles": [
+        "Engenheiros de produção, qualidade, segurança e afins",
+        "Técnicos de controle da produção",
+        "Gerentes de produção e operações em empresa da indústria extrativa, de transformação e de serviços de utilidade pública"
+      ],
+      "course_exposure_score": 6.1,
+      "course_opportunity_score": 6.4,
+      "course_advantage_score": 6.4,
+      "course_growth_score": 6.5,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Engenharia Mecânica",
+      "grau": "Bacharelado",
+      "modalidade": "Educação a Distância",
+      "rede": "Privada",
+      "cine_area": "Engenharia mecânica e metalurgia",
+      "matriculados": 39467,
+      "concluintes": 2925,
+      "ingressantes": 27505,
+      "cursos": 5736,
+      "mapped_cbo_codes": [
+        "2144",
+        "2149"
+      ],
+      "mapped_cbo_titles": [
+        "Engenheiros mecânicos e afins",
+        "Engenheiros de produção, qualidade, segurança e afins"
+      ],
+      "course_exposure_score": 7.0,
+      "course_opportunity_score": 7.3,
+      "course_advantage_score": 7.0,
+      "course_growth_score": 7.6,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Design Gráfico",
+      "grau": "Tecnológico",
+      "modalidade": "Presencial",
+      "rede": "Privada",
+      "cine_area": "Produção audiovisual, de mídia e cultural",
+      "matriculados": 9327,
+      "concluintes": 2894,
+      "ingressantes": 4600,
+      "cursos": 123,
+      "mapped_cbo_codes": [
+        "2624",
+        "2531",
+        "1233"
+      ],
+      "mapped_cbo_titles": [
+        "Artistas visuais,desenhistas industriais e conservadores-restauradores de bens culturais",
+        "Profissionais de publicidade",
+        "Diretores de comercialização e marketing"
+      ],
+      "course_exposure_score": 8.3,
+      "course_opportunity_score": 7.5,
+      "course_advantage_score": 8.4,
+      "course_growth_score": 6.5,
+      "exposure_band": "Muito alta"
+    },
+    {
+      "curso": "Sistemas De Informação",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Privada",
+      "cine_area": "Análise e desenvolvimento de algoritmos e aplicações",
+      "matriculados": 24339,
+      "concluintes": 2838,
+      "ingressantes": 9301,
+      "cursos": 267,
+      "mapped_cbo_codes": [
+        "2122",
+        "2123",
+        "2124",
+        "1236",
+        "1425"
+      ],
+      "mapped_cbo_titles": [
+        "Engenheiros em computação",
+        "Administradores de tecnologia da informação",
+        "Analistas de tecnologia da informação",
+        "Diretores de tecnologia da informação",
+        "Gerentes de tecnologia da informação"
+      ],
+      "course_exposure_score": 8.9,
+      "course_opportunity_score": 9.0,
+      "course_advantage_score": 9.0,
+      "course_growth_score": 8.9,
+      "exposure_band": "Muito alta"
+    },
+    {
+      "curso": "Letras - Português E Inglês",
+      "grau": "Licenciatura",
+      "modalidade": "Educação a Distância",
+      "rede": "Privada",
+      "cine_area": "Formação de professores de letras",
+      "matriculados": 25062,
+      "concluintes": 2838,
+      "ingressantes": 16157,
+      "cursos": 6177,
+      "mapped_cbo_codes": [
+        "2321",
+        "2347",
+        "2035"
+      ],
+      "mapped_cbo_titles": [
+        "Professores do ensino médio",
+        "Professores de ciências humanas do ensino superior",
+        "Pesquisadores das ciências sociais e humanas"
+      ],
+      "course_exposure_score": 7.0,
+      "course_opportunity_score": 6.5,
+      "course_advantage_score": 7.0,
+      "course_growth_score": 6.0,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Marketing",
+      "grau": "Tecnológico",
+      "modalidade": "Presencial",
+      "rede": "Privada",
+      "cine_area": "Marketing e propaganda",
+      "matriculados": 9390,
+      "concluintes": 2809,
+      "ingressantes": 5850,
+      "cursos": 208,
+      "mapped_cbo_codes": [
+        "2531",
+        "1423",
+        "3541"
+      ],
+      "mapped_cbo_titles": [
+        "Profissionais de publicidade",
+        "Gerentes de comercialização, marketing e comunicação",
+        "Especialistas em promoção de produtos e vendas"
+      ],
+      "course_exposure_score": 7.1,
+      "course_opportunity_score": 7.4,
+      "course_advantage_score": 8.2,
+      "course_growth_score": 6.6,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Engenharia Elétrica",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Pública",
+      "cine_area": "Eletricidade e energia",
+      "matriculados": 29851,
+      "concluintes": 2797,
+      "ingressantes": 6962,
+      "cursos": 128,
+      "mapped_cbo_codes": [
+        "2143",
+        "2021"
+      ],
+      "mapped_cbo_titles": [
+        "Engenheiros eletricistas, eletrônicos e afins",
+        "Engenheiros de controle e automação, engenheiros mecatrônicos e afins"
+      ],
+      "course_exposure_score": 7.2,
+      "course_opportunity_score": 7.7,
+      "course_advantage_score": 7.2,
+      "course_growth_score": 8.2,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Nutrição",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Pública",
+      "cine_area": "Promoção, prevenção, terapia e reabilitação",
+      "matriculados": 17762,
+      "concluintes": 2774,
+      "ingressantes": 4331,
+      "cursos": 75,
+      "mapped_cbo_codes": [
+        "2237",
+        "3251"
+      ],
+      "mapped_cbo_titles": [
+        "Nutricionistas",
+        "Técnico em farmácia e em manipulação farmacêutica"
+      ],
+      "course_exposure_score": 5.3,
+      "course_opportunity_score": 6.5,
+      "course_advantage_score": 6.3,
+      "course_growth_score": 6.7,
+      "exposure_band": "Moderada"
+    },
+    {
+      "curso": "Fisioterapia",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Pública",
+      "cine_area": "Promoção, prevenção, terapia e reabilitação",
+      "matriculados": 15925,
+      "concluintes": 2735,
+      "ingressantes": 3618,
+      "cursos": 71,
+      "mapped_cbo_codes": [
+        "2236",
+        "3221"
+      ],
+      "mapped_cbo_titles": [
+        "Fisioterapeutas",
+        "Tecnólogos e técnicos em terapias complementares e estéticas"
+      ],
+      "course_exposure_score": 3.8,
+      "course_opportunity_score": 6.0,
+      "course_advantage_score": 5.0,
+      "course_growth_score": 7.0,
+      "exposure_band": "Baixa"
+    },
+    {
+      "curso": "Ciências Biológicas",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Pública",
+      "cine_area": "Biologia",
+      "matriculados": 16863,
+      "concluintes": 2627,
+      "ingressantes": 3938,
+      "cursos": 118,
+      "mapped_cbo_codes": [
+        "2211",
+        "2030",
+        "2344"
+      ],
+      "mapped_cbo_titles": [
+        "Biólogos e afins",
+        "Pesquisadores das ciências biológicas",
+        "Professores de ciências biológicas e da saúde do ensino superior"
+      ],
+      "course_exposure_score": 6.8,
+      "course_opportunity_score": 7.2,
+      "course_advantage_score": 7.2,
+      "course_growth_score": 7.2,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Serviço Social",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Pública",
+      "cine_area": "Serviço social",
+      "matriculados": 17336,
+      "concluintes": 2469,
+      "ingressantes": 4069,
+      "cursos": 72,
+      "mapped_cbo_codes": [
+        "2516",
+        "5153"
+      ],
+      "mapped_cbo_titles": [
+        "Assistentes sociais e economistas domésticos",
+        "Trabalhadores de atenção, defesa e proteção a pessoas em situação de risco e adolescentes em conflito com a lei"
+      ],
+      "course_exposure_score": 4.0,
+      "course_opportunity_score": 5.8,
+      "course_advantage_score": 5.5,
+      "course_growth_score": 6.0,
+      "exposure_band": "Moderada"
+    },
+    {
+      "curso": "Educação Física",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Pública",
+      "cine_area": "Promoção, prevenção, terapia e reabilitação",
+      "matriculados": 15124,
+      "concluintes": 2449,
+      "ingressantes": 3187,
+      "cursos": 96,
+      "mapped_cbo_codes": [
+        "2241",
+        "3331"
+      ],
+      "mapped_cbo_titles": [
+        "Profissionais da educação física",
+        "Instrutores e professores de cursos livres"
+      ],
+      "course_exposure_score": 5.7,
+      "course_opportunity_score": 6.6,
+      "course_advantage_score": 6.2,
+      "course_growth_score": 7.0,
+      "exposure_band": "Moderada"
+    },
+    {
+      "curso": "Sistemas De Informação",
+      "grau": "Bacharelado",
+      "modalidade": "Educação a Distância",
+      "rede": "Privada",
+      "cine_area": "Análise e desenvolvimento de algoritmos e aplicações",
+      "matriculados": 22051,
+      "concluintes": 2433,
+      "ingressantes": 12774,
+      "cursos": 4466,
+      "mapped_cbo_codes": [
+        "2122",
+        "2123",
+        "2124",
+        "1236",
+        "1425"
+      ],
+      "mapped_cbo_titles": [
+        "Engenheiros em computação",
+        "Administradores de tecnologia da informação",
+        "Analistas de tecnologia da informação",
+        "Diretores de tecnologia da informação",
+        "Gerentes de tecnologia da informação"
+      ],
+      "course_exposure_score": 8.9,
+      "course_opportunity_score": 9.0,
+      "course_advantage_score": 9.0,
+      "course_growth_score": 8.9,
+      "exposure_band": "Muito alta"
+    },
+    {
+      "curso": "Letras - Língua Portuguesa",
+      "grau": "Licenciatura",
+      "modalidade": "Educação a Distância",
+      "rede": "Privada",
+      "cine_area": "Formação de professores de letras",
+      "matriculados": 11515,
+      "concluintes": 2407,
+      "ingressantes": 6977,
+      "cursos": 2513,
+      "mapped_cbo_codes": [
+        "2321",
+        "2347",
+        "2035"
+      ],
+      "mapped_cbo_titles": [
+        "Professores do ensino médio",
+        "Professores de ciências humanas do ensino superior",
+        "Pesquisadores das ciências sociais e humanas"
+      ],
+      "course_exposure_score": 7.0,
+      "course_opportunity_score": 6.5,
+      "course_advantage_score": 7.0,
+      "course_growth_score": 6.0,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Ciências Econômicas",
+      "grau": "Bacharelado",
+      "modalidade": "Educação a Distância",
+      "rede": "Privada",
+      "cine_area": "Economia",
+      "matriculados": 21592,
+      "concluintes": 2402,
+      "ingressantes": 14273,
+      "cursos": 6391,
+      "mapped_cbo_codes": [
+        "2512",
+        "2521",
+        "2522",
+        "1421"
+      ],
+      "mapped_cbo_titles": [
+        "Economistas",
+        "Administradores",
+        "Contadores e afins",
+        "Gerentes administrativos, financeiros, de riscos e afins"
+      ],
+      "course_exposure_score": 7.2,
+      "course_opportunity_score": 6.9,
+      "course_advantage_score": 7.1,
+      "course_growth_score": 6.7,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Ciências Econômicas",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Privada",
+      "cine_area": "Economia",
+      "matriculados": 16280,
+      "concluintes": 2399,
+      "ingressantes": 5627,
+      "cursos": 124,
+      "mapped_cbo_codes": [
+        "2512",
+        "2521",
+        "2522",
+        "1421"
+      ],
+      "mapped_cbo_titles": [
+        "Economistas",
+        "Administradores",
+        "Contadores e afins",
+        "Gerentes administrativos, financeiros, de riscos e afins"
+      ],
+      "course_exposure_score": 7.2,
+      "course_opportunity_score": 6.9,
+      "course_advantage_score": 7.1,
+      "course_growth_score": 6.7,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Letras - Português",
+      "grau": "Licenciatura",
+      "modalidade": "Educação a Distância",
+      "rede": "Privada",
+      "cine_area": "Formação de professores de letras",
+      "matriculados": 16696,
+      "concluintes": 2395,
+      "ingressantes": 10828,
+      "cursos": 4062,
+      "mapped_cbo_codes": [
+        "2321",
+        "2347",
+        "2035"
+      ],
+      "mapped_cbo_titles": [
+        "Professores do ensino médio",
+        "Professores de ciências humanas do ensino superior",
+        "Pesquisadores das ciências sociais e humanas"
+      ],
+      "course_exposure_score": 7.0,
+      "course_opportunity_score": 6.5,
+      "course_advantage_score": 7.0,
+      "course_growth_score": 6.0,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Fisioterapia",
+      "grau": "Bacharelado",
+      "modalidade": "Educação a Distância",
+      "rede": "Privada",
+      "cine_area": "Promoção, prevenção, terapia e reabilitação",
+      "matriculados": 83251,
+      "concluintes": 2294,
+      "ingressantes": 49900,
+      "cursos": 4956,
+      "mapped_cbo_codes": [
+        "2236",
+        "3221"
+      ],
+      "mapped_cbo_titles": [
+        "Fisioterapeutas",
+        "Tecnólogos e técnicos em terapias complementares e estéticas"
+      ],
+      "course_exposure_score": 3.8,
+      "course_opportunity_score": 6.0,
+      "course_advantage_score": 5.0,
+      "course_growth_score": 7.0,
+      "exposure_band": "Baixa"
+    },
+    {
+      "curso": "Ciências Biológicas",
+      "grau": "Licenciatura",
+      "modalidade": "Educação a Distância",
+      "rede": "Privada",
+      "cine_area": "Formação de professores em áreas específicas (exceto Letras)",
+      "matriculados": 18472,
+      "concluintes": 2229,
+      "ingressantes": 13624,
+      "cursos": 6753,
+      "mapped_cbo_codes": [
+        "2211",
+        "2030",
+        "2344"
+      ],
+      "mapped_cbo_titles": [
+        "Biólogos e afins",
+        "Pesquisadores das ciências biológicas",
+        "Professores de ciências biológicas e da saúde do ensino superior"
+      ],
+      "course_exposure_score": 6.8,
+      "course_opportunity_score": 7.2,
+      "course_advantage_score": 7.2,
+      "course_growth_score": 7.2,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Jornalismo",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Privada",
+      "cine_area": "Comunicação e reportagem",
+      "matriculados": 12838,
+      "concluintes": 2175,
+      "ingressantes": 4246,
+      "cursos": 171,
+      "mapped_cbo_codes": [
+        "2531",
+        "2611",
+        "2612",
+        "1233"
+      ],
+      "mapped_cbo_titles": [
+        "Profissionais de publicidade",
+        "Profissionais do jornalismo",
+        "Profissionais da informação",
+        "Diretores de comercialização e marketing"
+      ],
+      "course_exposure_score": 8.2,
+      "course_opportunity_score": 7.5,
+      "course_advantage_score": 8.6,
+      "course_growth_score": 6.4,
+      "exposure_band": "Muito alta"
+    },
+    {
+      "curso": "Educação Física",
+      "grau": "Licenciatura",
+      "modalidade": "Presencial",
+      "rede": "Privada",
+      "cine_area": "Formação de professores em áreas específicas (exceto Letras)",
+      "matriculados": 11957,
+      "concluintes": 2084,
+      "ingressantes": 4774,
+      "cursos": 381,
+      "mapped_cbo_codes": [
+        "2241",
+        "3331"
+      ],
+      "mapped_cbo_titles": [
+        "Profissionais da educação física",
+        "Instrutores e professores de cursos livres"
+      ],
+      "course_exposure_score": 5.7,
+      "course_opportunity_score": 6.6,
+      "course_advantage_score": 6.2,
+      "course_growth_score": 7.0,
+      "exposure_band": "Moderada"
+    },
+    {
+      "curso": "Sistemas De Informação",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Pública",
+      "cine_area": "Análise e desenvolvimento de algoritmos e aplicações",
+      "matriculados": 23258,
+      "concluintes": 2010,
+      "ingressantes": 6081,
+      "cursos": 121,
+      "mapped_cbo_codes": [
+        "2122",
+        "2123",
+        "2124",
+        "1236",
+        "1425"
+      ],
+      "mapped_cbo_titles": [
+        "Engenheiros em computação",
+        "Administradores de tecnologia da informação",
+        "Analistas de tecnologia da informação",
+        "Diretores de tecnologia da informação",
+        "Gerentes de tecnologia da informação"
+      ],
+      "course_exposure_score": 8.9,
+      "course_opportunity_score": 9.0,
+      "course_advantage_score": 9.0,
+      "course_growth_score": 8.9,
+      "exposure_band": "Muito alta"
+    },
+    {
+      "curso": "Jornalismo",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Pública",
+      "cine_area": "Comunicação e reportagem",
+      "matriculados": 12518,
+      "concluintes": 1999,
+      "ingressantes": 2858,
+      "cursos": 59,
+      "mapped_cbo_codes": [
+        "2531",
+        "2611",
+        "2612",
+        "1233"
+      ],
+      "mapped_cbo_titles": [
+        "Profissionais de publicidade",
+        "Profissionais do jornalismo",
+        "Profissionais da informação",
+        "Diretores de comercialização e marketing"
+      ],
+      "course_exposure_score": 8.2,
+      "course_opportunity_score": 7.5,
+      "course_advantage_score": 8.6,
+      "course_growth_score": 6.4,
+      "exposure_band": "Muito alta"
+    },
+    {
+      "curso": "Design",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Privada",
+      "cine_area": "Moda, design de interiores e desenho industrial",
+      "matriculados": 11029,
+      "concluintes": 1990,
+      "ingressantes": 3424,
+      "cursos": 100,
+      "mapped_cbo_codes": [
+        "2624",
+        "2531",
+        "1233"
+      ],
+      "mapped_cbo_titles": [
+        "Artistas visuais,desenhistas industriais e conservadores-restauradores de bens culturais",
+        "Profissionais de publicidade",
+        "Diretores de comercialização e marketing"
+      ],
+      "course_exposure_score": 8.3,
+      "course_opportunity_score": 7.5,
+      "course_advantage_score": 8.4,
+      "course_growth_score": 6.5,
+      "exposure_band": "Muito alta"
+    },
+    {
+      "curso": "Zootecnia",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Pública",
+      "cine_area": "Produção agrícola, agropecuária e zootecnia",
+      "matriculados": 17427,
+      "concluintes": 1942,
+      "ingressantes": 4365,
+      "cursos": 100,
+      "mapped_cbo_codes": [
+        "2233",
+        "2034"
+      ],
+      "mapped_cbo_titles": [
+        "Veterinários e zootecnistas",
+        "Pesquisadores das ciências da agricultura"
+      ],
+      "course_exposure_score": 5.2,
+      "course_opportunity_score": 6.2,
+      "course_advantage_score": 5.4,
+      "course_growth_score": 7.1,
+      "exposure_band": "Moderada"
+    },
+    {
+      "curso": "Ciência Da Computação",
+      "grau": "Bacharelado",
+      "modalidade": "Educação a Distância",
+      "rede": "Privada",
+      "cine_area": "Análise e desenvolvimento de algoritmos e aplicações",
+      "matriculados": 23295,
+      "concluintes": 1856,
+      "ingressantes": 14896,
+      "cursos": 3375,
+      "mapped_cbo_codes": [
+        "2122",
+        "2123",
+        "2124",
+        "1236",
+        "1425"
+      ],
+      "mapped_cbo_titles": [
+        "Engenheiros em computação",
+        "Administradores de tecnologia da informação",
+        "Analistas de tecnologia da informação",
+        "Diretores de tecnologia da informação",
+        "Gerentes de tecnologia da informação"
+      ],
+      "course_exposure_score": 8.9,
+      "course_opportunity_score": 9.0,
+      "course_advantage_score": 9.0,
+      "course_growth_score": 8.9,
+      "exposure_band": "Muito alta"
+    },
+    {
+      "curso": "Administração",
+      "grau": "Bacharelado",
+      "modalidade": "Educação a Distância",
+      "rede": "Pública",
+      "cine_area": "Gestão e administração",
+      "matriculados": 18253,
+      "concluintes": 1854,
+      "ingressantes": 5598,
+      "cursos": 522,
+      "mapped_cbo_codes": [
+        "2521",
+        "2523",
+        "1423",
+        "1424",
+        "1233"
+      ],
+      "mapped_cbo_titles": [
+        "Administradores",
+        "Secretárias(os) executivas(os) e afins",
+        "Gerentes de comercialização, marketing e comunicação",
+        "Gerentes de suprimentos e afins",
+        "Diretores de comercialização e marketing"
+      ],
+      "course_exposure_score": 7.2,
+      "course_opportunity_score": 7.2,
+      "course_advantage_score": 8.2,
+      "course_growth_score": 6.2,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Letras - Língua Portuguesa",
+      "grau": "Licenciatura",
+      "modalidade": "Presencial",
+      "rede": "Pública",
+      "cine_area": "Formação de professores de letras",
+      "matriculados": 13809,
+      "concluintes": 1791,
+      "ingressantes": 3578,
+      "cursos": 84,
+      "mapped_cbo_codes": [
+        "2321",
+        "2347",
+        "2035"
+      ],
+      "mapped_cbo_titles": [
+        "Professores do ensino médio",
+        "Professores de ciências humanas do ensino superior",
+        "Pesquisadores das ciências sociais e humanas"
+      ],
+      "course_exposure_score": 7.0,
+      "course_opportunity_score": 6.5,
+      "course_advantage_score": 7.0,
+      "course_growth_score": 6.0,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Letras - Português",
+      "grau": "Licenciatura",
+      "modalidade": "Presencial",
+      "rede": "Pública",
+      "cine_area": "Formação de professores de letras",
+      "matriculados": 11165,
+      "concluintes": 1707,
+      "ingressantes": 2716,
+      "cursos": 77,
+      "mapped_cbo_codes": [
+        "2321",
+        "2347",
+        "2035"
+      ],
+      "mapped_cbo_titles": [
+        "Professores do ensino médio",
+        "Professores de ciências humanas do ensino superior",
+        "Pesquisadores das ciências sociais e humanas"
+      ],
+      "course_exposure_score": 7.0,
+      "course_opportunity_score": 6.5,
+      "course_advantage_score": 7.0,
+      "course_growth_score": 6.0,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Publicidade E Propaganda",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Privada",
+      "cine_area": "Marketing e propaganda",
+      "matriculados": 12213,
+      "concluintes": 1588,
+      "ingressantes": 5683,
+      "cursos": 117,
+      "mapped_cbo_codes": [
+        "2531",
+        "2611",
+        "2612",
+        "1233"
+      ],
+      "mapped_cbo_titles": [
+        "Profissionais de publicidade",
+        "Profissionais do jornalismo",
+        "Profissionais da informação",
+        "Diretores de comercialização e marketing"
+      ],
+      "course_exposure_score": 8.2,
+      "course_opportunity_score": 7.5,
+      "course_advantage_score": 8.6,
+      "course_growth_score": 6.4,
+      "exposure_band": "Muito alta"
+    },
+    {
+      "curso": "Gestão Financeira",
+      "grau": "Tecnológico",
+      "modalidade": "Presencial",
+      "rede": "Privada",
+      "cine_area": "Finanças, bancos e seguros",
+      "matriculados": 4407,
+      "concluintes": 1519,
+      "ingressantes": 2625,
+      "cursos": 170,
+      "mapped_cbo_codes": [
+        "2522",
+        "4131",
+        "3511"
+      ],
+      "mapped_cbo_titles": [
+        "Contadores e afins",
+        "Auxiliares de contabilidade",
+        "Técnicos em contabilidade"
+      ],
+      "course_exposure_score": 8.6,
+      "course_opportunity_score": 6.0,
+      "course_advantage_score": 7.6,
+      "course_growth_score": 4.4,
+      "exposure_band": "Muito alta"
+    },
+    {
+      "curso": "Ciências Biológicas",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Privada",
+      "cine_area": "Biologia",
+      "matriculados": 8383,
+      "concluintes": 1483,
+      "ingressantes": 3703,
+      "cursos": 130,
+      "mapped_cbo_codes": [
+        "2211",
+        "2030",
+        "2344"
+      ],
+      "mapped_cbo_titles": [
+        "Biólogos e afins",
+        "Pesquisadores das ciências biológicas",
+        "Professores de ciências biológicas e da saúde do ensino superior"
+      ],
+      "course_exposure_score": 6.8,
+      "course_opportunity_score": 7.2,
+      "course_advantage_score": 7.2,
+      "course_growth_score": 7.2,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Filosofia",
+      "grau": "Licenciatura",
+      "modalidade": "Educação a Distância",
+      "rede": "Privada",
+      "cine_area": "Formação de professores em áreas específicas (exceto Letras)",
+      "matriculados": 9532,
+      "concluintes": 1451,
+      "ingressantes": 6796,
+      "cursos": 5113,
+      "mapped_cbo_codes": [
+        "2321",
+        "2347",
+        "2035"
+      ],
+      "mapped_cbo_titles": [
+        "Professores do ensino médio",
+        "Professores de ciências humanas do ensino superior",
+        "Pesquisadores das ciências sociais e humanas"
+      ],
+      "course_exposure_score": 7.0,
+      "course_opportunity_score": 6.5,
+      "course_advantage_score": 7.0,
+      "course_growth_score": 6.0,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Serviço Social",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Privada",
+      "cine_area": "Serviço social",
+      "matriculados": 6633,
+      "concluintes": 1443,
+      "ingressantes": 1921,
+      "cursos": 200,
+      "mapped_cbo_codes": [
+        "2516",
+        "5153"
+      ],
+      "mapped_cbo_titles": [
+        "Assistentes sociais e economistas domésticos",
+        "Trabalhadores de atenção, defesa e proteção a pessoas em situação de risco e adolescentes em conflito com a lei"
+      ],
+      "course_exposure_score": 4.0,
+      "course_opportunity_score": 5.8,
+      "course_advantage_score": 5.5,
+      "course_growth_score": 6.0,
+      "exposure_band": "Moderada"
+    },
+    {
+      "curso": "Letras - Inglês",
+      "grau": "Licenciatura",
+      "modalidade": "Educação a Distância",
+      "rede": "Privada",
+      "cine_area": "Formação de professores de letras",
+      "matriculados": 16057,
+      "concluintes": 1441,
+      "ingressantes": 9685,
+      "cursos": 3441,
+      "mapped_cbo_codes": [
+        "2321",
+        "2347",
+        "2035"
+      ],
+      "mapped_cbo_titles": [
+        "Professores do ensino médio",
+        "Professores de ciências humanas do ensino superior",
+        "Pesquisadores das ciências sociais e humanas"
+      ],
+      "course_exposure_score": 7.0,
+      "course_opportunity_score": 6.5,
+      "course_advantage_score": 7.0,
+      "course_growth_score": 6.0,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Processos Gerenciais",
+      "grau": "Tecnológico",
+      "modalidade": "Educação a Distância",
+      "rede": "Pública",
+      "cine_area": "Gestão e administração",
+      "matriculados": 11060,
+      "concluintes": 1334,
+      "ingressantes": 6132,
+      "cursos": 417,
+      "mapped_cbo_codes": [
+        "2521",
+        "1423",
+        "1424",
+        "3541"
+      ],
+      "mapped_cbo_titles": [
+        "Administradores",
+        "Gerentes de comercialização, marketing e comunicação",
+        "Gerentes de suprimentos e afins",
+        "Especialistas em promoção de produtos e vendas"
+      ],
+      "course_exposure_score": 7.0,
+      "course_opportunity_score": 7.1,
+      "course_advantage_score": 7.8,
+      "course_growth_score": 6.4,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Biblioteconomia",
+      "grau": "Bacharelado",
+      "modalidade": "Educação a Distância",
+      "rede": "Privada",
+      "cine_area": "Ciência da informação e museologia",
+      "matriculados": 6243,
+      "concluintes": 1329,
+      "ingressantes": 4680,
+      "cursos": 1987,
+      "mapped_cbo_codes": [
+        "2512",
+        "2521",
+        "2522",
+        "1421"
+      ],
+      "mapped_cbo_titles": [
+        "Economistas",
+        "Administradores",
+        "Contadores e afins",
+        "Gerentes administrativos, financeiros, de riscos e afins"
+      ],
+      "course_exposure_score": 7.2,
+      "course_opportunity_score": 6.9,
+      "course_advantage_score": 7.1,
+      "course_growth_score": 6.7,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Design De Moda",
+      "grau": "Tecnológico",
+      "modalidade": "Educação a Distância",
+      "rede": "Privada",
+      "cine_area": "Moda, design de interiores e desenho industrial",
+      "matriculados": 10689,
+      "concluintes": 1324,
+      "ingressantes": 9552,
+      "cursos": 4145,
+      "mapped_cbo_codes": [
+        "2624",
+        "2531",
+        "1233"
+      ],
+      "mapped_cbo_titles": [
+        "Artistas visuais,desenhistas industriais e conservadores-restauradores de bens culturais",
+        "Profissionais de publicidade",
+        "Diretores de comercialização e marketing"
+      ],
+      "course_exposure_score": 8.3,
+      "course_opportunity_score": 7.5,
+      "course_advantage_score": 8.4,
+      "course_growth_score": 6.5,
+      "exposure_band": "Muito alta"
+    },
+    {
+      "curso": "Logística",
+      "grau": "Tecnológico",
+      "modalidade": "Presencial",
+      "rede": "Pública",
+      "cine_area": "Gestão e administração",
+      "matriculados": 6032,
+      "concluintes": 1191,
+      "ingressantes": 2569,
+      "cursos": 47,
+      "mapped_cbo_codes": [
+        "3421",
+        "4141",
+        "1416",
+        "3911"
+      ],
+      "mapped_cbo_titles": [
+        "Especialistas em logística de transportes",
+        "Almoxarifes e armazenistas",
+        "Gerentes de operações de serviços em empresa de transporte, de comunicação e de logística (armazenagem e distribuição)",
+        "Planejadores, programadores e controladores de produção e manutenção"
+      ],
+      "course_exposure_score": 5.6,
+      "course_opportunity_score": 4.8,
+      "course_advantage_score": 5.6,
+      "course_growth_score": 3.9,
+      "exposure_band": "Moderada"
+    },
+    {
+      "curso": "Psicopedagogia",
+      "grau": "Bacharelado",
+      "modalidade": "Educação a Distância",
+      "rede": "Privada",
+      "cine_area": "Ciência da educação",
+      "matriculados": 23753,
+      "concluintes": 1189,
+      "ingressantes": 22542,
+      "cursos": 6081,
+      "mapped_cbo_codes": [
+        "2311",
+        "2312",
+        "2313",
+        "2345",
+        "2392"
+      ],
+      "mapped_cbo_titles": [
+        "Professores de nível superior na educação infantil",
+        "Professores de nível superior do ensino fundamental (primeira a quarta séries)",
+        "Professores de nível superior no ensino fundamental de quinta a oitava série",
+        "Professores na área de formação pedagógica do ensino superior",
+        "Professores de educação especial"
+      ],
+      "course_exposure_score": 5.9,
+      "course_opportunity_score": 6.9,
+      "course_advantage_score": 6.9,
+      "course_growth_score": 7.0,
+      "exposure_band": "Moderada"
+    },
+    {
+      "curso": "Letras - Inglês",
+      "grau": "Licenciatura",
+      "modalidade": "Presencial",
+      "rede": "Pública",
+      "cine_area": "Formação de professores de letras",
+      "matriculados": 9203,
+      "concluintes": 1176,
+      "ingressantes": 2510,
+      "cursos": 75,
+      "mapped_cbo_codes": [
+        "2321",
+        "2347",
+        "2035"
+      ],
+      "mapped_cbo_titles": [
+        "Professores do ensino médio",
+        "Professores de ciências humanas do ensino superior",
+        "Pesquisadores das ciências sociais e humanas"
+      ],
+      "course_exposure_score": 7.0,
+      "course_opportunity_score": 6.5,
+      "course_advantage_score": 7.0,
+      "course_growth_score": 6.0,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Publicidade E Propaganda",
+      "grau": "Bacharelado",
+      "modalidade": "Educação a Distância",
+      "rede": "Privada",
+      "cine_area": "Marketing e propaganda",
+      "matriculados": 18486,
+      "concluintes": 1137,
+      "ingressantes": 13518,
+      "cursos": 4757,
+      "mapped_cbo_codes": [
+        "2531",
+        "2611",
+        "2612",
+        "1233"
+      ],
+      "mapped_cbo_titles": [
+        "Profissionais de publicidade",
+        "Profissionais do jornalismo",
+        "Profissionais da informação",
+        "Diretores de comercialização e marketing"
+      ],
+      "course_exposure_score": 8.2,
+      "course_opportunity_score": 7.5,
+      "course_advantage_score": 8.6,
+      "course_growth_score": 6.4,
+      "exposure_band": "Muito alta"
+    },
+    {
+      "curso": "Sistemas Para Internet",
+      "grau": "Tecnológico",
+      "modalidade": "Educação a Distância",
+      "rede": "Privada",
+      "cine_area": "Análise e desenvolvimento de algoritmos e aplicações",
+      "matriculados": 4505,
+      "concluintes": 1129,
+      "ingressantes": 2410,
+      "cursos": 2877,
+      "mapped_cbo_codes": [
+        "2122",
+        "2123",
+        "2124",
+        "1236",
+        "1425"
+      ],
+      "mapped_cbo_titles": [
+        "Engenheiros em computação",
+        "Administradores de tecnologia da informação",
+        "Analistas de tecnologia da informação",
+        "Diretores de tecnologia da informação",
+        "Gerentes de tecnologia da informação"
+      ],
+      "course_exposure_score": 8.9,
+      "course_opportunity_score": 9.0,
+      "course_advantage_score": 9.0,
+      "course_growth_score": 8.9,
+      "exposure_band": "Muito alta"
+    },
+    {
+      "curso": "Letras",
+      "grau": "Licenciatura",
+      "modalidade": "Presencial",
+      "rede": "Pública",
+      "cine_area": "Formação de professores de letras",
+      "matriculados": 7623,
+      "concluintes": 1097,
+      "ingressantes": 1461,
+      "cursos": 34,
+      "mapped_cbo_codes": [
+        "2321",
+        "2347",
+        "2035"
+      ],
+      "mapped_cbo_titles": [
+        "Professores do ensino médio",
+        "Professores de ciências humanas do ensino superior",
+        "Pesquisadores das ciências sociais e humanas"
+      ],
+      "course_exposure_score": 7.0,
+      "course_opportunity_score": 6.5,
+      "course_advantage_score": 7.0,
+      "course_growth_score": 6.0,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Letras - Português E Inglês",
+      "grau": "Licenciatura",
+      "modalidade": "Presencial",
+      "rede": "Pública",
+      "cine_area": "Formação de professores de letras",
+      "matriculados": 8224,
+      "concluintes": 1089,
+      "ingressantes": 2367,
+      "cursos": 62,
+      "mapped_cbo_codes": [
+        "2321",
+        "2347",
+        "2035"
+      ],
+      "mapped_cbo_titles": [
+        "Professores do ensino médio",
+        "Professores de ciências humanas do ensino superior",
+        "Pesquisadores das ciências sociais e humanas"
+      ],
+      "course_exposure_score": 7.0,
+      "course_opportunity_score": 6.5,
+      "course_advantage_score": 7.0,
+      "course_growth_score": 6.0,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Engenharia De Controle E Automação",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Pública",
+      "cine_area": "Eletrônica e automação",
+      "matriculados": 11889,
+      "concluintes": 1077,
+      "ingressantes": 2898,
+      "cursos": 62,
+      "mapped_cbo_codes": [
+        "2021",
+        "2143",
+        "2144",
+        "2149"
+      ],
+      "mapped_cbo_titles": [
+        "Engenheiros de controle e automação, engenheiros mecatrônicos e afins",
+        "Engenheiros eletricistas, eletrônicos e afins",
+        "Engenheiros mecânicos e afins",
+        "Engenheiros de produção, qualidade, segurança e afins"
+      ],
+      "course_exposure_score": 7.1,
+      "course_opportunity_score": 7.4,
+      "course_advantage_score": 7.1,
+      "course_growth_score": 7.8,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Processos Gerenciais",
+      "grau": "Tecnológico",
+      "modalidade": "Presencial",
+      "rede": "Privada",
+      "cine_area": "Gestão e administração",
+      "matriculados": 2806,
+      "concluintes": 1059,
+      "ingressantes": 1507,
+      "cursos": 141,
+      "mapped_cbo_codes": [
+        "2521",
+        "1423",
+        "1424",
+        "3541"
+      ],
+      "mapped_cbo_titles": [
+        "Administradores",
+        "Gerentes de comercialização, marketing e comunicação",
+        "Gerentes de suprimentos e afins",
+        "Especialistas em promoção de produtos e vendas"
+      ],
+      "course_exposure_score": 7.0,
+      "course_opportunity_score": 7.1,
+      "course_advantage_score": 7.8,
+      "course_growth_score": 6.4,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Gestão Comercial",
+      "grau": "Tecnológico",
+      "modalidade": "Presencial",
+      "rede": "Privada",
+      "cine_area": "Gestão comercial",
+      "matriculados": 3490,
+      "concluintes": 1042,
+      "ingressantes": 1921,
+      "cursos": 149,
+      "mapped_cbo_codes": [
+        "3541",
+        "5211",
+        "1423"
+      ],
+      "mapped_cbo_titles": [
+        "Especialistas em promoção de produtos e vendas",
+        "Operadores do comércio em lojas e mercados",
+        "Gerentes de comercialização, marketing e comunicação"
+      ],
+      "course_exposure_score": 3.8,
+      "course_opportunity_score": 4.3,
+      "course_advantage_score": 4.8,
+      "course_growth_score": 3.7,
+      "exposure_band": "Baixa"
+    },
+    {
+      "curso": "Engenharia De Controle E Automação",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Privada",
+      "cine_area": "Eletrônica e automação",
+      "matriculados": 4388,
+      "concluintes": 1037,
+      "ingressantes": 1102,
+      "cursos": 119,
+      "mapped_cbo_codes": [
+        "2021",
+        "2143",
+        "2144",
+        "2149"
+      ],
+      "mapped_cbo_titles": [
+        "Engenheiros de controle e automação, engenheiros mecatrônicos e afins",
+        "Engenheiros eletricistas, eletrônicos e afins",
+        "Engenheiros mecânicos e afins",
+        "Engenheiros de produção, qualidade, segurança e afins"
+      ],
+      "course_exposure_score": 7.1,
+      "course_opportunity_score": 7.4,
+      "course_advantage_score": 7.1,
+      "course_growth_score": 7.8,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Geografia",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Pública",
+      "cine_area": "Ciências sociais e políticas",
+      "matriculados": 7763,
+      "concluintes": 1027,
+      "ingressantes": 1879,
+      "cursos": 71,
+      "mapped_cbo_codes": [
+        "2321",
+        "2347",
+        "2035"
+      ],
+      "mapped_cbo_titles": [
+        "Professores do ensino médio",
+        "Professores de ciências humanas do ensino superior",
+        "Pesquisadores das ciências sociais e humanas"
+      ],
+      "course_exposure_score": 7.0,
+      "course_opportunity_score": 6.5,
+      "course_advantage_score": 7.0,
+      "course_growth_score": 6.0,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Design De Moda",
+      "grau": "Tecnológico",
+      "modalidade": "Presencial",
+      "rede": "Privada",
+      "cine_area": "Moda, design de interiores e desenho industrial",
+      "matriculados": 2987,
+      "concluintes": 987,
+      "ingressantes": 1706,
+      "cursos": 61,
+      "mapped_cbo_codes": [
+        "2624",
+        "2531",
+        "1233"
+      ],
+      "mapped_cbo_titles": [
+        "Artistas visuais,desenhistas industriais e conservadores-restauradores de bens culturais",
+        "Profissionais de publicidade",
+        "Diretores de comercialização e marketing"
+      ],
+      "course_exposure_score": 8.3,
+      "course_opportunity_score": 7.5,
+      "course_advantage_score": 8.4,
+      "course_growth_score": 6.5,
+      "exposure_band": "Muito alta"
+    },
+    {
+      "curso": "Biomedicina",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Pública",
+      "cine_area": "Tecnologia de diagnóstico e tratamento médico",
+      "matriculados": 6488,
+      "concluintes": 962,
+      "ingressantes": 1861,
+      "cursos": 35,
+      "mapped_cbo_codes": [
+        "2212",
+        "2211",
+        "5152"
+      ],
+      "mapped_cbo_titles": [
+        "Biomédicos",
+        "Biólogos e afins",
+        "Auxiliares de laboratório da saúde"
+      ],
+      "course_exposure_score": 4.4,
+      "course_opportunity_score": 5.5,
+      "course_advantage_score": 4.8,
+      "course_growth_score": 6.3,
+      "exposure_band": "Moderada"
+    },
+    {
+      "curso": "História",
+      "grau": "Licenciatura",
+      "modalidade": "Presencial",
+      "rede": "Privada",
+      "cine_area": "Formação de professores em áreas específicas (exceto Letras)",
+      "matriculados": 4906,
+      "concluintes": 934,
+      "ingressantes": 1894,
+      "cursos": 112,
+      "mapped_cbo_codes": [
+        "2321",
+        "2347",
+        "2035"
+      ],
+      "mapped_cbo_titles": [
+        "Professores do ensino médio",
+        "Professores de ciências humanas do ensino superior",
+        "Pesquisadores das ciências sociais e humanas"
+      ],
+      "course_exposure_score": 7.0,
+      "course_opportunity_score": 6.5,
+      "course_advantage_score": 7.0,
+      "course_growth_score": 6.0,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Processos Gerenciais",
+      "grau": "Tecnológico",
+      "modalidade": "Presencial",
+      "rede": "Pública",
+      "cine_area": "Gestão e administração",
+      "matriculados": 5229,
+      "concluintes": 911,
+      "ingressantes": 2129,
+      "cursos": 48,
+      "mapped_cbo_codes": [
+        "2521",
+        "1423",
+        "1424",
+        "3541"
+      ],
+      "mapped_cbo_titles": [
+        "Administradores",
+        "Gerentes de comercialização, marketing e comunicação",
+        "Gerentes de suprimentos e afins",
+        "Especialistas em promoção de produtos e vendas"
+      ],
+      "course_exposure_score": 7.0,
+      "course_opportunity_score": 7.1,
+      "course_advantage_score": 7.8,
+      "course_growth_score": 6.4,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Filosofia",
+      "grau": "Licenciatura",
+      "modalidade": "Presencial",
+      "rede": "Pública",
+      "cine_area": "Formação de professores em áreas específicas (exceto Letras)",
+      "matriculados": 8884,
+      "concluintes": 877,
+      "ingressantes": 2282,
+      "cursos": 76,
+      "mapped_cbo_codes": [
+        "2321",
+        "2347",
+        "2035"
+      ],
+      "mapped_cbo_titles": [
+        "Professores do ensino médio",
+        "Professores de ciências humanas do ensino superior",
+        "Pesquisadores das ciências sociais e humanas"
+      ],
+      "course_exposure_score": 7.0,
+      "course_opportunity_score": 6.5,
+      "course_advantage_score": 7.0,
+      "course_growth_score": 6.0,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Design",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Pública",
+      "cine_area": "Moda, design de interiores e desenho industrial",
+      "matriculados": 6863,
+      "concluintes": 866,
+      "ingressantes": 1450,
+      "cursos": 29,
+      "mapped_cbo_codes": [
+        "2624",
+        "2531",
+        "1233"
+      ],
+      "mapped_cbo_titles": [
+        "Artistas visuais,desenhistas industriais e conservadores-restauradores de bens culturais",
+        "Profissionais de publicidade",
+        "Diretores de comercialização e marketing"
+      ],
+      "course_exposure_score": 8.3,
+      "course_opportunity_score": 7.5,
+      "course_advantage_score": 8.4,
+      "course_growth_score": 6.5,
+      "exposure_band": "Muito alta"
+    },
+    {
+      "curso": "História",
+      "grau": "Bacharelado",
+      "modalidade": "Presencial",
+      "rede": "Pública",
+      "cine_area": "História e arqueologia",
+      "matriculados": 4568,
+      "concluintes": 854,
+      "ingressantes": 1257,
+      "cursos": 41,
+      "mapped_cbo_codes": [
+        "2321",
+        "2347",
+        "2035"
+      ],
+      "mapped_cbo_titles": [
+        "Professores do ensino médio",
+        "Professores de ciências humanas do ensino superior",
+        "Pesquisadores das ciências sociais e humanas"
+      ],
+      "course_exposure_score": 7.0,
+      "course_opportunity_score": 6.5,
+      "course_advantage_score": 7.0,
+      "course_growth_score": 6.0,
+      "exposure_band": "Alta"
+    },
+    {
+      "curso": "Matemática",
+      "grau": "Licenciatura",
+      "modalidade": "Educação a Distância",
+      "rede": "Pública",
+      "cine_area": "Formação de professores em áreas específicas (exceto Letras)",
+      "matriculados": 12170,
+      "concluintes": 842,
+      "ingressantes": 3940,
+      "cursos": 899,
+      "mapped_cbo_codes": [
+        "2111",
+        "2112",
+        "2124"
+      ],
+      "mapped_cbo_titles": [
+        "Profissionais da matemática",
+        "Profissionais de estatística e afins",
+        "Analistas de tecnologia da informação"
+      ],
+      "course_exposure_score": 9.0,
+      "course_opportunity_score": 9.0,
+      "course_advantage_score": 9.0,
+      "course_growth_score": 9.0,
+      "exposure_band": "Muito alta"
+    },
+    {
+      "curso": "Design De Interiores",
+      "grau": "Tecnológico",
+      "modalidade": "Presencial",
+      "rede": "Privada",
+      "cine_area": "Moda, design de interiores e desenho industrial",
+      "matriculados": 2298,
+      "concluintes": 792,
+      "ingressantes": 1249,
+      "cursos": 107,
+      "mapped_cbo_codes": [
+        "2624",
+        "2531",
+        "1233"
+      ],
+      "mapped_cbo_titles": [
+        "Artistas visuais,desenhistas industriais e conservadores-restauradores de bens culturais",
+        "Profissionais de publicidade",
+        "Diretores de comercialização e marketing"
+      ],
+      "course_exposure_score": 8.3,
+      "course_opportunity_score": 7.5,
+      "course_advantage_score": 8.4,
+      "course_growth_score": 6.5,
+      "exposure_band": "Muito alta"
+    }
+  ],
+  "by_uf": [
+    {
+      "uf": "MT",
+      "concluintes": 7502,
+      "avg_exposure": 7.4,
+      "avg_opportunity": 6.7
+    },
+    {
+      "uf": "MS",
+      "concluintes": 3366,
+      "avg_exposure": 7.3,
+      "avg_opportunity": 6.8
+    },
+    {
+      "uf": "DF",
+      "concluintes": 14197,
+      "avg_exposure": 7.0,
+      "avg_opportunity": 6.9
+    },
+    {
+      "uf": "RO",
+      "concluintes": 1935,
+      "avg_exposure": 7.0,
+      "avg_opportunity": 6.6
+    },
+    {
+      "uf": "TO",
+      "concluintes": 1451,
+      "avg_exposure": 6.9,
+      "avg_opportunity": 6.7
+    },
+    {
+      "uf": "SE",
+      "concluintes": 1744,
+      "avg_exposure": 6.8,
+      "avg_opportunity": 6.7
+    },
+    {
+      "uf": "RS",
+      "concluintes": 41973,
+      "avg_exposure": 6.7,
+      "avg_opportunity": 6.6
+    },
+    {
+      "uf": "ES",
+      "concluintes": 7091,
+      "avg_exposure": 6.7,
+      "avg_opportunity": 6.9
+    },
+    {
+      "uf": "SP",
+      "concluintes": 265091,
+      "avg_exposure": 6.6,
+      "avg_opportunity": 6.7
+    },
+    {
+      "uf": "RN",
+      "concluintes": 3181,
+      "avg_exposure": 6.6,
+      "avg_opportunity": 6.9
+    },
+    {
+      "uf": "RJ",
+      "concluintes": 78962,
+      "avg_exposure": 6.5,
+      "avg_opportunity": 6.6
+    },
+    {
+      "uf": "PR",
+      "concluintes": 59386,
+      "avg_exposure": 6.5,
+      "avg_opportunity": 6.7
+    },
+    {
+      "uf": "SC",
+      "concluintes": 32063,
+      "avg_exposure": 6.5,
+      "avg_opportunity": 6.6
+    },
+    {
+      "uf": "GO",
+      "concluintes": 20058,
+      "avg_exposure": 6.4,
+      "avg_opportunity": 6.6
+    },
+    {
+      "uf": "CE",
+      "concluintes": 19597,
+      "avg_exposure": 6.4,
+      "avg_opportunity": 6.7
+    },
+    {
+      "uf": "MG",
+      "concluintes": 87877,
+      "avg_exposure": 6.3,
+      "avg_opportunity": 6.6
+    },
+    {
+      "uf": "PE",
+      "concluintes": 23302,
+      "avg_exposure": 6.3,
+      "avg_opportunity": 6.7
+    },
+    {
+      "uf": "BA",
+      "concluintes": 37714,
+      "avg_exposure": 6.1,
+      "avg_opportunity": 6.5
+    },
+    {
+      "uf": "PI",
+      "concluintes": 5512,
+      "avg_exposure": 6.1,
+      "avg_opportunity": 6.6
+    },
+    {
+      "uf": "AL",
+      "concluintes": 2670,
+      "avg_exposure": 6.1,
+      "avg_opportunity": 6.5
+    },
+    {
+      "uf": "PA",
+      "concluintes": 18298,
+      "avg_exposure": 5.9,
+      "avg_opportunity": 6.5
+    },
+    {
+      "uf": "PB",
+      "concluintes": 6842,
+      "avg_exposure": 5.8,
+      "avg_opportunity": 6.7
+    },
+    {
+      "uf": "AM",
+      "concluintes": 5286,
+      "avg_exposure": 5.8,
+      "avg_opportunity": 6.5
+    },
+    {
+      "uf": "MA",
+      "concluintes": 8883,
+      "avg_exposure": 5.7,
+      "avg_opportunity": 6.5
+    }
+  ],
+  "by_region": [
+    {
+      "regiao": "Sudeste",
+      "concluintes": 500434,
+      "avg_exposure": 6.5,
+      "avg_opportunity": 6.7
+    },
+    {
+      "regiao": "Sul",
+      "concluintes": 172959,
+      "avg_exposure": 6.5,
+      "avg_opportunity": 6.7
+    },
+    {
+      "regiao": "Centro-Oeste",
+      "concluintes": 78933,
+      "avg_exposure": 6.4,
+      "avg_opportunity": 6.6
+    },
+    {
+      "regiao": "Nordeste",
+      "concluintes": 209907,
+      "avg_exposure": 6.2,
+      "avg_opportunity": 6.6
+    },
+    {
+      "regiao": "Norte",
+      "concluintes": 67953,
+      "avg_exposure": 6.1,
+      "avg_opportunity": 6.5
+    }
+  ],
+  "by_modalidade": [
+    {
+      "modalidade": "Educação a Distância",
+      "concluintes": 471389,
+      "avg_exposure": 6.8,
+      "avg_opportunity": 6.7
+    },
+    {
+      "modalidade": "Presencial",
+      "concluintes": 611603,
+      "avg_exposure": 6.2,
+      "avg_opportunity": 6.7
+    }
+  ],
+  "by_rede": [
+    {
+      "rede": "Privada",
+      "concluintes": 915138,
+      "avg_exposure": 6.5,
+      "avg_opportunity": 6.7
+    },
+    {
+      "rede": "Pública",
+      "concluintes": 167854,
+      "avg_exposure": 6.4,
+      "avg_opportunity": 6.9
+    }
+  ],
+  "editorial_insights": [
+    {
+      "id": "course-pipeline-shift",
+      "title": "O pipeline universitário já mostra onde a IA vai bater primeiro",
+      "summary": "Entre cursos de grande volume, 3 já aparecem com exposição muito alta. ADS, Ciências Contábeis e Gestão de RH lideram o grupo de formações que alimentam trilhas profissionais mais reconfiguráveis.",
+      "evidence": [
+        {
+          "curso": "Gestão De Recursos Humanos",
+          "concluintes": 39831,
+          "exposicao": 8.9
+        },
+        {
+          "curso": "Análise E Desenvolvimento De Sistemas",
+          "concluintes": 36577,
+          "exposicao": 8.8
+        },
+        {
+          "curso": "Ciências Contábeis",
+          "concluintes": 25601,
+          "exposicao": 8.6
+        }
+      ]
+    },
+    {
+      "id": "pedagogia-not-doom",
+      "title": "Pedagogia não aparece como colapso; aparece como reconfiguração",
+      "summary": "Pedagogia surge com exposição moderada e oportunidade relativamente alta. A leitura menos burra aqui não é substituição em massa, mas amplificação: planejamento, personalização, conteúdo e coordenação pedagógica devem mudar mais do que desaparecer.",
+      "evidence": [
+        {
+          "curso": "Pedagogia",
+          "concluintes": 76978,
+          "exposicao": 5.9,
+          "oportunidade": 6.9
+        }
+      ]
+    },
+    {
+      "id": "care-vs-symbolic",
+      "title": "Cursos do cuidado seguem mais protegidos do que cursos simbólico-cognitivos",
+      "summary": "Enfermagem e Fisioterapia aparecem bem mais protegidos do que Direito, Contábeis, RH e ADS. Isso reforça a tese de que tarefas físicas, relacionais e reguladas seguram melhor a pancada do que trabalho documental, analítico e padronizável.",
+      "evidence": [
+        {
+          "curso": "Direito",
+          "exposicao": 7.6
+        },
+        {
+          "curso": "Gestão De Recursos Humanos",
+          "exposicao": 8.9
+        },
+        {
+          "curso": "Enfermagem",
+          "exposicao": 3.8
+        },
+        {
+          "curso": "Análise E Desenvolvimento De Sistemas",
+          "exposicao": 8.8
+        },
+        {
+          "curso": "Ciências Contábeis",
+          "exposicao": 8.6
+        },
+        {
+          "curso": "Fisioterapia",
+          "exposicao": 3.8
+        }
+      ]
+    },
+    {
+      "id": "ead-private-concentration",
+      "title": "O epicentro do volume exposto passa por EAD e rede privada",
+      "summary": "Os maiores volumes de concluintes nas trilhas mais expostas estão concentrados em ofertas EAD e privadas. Isso sugere que o choque da IA pode aparecer primeiro onde a formação já é mais escalável, padronizada e massificada.",
+      "evidence": [
+        {
+          "modalidade": "Educação a Distância",
+          "concluintes": 471389,
+          "avg_exposure": 6.8,
+          "avg_opportunity": 6.7
+        },
+        {
+          "modalidade": "Presencial",
+          "concluintes": 611603,
+          "avg_exposure": 6.2,
+          "avg_opportunity": 6.7
+        },
+        {
+          "rede": "Privada",
+          "concluintes": 915138,
+          "avg_exposure": 6.5,
+          "avg_opportunity": 6.7
+        },
+        {
+          "rede": "Pública",
+          "concluintes": 167854,
+          "avg_exposure": 6.4,
+          "avg_opportunity": 6.9
+        }
+      ]
+    },
+    {
+      "id": "regional-pipeline",
+      "title": "O risco não está só no emprego atual; está no pipeline regional de formação",
+      "summary": "Cruzar exposição com concluintes por UF/região permite ver onde o mercado futuro já nasce mais pressionado. Essa camada é mais estratégica do que só olhar o estoque de ocupações atuais.",
+      "evidence": [
+        {
+          "regiao": "Sudeste",
+          "concluintes": 500434,
+          "avg_exposure": 6.5,
+          "avg_opportunity": 6.7
+        },
+        {
+          "regiao": "Sul",
+          "concluintes": 172959,
+          "avg_exposure": 6.5,
+          "avg_opportunity": 6.7
+        },
+        {
+          "regiao": "Centro-Oeste",
+          "concluintes": 78933,
+          "avg_exposure": 6.4,
+          "avg_opportunity": 6.6
+        },
+        {
+          "regiao": "Nordeste",
+          "concluintes": 209907,
+          "avg_exposure": 6.2,
+          "avg_opportunity": 6.6
+        },
+        {
+          "regiao": "Norte",
+          "concluintes": 67953,
+          "avg_exposure": 6.1,
+          "avg_opportunity": 6.5
+        }
+      ]
+    }
+  ]
+}
