@@ -90,9 +90,9 @@ body {
   border-bottom: 1px solid var(--border);
   display: flex;
   align-items: center;
+  min-height: 52px;
   padding: 0 16px;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  overflow: visible;
   scrollbar-width: none;
 }
 #nav::-webkit-scrollbar { display: none; }
@@ -117,7 +117,7 @@ body {
 #nav a {
   padding: 12px 18px;
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 400;
   color: var(--fg2);
   text-decoration: none;
   white-space: nowrap;
@@ -126,6 +126,21 @@ body {
 }
 #nav a:hover { color: var(--fg); }
 #nav a:active { opacity: 0.8; }
+#nav a.active {
+  color: var(--fg);
+  border-bottom-color: var(--accent);
+}
+#nav .nav-home {
+  gap: 10px;
+  padding: 12px 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--fg);
+  letter-spacing: 0;
+  border-bottom: 0;
+  margin-right: 0;
+}
+#nav .nav-home:hover { color: var(--fg); }
 
 /* ── Theme toggle ──────────────────────────────────── */
 .theme-toggle {
@@ -147,6 +162,12 @@ body {
 .theme-toggle .icon-moon { display: none; }
 [data-theme="light"] .theme-toggle .icon-sun { display: none; }
 [data-theme="light"] .theme-toggle .icon-moon { display: block; }
+#nav .theme-toggle,
+#nav .nav-burger {
+  padding: 8px;
+  border-bottom: 0;
+}
+#nav .theme-toggle { margin-left: auto; }
 
 /* ── Hamburger menu ─────────────────────────────────── */
 .nav-burger {
@@ -203,6 +224,7 @@ body {
 }
 .nav-menu button:hover, .nav-menu a:hover { background: var(--overlay-hover); color: var(--fg); }
 .nav-menu button.active { color: var(--accent); font-weight: 600; }
+.nav-menu a.active { color: var(--accent); font-weight: 600; }
 
 /* ── Views container ───────────────────────────────── */
 .view { display: none; max-width: 1400px; margin: 0 auto; padding: 20px 24px 80px; }
@@ -793,32 +815,46 @@ canvas#scatterCanvas { display: block; cursor: crosshair; }
 /* ── Landing page ──────────────────────────────────── */
 .serif { font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif; }
 
-/* Nav: when landing is active, hide tool tabs */
-.nav-tabs { display: contents; }
+/* Nav: top-level site pages */
+.nav-tabs {
+  display: flex;
+  align-items: center;
+  margin-left: 14px;
+  overflow: auto;
+  scrollbar-width: none;
+}
+.nav-tabs::-webkit-scrollbar { display: none; }
 .nav-home {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 14px;
-  font-weight: 700;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 600;
   color: var(--fg);
   background: none;
   border: none;
   cursor: pointer;
-  padding: 12px 14px 12px 0;
+  padding: 12px 0;
   white-space: nowrap;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
   border-bottom: 2px solid transparent;
   flex-shrink: 0;
   text-decoration: none;
-  margin-right: auto;
+  margin-right: 0;
 }
-.nav-home:hover { color: var(--accent); }
-.nav-home:hover .logo-accent { fill: var(--fg); }
-body.on-landing .nav-home { border-bottom-color: var(--accent); }
+.nav-home:hover { color: var(--fg); }
+body.on-landing .nav-home { border-bottom-color: transparent; }
 .nav-logo { flex-shrink: 0; }
-.logo-tile { fill: var(--fg); opacity: 0.25; }
-.logo-accent { fill: var(--accent); transition: fill 0.15s; }
+.logo-tile { fill: currentColor; opacity: 1; }
+.logo-accent { fill: var(--accent); }
+
+@media (max-width: 900px) {
+  #nav { padding: 0 12px; overflow: visible; position: relative; }
+  .nav-tabs { display: none; }
+  .nav-burger { display: flex; }
+  #nav .nav-home { padding: 12px 0; margin-right: 0; }
+  #nav .theme-toggle { margin-left: auto; margin-right: 4px; }
+}
 
 #view-landing {
   max-width: none;
@@ -1156,10 +1192,10 @@ body.on-landing .nav-home { border-bottom-color: var(--accent); }
 @media (max-width: 700px) {
   /* Nav — hamburger on mobile */
   #nav { padding: 0 12px; overflow: visible; position: relative; }
-  .nav-tabs, #nav > a { display: none; }
+  .nav-tabs { display: none; }
   .nav-burger { display: flex; }
-  .nav-home { padding: 10px 10px 10px 0; font-size: 13px; margin-right: auto; }
-  .theme-toggle { margin-right: 4px; }
+  #nav .nav-home { padding: 12px 0; margin-right: 0; }
+  #nav .theme-toggle { margin-left: auto; margin-right: 4px; }
 
   /* Tool views */
   .view { padding: 16px 14px 60px; }
@@ -1261,10 +1297,10 @@ body.on-landing .nav-home { border-bottom-color: var(--accent); }
 <nav id="nav" aria-label="Navega&ccedil;&atilde;o principal">
   <button class="nav-home" id="navHome" aria-label="Voltar ao in&iacute;cio">
     <svg class="nav-logo" width="22" height="22" viewBox="0 0 22 22" fill="none">
-      <rect class="logo-tile" x="1" y="1" width="9" height="13" rx="0"/>
-      <rect class="logo-tile" x="12" y="1" width="9" height="6" rx="0"/>
-      <rect class="logo-accent" x="12" y="9" width="9" height="5" rx="0"/>
-      <rect class="logo-tile" x="1" y="16" width="20" height="5" rx="0"/>
+      <rect class="logo-tile" x="1" y="1" width="9" height="13"/>
+      <rect class="logo-tile" x="12" y="1" width="9" height="6"/>
+      <rect class="logo-accent" x="12" y="9" width="9" height="5"/>
+      <rect class="logo-tile" x="1" y="16" width="20" height="5"/>
     </svg>
     Mapa da IA
   </button>
@@ -1273,8 +1309,8 @@ body.on-landing .nav-home { border-bottom-color: var(--accent); }
     <a href="empregos.html">Empregos</a>
     <a href="estudantes.html">Estudantes</a>
     <a href="empresas.html">Empresas</a>
+    <a href="insights.html">Insights</a>
   </span>
-  <a href="insights.html">Insights</a>
   <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Alternar tema">
     <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
     <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>

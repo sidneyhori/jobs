@@ -118,32 +118,39 @@ body {
   border-bottom: 1px solid var(--border);
   display: flex;
   align-items: center;
-  padding: 0 var(--sp-16);
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  min-height: 52px;
+  padding: 0 16px;
+  overflow: visible;
   scrollbar-width: none;
 }
 #nav::-webkit-scrollbar { display: none; }
+.nav-tabs {
+  display: flex;
+  align-items: center;
+  margin-left: 14px;
+  overflow: auto;
+  scrollbar-width: none;
+}
+.nav-tabs::-webkit-scrollbar { display: none; }
 .nav-home {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 14px;
-  font-weight: 700;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 600;
   color: var(--fg);
   text-decoration: none;
-  padding: 12px 14px 12px 0;
+  padding: 12px 0;
   white-space: nowrap;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
   border-bottom: 2px solid transparent;
   flex-shrink: 0;
-  margin-right: auto;
+  margin-right: 0;
 }
-.nav-home:hover { color: var(--accent); }
-.nav-home:hover .logo-accent { fill: var(--fg); }
+.nav-home:hover { color: var(--fg); }
 .nav-logo { flex-shrink: 0; }
-.logo-tile { fill: var(--fg); opacity: 0.25; }
-.logo-accent { fill: var(--accent); transition: fill 0.15s; }
+.logo-tile { fill: currentColor; opacity: 1; }
+.logo-accent { fill: var(--accent); }
 /* ── Theme toggle ──────────────────────────────────── */
 .theme-toggle {
   background: none;
@@ -164,6 +171,12 @@ body {
 .theme-toggle .icon-moon { display: none; }
 [data-theme="light"] .theme-toggle .icon-sun { display: none; }
 [data-theme="light"] .theme-toggle .icon-moon { display: block; }
+#nav .theme-toggle,
+#nav .nav-burger {
+  padding: 8px;
+  border-bottom: 0;
+}
+#nav .theme-toggle { margin-left: auto; }
 
 .nav-scope {
   font-size: 11px;
@@ -241,6 +254,25 @@ body {
 #nav a.active {
   color: var(--fg);
   border-bottom-color: var(--accent);
+}
+#nav .nav-home {
+  gap: 10px;
+  padding: 12px 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--fg);
+  letter-spacing: 0;
+  border-bottom: 0;
+  margin-right: 0;
+}
+#nav .nav-home:hover { color: var(--fg); }
+
+@media (max-width: 900px) {
+  #nav { padding: 0 12px; overflow: visible; position: relative; }
+  .nav-tabs { display: none; }
+  .nav-burger { display: flex; }
+  #nav .nav-home { padding: 12px 0; margin-right: 0; }
+  #nav .theme-toggle { margin-left: auto; margin-right: 4px; }
 }
 
 /* ── Page layout ────────────────────────────────────── */
@@ -787,10 +819,10 @@ body {
   .article.featured-card .hero-stat { font-size: 32px; }
   .article { padding: var(--sp-20); }
   #nav { overflow: visible; position: relative; }
-  #nav > a { display: none; }
+  .nav-tabs { display: none; }
   .nav-burger { display: flex; }
-  .nav-home { padding: 10px 10px 10px 0; font-size: 13px; margin-right: auto; }
-  .theme-toggle { margin-right: 4px; }
+  #nav .nav-home { padding: 12px 0; margin-right: 0; }
+  #nav .theme-toggle { margin-left: auto; margin-right: 4px; }
   .nav-scope { display: none; }
   .bar-row { flex-wrap: wrap; }
   .bar-label { width: 100%; min-width: 100%; text-align: left; font-size: 12px; margin-bottom: -2px; }
@@ -857,22 +889,20 @@ body {
 <nav id="nav" aria-label="Navegação principal">
   <a href="index.html" class="nav-home">
     <svg class="nav-logo" width="22" height="22" viewBox="0 0 22 22" fill="none">
-      <rect class="logo-tile" x="1" y="1" width="9" height="13" rx="0"/>
-      <rect class="logo-tile" x="12" y="1" width="9" height="6" rx="0"/>
-      <rect class="logo-accent" x="12" y="9" width="9" height="5" rx="0"/>
-      <rect class="logo-tile" x="1" y="16" width="20" height="5" rx="0"/>
+      <rect class="logo-tile" x="1" y="1" width="9" height="13"/>
+      <rect class="logo-tile" x="12" y="1" width="9" height="6"/>
+      <rect class="logo-accent" x="12" y="9" width="9" height="5"/>
+      <rect class="logo-tile" x="1" y="16" width="20" height="5"/>
     </svg>
-    IA &amp; Emprego
+    Mapa da IA
   </a>
-  <a href="index.html#mapa">Mapa</a>
-  <a href="index.html#scatter">Risco × Oportunidade</a>
-  <a href="index.html#painel">Minha Ocupação</a>
-  <a href="index.html#demo">Demografia</a>
-  <a href="index.html#regional">Regional</a>
-  <a href="index.html#ranking">Ranking</a>
-  <a href="index.html#perguntar">Perguntar</a>
-  <a href="insights.html" class="active" aria-current="page">Insights</a>
-  <span class="nav-scope" id="nav-scope"></span>
+  <span class="nav-tabs">
+    <a href="trabalho.html">Trabalho</a>
+    <a href="empregos.html">Empregos</a>
+    <a href="estudantes.html">Estudantes</a>
+    <a href="empresas.html">Empresas</a>
+    <a href="insights.html" class="active" aria-current="page">Insights</a>
+  </span>
   <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Alternar tema">
     <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
     <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -882,14 +912,10 @@ body {
     <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
   </button>
   <div class="nav-menu" id="navMenu">
-    <a href="index.html">In&iacute;cio</a>
-    <a href="index.html#mapa">Mapa</a>
-    <a href="index.html#scatter">Risco × Oportunidade</a>
-    <a href="index.html#painel">Minha Ocupa&ccedil;&atilde;o</a>
-    <a href="index.html#demo">Demografia</a>
-    <a href="index.html#regional">Regional</a>
-    <a href="index.html#ranking">Ranking</a>
-    <a href="index.html#perguntar">Perguntar</a>
+    <a href="trabalho.html">Trabalho</a>
+    <a href="empregos.html">Empregos</a>
+    <a href="estudantes.html">Estudantes</a>
+    <a href="empresas.html">Empresas</a>
     <a href="insights.html" class="active">Insights</a>
   </div>
 </nav>
@@ -994,7 +1020,8 @@ fetch("insights.json")
     }
     var scopeText = scopeParts.join(" · ");
     document.getElementById("header-scope").textContent = scopeText;
-    document.getElementById("nav-scope").textContent = scopeText;
+    var navScopeText = document.getElementById("nav-scope");
+    if (navScopeText) navScopeText.textContent = scopeText;
 
     buildFilters();
     updateView();
@@ -1323,7 +1350,7 @@ window.addEventListener("scroll", function() {
     requestAnimationFrame(function() {
       var y = window.scrollY;
       btnTop.classList.toggle("visible", y > 600);
-      navScope.classList.toggle("visible", y > 120);
+      if (navScope) navScope.classList.toggle("visible", y > 120);
       scrollTicking = false;
     });
     scrollTicking = true;
