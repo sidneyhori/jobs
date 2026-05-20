@@ -1,59 +1,3927 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trabalho — Mapa da IA</title>
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <style>
-    :root { --bg:#141210; --bg2:#1c1a17; --bg3:#26231f; --fg:#e8e4dc; --fg2:#9a9590; --accent:#c49a5c; --border:rgba(255,255,255,.08); }
-    body { margin:0; background:var(--bg); color:var(--fg); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; }
-    nav { position:sticky; top:0; background:rgba(20,18,16,.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--border); display:flex; gap:4px; padding:0 14px; overflow:auto; }
-    nav a { color:var(--fg2); text-decoration:none; padding:14px 12px; white-space:nowrap; font-size:13px; }
-    nav a.active { color:var(--fg); border-bottom:2px solid var(--accent); }
-    .wrap { max-width:1200px; margin:0 auto; padding:28px 20px 80px; }
-    .eyebrow { font-size:11px; text-transform:uppercase; letter-spacing:.12em; color:var(--accent); }
-    h1,h2 { font-family:'Source Serif 4', Georgia, serif; letter-spacing:-.03em; }
-    h1 { font-size:48px; margin:8px 0 12px; }
-    h2 { font-size:28px; margin:0 0 10px; }
-    p { color:var(--fg2); line-height:1.65; }
-    .hero { margin-bottom:28px; }
-    .subnav { display:flex; gap:10px; flex-wrap:wrap; margin-top:18px; }
-    .subnav a { color:var(--fg); text-decoration:none; border:1px solid var(--border); padding:8px 10px; font-size:13px; }
-    section { padding:34px 0; border-top:1px solid var(--border); }
-    .card { background:var(--bg2); border:1px solid var(--border); padding:18px; }
-    iframe { width:100%; min-height:1000px; border:0; background:var(--bg2); }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Análises do impacto da IA no trabalho no Brasil, com base em cruzamentos com a Classificação Brasileira de Ocupações (CBO), RAIS e CAGED.">
+<meta property="og:title" content="Trabalho — Mapa da IA">
+<meta property="og:description" content="Análise de 626 ocupações e o impacto da inteligência artificial no mercado de trabalho brasileiro com base em CBO, RAIS e CAGED.">
+<meta property="og:type" content="website">
+<title>Trabalho — Mapa da IA</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,700;0,8..60,800;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #141210;
+  --bg2: #1c1a17;
+  --bg3: #26231f;
+  --fg: #e8e4dc;
+  --fg2: #9a9590;
+  --accent: #c49a5c;
+  --green: #5a9a5a;
+  --red: #c06a5a;
+  --radius: 0;
+
+  /* Theme-aware borders and overlays */
+  --nav-bg: rgba(20,18,16,0.92);
+  --border: rgba(255,255,255,0.06);
+  --border-hover: rgba(255,255,255,0.12);
+  --border-subtle: rgba(255,255,255,0.05);
+  --border-chip: rgba(255,255,255,0.1);
+  --border-chip-hover: rgba(255,255,255,0.25);
+  --overlay-soft: rgba(255,255,255,0.06);
+  --overlay-hover: rgba(255,255,255,0.08);
+  --card-shadow: 0 2px 16px rgba(0,0,0,0.3);
+  --row-border: rgba(255,255,255,0.04);
+  --tag-bg: rgba(196, 154, 92, 0.08);
+}
+
+/* ── Light theme ───────────────────────────────────── */
+[data-theme="light"] {
+  --bg: #f5f2ed;
+  --bg2: #ffffff;
+  --bg3: #ebe8e3;
+  --fg: #1a1814;
+  --fg2: #6b6860;
+  --accent: #a07838;
+  --green: #3a7a3a;
+  --red: #b04a3a;
+
+  --nav-bg: rgba(245,242,237,0.92);
+  --border: rgba(0,0,0,0.08);
+  --border-hover: rgba(0,0,0,0.14);
+  --border-subtle: rgba(0,0,0,0.06);
+  --border-chip: rgba(0,0,0,0.12);
+  --border-chip-hover: rgba(0,0,0,0.25);
+  --overlay-soft: rgba(0,0,0,0.04);
+  --overlay-hover: rgba(0,0,0,0.06);
+  --card-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  --row-border: rgba(0,0,0,0.06);
+  --tag-bg: rgba(160, 120, 56, 0.08);
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Focus ─────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ── Navigation ─────────────────────────────────────── */
+#nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--nav-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+#nav::-webkit-scrollbar { display: none; }
+#nav button {
+  padding: 12px 18px;
+  font-size: 13px;
+  font-weight: 500;
+  border: none;
+  background: transparent;
+  color: var(--fg2);
+  cursor: pointer;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: all 0.15s;
+}
+#nav button.active {
+  color: var(--fg);
+  border-bottom-color: var(--accent);
+}
+#nav button:hover:not(.active) { color: var(--fg); }
+#nav button:active { opacity: 0.8; }
+#nav a {
+  padding: 12px 18px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--fg2);
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s;
+}
+#nav a:hover { color: var(--fg); }
+#nav a:active { opacity: 0.8; }
+
+/* ── Theme toggle ──────────────────────────────────── */
+.theme-toggle {
+  background: none;
+  border: none;
+  color: var(--fg2);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s, background 0.15s, transform 0.1s;
+  flex-shrink: 0;
+}
+.theme-toggle:hover { color: var(--fg); background: var(--overlay-hover); }
+.theme-toggle:active { transform: scale(0.92); }
+.theme-toggle svg { width: 18px; height: 18px; }
+.theme-toggle .icon-moon { display: none; }
+[data-theme="light"] .theme-toggle .icon-sun { display: none; }
+[data-theme="light"] .theme-toggle .icon-moon { display: block; }
+
+/* ── Hamburger menu ─────────────────────────────────── */
+.nav-burger {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--fg2);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 0;
+  flex-shrink: 0;
+  transition: color 0.15s;
+}
+.nav-burger:hover { color: var(--fg); background: var(--overlay-hover); }
+.nav-burger:active { transform: scale(0.92); }
+.nav-burger svg { width: 20px; height: 20px; display: block; }
+.nav-burger .icon-close { display: none; }
+.nav-open .nav-burger .icon-menu { display: none; }
+.nav-open .nav-burger .icon-close { display: block; }
+
+.nav-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--nav-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 8px 0;
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+  transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-open .nav-menu { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.nav-menu button, .nav-menu a {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 14px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--fg2);
+  background: none;
+  border: none;
+  border-bottom: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.1s, color 0.1s;
+}
+.nav-menu button:hover, .nav-menu a:hover { background: var(--overlay-hover); color: var(--fg); }
+.nav-menu button.active { color: var(--accent); font-weight: 600; }
+
+/* ── Views container ───────────────────────────────── */
+.view { display: none; max-width: 1400px; margin: 0 auto; padding: 20px 24px 80px; }
+.view.active { display: block; }
+
+/* ── Shared components ─────────────────────────────── */
+.section-title {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+.section-desc {
+  font-size: 14px;
+  color: var(--fg2);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+}
+
+.metric-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.metric-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  text-align: center;
+}
+.metric-card .metric-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--fg2);
+  margin-bottom: 8px;
+}
+.metric-card .metric-value {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.metric-card .metric-sub {
+  font-size: 11px;
+  color: var(--fg2);
+  margin-top: 4px;
+}
+
+/* ── Treemap view (View 1) ─────────────────────────── */
+#view-mapa { padding-bottom: 250px; }
+#treemap-header { padding: 0 0 16px; }
+
+.intro { margin-bottom: 18px; }
+.intro h1 {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.intro p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--fg2);
+  margin-bottom: 8px;
+}
+.intro strong, .intro b { color: var(--fg); font-weight: 600; }
+
+.stats-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 28px;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+.stat-section { display: flex; flex-direction: column; gap: 5px; }
+.stat-section h3 {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--fg2);
+}
+.stat-big {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.stat-label { font-size: 11px; color: var(--fg2); }
+
+.tier-bar { display: flex; flex-direction: column; gap: 3px; }
+.tier-row { display: flex; align-items: center; gap: 6px; font-size: 12px; }
+.tier-color { width: 10px; height: 10px; border-radius: 0; flex-shrink: 0; }
+.tier-name { flex: 1; color: var(--fg2); white-space: nowrap; }
+.tier-jobs { text-align: right; white-space: nowrap; }
+.tier-pct { text-align: right; width: 30px; color: var(--fg2); font-size: 11px; }
+
+.histogram { display: flex; align-items: flex-end; gap: 2px; height: 54px; }
+.histogram .bar { flex: 1; border-radius: 0; min-height: 1px; }
+.hist-labels { display: flex; justify-content: space-between; font-size: 10px; color: var(--fg2); margin-top: 2px; }
+
+.hbar-chart { display: flex; flex-direction: column; gap: 3px; }
+.hbar-row { display: flex; align-items: center; gap: 6px; font-size: 12px; }
+.hbar-label { width: 90px; flex-shrink: 0; color: var(--fg2); font-size: 11px; text-align: right; }
+.hbar-track { flex: 1; height: 12px; background: var(--row-border); border-radius: 0; overflow: hidden; min-width: 36px; }
+.hbar-fill { height: 100%; border-radius: 0; }
+.hbar-val { width: 40px; flex-shrink: 0; font-size: 11px; color: var(--fg); text-align: right; }
+
+.controls-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+.color-toggle { display: flex; gap: 4px; flex-wrap: wrap; }
+.color-toggle button {
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid var(--border-chip);
+  border-radius: 0;
+  background: transparent;
+  color: var(--fg2);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.color-toggle button.active {
+  background: var(--overlay-hover);
+  color: var(--fg);
+  border-color: var(--border-chip-hover);
+}
+.color-toggle button:hover:not(.active) { background: var(--row-border); }
+.color-toggle button:active { transform: scale(0.96); }
+
+.gradient-legend { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--fg2); }
+.gradient-legend canvas { border-radius: 0; }
+
+canvas#treemapCanvas { display: block; cursor: default; }
+
+/* ── Tooltip (shared) ─────────────────────────────── */
+#tooltip {
+  position: fixed;
+  pointer-events: none;
+  background: var(--bg2);
+  border: 1px solid var(--border-hover);
+  border-radius: 0;
+  padding: 12px 16px;
+  font-size: 13px;
+  line-height: 1.5;
+  max-width: 380px;
+  opacity: 0;
+  transition: opacity 0.12s;
+  z-index: 200;
+  box-shadow: var(--card-shadow);
+}
+#tooltip.visible { opacity: 1; }
+#tooltip .tt-title { font-weight: 600; font-size: 14px; margin-bottom: 6px; color: var(--fg); }
+#tooltip .tt-highlight { font-size: 12px; margin-bottom: 8px; }
+#tooltip .tt-stats { display: grid; grid-template-columns: auto auto; gap: 2px 12px; font-size: 12px; }
+#tooltip .tt-stats .label { color: var(--fg2); }
+#tooltip .tt-stats .value { color: var(--fg); text-align: right; }
+#tooltip .tt-rationale { font-size: 11px; color: var(--fg2); margin-top: 8px; line-height: 1.4; border-top: 1px solid var(--border); padding-top: 8px; }
+
+/* ── Scatter Plot (View 2) ─────────────────────────── */
+#scatterContainer { position: relative; }
+canvas#scatterCanvas { display: block; cursor: crosshair; }
+
+/* ── Painel Pessoal (View 3) ───────────────────────── */
+.search-box {
+  position: relative;
+  max-width: 600px;
+  margin-bottom: 24px;
+}
+.search-box input {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 15px;
+  background: var(--bg2);
+  border: 1px solid var(--border-hover);
+  border-radius: var(--radius);
+  color: var(--fg);
+  outline: none;
+  transition: border-color 0.15s;
+}
+.search-box input:focus { border-color: var(--accent); }
+.search-box input::placeholder { color: var(--fg2); }
+.search-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--bg2);
+  border: 1px solid var(--border-hover);
+  border-radius: 0;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 50;
+  display: none;
+}
+.search-dropdown.open { display: block; }
+.search-dropdown .search-item {
+  padding: 10px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  border-bottom: 1px solid var(--row-border);
+  transition: background 0.1s;
+}
+.search-dropdown .search-item:hover,
+.search-dropdown .search-item.highlighted { background: var(--overlay-soft); }
+.search-dropdown .search-item .search-code { color: var(--fg2); font-size: 12px; margin-left: 8px; }
+
+#painelContent { display: none; }
+#painelPlaceholder {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--fg2);
+  font-size: 16px;
+}
+
+.salary-section {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.salary-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  flex: 1;
+  min-width: 200px;
+}
+.salary-card .sal-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--fg2); margin-bottom: 6px; }
+.salary-card .sal-value { font-size: 24px; font-weight: 700; }
+
+.risk-assessment {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.risk-assessment .risk-title { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+.risk-assessment .risk-text { font-size: 14px; color: var(--fg2); line-height: 1.6; }
+
+.action-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.action-card {
+  background: var(--bg2);
+  border: 1px solid var(--overlay-hover);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+.action-card .action-title { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+.action-card .action-desc { font-size: 13px; color: var(--fg2); line-height: 1.5; margin-bottom: 8px; }
+.action-card .action-suggestion { font-size: 12px; color: var(--accent); font-weight: 500; }
+
+.rationale-box {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.rationale-box h3 { font-size: 14px; font-weight: 600; margin-bottom: 10px; }
+.rationale-box p { font-size: 13px; color: var(--fg2); line-height: 1.6; }
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+.comparison-table th {
+  text-align: left;
+  padding: 10px 12px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--fg2);
+  border-bottom: 1px solid var(--border-chip);
+  font-weight: 600;
+}
+.comparison-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--row-border);
+}
+.comparison-table tr:hover td { background: var(--row-border); }
+
+.demo-bars {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 16px;
+}
+.demo-bar-section h4 { font-size: 13px; font-weight: 600; margin-bottom: 10px; color: var(--fg2); }
+.demo-bar-item { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; font-size: 13px; }
+.demo-bar-item .dbl { width: 80px; text-align: right; color: var(--fg2); font-size: 12px; flex-shrink: 0; }
+.demo-bar-item .dbt { flex: 1; height: 18px; background: var(--row-border); border-radius: 0; overflow: hidden; }
+.demo-bar-item .dbf { height: 100%; border-radius: 0; }
+.demo-bar-item .dbv { width: 50px; font-size: 12px; flex-shrink: 0; }
+
+/* ── Demographics (View 4) ─────────────────────────── */
+.demo-summary {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+.demo-stat {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  min-width: 180px;
+}
+.demo-stat .ds-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--fg2); margin-bottom: 8px; }
+.demo-stat .ds-value { font-size: 28px; font-weight: 700; }
+.demo-stat .ds-sub { font-size: 12px; color: var(--fg2); margin-top: 4px; }
+
+.demo-charts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+.demo-chart-box {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+.demo-chart-box h3 { font-size: 14px; font-weight: 600; margin-bottom: 16px; }
+
+.demo-hbar { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.demo-hbar .dh-label { width: 100px; font-size: 13px; color: var(--fg2); text-align: right; flex-shrink: 0; }
+.demo-hbar .dh-track { flex: 1; height: 24px; background: var(--row-border); border-radius: 0; overflow: hidden; position: relative; }
+.demo-hbar .dh-fill { height: 100%; border-radius: 0; transition: width 0.3s; }
+.demo-hbar .dh-val { width: 50px; font-size: 13px; font-weight: 600; flex-shrink: 0; }
+
+.demo-table-section { margin-top: 24px; }
+.demo-table-section h3 { font-size: 16px; font-weight: 600; margin-bottom: 12px; }
+
+/* ── Regional Map (View 5) ─────────────────────────── */
+.regional-controls {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.regional-controls button {
+  padding: 8px 16px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid var(--border-chip);
+  border-radius: 0;
+  background: transparent;
+  color: var(--fg2);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.regional-controls button.active {
+  background: var(--overlay-hover);
+  color: var(--fg);
+  border-color: var(--border-chip-hover);
+}
+.regional-controls button:hover:not(.active) { background: var(--row-border); }
+.regional-controls button:active { transform: scale(0.96); }
+
+.state-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.state-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.state-card:hover { border-color: var(--border-hover); transform: translateY(-1px); }
+.state-card .sc-abbr { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+.state-card .sc-row { display: flex; justify-content: space-between; font-size: 12px; color: var(--fg2); margin-bottom: 4px; }
+.state-card .sc-row .sc-val { color: var(--fg); font-weight: 500; }
+
+.state-detail {
+  background: var(--bg2);
+  border: 1px solid var(--overlay-hover);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 24px;
+  display: none;
+}
+.state-detail.open { display: block; }
+.state-detail h3 { font-size: 18px; font-weight: 700; margin-bottom: 16px; }
+.state-detail .sd-close { float: right; background: none; border: none; color: var(--fg2); cursor: pointer; font-size: 18px; }
+
+/* ── Ranking (View 6) ──────────────────────────────── */
+.ranking-controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.ranking-controls input {
+  flex: 1;
+  min-width: 200px;
+  max-width: 400px;
+  padding: 10px 14px;
+  font-size: 14px;
+  background: var(--bg2);
+  border: 1px solid var(--border-chip);
+  border-radius: var(--radius);
+  color: var(--fg);
+  outline: none;
+}
+.ranking-controls input:focus { border-color: var(--accent); }
+.ranking-controls input::placeholder { color: var(--fg2); }
+
+.ranking-table-wrap { overflow-x: auto; }
+.ranking-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  min-width: 900px;
+}
+.ranking-table th {
+  text-align: left;
+  padding: 10px 10px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--fg2);
+  border-bottom: 2px solid var(--border-chip);
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  user-select: none;
+  transition: color 0.1s;
+}
+.ranking-table th:hover { color: var(--fg); }
+.ranking-table th.sorted { color: var(--accent); }
+.ranking-table th .sort-arrow { margin-left: 4px; font-size: 10px; }
+.ranking-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--row-border);
+  white-space: nowrap;
+}
+.ranking-table tbody tr:hover td { background: var(--row-border); }
+
+.score-cell {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 0;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.ranking-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+.ranking-pagination button {
+  padding: 6px 14px;
+  font-size: 12px;
+  border: 1px solid var(--border-chip);
+  border-radius: 0;
+  background: transparent;
+  color: var(--fg2);
+  cursor: pointer;
+}
+.ranking-pagination button:hover:not(:disabled) { background: var(--row-border); color: var(--fg); }
+.ranking-pagination button:active:not(:disabled) { transform: scale(0.96); }
+.ranking-pagination button.active { background: var(--overlay-hover); color: var(--fg); border-color: var(--border-chip-hover); }
+.ranking-pagination button:disabled { opacity: 0.3; cursor: default; }
+.ranking-pagination span { font-size: 12px; color: var(--fg2); }
+
+/* ── Perguntar (View 7) ──────────────────────────── */
+.perguntar-form {
+  max-width: 700px;
+  margin: 0 auto 24px;
+}
+.perguntar-input-wrap { position: relative; }
+.perguntar-input-wrap input {
+  width: 100%;
+  padding: 14px 56px 14px 16px;
+  font-size: 16px;
+  background: var(--bg2);
+  border: 1px solid var(--border-hover);
+  border-radius: var(--radius);
+  color: var(--fg);
+  outline: none;
+  transition: border-color 0.15s;
+}
+.perguntar-input-wrap input:focus { border-color: var(--accent); }
+.perguntar-input-wrap input::placeholder { color: var(--fg2); }
+.perguntar-btn {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--accent);
+  border: none;
+  border-radius: var(--radius);
+  color: var(--bg);
+  padding: 8px 14px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: opacity 0.15s;
+}
+.perguntar-btn:hover { opacity: 0.85; }
+.perguntar-btn:active { transform: translateY(-50%) scale(0.96); }
+.perguntar-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+/* ── Loading indicator ─────────────────────────────── */
+@keyframes pulse-bar {
+  0% { transform: scaleX(0); transform-origin: left; }
+  50% { transform: scaleX(1); transform-origin: left; }
+  50.1% { transform-origin: right; }
+  100% { transform: scaleX(0); transform-origin: right; }
+}
+.query-loading {
+  padding: 32px 24px;
+  text-align: center;
+}
+.query-loading-bar {
+  width: 120px;
+  height: 2px;
+  background: var(--border);
+  margin: 0 auto 20px;
+  overflow: hidden;
+}
+.query-loading-bar::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--accent);
+  animation: pulse-bar 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+.query-loading-text {
+  font-size: 15px;
+  color: var(--fg2);
+  margin-bottom: 8px;
+}
+.query-loading-sub {
+  font-size: 13px;
+  color: var(--fg2);
+  opacity: 0.5;
+}
+
+/* ── Landing page ──────────────────────────────────── */
+.serif { font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif; }
+
+/* Nav: when landing is active, hide tool tabs */
+.nav-tabs { display: contents; }
+.nav-home {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--fg);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 12px 14px 12px 0;
+  white-space: nowrap;
+  letter-spacing: -0.01em;
+  border-bottom: 2px solid transparent;
+  flex-shrink: 0;
+  text-decoration: none;
+  margin-right: auto;
+}
+.nav-home:hover { color: var(--accent); }
+.nav-home:hover .logo-accent { fill: var(--fg); }
+body.on-landing .nav-home { border-bottom-color: var(--accent); }
+.nav-logo { flex-shrink: 0; }
+.logo-tile { fill: var(--fg); opacity: 0.25; }
+.logo-accent { fill: var(--accent); transition: fill 0.15s; }
+
+#view-landing {
+  max-width: none;
+  padding: 0;
+}
+
+/* ── Animations ─────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up {
+  opacity: 0;
+  transform: translateY(18px);
+}
+.fade-up.visible {
+  animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Hero entrance — staggered children */
+.hero > * {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: fadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.hero > :nth-child(1) { animation-delay: 0.05s; }
+.hero > :nth-child(2) { animation-delay: 0.15s; }
+.hero > :nth-child(3) { animation-delay: 0.25s; }
+.hero > :nth-child(4) { animation-delay: 0.35s; }
+.hero > :nth-child(5) { animation-delay: 0.45s; }
+
+/* Hero */
+.hero {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: clamp(60px, 12vh, 120px) 24px clamp(48px, 8vh, 80px);
+}
+.hero-eyebrow {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+.hero h1 {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: clamp(32px, 5.5vw, 56px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 20px;
+  color: var(--fg);
+  max-width: 820px;
+}
+.hero-rotating-word {
+  color: var(--accent);
+  border-right: 4px solid var(--accent);
+  padding-right: 6px;
+  white-space: nowrap;
+  display: inline-block;
+  min-width: 10ch;
+  animation: heroBlink 0.8s infinite;
+}
+@keyframes heroBlink {
+  0%, 50% { border-color: var(--accent); }
+  51%, 100% { border-color: transparent; }
+}
+.hero-sub {
+  font-size: clamp(16px, 2vw, 19px);
+  line-height: 1.6;
+  color: var(--fg2);
+  max-width: 560px;
+  margin-bottom: 36px;
+}
+
+/* Hero search */
+.hero-search {
+  position: relative;
+  z-index: 10;
+  max-width: 520px;
+  margin-bottom: 40px;
+}
+.hero-search input {
+  width: 100%;
+  padding: 16px 20px;
+  font-size: 16px;
+  background: var(--bg2);
+  border: 1px solid var(--border-hover);
+  border-radius: var(--radius);
+  color: var(--fg);
+  outline: none;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+.hero-search input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(196, 154, 92, 0.12);
+}
+[data-theme="light"] .hero-search input:focus {
+  box-shadow: 0 0 0 3px rgba(160, 120, 56, 0.12);
+}
+.hero-search input::placeholder { color: var(--fg2); }
+.hero-search .search-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--bg2);
+  border: 1px solid var(--border-hover);
+  border-radius: 0;
+  max-height: 280px;
+  overflow-y: auto;
+  z-index: 50;
+  opacity: 0;
+  transform: translateY(-4px);
+  pointer-events: none;
+  transition: opacity 0.15s cubic-bezier(0.16, 1, 0.3, 1), transform 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.hero-search .search-dropdown.open { opacity: 1; transform: translateY(0); pointer-events: auto; }
+
+/* Hero stats ribbon */
+.hero-stats {
+  display: flex;
+  gap: clamp(24px, 4vw, 48px);
+  flex-wrap: wrap;
+}
+.hero-stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.hero-stat-val {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.hero-stat-label {
+  font-size: 13px;
+  color: var(--fg2);
+  line-height: 1.3;
+}
+
+/* Landing sections */
+.landing-section {
+  border-top: 1px solid var(--border);
+  padding: clamp(48px, 8vh, 80px) 24px;
+}
+.landing-section:nth-child(even) {
+  background: var(--bg2);
+}
+.landing-inner {
+  max-width: 860px;
+  margin: 0 auto;
+}
+.landing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 5vw, 64px);
+  align-items: center;
+}
+.landing-grid.reverse { direction: rtl; }
+.landing-grid.reverse > * { direction: ltr; }
+
+.section-eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 12px;
+  display: block;
+}
+.landing-section h2 {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+.landing-section p {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--fg2);
+  margin-bottom: 20px;
+}
+.section-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+  transition: gap 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.section-cta:hover { gap: 10px; }
+.section-cta::after { content: "→"; }
+
+/* Section preview boxes */
+.section-preview {
+  background: var(--bg3);
+  border-radius: var(--radius);
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.section-preview canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Quick tools row */
+.tools-row {
+  max-width: 860px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.tool-card {
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: border-color 0.15s, transform 0.15s;
+}
+.tool-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
+}
+.tool-card:active {
+  transform: translateY(0) scale(0.99);
+}
+.tool-card h3 {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.tool-card p {
+  font-size: 13px;
+  color: var(--fg2);
+  line-height: 1.5;
+}
+
+/* Landing footer */
+.landing-footer {
+  border-top: 1px solid var(--border);
+  padding: 48px 24px 64px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+}
+.footer-heading {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--fg2);
+  margin-bottom: 12px;
+}
+.landing-footer p {
+  font-size: 13px;
+  color: var(--fg2);
+  line-height: 1.6;
+}
+.footer-links {
+  list-style: none;
+}
+.footer-links li { margin-bottom: 8px; }
+.footer-links a, .footer-links button {
+  font-size: 13px;
+  color: var(--fg2);
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.15s;
+}
+.footer-links a:hover, .footer-links button:hover { color: var(--fg); }
+.footer-credits {
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--fg2);
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.footer-credits a {
+  color: var(--fg2);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.footer-credits a:hover { color: var(--fg); }
+.footer-credits strong { color: var(--fg); font-weight: 600; }
+
+.country-link {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+.country-link a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--fg2);
+  text-decoration: none;
+  font-size: 13px;
+  line-height: 1.4;
+  transition: color 0.15s;
+}
+.country-link a:hover { color: var(--fg); }
+.country-link .flag { font-size: 20px; flex-shrink: 0; }
+.country-link .cl-title { color: var(--fg); font-weight: 600; font-size: 13px; }
+
+/* ── Responsive ────────────────────────────────────── */
+@media (max-width: 700px) {
+  /* Nav — hamburger on mobile */
+  #nav { padding: 0 12px; overflow: visible; position: relative; }
+  .nav-tabs, #nav > a { display: none; }
+  .nav-burger { display: flex; }
+  .nav-home { padding: 10px 10px 10px 0; font-size: 13px; margin-right: auto; }
+  .theme-toggle { margin-right: 4px; }
+
+  /* Tool views */
+  .view { padding: 16px 14px 60px; }
+  .intro h1 { font-size: 20px; gap: 10px; }
+  .intro p { font-size: 14px; }
+  .stat-big { font-size: 24px; }
+  .stats-row { gap: 14px 20px; }
+  .controls-row { gap: 10px; }
+  .color-toggle button { padding: 8px 12px; min-height: 40px; font-size: 11px; }
+  .metric-cards { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .metric-card { padding: 12px; }
+  .metric-card .metric-value { font-size: 26px; }
+  .action-cards { grid-template-columns: 1fr; }
+
+  /* Hbar charts — tighter labels */
+  .hbar-label { width: 70px; font-size: 10px; }
+  .hbar-val { width: 36px; font-size: 10px; }
+
+  /* Search box */
+  .search-box input { font-size: 16px; padding: 14px 14px; }
+
+  /* Demographics */
+  .demo-bars { grid-template-columns: 1fr; }
+  .demo-charts { grid-template-columns: 1fr; }
+  .demo-summary { gap: 12px; }
+  .demo-stat { padding: 16px; min-width: 0; }
+  .demo-stat .ds-value { font-size: 24px; }
+
+  /* Regional */
+  .state-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+  .state-detail { padding: 16px; }
+  .regional-controls button { min-height: 40px; }
+
+  /* Ranking — allow horizontal scroll */
+  .ranking-controls { gap: 8px; }
+  .ranking-controls input { min-width: 0; max-width: none; font-size: 16px; }
+  .ranking-pagination { gap: 6px; }
+  .ranking-pagination button { min-height: 40px; }
+
+  /* Perguntar */
+  .section-title { font-size: 20px; }
+
+  /* Landing page */
+  .hero { padding: 48px 16px 40px; }
+  .hero-eyebrow { font-size: 11px; margin-bottom: 14px; }
+  .hero-sub { margin-bottom: 28px; }
+  .hero-search { margin-bottom: 32px; }
+  .hero-search input { padding: 14px 16px; font-size: 16px; }
+  .hero-stats { gap: 20px; }
+  .hero-stat-val { font-size: clamp(24px, 7vw, 36px); }
+  .hero-stat-label { font-size: 12px; }
+
+  .landing-section { padding: clamp(36px, 6vh, 56px) 16px; }
+  .landing-grid { grid-template-columns: 1fr; gap: 24px; }
+  .landing-grid.reverse { direction: ltr; }
+  .section-preview { aspect-ratio: 3 / 2; }
+  .landing-section h2 { font-size: 22px; }
+
+  .tools-row { grid-template-columns: 1fr; gap: 12px; }
+  .tool-card { padding: 20px; min-height: 44px; }
+
+  .landing-footer { padding: 36px 16px 48px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+  .footer-credits { flex-direction: column; gap: 8px; }
+}
+
+@media (max-width: 400px) {
+  .hero h1 { font-size: 28px; }
+  .hero-stats { flex-direction: column; gap: 16px; }
+  .metric-cards { grid-template-columns: 1fr; }
+  .color-toggle { gap: 6px; }
+  .color-toggle button { padding: 8px 10px; font-size: 10px; }
+  .hbar-label { width: 60px; }
+}
+
+/* ── Reduced motion ────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+<script>
+// Apply theme before paint to avoid flash
+(function() {
+  var saved = localStorage.getItem("theme");
+  if (saved === "light") {
+    document.documentElement.setAttribute("data-theme", "light");
+  } else if (!saved && window.matchMedia("(prefers-color-scheme: light)").matches) {
+    document.documentElement.setAttribute("data-theme", "light");
+  }
+})();
+</script>
 </head>
-<body>
-  <nav>
-    <a href="index.html">Mapa da IA</a>
-    <a class="active" href="trabalho.html">Trabalho</a>
+<body class="on-landing">
+
+<!-- Navigation -->
+<nav id="nav" aria-label="Navega&ccedil;&atilde;o principal">
+  <button class="nav-home" id="navHome" aria-label="Voltar ao in&iacute;cio">
+    <svg class="nav-logo" width="22" height="22" viewBox="0 0 22 22" fill="none">
+      <rect class="logo-tile" x="1" y="1" width="9" height="13" rx="0"/>
+      <rect class="logo-tile" x="12" y="1" width="9" height="6" rx="0"/>
+      <rect class="logo-accent" x="12" y="9" width="9" height="5" rx="0"/>
+      <rect class="logo-tile" x="1" y="16" width="20" height="5" rx="0"/>
+    </svg>
+    Mapa da IA
+  </button>
+  <span class="nav-tabs">
+    <a href="trabalho.html" class="active">Trabalho</a>
+    <a href="empregos.html">Empregos</a>
+    <a href="estudantes.html">Estudantes</a>
+    <a href="empresas.html">Empresas</a>
+  </span>
+  <a href="insights.html">Insights</a>
+  <a href="metodologia.html">Metodologia</a>
+  <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Alternar tema">
+    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  </button>
+  <button class="nav-burger" id="navBurger" type="button" aria-label="Menu">
+    <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+  </button>
+  <div class="nav-menu" id="navMenu">
+    <a href="trabalho.html">Trabalho</a>
     <a href="empregos.html">Empregos</a>
     <a href="estudantes.html">Estudantes</a>
     <a href="empresas.html">Empresas</a>
     <a href="insights.html">Insights</a>
     <a href="metodologia.html">Metodologia</a>
-  </nav>
-  <div class="wrap">
-    <div class="hero">
-      <div class="eyebrow">Trabalho</div>
-      <h1>Como a IA está reconfigurando as ocupações no Brasil</h1>
-      <p>Esta é a camada de estoque do mercado de trabalho: posições existentes, ocupações formais, distribuição regional, demografia, salários, exposição e oportunidade. Aqui o foco é a ocupação em si.</p>
-      <div class="subnav">
-        <a href="#mapa">Mapa</a>
-        <a href="#risco-oportunidade">Risco × Oportunidade</a>
-        <a href="#demografia">Demografia</a>
-        <a href="#regional">Regional</a>
-        <a href="#ranking">Ranking de Ocupações</a>
+    <a href="worklog.html">Worklog</a>
+  </div>
+</nav>
+
+<!-- Landing Page -->
+<div id="view-landing" class="view active">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-eyebrow">Dados do CAGED &middot; 626 ocupa&ccedil;&otilde;es</div>
+    <h1>Como a intelig&ecirc;ncia artificial<br>vai transformar <span class="hero-rotating-word" id="heroRotatingWord"></span><br>no Brasil?</h1>
+    <p class="hero-sub">An&aacute;lise de 19 milh&otilde;es de empregos formais brasileiros e seu grau de exposi&ccedil;&atilde;o &agrave; automa&ccedil;&atilde;o por IA.</p>
+
+    <div class="hero-search" id="heroSearchBox">
+      <input type="text" id="heroSearch" placeholder="Busque sua ocupa&ccedil;&atilde;o — ex: enfermeiro, contador, motorista..." autocomplete="off">
+      <div class="search-dropdown" id="heroDropdown"></div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat-item">
+        <div class="hero-stat-val" id="heroStatJobs">&mdash;</div>
+        <div class="hero-stat-label">empregos formais<br>analisados</div>
+      </div>
+      <div class="hero-stat-item">
+        <div class="hero-stat-val" style="color:var(--red)" id="heroStatHighRisk">&mdash;</div>
+        <div class="hero-stat-label">em ocupa&ccedil;&otilde;es com<br>alta exposi&ccedil;&atilde;o &agrave; IA</div>
+      </div>
+      <div class="hero-stat-item">
+        <div class="hero-stat-val" style="color:var(--green)" id="heroStatOpportunity">&mdash;</div>
+        <div class="hero-stat-label">em ocupa&ccedil;&otilde;es com<br>alta oportunidade</div>
+      </div>
+      <div class="hero-stat-item">
+        <div class="hero-stat-val" style="color:var(--accent)" id="heroStatHigherEd">&mdash;</div>
+        <div class="hero-stat-label">IES e cursos<br>analisados</div>
       </div>
     </div>
 
-    <section id="mapa"><h2>Mapa</h2><div class="card"><p>Visualização principal do mapa ocupacional.</p><iframe src="index.html#mapa"></iframe></div></section>
-    <section id="risco-oportunidade"><h2>Risco × Oportunidade</h2><div class="card"><p>Dispersão das ocupações entre risco e potencial de ganho com IA.</p><iframe src="index.html#scatter"></iframe></div></section>
-    <section id="demografia"><h2>Demografia</h2><div class="card"><p>Recortes demográficos da exposição no mercado de trabalho.</p><iframe src="index.html#demo"></iframe></div></section>
-    <section id="regional"><h2>Regional</h2><div class="card"><p>Diferenças regionais e por UF.</p><iframe src="index.html#regional"></iframe></div></section>
-    <section id="ranking"><h2>Ranking de Ocupações</h2><div class="card"><p>Tabela navegável com as ocupações analisadas.</p><iframe src="index.html#ranking"></iframe></div></section>
+    <div style="margin-top:34px">
+      <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--fg2);margin-bottom:14px">Fontes de Informa&ccedil;&atilde;o</div>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:stretch;max-width:900px;margin:0 auto;">
+        <div style="background:#fff;border:1px solid var(--border);padding:10px;border-radius:4px;display:flex;align-items:center;justify-content:center;height:108px">
+          <img src="assets/caged.jpg" alt="CAGED" style="max-height:72px;max-width:100%;width:auto;display:block">
+        </div>
+        <div style="background:#fff;border:1px solid var(--border);padding:10px;border-radius:4px;display:flex;align-items:center;justify-content:center;height:108px">
+          <img src="assets/rais.jpg" alt="RAIS" style="max-height:72px;max-width:100%;width:auto;display:block">
+        </div>
+        <div style="background:#fff;border:1px solid var(--border);padding:10px;border-radius:4px;display:flex;align-items:center;justify-content:center;height:108px">
+          <img src="assets/cbo.jpg" alt="CBO" style="max-height:72px;max-width:100%;width:auto;display:block">
+        </div>
+        <div style="background:#fff;border:1px solid var(--border);padding:10px;border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;height:108px;position:relative">
+          <div style="position:absolute;top:8px;right:8px;font-size:10px;line-height:1;padding:4px 6px;border-radius:999px;background:#1f6fb2;color:#fff;text-transform:uppercase;letter-spacing:.08em">Em breve</div>
+          <img src="assets/pnad.jpg" alt="PNAD Contínua" style="max-height:72px;max-width:100%;width:auto;display:block">
+        </div>
+        <div style="background:#fff;border:1px solid var(--border);padding:10px;border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;height:108px;position:relative">
+          <div style="position:absolute;top:8px;right:8px;font-size:10px;line-height:1;padding:4px 6px;border-radius:999px;background:#1f6fb2;color:#fff;text-transform:uppercase;letter-spacing:.08em">Em breve</div>
+          <img src="assets/cvm.jpg" alt="CVM" style="max-height:72px;max-width:100%;width:auto;display:block">
+        </div>
+        <div style="background:#0f3f86;border:1px solid var(--border);padding:10px;border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;height:108px;position:relative">
+          <div style="position:absolute;top:8px;right:8px;font-size:10px;line-height:1;padding:4px 6px;border-radius:999px;background:rgba(255,255,255,.18);color:#fff;text-transform:uppercase;letter-spacing:.08em">Em breve</div>
+          <img src="assets/b3.jpg" alt="B3" style="max-height:72px;max-width:100%;width:auto;display:block">
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:28px;background:linear-gradient(135deg, rgba(196,154,92,.16), rgba(196,154,92,.05));border:1px solid rgba(196,154,92,.28);padding:22px;border-radius:6px;text-align:left;max-width:960px;margin-left:auto;margin-right:auto;">
+      <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:10px">Para empresas</div>
+      <div style="font-size:28px;line-height:1.05;letter-spacing:-.03em;font-weight:700;color:var(--fg);max-width:760px">Quer rodar o Mapa da IA dentro da sua empresa?</div>
+      <p style="margin-top:12px;color:var(--fg2);font-size:15px;line-height:1.65;max-width:820px">Acompanhamos a exposi&ccedil;&atilde;o da sua empresa e dos seus funcion&aacute;rios &agrave; IA com um painel interno de a&ccedil;&otilde;es. Geramos um &iacute;ndice pr&oacute;prio, comparamos sua empresa com pares do mercado, sugerimos a&ccedil;&otilde;es pr&aacute;ticas e atualizamos o &iacute;ndice mensalmente.</p>
+      <div style="margin-top:16px;display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+        <a href="https://calendly.com/sidney-hori-aeonixtech/intro?month=2026-05" target="_blank" rel="noopener noreferrer" class="section-cta" style="text-decoration:none">Agendar uma conversa</a>
+        <div style="font-size:13px;color:var(--fg2)">Diagn&oacute;stico, benchmark e plano de a&ccedil;&atilde;o recorrente.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 1: The Map -->
+  <section class="landing-section fade-up">
+    <div class="landing-inner">
+      <div class="landing-grid">
+        <div>
+          <span class="section-eyebrow">Vis&atilde;o geral</span>
+          <h2>19 milh&otilde;es de empregos, mapeados por risco</h2>
+          <p>Cada ret&acirc;ngulo representa uma ocupa&ccedil;&atilde;o. A &aacute;rea &eacute; proporcional ao n&uacute;mero de empregados. A cor mostra o grau de exposi&ccedil;&atilde;o &agrave; intelig&ecirc;ncia artificial — do verde (baixa) ao vermelho (alta).</p>
+          <button class="section-cta" data-goto="mapa">Explorar o mapa</button>
+        </div>
+        <div class="section-preview" id="previewTreemap"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Risk vs Opportunity -->
+  <section class="landing-section fade-up">
+    <div class="landing-inner">
+      <div class="landing-grid reverse">
+        <div>
+          <span class="section-eyebrow">Risco × Oportunidade</span>
+          <h2>Quem perde e quem ganha com a IA?</h2>
+          <p>Algumas profiss&otilde;es ser&atilde;o automatizadas. Outras v&atilde;o prosperar com novas ferramentas. O gr&aacute;fico posiciona cada ocupa&ccedil;&atilde;o no cruzamento entre risco e potencial de ganho.</p>
+          <button class="section-cta" data-goto="scatter">Ver o gr&aacute;fico</button>
+        </div>
+        <div class="section-preview" id="previewScatter"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Higher Education -->
+  <section class="landing-section fade-up">
+    <div class="landing-inner">
+      <div class="landing-grid">
+        <div>
+          <span class="section-eyebrow">Ensino superior</span>
+          <h2>Quais cursos est&atilde;o formando gente para trilhas mais expostas &agrave; IA?</h2>
+          <p>Cruzamos o Censo da Educa&ccedil;&atilde;o Superior 2024 com a metodologia do Mapa para criar um primeiro score de exposi&ccedil;&atilde;o e oportunidade por curso. Isso mostra n&atilde;o s&oacute; quem j&aacute; est&aacute; no mercado, mas quem est&aacute; entrando nele.</p>
+          <button class="section-cta" data-goto="ranking-cursos">Ver ranking de cursos</button>
+        </div>
+        <div class="section-preview" id="previewHigherEd" style="padding:24px;display:flex;flex-direction:column;gap:12px;justify-content:center"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Demographics -->
+  <section class="landing-section fade-up">
+    <div class="landing-inner">
+      <div class="landing-grid">
+        <div>
+          <span class="section-eyebrow">Desigualdade</span>
+          <h2>A IA vai afetar todos igualmente?</h2>
+          <p>O impacto n&atilde;o &eacute; neutro. G&ecirc;nero, ra&ccedil;a e regi&atilde;o determinam quem est&aacute; mais exposto. Veja como o risco se distribui na popula&ccedil;&atilde;o trabalhadora.</p>
+          <button class="section-cta" data-goto="demo">Ver dados demogr&aacute;ficos</button>
+        </div>
+        <div class="section-preview" style="background:var(--bg3);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:32px">
+          <div style="text-align:center">
+            <div class="serif" style="font-size:36px;font-weight:700;color:var(--fg)" id="previewDemoStat">&mdash;</div>
+            <div style="font-size:13px;color:var(--fg2);margin-top:4px">das mulheres em ocupa&ccedil;&otilde;es<br>de alta exposi&ccedil;&atilde;o</div>
+          </div>
+          <div style="width:80%;height:1px;background:var(--border)"></div>
+          <div style="text-align:center">
+            <div class="serif" style="font-size:36px;font-weight:700;color:var(--fg)" id="previewDemoStat2">&mdash;</div>
+            <div style="font-size:13px;color:var(--fg2);margin-top:4px">dos homens em ocupa&ccedil;&otilde;es<br>de alta exposi&ccedil;&atilde;o</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick tools -->
+  <section class="landing-section fade-up">
+    <div class="landing-inner">
+      <span class="section-eyebrow">Ferramentas</span>
+      <h2 style="margin-bottom:24px">Explore os dados</h2>
+      <div class="tools-row">
+        <div class="tool-card" data-goto="regional">
+          <h3>Mapa Regional</h3>
+          <p>Compare estados por exposi&ccedil;&atilde;o, sal&aacute;rio e volume de empregos.</p>
+        </div>
+        <div class="tool-card" data-goto="ranking">
+          <h3>Ranking Completo</h3>
+          <p>Todas as 626 ocupa&ccedil;&otilde;es com pontua&ccedil;&otilde;es, sal&aacute;rios e saldo.</p>
+        </div>
+        <div class="tool-card" data-goto="perguntar">
+          <h3>Perguntar</h3>
+          <p>Fa&ccedil;a perguntas em portugu&ecirc;s sobre os dados.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="landing-footer">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-heading">Sobre</div>
+        <p>Dados de empregos formais (RAIS/CAGED), sal&aacute;rios medianos e escolaridade modal do Minist&eacute;rio do Trabalho. Pontua&ccedil;&otilde;es de IA estimadas por LLM considerando o contexto brasileiro. Classifica&ccedil;&atilde;o Brasileira de Ocupa&ccedil;&otilde;es (CBO).</p>
+      </div>
+      <div>
+        <div class="footer-heading">Navegar</div>
+        <ul class="footer-links">
+          <li><button data-goto="mapa">Mapa</button></li>
+          <li><button data-goto="scatter">Risco × Oportunidade</button></li>
+          <li><button data-goto="painel">Minha Ocupa&ccedil;&atilde;o</button></li>
+          <li><button data-goto="demo">Demografia</button></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Mais</div>
+        <ul class="footer-links">
+          <li><button data-goto="regional">Regional</button></li>
+          <li><button data-goto="ranking">Ranking</button></li>
+          <li><button data-goto="perguntar">Perguntar</button></li>
+          <li><a href="insights.html">Insights</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-credits">
+      <span>Desenvolvido por</span>
+      <a href="https://www.linkedin.com/in/joao-alqueres/" target="_blank" rel="noopener"><strong>Jo&atilde;o Paulo Alqueres</strong></a>
+      <a href="https://www.linkedin.com/in/sidney-hori/" target="_blank" rel="noopener"><strong>Sidney Hori Hawthorne</strong></a>
+    </div>
+    <div class="country-link">
+      <a href="https://www.aijobsimpact.com" target="_blank" rel="noopener">
+        <span class="flag">&#127482;&#127480;</span>
+        <span><span class="cl-title">AI &amp; Jobs in America</span><br>342 occupations &middot; 143 million jobs &middot; BLS data</span>
+      </a>
+    </div>
+  </footer>
+
+</div>
+
+<!-- View 1: Treemap -->
+<div id="view-mapa" class="view">
+  <div id="treemap-header">
+    <div class="intro">
+      <h1>Trabalho e IA no Brasil</h1>
+      <p>Visualiza&ccedil;&atilde;o de <b>626 ocupa&ccedil;&otilde;es</b> com base em cruzamentos com a <b>Classifica&ccedil;&atilde;o Brasileira de Ocupa&ccedil;&otilde;es (CBO)</b>, cobrindo cerca de <b>19 milh&otilde;es de empregos formais</b> registrados no RAIS/CAGED. Cada ret&acirc;ngulo tem <b>&aacute;rea</b> proporcional ao total de empregados. A <b>cor</b> indica a m&eacute;trica selecionada.</p>
+      <p><b>Dados:</b> CBO para taxonomia ocupacional; estoque de empregos formais (RAIS); movimenta&ccedil;&otilde;es do CAGED (admiss&otilde;es e saldo); sal&aacute;rios medianos e escolaridade modal. As pontua&ccedil;&otilde;es de IA (exposi&ccedil;&atilde;o, vantagem, crescimento e oportunidade) foram estimadas por LLM considerando o contexto brasileiro.</p>
+    </div>
+    <div class="controls-row">
+      <div class="stat-section">
+        <h3>Camada</h3>
+        <div class="color-toggle" id="colorToggle">
+          <button data-mode="exposicao" class="active">Exposi&ccedil;&atilde;o &agrave; IA</button>
+          <button data-mode="vantagem">Vantagem com IA</button>
+          <button data-mode="crescimento">Crescimento com IA</button>
+          <button data-mode="oportunidade">Oportunidade</button>
+          <button data-mode="salario">Sal&aacute;rio</button>
+          <button data-mode="escolaridade">Escolaridade</button>
+        </div>
+      </div>
+      <div class="gradient-legend">
+        <span id="legendLow">Baixa</span>
+        <canvas id="gradientLegend" width="80" height="8"></canvas>
+        <span id="legendHigh">Alta</span>
+      </div>
+    </div>
+    <div class="stats-row">
+      <div class="stat-section">
+        <h3>Total empregados</h3>
+        <div class="stat-big" id="statTotalJobs">&mdash;</div>
+      </div>
+      <div class="stat-section" id="block2"></div>
+      <div class="stat-section" id="block3"></div>
+      <div class="stat-section" id="block4"></div>
+      <div class="stat-section" id="block5"></div>
+      <div class="stat-section" id="block6"></div>
+      <div class="stat-section" id="block7"></div>
+      <div class="stat-section" id="block8"></div>
+    </div>
   </div>
+  <canvas id="treemapCanvas"></canvas>
+</div>
+
+<!-- View 2: Scatter Plot -->
+<div id="view-scatter" class="view">
+  <h2 class="section-title">Risco x Oportunidade</h2>
+  <p class="section-desc">Cada ponto representa uma ocupa&ccedil;&atilde;o. O eixo horizontal mede a <b>exposi&ccedil;&atilde;o &agrave; IA</b> (risco de automa&ccedil;&atilde;o) e o vertical mede a <b>oportunidade</b> (potencial de ganho com IA). O tamanho do ponto &eacute; proporcional ao n&uacute;mero de empregados.</p>
+  <div id="scatterContainer">
+    <canvas id="scatterCanvas"></canvas>
+  </div>
+</div>
+
+<!-- View 3: Painel Pessoal -->
+<div id="view-painel" class="view">
+  <h2 class="section-title">Minha Ocupa&ccedil;&atilde;o</h2>
+  <p class="section-desc">Busque sua ocupa&ccedil;&atilde;o para ver um painel completo com avalia&ccedil;&atilde;o de risco, recomenda&ccedil;&otilde;es e compara&ccedil;&otilde;es.</p>
+  <div class="search-box" id="painelSearchBox">
+    <input type="text" id="painelSearch" placeholder="Digite o nome da sua ocupa&ccedil;&atilde;o..." autocomplete="off" aria-label="Buscar ocupa&ccedil;&atilde;o">
+    <div class="search-dropdown" id="painelDropdown"></div>
+  </div>
+  <div id="painelPlaceholder">Selecione uma ocupa&ccedil;&atilde;o acima para ver sua an&aacute;lise personalizada.</div>
+  <div id="painelContent"></div>
+</div>
+
+<!-- View 4: Demographics -->
+<div id="view-demo" class="view">
+  <h2 class="section-title">Demografia e Impacto da IA</h2>
+  <p class="section-desc">An&aacute;lise do impacto diferencial da IA por g&ecirc;nero e ra&ccedil;a no mercado de trabalho formal brasileiro.</p>
+  <div id="demoContent"></div>
+</div>
+
+<!-- View 5: Regional Map -->
+<div id="view-regional" class="view">
+  <h2 class="section-title">Mapa Regional</h2>
+  <p class="section-desc">Vis&atilde;o por estado (UF) do mercado de trabalho e exposi&ccedil;&atilde;o &agrave; IA.</p>
+  <div class="regional-controls" id="regionalControls">
+    <button class="active" data-sort="exposicao">Ordenar por Exposi&ccedil;&atilde;o</button>
+    <button data-sort="workers">Ordenar por Trabalhadores</button>
+    <button data-sort="salary">Ordenar por Sal&aacute;rio</button>
+  </div>
+  <div class="state-detail" id="stateDetail">
+    <button class="sd-close" id="stateDetailClose">&times;</button>
+    <h3 id="stateDetailTitle"></h3>
+    <div id="stateDetailContent"></div>
+  </div>
+  <div class="state-grid" id="stateGrid"></div>
+</div>
+
+<!-- View 6: Ranking -->
+<div id="view-ranking" class="view">
+  <h2 class="section-title">Ranking de Ocupa&ccedil;&otilde;es</h2>
+  <p class="section-desc">Tabela completa com todas as 626 ocupa&ccedil;&otilde;es. Clique nos cabe&ccedil;alhos para ordenar.</p>
+  <div class="ranking-controls">
+    <input type="text" id="rankingSearch" placeholder="Filtrar ocupa&ccedil;&otilde;es..." aria-label="Filtrar ocupa&ccedil;&otilde;es">
+  </div>
+  <div class="ranking-table-wrap">
+    <table class="ranking-table" id="rankingTable">
+      <thead>
+        <tr id="rankingHead"></tr>
+      </thead>
+      <tbody id="rankingBody"></tbody>
+    </table>
+  </div>
+  <div class="ranking-pagination" id="rankingPagination"></div>
+</div>
+
+<!-- View 7: Ranking de Cursos -->
+<div id="view-ranking-cursos" class="view">
+  <h2 class="section-title">Ranking de Cursos</h2>
+  <p class="section-desc">Primeira camada de cursos do ensino superior com volume de concluintes e score inicial de exposição/oportunidade. Use como preview analítico, não como ranking final metodologicamente fechado.</p>
+  <div class="ranking-controls">
+    <input type="text" id="courseRankingSearch" placeholder="Filtrar cursos..." aria-label="Filtrar cursos">
+  </div>
+  <div class="ranking-table-wrap">
+    <table class="ranking-table" id="courseRankingTable">
+      <thead>
+        <tr>
+          <th>Curso</th>
+          <th>Grau</th>
+          <th>Modalidade</th>
+          <th>Rede</th>
+          <th>Concluintes</th>
+          <th>Exposição</th>
+          <th>Oportunidade</th>
+          <th>Faixa</th>
+        </tr>
+      </thead>
+      <tbody id="courseRankingBody"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- View 8: Perguntar -->
+<div id="view-perguntar" class="view">
+  <h2 class="section-title">Pergunte sobre o mercado de trabalho</h2>
+  <p class="section-desc">Fa&ccedil;a perguntas em portugu&ecirc;s sobre ocupa&ccedil;&otilde;es, sal&aacute;rios, risco de automa&ccedil;&atilde;o e demografia.</p>
+  <div class="perguntar-form">
+    <div class="perguntar-input-wrap">
+      <input type="text" id="perguntarInput" placeholder="Ex: vagas femininas em risco" aria-label="Pergunta sobre o mercado de trabalho">
+      <button id="perguntarBtn" class="perguntar-btn">Buscar</button>
+    </div>
+    <div id="perguntarChips" class="perguntar-chips"></div>
+  </div>
+  <div id="perguntarResult"></div>
+</div>
+
+<!-- Shared tooltip -->
+<div id="tooltip">
+  <div class="tt-title"></div>
+  <div class="tt-highlight"></div>
+  <div class="tt-stats"></div>
+  <div class="tt-rationale"></div>
+</div>
+
+<script>
+// ══════════════════════════════════════════════════════════════════════════
+// GLOBALS
+// ══════════════════════════════════════════════════════════════════════════
+let data = [];
+let summaryData = null;
+let courseData = null;
+let currentView = "mapa";
+
+// ══════════════════════════════════════════════════════════════════════════
+// THEME
+// ══════════════════════════════════════════════════════════════════════════
+function isLightTheme() {
+  return document.documentElement.getAttribute("data-theme") === "light";
+}
+function themeColor(cssVar) {
+  return getComputedStyle(document.documentElement).getPropertyValue(cssVar).trim();
+}
+// Canvas text/line colors derived from theme
+function canvasFg(alpha) {
+  return isLightTheme() ? `rgba(26,24,20,${alpha})` : `rgba(232,228,220,${alpha})`;
+}
+function canvasBg() {
+  return isLightTheme() ? "#f5f2ed" : "#141210";
+}
+
+document.getElementById("theme-toggle").addEventListener("click", function() {
+  var light = isLightTheme();
+  if (light) {
+    document.documentElement.removeAttribute("data-theme");
+    localStorage.setItem("theme", "dark");
+  } else {
+    document.documentElement.setAttribute("data-theme", "light");
+    localStorage.setItem("theme", "light");
+  }
+  // Re-render canvases
+  if (currentView === "mapa" && data.length) treemapResize();
+  if (currentView === "scatter" && scatterInited) scatterDraw();
+  if (currentView === "landing" && data.length) { drawMiniTreemap(); drawMiniScatter(); }
+});
+
+// ══════════════════════════════════════════════════════════════════════════
+// NAVIGATION
+// ══════════════════════════════════════════════════════════════════════════
+// Nav tab clicks
+document.getElementById("nav").addEventListener("click", function(e) {
+  const btn = e.target.closest("button");
+  if (!btn || !btn.dataset.view) return;
+  switchView(btn.dataset.view);
+});
+
+// Home button
+document.getElementById("navHome").addEventListener("click", function() {
+  switchView("landing");
+});
+
+// Hamburger menu
+document.getElementById("navBurger").addEventListener("click", function() {
+  document.getElementById("nav").classList.toggle("nav-open");
+});
+// Mobile menu clicks
+document.getElementById("navMenu").addEventListener("click", function(e) {
+  const btn = e.target.closest("button");
+  if (!btn || !btn.dataset.view) return;
+  switchView(btn.dataset.view);
+  window.scrollTo({ top: 0 });
+});
+
+// All data-goto buttons (landing page CTAs, footer, tool cards)
+document.addEventListener("click", function(e) {
+  const el = e.target.closest("[data-goto]");
+  if (!el) return;
+  e.preventDefault();
+  switchView(el.dataset.goto);
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+function closeMenu() {
+  document.getElementById("nav").classList.remove("nav-open");
+}
+
+function switchView(view) {
+  currentView = view;
+  closeMenu();
+  const isLanding = view === "landing";
+  document.body.classList.toggle("on-landing", isLanding);
+  document.querySelectorAll("#nav .nav-tabs button").forEach(b => b.classList.toggle("active", b.dataset.view === view));
+  document.querySelectorAll("#navMenu button").forEach(b => b.classList.toggle("active", b.dataset.view === view));
+  document.querySelectorAll(".view").forEach(v => v.classList.toggle("active", v.id === "view-" + view));
+  if (view === "mapa") treemapResize();
+  if (view === "scatter") initScatter();
+  if (view === "demo") initDemo();
+  if (view === "regional") initRegional();
+  if (view === "ranking") initRanking();
+  if (view === "ranking-cursos") initCourseRanking();
+  if (view === "perguntar") initPerguntar();
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// COLOR SCALES (from original)
+// ══════════════════════════════════════════════════════════════════════════
+let colorMode = "exposicao";
+
+function boostContrast(t) {
+  const c = (t - 0.5) * 2;
+  const b = Math.sign(c) * Math.pow(Math.abs(c), 0.55);
+  return b / 2 + 0.5;
+}
+
+function greenRedCSS(t, alpha) {
+  t = boostContrast(Math.max(0, Math.min(1, t)));
+  let r, g, b;
+  if (t < 0.5) {
+    const s = t / 0.5;
+    r = Math.round(30 + s * 200);
+    g = Math.round(180 - s * 20);
+    b = Math.round(40 - s * 20);
+  } else {
+    const s = (t - 0.5) / 0.5;
+    r = Math.round(230 + s * 25);
+    g = Math.round(160 - s * 130);
+    b = Math.round(20 - s * 5);
+  }
+  return `rgba(${r},${g},${b},${alpha})`;
+}
+
+const EDU_LEVELS = ["Analfabeto","At\u00e9 5\u00aa Incompleto","6\u00aa a 9\u00aa Fundamental","M\u00e9dio Completo","Superior Completo","Mestrado","Doutorado"];
+const EDU_SHORT = {"Analfabeto":"Analfabeto","At\u00e9 5\u00aa Incompleto":"Fund. Inc.","6\u00aa a 9\u00aa Fundamental":"Fundamental","M\u00e9dio Completo":"M\u00e9dio","Superior Completo":"Superior","Mestrado":"Mestrado","Doutorado":"Doutorado"};
+
+function exposicaoColor(v, a) { if (v == null) return `rgba(128,128,128,${a})`; return greenRedCSS(v / 10, a); }
+function vantagemColor(v, a) { if (v == null) return `rgba(128,128,128,${a})`; return greenRedCSS(1 - v / 10, a); }
+function crescimentoColor(v, a) { if (v == null) return `rgba(128,128,128,${a})`; return greenRedCSS(1 - v / 10, a); }
+function oportunidadeColor(v, a) { if (v == null) return `rgba(128,128,128,${a})`; return greenRedCSS(1 - v / 10, a); }
+
+function salarioColor(v, a) {
+  if (v == null) return `rgba(128,128,128,${a})`;
+  const minS = Math.log(1000), maxS = Math.log(45000);
+  const t = 1 - (Math.log(Math.max(1000, Math.min(45000, v))) - minS) / (maxS - minS);
+  return greenRedCSS(t, a);
+}
+
+function escolaridadeColor(idx, a) {
+  if (idx < 0) return `rgba(128,128,128,${a})`;
+  return greenRedCSS(1 - idx / (EDU_LEVELS.length - 1), a);
+}
+
+function tileColorCSS(d, alpha) {
+  if (colorMode === "exposicao") return exposicaoColor(d.exposicao, alpha);
+  if (colorMode === "vantagem") return vantagemColor(d.vantagem, alpha);
+  if (colorMode === "crescimento") return crescimentoColor(d.crescimento, alpha);
+  if (colorMode === "oportunidade") return oportunidadeColor(d.oportunidade, alpha);
+  if (colorMode === "salario") return salarioColor(d.salario, alpha);
+  if (colorMode === "escolaridade") return escolaridadeColor(EDU_LEVELS.indexOf(d.escolaridade), alpha);
+  return `rgba(128,128,128,${alpha})`;
+}
+
+function scoreColor(value, max, invert) {
+  if (value == null) return "var(--fg2)";
+  const t = invert ? (1 - value / max) : (value / max);
+  return greenRedCSS(t, 1);
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// FORMATTING
+// ══════════════════════════════════════════════════════════════════════════
+function formatNumber(n) {
+  if (n == null) return "\u2014";
+  if (n >= 1e6) return (n / 1e6).toFixed(1).replace(".", ",") + "M";
+  if (n >= 1e3) return Math.round(n / 1e3).toLocaleString("pt-BR") + "K";
+  return n.toLocaleString("pt-BR");
+}
+
+function formatSalario(n) {
+  if (n == null) return "\u2014";
+  return "R$ " + n.toLocaleString("pt-BR", { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+}
+
+function formatSalarioFull(n) {
+  if (n == null) return "\u2014";
+  return "R$ " + n.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+
+function formatSaldo(n) {
+  if (n == null) return "\u2014";
+  return (n > 0 ? "+" : "") + n.toLocaleString("pt-BR");
+}
+
+function formatPct(n) { return n.toFixed(1).replace(".", ",") + "%"; }
+
+// ══════════════════════════════════════════════════════════════════════════
+// SQUARIFIED TREEMAP LAYOUT (original)
+// ══════════════════════════════════════════════════════════════════════════
+function squarify(items, x, y, w, h) {
+  if (items.length === 0) return [];
+  if (items.length === 1) return [{ ...items[0], rx: x, ry: y, rw: w, rh: h }];
+  const total = items.reduce((s, d) => s + d.value, 0);
+  if (total === 0) return [];
+  const results = [];
+  let remaining = [...items], cx = x, cy = y, cw = w, ch = h;
+  while (remaining.length > 0) {
+    const remTotal = remaining.reduce((s, d) => s + d.value, 0);
+    const vertical = cw >= ch;
+    const side = vertical ? ch : cw;
+    let row = [remaining[0]], rowSum = remaining[0].value;
+    for (let i = 1; i < remaining.length; i++) {
+      const candidate = [...row, remaining[i]];
+      const candidateSum = rowSum + remaining[i].value;
+      if (worstAspect(candidate, candidateSum, side, remTotal, vertical ? cw : ch) <
+          worstAspect(row, rowSum, side, remTotal, vertical ? cw : ch)) {
+        row = candidate; rowSum = candidateSum;
+      } else break;
+    }
+    const rowFraction = rowSum / remTotal;
+    const rowThickness = vertical ? cw * rowFraction : ch * rowFraction;
+    let offset = 0;
+    for (const item of row) {
+      const itemFraction = item.value / rowSum;
+      const itemLength = side * itemFraction;
+      if (vertical) results.push({ ...item, rx: cx, ry: cy + offset, rw: rowThickness, rh: itemLength });
+      else results.push({ ...item, rx: cx + offset, ry: cy, rw: itemLength, rh: rowThickness });
+      offset += itemLength;
+    }
+    if (vertical) { cx += rowThickness; cw -= rowThickness; }
+    else { cy += rowThickness; ch -= rowThickness; }
+    remaining = remaining.slice(row.length);
+  }
+  return results;
+}
+
+function worstAspect(row, rowSum, side, totalArea, availableExtent) {
+  const rowExtent = availableExtent * (rowSum / totalArea);
+  if (rowExtent === 0) return Infinity;
+  let worst = 0;
+  for (const item of row) {
+    const itemLen = side * (item.value / rowSum);
+    if (itemLen === 0) continue;
+    const aspect = Math.max(rowExtent / itemLen, itemLen / rowExtent);
+    if (aspect > worst) worst = aspect;
+  }
+  return worst;
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// VIEW 1: TREEMAP
+// ══════════════════════════════════════════════════════════════════════════
+const GG_SHORT = {"0":"For\u00e7as Armadas","1":"Dirigentes/Gerentes","2":"Ci\u00eancias e Artes","3":"T\u00e9cnicos N\u00edvel M\u00e9dio","4":"Serv. Administrativos","5":"Serv./Com\u00e9rcio","6":"Agropecu\u00e1rios","7":"Prod. Industrial I","8":"Prod. Industrial II","9":"Repara\u00e7\u00e3o/Manuten\u00e7\u00e3o"};
+
+let treemapRects = [];
+let treemapHovered = null;
+const treemapCanvas = document.getElementById("treemapCanvas");
+const treemapCtx = treemapCanvas.getContext("2d");
+let dpr = window.devicePixelRatio || 1;
+const MARGIN = 12, GAP = 1.5;
+
+function tileSubInfo(r) {
+  const jobs = r.empregados ? formatNumber(r.empregados) + " empr." : "";
+  if (colorMode === "exposicao") return (r.exposicao != null ? r.exposicao + "/10" : "") + (jobs ? " \u00b7 " + jobs : "");
+  if (colorMode === "vantagem") return (r.vantagem != null ? r.vantagem + "/10" : "") + (jobs ? " \u00b7 " + jobs : "");
+  if (colorMode === "crescimento") return (r.crescimento != null ? r.crescimento + "/10" : "") + (jobs ? " \u00b7 " + jobs : "");
+  if (colorMode === "oportunidade") return (r.oportunidade != null ? r.oportunidade + "/10" : "") + (jobs ? " \u00b7 " + jobs : "");
+  if (colorMode === "salario") return (r.salario != null ? formatSalario(r.salario) : "") + (jobs ? " \u00b7 " + jobs : "");
+  if (colorMode === "escolaridade") { const short = EDU_SHORT[r.escolaridade] || ""; return short + (jobs ? " \u00b7 " + jobs : ""); }
+  return "";
+}
+
+function treemapLayout() {
+  const wrapper = document.getElementById("view-mapa");
+  const w = wrapper.clientWidth - 48;
+  const h = Math.round(w * 3 / 4);
+  treemapCanvas.width = w * dpr; treemapCanvas.height = h * dpr;
+  treemapCanvas.style.width = w + "px"; treemapCanvas.style.height = h + "px";
+  const tx = MARGIN, ty = MARGIN, tw = w - MARGIN * 2, th = h - MARGIN * 2;
+  const byCategory = {};
+  for (const d of data) {
+    const cat = d.grande_grupo_codigo;
+    if (!byCategory[cat]) byCategory[cat] = [];
+    byCategory[cat].push(d);
+  }
+  const categories = Object.keys(byCategory).map(cat => ({
+    cat, items: byCategory[cat].sort((a, b) => (b.empregados || b.admissoes || 0) - (a.empregados || a.admissoes || 0)),
+    value: byCategory[cat].reduce((s, d) => s + (d.empregados || d.admissoes || 1), 0),
+  })).sort((a, b) => b.value - a.value);
+  const catRects = squarify(categories, tx, ty, tw, th);
+  treemapRects = [];
+  for (const cr of catRects) {
+    const items = cr.items.map(d => ({ ...d, value: d.empregados || d.admissoes || 1 }));
+    const innerRects = squarify(items, cr.rx + GAP, cr.ry + GAP, cr.rw - GAP * 2, cr.rh - GAP * 2);
+    for (const ir of innerRects) treemapRects.push(ir);
+  }
+}
+
+function treemapDraw() {
+  treemapCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  treemapCtx.fillStyle = canvasBg();
+  treemapCtx.fillRect(0, 0, treemapCanvas.width / dpr, treemapCanvas.height / dpr);
+  for (const r of treemapRects) {
+    const isHovered = r === treemapHovered;
+    const g = GAP / 2, rx = r.rx + g, ry = r.ry + g, rw = r.rw - g * 2, rh = r.rh - g * 2;
+    if (rw <= 0 || rh <= 0) continue;
+    treemapCtx.fillStyle = tileColorCSS(r, isHovered ? 0.8 : 0.5);
+    treemapCtx.fillRect(rx, ry, rw, rh);
+    if (isHovered) { treemapCtx.strokeStyle = canvasFg(1); treemapCtx.lineWidth = 2; treemapCtx.strokeRect(rx, ry, rw, rh); }
+    if (rw > 50 && rh > 18) {
+      treemapCtx.save(); treemapCtx.beginPath(); treemapCtx.rect(rx + 4, ry + 2, rw - 8, rh - 4); treemapCtx.clip();
+      const fontSize = Math.min(13, Math.max(9, Math.min(rw / 10, rh / 3)));
+      treemapCtx.font = `500 ${fontSize}px -apple-system, system-ui, sans-serif`;
+      treemapCtx.fillStyle = isHovered ? canvasFg(1) : canvasFg(0.85);
+      treemapCtx.textBaseline = "top";
+      treemapCtx.fillText(r.titulo, rx + 5, ry + 4);
+      if (rh > 34 && rw > 60) {
+        treemapCtx.font = `400 ${Math.max(8, fontSize - 2)}px -apple-system, system-ui, sans-serif`;
+        treemapCtx.fillStyle = canvasFg(0.5);
+        treemapCtx.fillText(tileSubInfo(r), rx + 5, ry + 4 + fontSize + 2);
+      }
+      treemapCtx.restore();
+    }
+  }
+}
+
+function treemapHitTest(mx, my) {
+  const rect = treemapCanvas.getBoundingClientRect();
+  const cx = mx - rect.left, cy = my - rect.top;
+  for (let i = treemapRects.length - 1; i >= 0; i--) {
+    const r = treemapRects[i];
+    if (cx >= r.rx && cx < r.rx + r.rw && cy >= r.ry && cy < r.ry + r.rh) return r;
+  }
+  return null;
+}
+
+function treemapResize() {
+  if (data.length === 0) return;
+  dpr = window.devicePixelRatio || 1;
+  treemapLayout();
+  treemapDraw();
+}
+
+// Tooltip
+function aiScoresTooltipLines(d) {
+  const lines = [];
+  if (d.exposicao != null) lines.push(`<span style="color:${exposicaoColor(d.exposicao, 1)}">Exposi\u00e7\u00e3o: ${d.exposicao}/10</span>`);
+  if (d.vantagem != null) lines.push(`<span style="color:${vantagemColor(d.vantagem, 1)}">Vantagem: ${d.vantagem}/10</span>`);
+  if (d.crescimento != null) lines.push(`<span style="color:${crescimentoColor(d.crescimento, 1)}">Crescimento: ${d.crescimento}/10</span>`);
+  if (d.oportunidade != null) lines.push(`<span style="color:${oportunidadeColor(d.oportunidade, 1)}">Oportunidade: ${d.oportunidade}/10</span>`);
+  return lines.join("<br>");
+}
+
+function tooltipHighlight(d) {
+  const isAILayer = ["exposicao","vantagem","crescimento","oportunidade"].includes(colorMode);
+  if (isAILayer) {
+    const keyMap = { exposicao:"exposicao",vantagem:"vantagem",crescimento:"crescimento",oportunidade:"oportunidade" };
+    const labelMap = { exposicao:"Exposi\u00e7\u00e3o \u00e0 IA",vantagem:"Vantagem com IA",crescimento:"Crescimento com IA",oportunidade:"Oportunidade" };
+    const colorFnMap = { exposicao:exposicaoColor,vantagem:vantagemColor,crescimento:crescimentoColor,oportunidade:oportunidadeColor };
+    const primary = d[keyMap[colorMode]];
+    const colorFn = colorFnMap[colorMode];
+    const label = labelMap[colorMode];
+    let html = "";
+    if (primary != null) {
+      const color = colorFn(primary, 1);
+      html += `<span style="color:${color};font-weight:600;">${label}: ${primary}/10</span>` +
+        `<div style="margin-top:3px;height:4px;background:var(--overlay-hover);border-radius:0;">` +
+        `<div style="height:100%;width:${primary * 10}%;background:${color};border-radius:0;"></div></div>`;
+    }
+    html += `<div style="margin-top:5px;font-size:11px;line-height:1.6;">${aiScoresTooltipLines(d)}</div>`;
+    return html;
+  } else if (colorMode === "salario") {
+    const v = d.salario;
+    if (v == null) return "";
+    const color = salarioColor(v, 1);
+    return `<span style="color:${color};font-weight:600;">Sal\u00e1rio: ${formatSalarioFull(v)}/m\u00eas</span>` +
+      `<div style="margin-top:3px;height:4px;background:var(--overlay-hover);border-radius:0;">` +
+      `<div style="height:100%;width:${Math.min(100, (Math.log(Math.max(1000, v)) - Math.log(1000)) / (Math.log(45000) - Math.log(1000)) * 100)}%;background:${color};border-radius:0;"></div></div>`;
+  } else if (colorMode === "escolaridade") {
+    const edu = d.escolaridade || "";
+    const idx = EDU_LEVELS.indexOf(edu);
+    const color = idx >= 0 ? escolaridadeColor(idx, 1) : "var(--fg)";
+    return `<span style="color:${color};font-weight:600;">Escolaridade: ${edu || '\u2014'}</span>`;
+  }
+  return "";
+}
+
+function showTooltip(d, mx, my) {
+  const tt = document.getElementById("tooltip");
+  tt.querySelector(".tt-title").textContent = d.titulo + " (" + d.codigo + ")";
+  tt.querySelector(".tt-highlight").innerHTML = tooltipHighlight(d);
+  tt.querySelector(".tt-stats").innerHTML = `
+    <span class="label">Sal\u00e1rio mediano</span><span class="value">${formatSalarioFull(d.salario)}/m\u00eas</span>
+    <span class="label">Empregados</span><span class="value">${formatNumber(d.empregados)}</span>
+    <span class="label">Saldo (CAGED)</span><span class="value">${formatSaldo(d.saldo)}</span>
+    <span class="label">Escolaridade</span><span class="value">${d.escolaridade || '\u2014'}</span>
+    <span class="label">Exposi\u00e7\u00e3o</span><span class="value">${d.exposicao != null ? d.exposicao + '/10' : '\u2014'}</span>
+    <span class="label">Vantagem</span><span class="value">${d.vantagem != null ? d.vantagem + '/10' : '\u2014'}</span>
+    <span class="label">Crescimento</span><span class="value">${d.crescimento != null ? d.crescimento + '/10' : '\u2014'}</span>
+    <span class="label">Oportunidade</span><span class="value">${d.oportunidade != null ? d.oportunidade + '/10' : '\u2014'}</span>`;
+  const rationaleMap = {
+    exposicao: d.exposicao_rationale || "",
+    vantagem: d.vantagem_rationale || "",
+    crescimento: d.crescimento_rationale || "",
+    oportunidade: [d.vantagem_rationale, d.crescimento_rationale].filter(Boolean).join(" | "),
+  };
+  tt.querySelector(".tt-rationale").textContent = rationaleMap[colorMode] || "";
+  let tx = mx + 16, ty = my - 16;
+  if (tx + 380 > window.innerWidth) tx = mx - 396;
+  if (ty < 10) ty = my + 16;
+  if (ty + 200 > window.innerHeight) ty = my - 200;
+  tt.style.left = tx + "px"; tt.style.top = ty + "px";
+  tt.classList.add("visible");
+}
+
+function showSimpleTooltip(d, mx, my) {
+  const tt = document.getElementById("tooltip");
+  tt.querySelector(".tt-title").textContent = d.titulo + " (" + d.codigo + ")";
+  tt.querySelector(".tt-highlight").innerHTML =
+    `<span style="color:${exposicaoColor(d.exposicao,1)}">Exposi\u00e7\u00e3o: ${d.exposicao != null ? d.exposicao + '/10' : '\u2014'}</span> &middot; ` +
+    `<span style="color:${oportunidadeColor(d.oportunidade,1)}">Oportunidade: ${d.oportunidade != null ? d.oportunidade + '/10' : '\u2014'}</span>`;
+  tt.querySelector(".tt-stats").innerHTML = `
+    <span class="label">Sal\u00e1rio</span><span class="value">${formatSalarioFull(d.salario)}</span>
+    <span class="label">Empregados</span><span class="value">${formatNumber(d.empregados)}</span>
+    <span class="label">Vantagem</span><span class="value">${d.vantagem != null ? d.vantagem + '/10' : '\u2014'}</span>
+    <span class="label">Crescimento</span><span class="value">${d.crescimento != null ? d.crescimento + '/10' : '\u2014'}</span>`;
+  tt.querySelector(".tt-rationale").textContent = "";
+  let tx = mx + 16, ty = my - 16;
+  if (tx + 380 > window.innerWidth) tx = mx - 396;
+  if (ty < 10) ty = my + 16;
+  if (ty + 200 > window.innerHeight) ty = my - 200;
+  tt.style.left = tx + "px"; tt.style.top = ty + "px";
+  tt.classList.add("visible");
+}
+
+function hideTooltip() { document.getElementById("tooltip").classList.remove("visible"); }
+
+// Treemap events
+treemapCanvas.addEventListener("mousemove", function(e) {
+  const hit = treemapHitTest(e.clientX, e.clientY);
+  if (hit !== treemapHovered) { treemapHovered = hit; treemapDraw(); }
+  if (treemapHovered) { showTooltip(treemapHovered, e.clientX, e.clientY); treemapCanvas.style.cursor = "pointer"; }
+  else { hideTooltip(); treemapCanvas.style.cursor = "default"; }
+});
+treemapCanvas.addEventListener("mouseleave", function() { treemapHovered = null; hideTooltip(); treemapDraw(); });
+
+// Treemap stats (original)
+const SALARY_BANDS = [
+  { label: "<R$1.500", min: 0, max: 1500 },
+  { label: "R$1.500\u20133K", min: 1500, max: 3000 },
+  { label: "R$3\u20135K", min: 3000, max: 5000 },
+  { label: "R$5\u201310K", min: 5000, max: 10000 },
+  { label: "R$10K+", min: 10000, max: Infinity },
+];
+const EDU_GROUPS = [
+  { label: "Analfab./Fund.Inc.", match: ["Analfabeto","At\u00e9 5\u00aa Incompleto"] },
+  { label: "Fundamental", match: ["6\u00aa a 9\u00aa Fundamental"] },
+  { label: "M\u00e9dio", match: ["M\u00e9dio Completo"] },
+  { label: "Superior", match: ["Superior Completo"] },
+  { label: "Mestrado/Dout.", match: ["Mestrado","Doutorado"] },
+];
+
+function getJobs(d) { return d.empregados || d.admissoes || 0; }
+
+function weightedAvgByGroups(groups, filterFn, metricFn) {
+  return groups.map(g => {
+    let wS = 0, wC = 0;
+    for (const d of data) {
+      const v = metricFn(d); const jobs = getJobs(d);
+      if (v != null && jobs && filterFn(d, g)) { wS += v * jobs; wC += jobs; }
+    }
+    return { ...g, avg: wC > 0 ? wS / wC : 0, jobs: wC };
+  });
+}
+
+function renderTiers(tiers, totalJobs) {
+  return tiers.map(t => `<div class="tier-row"><div class="tier-color" style="background:${t.color}"></div><span class="tier-name">${t.label}</span><span class="tier-jobs">${formatNumber(t.jobs)}</span><span class="tier-pct">${totalJobs > 0 ? (t.jobs / totalJobs * 100).toFixed(0) : 0}%</span></div>`).join("");
+}
+
+function renderHbars(items) {
+  return items.map(it => `<div class="hbar-row"><span class="hbar-label">${it.label}</span><div class="hbar-track"><div class="hbar-fill" style="width:${it.pct}%;background:${it.color}"></div></div><span class="hbar-val">${it.val}</span></div>`).join("");
+}
+
+function updateStats() {
+  const totalJobs = data.reduce((s, d) => s + getJobs(d), 0);
+  document.getElementById("statTotalJobs").textContent = (totalJobs / 1e6).toFixed(1).replace(".", ",") + "M";
+  if (colorMode === "exposicao") updateExposicaoStats(totalJobs);
+  else if (colorMode === "vantagem") updateGreenLayerStats(totalJobs, "vantagem", "Vantagem", vantagemColor);
+  else if (colorMode === "crescimento") updateGreenLayerStats(totalJobs, "crescimento", "Crescimento", crescimentoColor);
+  else if (colorMode === "oportunidade") updateGreenLayerStats(totalJobs, "oportunidade", "Oportunidade", oportunidadeColor);
+  else if (colorMode === "salario") updateSalarioStats(totalJobs);
+  else if (colorMode === "escolaridade") updateEscolaridadeStats(totalJobs);
+}
+
+function updateExposicaoStats(totalJobs) {
+  let wS = 0, wC = 0;
+  for (const d of data) { const j = getJobs(d); if (d.exposicao != null && j) { wS += d.exposicao * j; wC += j; } }
+  const avg = wC > 0 ? wS / wC : 0;
+  document.getElementById("block2").innerHTML = `<h3>Exp. m\u00e9dia</h3><div class="stat-big"><span style="color:${exposicaoColor(avg, 1)}">${avg.toFixed(1).replace(".", ",")}</span></div><div class="stat-label">ponderada, 0\u201310</div>`;
+  const histogram = new Array(11).fill(0);
+  for (const d of data) { const j = getJobs(d); if (d.exposicao != null && j) histogram[d.exposicao] += j; }
+  const maxH = Math.max(...histogram);
+  document.getElementById("block3").innerHTML = `<h3>Empregos por exposi\u00e7\u00e3o</h3><div class="histogram">${histogram.map((c, i) => `<div class="bar" style="height:${Math.max(2, maxH > 0 ? c / maxH * 100 : 0)}%;background:${exposicaoColor(i, 0.7)}"></div>`).join("")}</div><div class="hist-labels"><span>0</span><span>5</span><span>10</span></div>`;
+  const tierDefs = [{ label: "M\u00ednima (0\u20131)", lo: 0, hi: 1, mid: 0.5 },{ label: "Baixa (2\u20133)", lo: 2, hi: 3, mid: 2.5 },{ label: "Moderada (4\u20135)", lo: 4, hi: 5, mid: 4.5 },{ label: "Alta (6\u20137)", lo: 6, hi: 7, mid: 6.5 },{ label: "Muito alta (8\u201310)", lo: 8, hi: 10, mid: 9 }];
+  const tiers = tierDefs.map(t => { let jobs = 0; for (const d of data) { const j = getJobs(d); if (d.exposicao != null && j && d.exposicao >= t.lo && d.exposicao <= t.hi) jobs += j; } return { ...t, jobs, color: exposicaoColor(t.mid, 1) }; });
+  document.getElementById("block4").innerHTML = `<h3>Faixas de exposi\u00e7\u00e3o</h3><div class="tier-bar">${renderTiers(tiers, totalJobs)}</div>`;
+  const bySal = weightedAvgByGroups(SALARY_BANDS, (d, g) => d.salario != null && d.salario >= g.min && d.salario < g.max, d => d.exposicao);
+  document.getElementById("block5").innerHTML = `<h3>Exposi\u00e7\u00e3o por sal\u00e1rio</h3><div class="hbar-chart">${renderHbars(bySal.map(g => ({ label: g.label, val: g.avg.toFixed(1).replace(".", ","), pct: g.avg / 10 * 100, color: exposicaoColor(g.avg, 0.8) })))}</div>`;
+  const byEdu = weightedAvgByGroups(EDU_GROUPS, (d, g) => g.match.includes(d.escolaridade), d => d.exposicao);
+  document.getElementById("block6").innerHTML = `<h3>Exposi\u00e7\u00e3o por escolaridade</h3><div class="hbar-chart">${renderHbars(byEdu.map(g => ({ label: g.label, val: g.avg.toFixed(1).replace(".", ","), pct: g.avg / 10 * 100, color: exposicaoColor(g.avg, 0.8) })))}</div>`;
+  const sorted = [...data].filter(d => d.saldo != null).sort((a, b) => b.saldo - a.saldo);
+  const top5 = sorted.slice(0, 5);
+  document.getElementById("block7").innerHTML = `<h3>Mais crescem (saldo)</h3><div class="hbar-chart">${renderHbars(top5.map(g => { const maxSaldo = Math.max(...top5.map(x => Math.abs(x.saldo))); return { label: g.titulo.substring(0, 18), val: formatSaldo(g.saldo), pct: Math.abs(g.saldo) / maxSaldo * 100, color: "rgba(80,200,120,0.7)" }; }))}</div>`;
+  const bot5 = sorted.slice(-5).reverse();
+  document.getElementById("block8").innerHTML = `<h3>Mais declinam (saldo)</h3><div class="hbar-chart">${renderHbars(bot5.map(g => { const maxSaldo = Math.max(...bot5.map(x => Math.abs(x.saldo))); return { label: g.titulo.substring(0, 18), val: formatSaldo(g.saldo), pct: Math.abs(g.saldo) / maxSaldo * 100, color: "rgba(230,80,60,0.7)" }; }))}</div>`;
+}
+
+function updateGreenLayerStats(totalJobs, key, label, colorFn) {
+  let wS = 0, wC = 0;
+  for (const d of data) { const j = getJobs(d); if (d[key] != null && j) { wS += d[key] * j; wC += j; } }
+  const avg = wC > 0 ? wS / wC : 0;
+  document.getElementById("block2").innerHTML = `<h3>${label} m\u00e9d.</h3><div class="stat-big"><span style="color:${colorFn(avg, 1)}">${avg.toFixed(1).replace(".", ",")}</span></div><div class="stat-label">ponderada, 0\u201310</div>`;
+  const histogram = new Array(11).fill(0);
+  for (const d of data) { const j = getJobs(d); if (d[key] != null && j) histogram[Math.round(d[key])] += j; }
+  const maxH = Math.max(...histogram);
+  document.getElementById("block3").innerHTML = `<h3>Empregos por ${label.toLowerCase()}</h3><div class="histogram">${histogram.map((c, i) => `<div class="bar" style="height:${Math.max(2, maxH > 0 ? c / maxH * 100 : 0)}%;background:${colorFn(i, 0.7)}"></div>`).join("")}</div><div class="hist-labels"><span>0</span><span>5</span><span>10</span></div>`;
+  const tierDefs = [{ label: "Baixo (0\u20132)", lo: 0, hi: 2, mid: 1 },{ label: "Moderado (3\u20134)", lo: 3, hi: 4, mid: 3.5 },{ label: "Bom (5\u20136)", lo: 5, hi: 6, mid: 5.5 },{ label: "Alto (7\u20138)", lo: 7, hi: 8, mid: 7.5 },{ label: "Muito alto (9\u201310)", lo: 9, hi: 10, mid: 9.5 }];
+  const tiers = tierDefs.map(t => { let jobs = 0; for (const d of data) { const j = getJobs(d); if (d[key] != null && j && d[key] >= t.lo && d[key] <= t.hi) jobs += j; } return { ...t, jobs, color: colorFn(t.mid, 1) }; });
+  document.getElementById("block4").innerHTML = `<h3>Faixas de ${label.toLowerCase()}</h3><div class="tier-bar">${renderTiers(tiers, totalJobs)}</div>`;
+  const bySal = weightedAvgByGroups(SALARY_BANDS, (d, g) => d.salario != null && d.salario >= g.min && d.salario < g.max, d => d[key]);
+  document.getElementById("block5").innerHTML = `<h3>${label} por sal\u00e1rio</h3><div class="hbar-chart">${renderHbars(bySal.map(g => ({ label: g.label, val: g.avg.toFixed(1).replace(".", ","), pct: g.avg / 10 * 100, color: colorFn(g.avg, 0.8) })))}</div>`;
+  const byEdu = weightedAvgByGroups(EDU_GROUPS, (d, g) => g.match.includes(d.escolaridade), d => d[key]);
+  document.getElementById("block6").innerHTML = `<h3>${label} por escolaridade</h3><div class="hbar-chart">${renderHbars(byEdu.map(g => ({ label: g.label, val: g.avg.toFixed(1).replace(".", ","), pct: g.avg / 10 * 100, color: colorFn(g.avg, 0.8) })))}</div>`;
+  document.getElementById("block7").innerHTML = "";
+  document.getElementById("block8").innerHTML = "";
+}
+
+function updateSalarioStats(totalJobs) {
+  let wS = 0, wC = 0;
+  for (const d of data) { const j = getJobs(d); if (d.salario != null && j) { wS += d.salario * j; wC += j; } }
+  const avg = wC > 0 ? wS / wC : 0;
+  document.getElementById("block2").innerHTML = `<h3>Sal\u00e1rio m\u00e9dio</h3><div class="stat-big"><span style="color:${salarioColor(avg, 1)}">${formatSalario(avg)}</span></div><div class="stat-label">ponderado/m\u00eas</div>`;
+  const buckets = [{ lo: 0, hi: 1500, mid: 1200 },{ lo: 1500, hi: 2500, mid: 2000 },{ lo: 2500, hi: 4000, mid: 3200 },{ lo: 4000, hi: 7000, mid: 5500 },{ lo: 7000, hi: 12000, mid: 9500 },{ lo: 12000, hi: Infinity, mid: 20000 }];
+  const histJobs = buckets.map(() => 0);
+  for (const d of data) { const j = getJobs(d); if (d.salario != null && j) { const i = buckets.findIndex(b => d.salario >= b.lo && d.salario < b.hi); if (i >= 0) histJobs[i] += j; } }
+  const maxH = Math.max(...histJobs);
+  document.getElementById("block3").innerHTML = `<h3>Empregos por sal\u00e1rio</h3><div class="histogram">${histJobs.map((c, i) => `<div class="bar" style="height:${Math.max(2, maxH > 0 ? c / maxH * 100 : 0)}%;background:${salarioColor(buckets[i].mid, 0.7)}"></div>`).join("")}</div><div class="hist-labels"><span>R$1,5K</span><span>R$5K</span><span>R$12K+</span></div>`;
+  const tiers = SALARY_BANDS.map(t => { let jobs = 0; for (const d of data) { const j = getJobs(d); if (d.salario != null && j && d.salario >= t.min && d.salario < t.max) jobs += j; } return { ...t, label: t.label, jobs, color: salarioColor(t.max === Infinity ? 20000 : (t.min + t.max) / 2, 1) }; });
+  document.getElementById("block4").innerHTML = `<h3>Faixas salariais</h3><div class="tier-bar">${renderTiers(tiers, totalJobs)}</div>`;
+  const byEdu = weightedAvgByGroups(EDU_GROUPS, (d, g) => g.match.includes(d.escolaridade), d => d.salario);
+  document.getElementById("block5").innerHTML = `<h3>Sal\u00e1rio por escolaridade</h3><div class="hbar-chart">${renderHbars(byEdu.map(g => ({ label: g.label, val: formatSalario(g.avg), pct: Math.max(0, Math.min(100, (Math.log(Math.max(1000, g.avg)) - Math.log(1000)) / (Math.log(45000) - Math.log(1000)) * 100)), color: salarioColor(g.avg, 0.8) })))}</div>`;
+  const expTiers = [{ label: "Exp. 0\u20132", lo: 0, hi: 2 },{ label: "Exp. 3\u20134", lo: 3, hi: 4 },{ label: "Exp. 5\u20136", lo: 5, hi: 6 },{ label: "Exp. 7\u20138", lo: 7, hi: 8 },{ label: "Exp. 9\u201310", lo: 9, hi: 10 }];
+  const byExp = weightedAvgByGroups(expTiers, (d, g) => d.exposicao != null && d.exposicao >= g.lo && d.exposicao <= g.hi, d => d.salario);
+  document.getElementById("block6").innerHTML = `<h3>Sal\u00e1rio por exposi\u00e7\u00e3o</h3><div class="hbar-chart">${renderHbars(byExp.map(g => ({ label: g.label, val: formatSalario(g.avg), pct: Math.max(0, Math.min(100, (Math.log(Math.max(1000, g.avg)) - Math.log(1000)) / (Math.log(45000) - Math.log(1000)) * 100)), color: salarioColor(g.avg, 0.8) })))}</div>`;
+  let totalWages = 0;
+  for (const d of data) { const j = getJobs(d); if (d.salario != null && j) totalWages += d.salario * j; }
+  document.getElementById("block7").innerHTML = `<h3>Massa salarial</h3><div class="stat-big">R$ ${(totalWages / 1e9).toFixed(1).replace(".", ",")}B</div><div class="stat-label">mensal</div>`;
+  document.getElementById("block8").innerHTML = "";
+}
+
+function updateEscolaridadeStats(totalJobs) {
+  let supJobs = 0;
+  for (const d of data) { const j = getJobs(d); if (j && ["Superior Completo","Mestrado","Doutorado"].includes(d.escolaridade)) supJobs += j; }
+  document.getElementById("block2").innerHTML = `<h3>Superior+</h3><div class="stat-big"><span style="color:${escolaridadeColor(4, 1)}">${(supJobs / totalJobs * 100).toFixed(0)}%</span></div><div class="stat-label">dos empregos</div>`;
+  const groups = EDU_GROUPS.map((g, i) => { let jobs = 0; for (const d of data) { const j = getJobs(d); if (j && g.match.includes(d.escolaridade)) jobs += j; } return { ...g, jobs, idx: i }; });
+  const maxH = Math.max(...groups.map(g => g.jobs));
+  document.getElementById("block3").innerHTML = `<h3>Empregos por escolaridade</h3><div class="histogram">${groups.map(g => `<div class="bar" style="height:${Math.max(2, maxH > 0 ? g.jobs / maxH * 100 : 0)}%;background:${escolaridadeColor(g.idx * 1.5, 0.7)}"></div>`).join("")}</div><div class="hist-labels"><span>Fund.</span><span>M\u00e9dio</span><span>Dout.</span></div>`;
+  const tiers = groups.map((g, i) => ({ label: g.label, jobs: g.jobs, color: escolaridadeColor(i * 1.5, 1) }));
+  document.getElementById("block4").innerHTML = `<h3>Faixas de escolaridade</h3><div class="tier-bar">${renderTiers(tiers, totalJobs)}</div>`;
+  const salByEdu = weightedAvgByGroups(EDU_GROUPS, (d, g) => g.match.includes(d.escolaridade), d => d.salario);
+  document.getElementById("block5").innerHTML = `<h3>Sal\u00e1rio por escolaridade</h3><div class="hbar-chart">${renderHbars(salByEdu.map(g => ({ label: g.label, val: formatSalario(g.avg), pct: Math.max(0, Math.min(100, (Math.log(Math.max(1000, g.avg)) - Math.log(1000)) / (Math.log(45000) - Math.log(1000)) * 100)), color: salarioColor(g.avg, 0.8) })))}</div>`;
+  const expByEdu = weightedAvgByGroups(EDU_GROUPS, (d, g) => g.match.includes(d.escolaridade), d => d.exposicao);
+  document.getElementById("block6").innerHTML = `<h3>Exposi\u00e7\u00e3o por escolaridade</h3><div class="hbar-chart">${renderHbars(expByEdu.map(g => ({ label: g.label, val: g.avg.toFixed(1).replace(".", ","), pct: g.avg / 10 * 100, color: exposicaoColor(g.avg, 0.8) })))}</div>`;
+  let noFormal = 0;
+  for (const d of data) { const j = getJobs(d); if (j && ["Analfabeto","At\u00e9 5\u00aa Incompleto","6\u00aa a 9\u00aa Fundamental"].includes(d.escolaridade)) noFormal += j; }
+  document.getElementById("block7").innerHTML = `<h3>Fundamental ou menos</h3><div class="stat-big">${formatNumber(noFormal)}</div><div class="stat-label">empregos sem ensino m\u00e9dio</div>`;
+  document.getElementById("block8").innerHTML = "";
+}
+
+// Legend gradient
+const LEGEND_CONFIG = {
+  exposicao: { low: "Baixa", high: "Alta" },
+  vantagem: { low: "Baixa", high: "Alta" },
+  crescimento: { low: "Baixo", high: "Alto" },
+  oportunidade: { low: "Baixa", high: "Alta" },
+  salario: { low: "R$1K", high: "R$45K" },
+  escolaridade: { low: "Analfabeto", high: "Doutorado" },
+};
+
+function drawGradientLegend() {
+  const c = document.getElementById("gradientLegend");
+  const gctx = c.getContext("2d");
+  for (let x = 0; x < 80; x++) {
+    const t = x / 79;
+    gctx.fillStyle = colorMode === "exposicao" ? greenRedCSS(t, 1) : greenRedCSS(1 - t, 1);
+    gctx.fillRect(x, 0, 1, 8);
+  }
+  const cfg = LEGEND_CONFIG[colorMode];
+  document.getElementById("legendLow").textContent = cfg.low;
+  document.getElementById("legendHigh").textContent = cfg.high;
+}
+
+// Color toggle
+document.getElementById("colorToggle").addEventListener("click", function(e) {
+  const btn = e.target.closest("button");
+  if (!btn || !btn.dataset.mode) return;
+  colorMode = btn.dataset.mode;
+  document.querySelectorAll("#colorToggle button").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+  updateStats();
+  drawGradientLegend();
+  treemapDraw();
+  requestAnimationFrame(treemapResize);
+});
+
+// ══════════════════════════════════════════════════════════════════════════
+// VIEW 2: SCATTER PLOT
+// ══════════════════════════════════════════════════════════════════════════
+let scatterInited = false;
+let scatterHovered = null;
+const scatterCanvas = document.getElementById("scatterCanvas");
+const scatterCtx = scatterCanvas.getContext("2d");
+
+const SCATTER_PAD = { top: 40, right: 30, bottom: 50, left: 60 };
+const QUADRANT_LABELS = [
+  { label: "Est\u00e1vel", x: 0.25, y: 0.75, color: "rgba(150,150,160,0.12)" },
+  { label: "Prosperar", x: 0.25, y: 0.25, color: "rgba(76,175,80,0.10)" },
+  { label: "Urgente", x: 0.75, y: 0.75, color: "rgba(239,83,80,0.10)" },
+  { label: "Transformar", x: 0.75, y: 0.25, color: "rgba(66,165,245,0.10)" },
+];
+
+function initScatter() {
+  if (data.length === 0) return;
+  scatterInited = true;
+  scatterResize();
+}
+
+function scatterResize() {
+  if (!scatterInited || data.length === 0) return;
+  const container = document.getElementById("scatterContainer");
+  const w = container.clientWidth;
+  const h = Math.min(w * 0.7, 700);
+  const d = window.devicePixelRatio || 1;
+  scatterCanvas.width = w * d; scatterCanvas.height = h * d;
+  scatterCanvas.style.width = w + "px"; scatterCanvas.style.height = h + "px";
+  scatterDraw();
+}
+
+function scatterToPlot(exposicao, oportunidade) {
+  const w = scatterCanvas.width / (window.devicePixelRatio || 1);
+  const h = scatterCanvas.height / (window.devicePixelRatio || 1);
+  const plotW = w - SCATTER_PAD.left - SCATTER_PAD.right;
+  const plotH = h - SCATTER_PAD.top - SCATTER_PAD.bottom;
+  return {
+    px: SCATTER_PAD.left + (exposicao / 10) * plotW,
+    py: SCATTER_PAD.top + (1 - oportunidade / 10) * plotH
+  };
+}
+
+function scatterFromMouse(mx, my) {
+  const rect = scatterCanvas.getBoundingClientRect();
+  return { mx: mx - rect.left, my: my - rect.top };
+}
+
+function scatterDraw() {
+  const d = window.devicePixelRatio || 1;
+  const w = scatterCanvas.width / d;
+  const h = scatterCanvas.height / d;
+  scatterCtx.setTransform(d, 0, 0, d, 0, 0);
+  scatterCtx.fillStyle = canvasBg();
+  scatterCtx.fillRect(0, 0, w, h);
+
+  const plotW = w - SCATTER_PAD.left - SCATTER_PAD.right;
+  const plotH = h - SCATTER_PAD.top - SCATTER_PAD.bottom;
+
+  // Quadrant backgrounds
+  const midX = SCATTER_PAD.left + plotW * 0.5;
+  const midY = SCATTER_PAD.top + plotH * 0.5;
+
+  // Top-left (Prosperar)
+  scatterCtx.fillStyle = "rgba(76,175,80,0.06)";
+  scatterCtx.fillRect(SCATTER_PAD.left, SCATTER_PAD.top, plotW * 0.5, plotH * 0.5);
+  // Top-right (Transformar)
+  scatterCtx.fillStyle = "rgba(66,165,245,0.06)";
+  scatterCtx.fillRect(midX, SCATTER_PAD.top, plotW * 0.5, plotH * 0.5);
+  // Bottom-left (Estavel)
+  scatterCtx.fillStyle = "rgba(150,150,160,0.04)";
+  scatterCtx.fillRect(SCATTER_PAD.left, midY, plotW * 0.5, plotH * 0.5);
+  // Bottom-right (Urgente)
+  scatterCtx.fillStyle = "rgba(239,83,80,0.06)";
+  scatterCtx.fillRect(midX, midY, plotW * 0.5, plotH * 0.5);
+
+  // Quadrant labels
+  scatterCtx.font = "600 14px -apple-system, system-ui, sans-serif";
+  scatterCtx.textAlign = "center";
+  scatterCtx.fillStyle = "rgba(76,175,80,0.4)";
+  scatterCtx.fillText("Prosperar", SCATTER_PAD.left + plotW * 0.25, SCATTER_PAD.top + 24);
+  scatterCtx.fillStyle = "rgba(66,165,245,0.4)";
+  scatterCtx.fillText("Transformar", midX + plotW * 0.25, SCATTER_PAD.top + 24);
+  scatterCtx.fillStyle = "rgba(150,150,160,0.3)";
+  scatterCtx.fillText("Est\u00e1vel", SCATTER_PAD.left + plotW * 0.25, midY + plotH * 0.5 - 10);
+  scatterCtx.fillStyle = "rgba(239,83,80,0.4)";
+  scatterCtx.fillText("Urgente", midX + plotW * 0.25, midY + plotH * 0.5 - 10);
+
+  // Grid lines
+  scatterCtx.strokeStyle = canvasFg(0.06);
+  scatterCtx.lineWidth = 1;
+  for (let i = 0; i <= 10; i++) {
+    const x = SCATTER_PAD.left + (i / 10) * plotW;
+    const y = SCATTER_PAD.top + (i / 10) * plotH;
+    scatterCtx.beginPath(); scatterCtx.moveTo(x, SCATTER_PAD.top); scatterCtx.lineTo(x, SCATTER_PAD.top + plotH); scatterCtx.stroke();
+    scatterCtx.beginPath(); scatterCtx.moveTo(SCATTER_PAD.left, y); scatterCtx.lineTo(SCATTER_PAD.left + plotW, y); scatterCtx.stroke();
+  }
+  // Midline emphasis
+  scatterCtx.strokeStyle = canvasFg(0.15);
+  scatterCtx.setLineDash([4, 4]);
+  scatterCtx.beginPath(); scatterCtx.moveTo(midX, SCATTER_PAD.top); scatterCtx.lineTo(midX, SCATTER_PAD.top + plotH); scatterCtx.stroke();
+  scatterCtx.beginPath(); scatterCtx.moveTo(SCATTER_PAD.left, midY); scatterCtx.lineTo(SCATTER_PAD.left + plotW, midY); scatterCtx.stroke();
+  scatterCtx.setLineDash([]);
+
+  // Axis labels
+  scatterCtx.fillStyle = canvasFg(0.5);
+  scatterCtx.font = "500 12px -apple-system, system-ui, sans-serif";
+  scatterCtx.textAlign = "center";
+  for (let i = 0; i <= 10; i += 2) {
+    const x = SCATTER_PAD.left + (i / 10) * plotW;
+    scatterCtx.fillText(String(i), x, SCATTER_PAD.top + plotH + 18);
+  }
+  scatterCtx.textAlign = "right";
+  for (let i = 0; i <= 10; i += 2) {
+    const y = SCATTER_PAD.top + (1 - i / 10) * plotH;
+    scatterCtx.fillText(String(i), SCATTER_PAD.left - 8, y + 4);
+  }
+  // Axis titles
+  scatterCtx.fillStyle = canvasFg(0.6);
+  scatterCtx.font = "600 12px -apple-system, system-ui, sans-serif";
+  scatterCtx.textAlign = "center";
+  scatterCtx.fillText("Exposi\u00e7\u00e3o \u00e0 IA \u2192", SCATTER_PAD.left + plotW / 2, h - 6);
+  scatterCtx.save();
+  scatterCtx.translate(14, SCATTER_PAD.top + plotH / 2);
+  scatterCtx.rotate(-Math.PI / 2);
+  scatterCtx.fillText("Oportunidade \u2192", 0, 0);
+  scatterCtx.restore();
+
+  // Compute max empregados for sizing
+  let maxEmp = 0;
+  for (const dd of data) { if (dd.empregados > maxEmp) maxEmp = dd.empregados; }
+
+  // Dots
+  const dots = [];
+  for (const dd of data) {
+    if (dd.exposicao == null || dd.oportunidade == null) continue;
+    const { px, py } = scatterToPlot(dd.exposicao, dd.oportunidade);
+    const emp = dd.empregados || 1;
+    const r = Math.max(3, Math.sqrt(emp / maxEmp) * 28);
+    dots.push({ d: dd, px, py, r });
+  }
+
+  // Sort so smaller dots draw on top
+  dots.sort((a, b) => b.r - a.r);
+
+  for (const dot of dots) {
+    const isH = dot.d === scatterHovered;
+    scatterCtx.beginPath();
+    scatterCtx.arc(dot.px, dot.py, dot.r, 0, Math.PI * 2);
+    scatterCtx.fillStyle = exposicaoColor(dot.d.exposicao, isH ? 0.9 : 0.45);
+    scatterCtx.fill();
+    if (isH) {
+      scatterCtx.strokeStyle = canvasFg(1);
+      scatterCtx.lineWidth = 2;
+      scatterCtx.stroke();
+    }
+  }
+
+  // Store dots for hit testing
+  scatterCanvas._dots = dots;
+}
+
+scatterCanvas.addEventListener("mousemove", function(e) {
+  if (!scatterInited) return;
+  const { mx, my } = scatterFromMouse(e.clientX, e.clientY);
+  const dots = scatterCanvas._dots || [];
+  let hit = null;
+  // Check smaller dots first (they're drawn on top)
+  for (let i = dots.length - 1; i >= 0; i--) {
+    const dot = dots[i];
+    const dx = mx - dot.px, dy = my - dot.py;
+    if (dx * dx + dy * dy <= (dot.r + 2) * (dot.r + 2)) { hit = dot.d; break; }
+  }
+  if (hit !== scatterHovered) { scatterHovered = hit; scatterDraw(); }
+  if (scatterHovered) { showSimpleTooltip(scatterHovered, e.clientX, e.clientY); scatterCanvas.style.cursor = "pointer"; }
+  else { hideTooltip(); scatterCanvas.style.cursor = "crosshair"; }
+});
+scatterCanvas.addEventListener("mouseleave", function() { scatterHovered = null; hideTooltip(); if (scatterInited) scatterDraw(); });
+
+// ══════════════════════════════════════════════════════════════════════════
+// VIEW 3: PAINEL PESSOAL
+// ══════════════════════════════════════════════════════════════════════════
+const painelSearch = document.getElementById("painelSearch");
+const painelDropdown = document.getElementById("painelDropdown");
+let painelHighlightIdx = -1;
+
+function fuzzyMatch(query, text) {
+  const q = query.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  const t = text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  return t.includes(q);
+}
+
+painelSearch.addEventListener("input", function() {
+  const q = this.value.trim();
+  if (q.length < 2) { painelDropdown.classList.remove("open"); return; }
+  const matches = data.filter(d => fuzzyMatch(q, d.titulo) || fuzzyMatch(q, d.codigo)).slice(0, 20);
+  if (matches.length === 0) { painelDropdown.classList.remove("open"); return; }
+  painelDropdown.innerHTML = matches.map((m, i) =>
+    `<div class="search-item" data-idx="${data.indexOf(m)}">${escapeHtml(m.titulo)}<span class="search-code">${escapeHtml(m.codigo)}</span></div>`
+  ).join("");
+  painelDropdown.classList.add("open");
+  painelHighlightIdx = -1;
+});
+
+painelSearch.addEventListener("keydown", function(e) {
+  const items = painelDropdown.querySelectorAll(".search-item");
+  if (!items.length) return;
+  if (e.key === "ArrowDown") { e.preventDefault(); painelHighlightIdx = Math.min(painelHighlightIdx + 1, items.length - 1); updatePainelHighlight(items); }
+  else if (e.key === "ArrowUp") { e.preventDefault(); painelHighlightIdx = Math.max(painelHighlightIdx - 1, 0); updatePainelHighlight(items); }
+  else if (e.key === "Enter" && painelHighlightIdx >= 0) { e.preventDefault(); items[painelHighlightIdx].click(); }
+  else if (e.key === "Escape") { painelDropdown.classList.remove("open"); }
+});
+
+function updatePainelHighlight(items) {
+  items.forEach((it, i) => it.classList.toggle("highlighted", i === painelHighlightIdx));
+  if (painelHighlightIdx >= 0) items[painelHighlightIdx].scrollIntoView({ block: "nearest" });
+}
+
+painelDropdown.addEventListener("click", function(e) {
+  const item = e.target.closest(".search-item");
+  if (!item) return;
+  const idx = parseInt(item.dataset.idx);
+  selectOccupation(data[idx]);
+  painelDropdown.classList.remove("open");
+});
+
+document.addEventListener("click", function(e) {
+  if (!e.target.closest("#painelSearchBox")) painelDropdown.classList.remove("open");
+});
+
+function selectOccupation(occ) {
+  painelSearch.value = occ.titulo;
+  document.getElementById("painelPlaceholder").style.display = "none";
+  const content = document.getElementById("painelContent");
+  content.style.display = "block";
+
+  const exp = occ.exposicao != null ? occ.exposicao : 0;
+  const van = occ.vantagem != null ? occ.vantagem : 0;
+  const cre = occ.crescimento != null ? occ.crescimento : 0;
+  const opo = occ.oportunidade != null ? occ.oportunidade : 0;
+
+  // Metric cards
+  let html = `<div class="metric-cards">
+    <div class="metric-card">
+      <div class="metric-label">Exposi\u00e7\u00e3o \u00e0 IA</div>
+      <div class="metric-value" style="color:${exposicaoColor(exp, 1)}">${exp}/10</div>
+      <div class="metric-sub">${exp <= 3 ? 'Baixa' : exp <= 5 ? 'Moderada' : exp <= 7 ? 'Alta' : 'Muito alta'}</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Vantagem com IA</div>
+      <div class="metric-value" style="color:${vantagemColor(van, 1)}">${van}/10</div>
+      <div class="metric-sub">${van <= 3 ? 'Baixa' : van <= 5 ? 'Moderada' : van <= 7 ? 'Alta' : 'Muito alta'}</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Crescimento</div>
+      <div class="metric-value" style="color:${crescimentoColor(cre, 1)}">${cre}/10</div>
+      <div class="metric-sub">${cre <= 3 ? 'Baixo' : cre <= 5 ? 'Moderado' : cre <= 7 ? 'Alto' : 'Muito alto'}</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Oportunidade</div>
+      <div class="metric-value" style="color:${oportunidadeColor(opo, 1)}">${opo}/10</div>
+      <div class="metric-sub">${opo <= 3 ? 'Baixa' : opo <= 5 ? 'Moderada' : opo <= 7 ? 'Alta' : 'Muito alta'}</div>
+    </div>
+  </div>`;
+
+  // Salary
+  html += `<div class="salary-section">
+    <div class="salary-card">
+      <div class="sal-label">Sal\u00e1rio mediano (RAIS)</div>
+      <div class="sal-value">${formatSalarioFull(occ.salario)}<span style="font-size:14px;color:var(--fg2)">/m\u00eas</span></div>
+    </div>
+    <div class="salary-card">
+      <div class="sal-label">Sal\u00e1rio de admiss\u00e3o (CAGED)</div>
+      <div class="sal-value">${formatSalarioFull(occ.salario_admissao)}<span style="font-size:14px;color:var(--fg2)">/m\u00eas</span></div>
+    </div>
+  </div>`;
+
+  // Risk assessment
+  let riskTitle, riskText, riskColor;
+  if (exp <= 3) {
+    riskTitle = "Risco baixo";
+    riskText = "Sua ocupa\u00e7\u00e3o tem baixa exposi\u00e7\u00e3o \u00e0 IA. As tarefas principais deste trabalho ainda s\u00e3o dif\u00edceis de automatizar com a tecnologia atual. Mesmo assim, vale acompanhar as evolu\u00e7\u00f5es tecnol\u00f3gicas e buscar oportunidades de usar IA como ferramenta auxiliar.";
+    riskColor = "var(--green)";
+  } else if (exp <= 5) {
+    riskTitle = "Risco moderado";
+    riskText = "A IA come\u00e7a a impactar partes do seu trabalho. Algumas tarefas rotineiras podem ser automatizadas, mas o n\u00facleo da ocupa\u00e7\u00e3o ainda requer habilidades humanas. Este \u00e9 o momento ideal para aprender ferramentas de IA e integr\u00e1-las ao seu fluxo de trabalho.";
+    riskColor = "var(--yellow)";
+  } else if (exp <= 7) {
+    riskTitle = "Risco alto";
+    riskText = "A IA est\u00e1 transformando significativamente esta ocupa\u00e7\u00e3o. Muitas tarefas j\u00e1 podem ser realizadas por sistemas automatizados. Profissionais que dominarem ferramentas de IA ter\u00e3o vantagem competitiva. Considere investir em habilidades complementares e especializa\u00e7\u00f5es que a IA n\u00e3o substitui facilmente.";
+    riskColor = "var(--red)";
+  } else {
+    riskTitle = "Risco muito alto";
+    riskText = "Esta ocupa\u00e7\u00e3o enfrenta automa\u00e7\u00e3o significativa pela IA. Grande parte das tarefas core podem ser realizadas por sistemas inteligentes. \u00c9 fundamental come\u00e7ar a planejar uma transi\u00e7\u00e3o de carreira, desenvolver novas habilidades e explorar ocupa\u00e7\u00f5es relacionadas com menor exposi\u00e7\u00e3o.";
+    riskColor = "var(--red)";
+  }
+
+  html += `<div class="risk-assessment" style="border-left:3px solid ${riskColor}">
+    <div class="risk-title" style="color:${riskColor}">${riskTitle}</div>
+    <div class="risk-text">${riskText}</div>
+  </div>`;
+
+  // Action cards
+  html += `<h3 style="font-size:16px;font-weight:600;margin-bottom:12px;">O que fazer?</h3>`;
+  html += `<div class="action-cards">`;
+  if (exp >= 5 && opo >= 5) {
+    html += `<div class="action-card">
+      <div class="action-title">Adote IA como ferramenta</div>
+      <div class="action-desc">Profissionais da sua \u00e1rea que dominam ferramentas de IA t\u00eam vantagem competitiva. A alta oportunidade indica que a IA pode amplificar sua produtividade.</div>
+      <div class="action-suggestion">Explore ferramentas de IA espec\u00edficas para sua \u00e1rea e invista em cursos pr\u00e1ticos.</div>
+    </div>`;
+  }
+  if (exp >= 6 && opo < 5) {
+    html += `<div class="action-card">
+      <div class="action-title">Considere uma transi\u00e7\u00e3o</div>
+      <div class="action-desc">Com alta exposi\u00e7\u00e3o e baixa oportunidade, esta ocupa\u00e7\u00e3o pode encolher. Veja abaixo ocupa\u00e7\u00f5es relacionadas com melhores perspectivas.</div>
+      <div class="action-suggestion">Avalie ocupa\u00e7\u00f5es do mesmo grupo com melhor pontua\u00e7\u00e3o de oportunidade.</div>
+    </div>`;
+  }
+  html += `<div class="action-card">
+    <div class="action-title">Desenvolva habilidades complementares</div>
+    <div class="action-desc">Habilidades que a IA n\u00e3o substitui facilmente: criatividade, empatia, lideran\u00e7a, negocia\u00e7\u00e3o, pensamento cr\u00edtico e gest\u00e3o de pessoas.</div>
+    <div class="action-suggestion">Invista em soft skills e em \u00e1reas que exigem julgamento humano complexo.</div>
+  </div>`;
+  html += `</div>`;
+
+  // Rationale
+  if (occ.exposicao_rationale) {
+    html += `<div class="rationale-box">
+      <h3>An\u00e1lise de exposi\u00e7\u00e3o \u00e0 IA</h3>
+      <p>${occ.exposicao_rationale}</p>
+    </div>`;
+  }
+  if (occ.vantagem_rationale) {
+    html += `<div class="rationale-box">
+      <h3>An\u00e1lise de vantagem com IA</h3>
+      <p>${occ.vantagem_rationale}</p>
+    </div>`;
+  }
+  if (occ.crescimento_rationale) {
+    html += `<div class="rationale-box">
+      <h3>An\u00e1lise de crescimento</h3>
+      <p>${occ.crescimento_rationale}</p>
+    </div>`;
+  }
+
+  // Similar occupations in same grande_grupo with better opportunity
+  const sameGroup = data.filter(d => d.grande_grupo_codigo === occ.grande_grupo_codigo && d.codigo !== occ.codigo && d.oportunidade != null);
+  const betterOps = sameGroup.filter(d => d.oportunidade > opo).sort((a, b) => b.oportunidade - a.oportunidade).slice(0, 5);
+  if (betterOps.length === 0) {
+    // Just show top 5 from same group
+    const top5 = sameGroup.sort((a, b) => (b.oportunidade || 0) - (a.oportunidade || 0)).slice(0, 5);
+    if (top5.length > 0) {
+      html += `<h3 style="font-size:16px;font-weight:600;margin:20px 0 12px;">Ocupa\u00e7\u00f5es do mesmo grupo</h3>`;
+      html += buildComparisonTable(top5, occ);
+    }
+  } else {
+    html += `<h3 style="font-size:16px;font-weight:600;margin:20px 0 12px;">Sugest\u00f5es de transi\u00e7\u00e3o (mesmo grupo, melhor oportunidade)</h3>`;
+    html += buildComparisonTable(betterOps, occ);
+  }
+
+  // Demographics
+  if (occ.demographics) {
+    const dem = occ.demographics;
+    const totalDem = (dem.total_feminino || 0) + (dem.total_masculino || 0);
+    if (totalDem > 0) {
+      html += `<h3 style="font-size:16px;font-weight:600;margin:20px 0 12px;">Demografia desta ocupa\u00e7\u00e3o</h3>`;
+      html += `<div class="card" style="margin-bottom:20px"><div class="demo-bars">`;
+      // Gender
+      const pctFem = (dem.total_feminino || 0) / totalDem * 100;
+      const pctMasc = (dem.total_masculino || 0) / totalDem * 100;
+      html += `<div class="demo-bar-section"><h4>G\u00eanero</h4>`;
+      html += `<div class="demo-bar-item"><span class="dbl">Feminino</span><div class="dbt"><div class="dbf" style="width:${pctFem}%;background:rgba(186,104,200,0.7)"></div></div><span class="dbv">${formatPct(pctFem)}</span></div>`;
+      html += `<div class="demo-bar-item"><span class="dbl">Masculino</span><div class="dbt"><div class="dbf" style="width:${pctMasc}%;background:rgba(66,165,245,0.7)"></div></div><span class="dbv">${formatPct(pctMasc)}</span></div>`;
+      html += `</div>`;
+      // Race
+      const totalRace = (dem.total_branca || 0) + (dem.total_negra || 0);
+      if (totalRace > 0) {
+        const pctBranca = (dem.total_branca || 0) / totalRace * 100;
+        const pctNegra = (dem.total_negra || 0) / totalRace * 100;
+        html += `<div class="demo-bar-section"><h4>Ra\u00e7a</h4>`;
+        html += `<div class="demo-bar-item"><span class="dbl">Branca</span><div class="dbt"><div class="dbf" style="width:${pctBranca}%;background:rgba(255,183,77,0.7)"></div></div><span class="dbv">${formatPct(pctBranca)}</span></div>`;
+        html += `<div class="demo-bar-item"><span class="dbl">Negra</span><div class="dbt"><div class="dbf" style="width:${pctNegra}%;background:rgba(129,199,132,0.7)"></div></div><span class="dbv">${formatPct(pctNegra)}</span></div>`;
+        html += `</div>`;
+      }
+      html += `</div></div>`;
+    }
+  }
+
+  content.innerHTML = html;
+}
+
+function buildComparisonTable(occs, current) {
+  let html = `<div class="ranking-table-wrap"><table class="comparison-table">
+    <thead><tr>
+      <th>Ocupa\u00e7\u00e3o</th><th>Sal\u00e1rio</th><th>Empregados</th><th>Exposi\u00e7\u00e3o</th><th>Oportunidade</th><th>Vantagem</th>
+    </tr></thead><tbody>`;
+  for (const o of occs) {
+    const salDiff = (o.salario && current.salario) ? o.salario - current.salario : null;
+    const salDiffStr = salDiff != null ? ` (${salDiff >= 0 ? '+' : ''}${formatSalario(salDiff)})` : '';
+    html += `<tr>
+      <td>${o.titulo}<br><span style="font-size:11px;color:var(--fg2)">${o.codigo}</span></td>
+      <td>${formatSalarioFull(o.salario)}<span style="font-size:11px;color:${salDiff >= 0 ? 'var(--green)' : 'var(--red)'}">${salDiffStr}</span></td>
+      <td>${formatNumber(o.empregados)}</td>
+      <td><span class="score-cell" style="background:${exposicaoColor(o.exposicao, 0.2)};color:${exposicaoColor(o.exposicao, 1)}">${o.exposicao != null ? o.exposicao : '\u2014'}</span></td>
+      <td><span class="score-cell" style="background:${oportunidadeColor(o.oportunidade, 0.2)};color:${oportunidadeColor(o.oportunidade, 1)}">${o.oportunidade != null ? o.oportunidade : '\u2014'}</span></td>
+      <td><span class="score-cell" style="background:${vantagemColor(o.vantagem, 0.2)};color:${vantagemColor(o.vantagem, 1)}">${o.vantagem != null ? o.vantagem : '\u2014'}</span></td>
+    </tr>`;
+  }
+  html += `</tbody></table></div>`;
+  return html;
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// VIEW 4: DEMOGRAPHICS
+// ══════════════════════════════════════════════════════════════════════════
+let demoInited = false;
+
+function initDemo() {
+  if (demoInited || !summaryData) return;
+  demoInited = true;
+
+  const dem = summaryData.demographics;
+  const totalWorkers = dem.total_feminino + dem.total_masculino;
+  const pctFem = dem.total_feminino / totalWorkers * 100;
+  const pctNegra = dem.total_negra / (dem.total_branca + dem.total_negra) * 100;
+
+  let html = `<div class="demo-summary">
+    <div class="demo-stat">
+      <div class="ds-label">Total de trabalhadores</div>
+      <div class="ds-value">${(totalWorkers / 1e6).toFixed(1).replace(".", ",")}M</div>
+      <div class="ds-sub">com dados demogr\u00e1ficos</div>
+    </div>
+    <div class="demo-stat">
+      <div class="ds-label">Feminino</div>
+      <div class="ds-value" style="color:rgba(186,104,200,1)">${formatPct(pctFem)}</div>
+      <div class="ds-sub">${formatNumber(dem.total_feminino)} trabalhadoras</div>
+    </div>
+    <div class="demo-stat">
+      <div class="ds-label">Popula\u00e7\u00e3o negra</div>
+      <div class="ds-value" style="color:rgba(129,199,132,1)">${formatPct(pctNegra)}</div>
+      <div class="ds-sub">${formatNumber(dem.total_negra)} trabalhadores (preta + parda)</div>
+    </div>
+  </div>`;
+
+  // Risk by gender and race
+  html += `<div class="demo-charts">
+    <div class="demo-chart-box">
+      <h3>Risco por G\u00eanero</h3>
+      <p style="font-size:12px;color:var(--fg2);margin-bottom:14px">% em ocupa\u00e7\u00f5es de alto risco (exposi\u00e7\u00e3o >= 6)</p>
+      <div class="demo-hbar">
+        <span class="dh-label">Feminino</span>
+        <div class="dh-track"><div class="dh-fill" style="width:${dem.pct_high_risk_feminino}%;background:rgba(186,104,200,0.7)"></div></div>
+        <span class="dh-val" style="color:rgba(186,104,200,1)">${formatPct(dem.pct_high_risk_feminino)}</span>
+      </div>
+      <div class="demo-hbar">
+        <span class="dh-label">Masculino</span>
+        <div class="dh-track"><div class="dh-fill" style="width:${dem.pct_high_risk_masculino}%;background:rgba(66,165,245,0.7)"></div></div>
+        <span class="dh-val" style="color:rgba(66,165,245,1)">${formatPct(dem.pct_high_risk_masculino)}</span>
+      </div>
+    </div>
+    <div class="demo-chart-box">
+      <h3>Risco por Ra\u00e7a</h3>
+      <p style="font-size:12px;color:var(--fg2);margin-bottom:14px">% em ocupa\u00e7\u00f5es de alto risco (exposi\u00e7\u00e3o >= 6)</p>
+      <div class="demo-hbar">
+        <span class="dh-label">Branca</span>
+        <div class="dh-track"><div class="dh-fill" style="width:${dem.pct_high_risk_branca}%;background:rgba(255,183,77,0.7)"></div></div>
+        <span class="dh-val" style="color:rgba(255,183,77,1)">${formatPct(dem.pct_high_risk_branca)}</span>
+      </div>
+      <div class="demo-hbar">
+        <span class="dh-label">Negra</span>
+        <div class="dh-track"><div class="dh-fill" style="width:${dem.pct_high_risk_negra}%;background:rgba(129,199,132,0.7)"></div></div>
+        <span class="dh-val" style="color:rgba(129,199,132,1)">${formatPct(dem.pct_high_risk_negra)}</span>
+      </div>
+    </div>
+  </div>`;
+
+  // Top 10 at-risk occupations for women and Black workers
+  const withDem = data.filter(d => d.demographics && d.exposicao != null && d.exposicao >= 6);
+
+  // For women: highest proportion of female workers in high-risk occupations
+  const womenRisk = withDem
+    .filter(d => d.demographics.total_feminino > 0)
+    .map(d => ({ ...d, pctFem: d.demographics.total_feminino / (d.demographics.total_feminino + d.demographics.total_masculino) * 100, femWorkers: d.demographics.total_feminino }))
+    .sort((a, b) => b.femWorkers - a.femWorkers)
+    .slice(0, 10);
+
+  html += `<div class="demo-table-section"><h3>Ocupa\u00e7\u00f5es de alto risco com mais mulheres</h3>`;
+  html += `<div class="ranking-table-wrap"><table class="comparison-table">
+    <thead><tr><th>Ocupa\u00e7\u00e3o</th><th>Exposi\u00e7\u00e3o</th><th>Mulheres</th><th>% Fem.</th><th>Sal\u00e1rio</th></tr></thead><tbody>`;
+  for (const o of womenRisk) {
+    html += `<tr><td>${o.titulo}</td>
+      <td><span class="score-cell" style="background:${exposicaoColor(o.exposicao, 0.2)};color:${exposicaoColor(o.exposicao, 1)}">${o.exposicao}</span></td>
+      <td>${formatNumber(o.femWorkers)}</td><td>${formatPct(o.pctFem)}</td><td>${formatSalarioFull(o.salario)}</td></tr>`;
+  }
+  html += `</tbody></table></div></div>`;
+
+  // For Black workers
+  const blackRisk = withDem
+    .filter(d => d.demographics.total_negra > 0)
+    .map(d => ({ ...d, pctNegra: d.demographics.total_negra / (d.demographics.total_branca + d.demographics.total_negra) * 100, negraWorkers: d.demographics.total_negra }))
+    .sort((a, b) => b.negraWorkers - a.negraWorkers)
+    .slice(0, 10);
+
+  html += `<div class="demo-table-section" style="margin-top:28px"><h3>Ocupa\u00e7\u00f5es de alto risco com mais trabalhadores negros</h3>`;
+  html += `<div class="ranking-table-wrap"><table class="comparison-table">
+    <thead><tr><th>Ocupa\u00e7\u00e3o</th><th>Exposi\u00e7\u00e3o</th><th>Trab. Negros</th><th>% Negra</th><th>Sal\u00e1rio</th></tr></thead><tbody>`;
+  for (const o of blackRisk) {
+    html += `<tr><td>${o.titulo}</td>
+      <td><span class="score-cell" style="background:${exposicaoColor(o.exposicao, 0.2)};color:${exposicaoColor(o.exposicao, 1)}">${o.exposicao}</span></td>
+      <td>${formatNumber(o.negraWorkers)}</td><td>${formatPct(o.pctNegra)}</td><td>${formatSalarioFull(o.salario)}</td></tr>`;
+  }
+  html += `</tbody></table></div></div>`;
+
+  document.getElementById("demoContent").innerHTML = html;
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// VIEW 5: REGIONAL MAP
+// ══════════════════════════════════════════════════════════════════════════
+let regionalInited = false;
+let regionalSort = "exposicao";
+
+function initRegional() {
+  if (!summaryData) return;
+  if (!regionalInited) {
+    regionalInited = true;
+    document.getElementById("regionalControls").addEventListener("click", function(e) {
+      const btn = e.target.closest("button");
+      if (!btn || !btn.dataset.sort) return;
+      regionalSort = btn.dataset.sort;
+      this.querySelectorAll("button").forEach(b => b.classList.toggle("active", b.dataset.sort === regionalSort));
+      renderRegional();
+    });
+    document.getElementById("stateDetailClose").addEventListener("click", function() {
+      document.getElementById("stateDetail").classList.remove("open");
+    });
+  }
+  renderRegional();
+}
+
+function renderRegional() {
+  const porUf = summaryData.por_uf;
+  const ufCodes = summaryData.uf_codes;
+  let states = Object.keys(porUf).map(code => ({
+    code, abbr: ufCodes[code] || code, ...porUf[code]
+  }));
+
+  if (regionalSort === "exposicao") states.sort((a, b) => b.avg_exposicao - a.avg_exposicao);
+  else if (regionalSort === "workers") states.sort((a, b) => b.total_workers - a.total_workers);
+  else if (regionalSort === "salary") states.sort((a, b) => b.avg_salary - a.avg_salary);
+
+  const grid = document.getElementById("stateGrid");
+  grid.innerHTML = states.map(s => {
+    const expColor = exposicaoColor(s.avg_exposicao, 1);
+    return `<div class="state-card" data-code="${s.code}">
+      <div class="sc-abbr" style="color:${expColor}">${s.abbr}</div>
+      <div class="sc-row"><span>Trabalhadores</span><span class="sc-val">${formatNumber(s.total_workers)}</span></div>
+      <div class="sc-row"><span>Sal\u00e1rio m\u00e9dio</span><span class="sc-val">${formatSalario(s.avg_salary)}</span></div>
+      <div class="sc-row"><span>Exposi\u00e7\u00e3o m\u00e9dia</span><span class="sc-val" style="color:${expColor}">${s.avg_exposicao.toFixed(1).replace(".",",")}</span></div>
+    </div>`;
+  }).join("");
+
+  grid.addEventListener("click", function(e) {
+    const card = e.target.closest(".state-card");
+    if (!card) return;
+    const code = card.dataset.code;
+    showStateDetail(code);
+  });
+}
+
+const UF_NAMES = {AC:"Acre",AL:"Alagoas",AP:"Amap\u00e1",AM:"Amazonas",BA:"Bahia",CE:"Cear\u00e1",DF:"Distrito Federal",ES:"Esp\u00edrito Santo",GO:"Goi\u00e1s",MA:"Maranh\u00e3o",MT:"Mato Grosso",MS:"Mato Grosso do Sul",MG:"Minas Gerais",PA:"Par\u00e1",PB:"Para\u00edba",PR:"Paran\u00e1",PE:"Pernambuco",PI:"Piau\u00ed",RJ:"Rio de Janeiro",RN:"Rio Grande do Norte",RS:"Rio Grande do Sul",RO:"Rond\u00f4nia",RR:"Roraima",SC:"Santa Catarina",SP:"S\u00e3o Paulo",SE:"Sergipe",TO:"Tocantins"};
+
+function showStateDetail(code) {
+  const s = summaryData.por_uf[code];
+  const abbr = summaryData.uf_codes[code] || code;
+  const detail = document.getElementById("stateDetail");
+  document.getElementById("stateDetailTitle").textContent = abbr + " \u2014 " + (UF_NAMES[abbr] || abbr);
+
+  let html = `<div class="metric-cards" style="margin-bottom:16px">
+    <div class="metric-card"><div class="metric-label">Trabalhadores</div><div class="metric-value">${formatNumber(s.total_workers)}</div></div>
+    <div class="metric-card"><div class="metric-label">Sal\u00e1rio m\u00e9dio</div><div class="metric-value">${formatSalario(s.avg_salary)}</div></div>
+    <div class="metric-card"><div class="metric-label">Exposi\u00e7\u00e3o m\u00e9dia</div><div class="metric-value" style="color:${exposicaoColor(s.avg_exposicao,1)}">${s.avg_exposicao.toFixed(1).replace(".",",")}</div></div>
+  </div>`;
+
+  if (s.top_occupations && s.top_occupations.length > 0) {
+    html += `<h4 style="font-size:14px;font-weight:600;margin-bottom:10px">Principais ocupa\u00e7\u00f5es</h4>`;
+    html += `<div class="ranking-table-wrap"><table class="comparison-table">
+      <thead><tr><th>Ocupa\u00e7\u00e3o</th><th>Trabalhadores</th></tr></thead><tbody>`;
+    for (const o of s.top_occupations) {
+      html += `<tr><td>${o.titulo}</td><td>${formatNumber(o.workers)}</td></tr>`;
+    }
+    html += `</tbody></table></div>`;
+  }
+
+  document.getElementById("stateDetailContent").innerHTML = html;
+  detail.classList.add("open");
+  detail.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// VIEW 6: RANKING
+// ══════════════════════════════════════════════════════════════════════════
+let rankingInited = false;
+let rankingSortKey = "empregados";
+let rankingSortAsc = false;
+let rankingFilter = "";
+let rankingPage = 0;
+const ROWS_PER_PAGE = 50;
+
+const RANKING_COLS = [
+  { key: "codigo", label: "C\u00f3digo", fmt: v => v || "\u2014" },
+  { key: "titulo", label: "Ocupa\u00e7\u00e3o", fmt: v => v || "\u2014" },
+  { key: "empregados", label: "Empregados", fmt: v => formatNumber(v) },
+  { key: "salario", label: "Sal\u00e1rio", fmt: v => formatSalarioFull(v) },
+  { key: "exposicao", label: "Exposi\u00e7\u00e3o", fmt: v => v != null ? v : "\u2014", color: (v) => v != null ? { bg: exposicaoColor(v, 0.15), fg: exposicaoColor(v, 1) } : null },
+  { key: "vantagem", label: "Vantagem", fmt: v => v != null ? v : "\u2014", color: (v) => v != null ? { bg: vantagemColor(v, 0.15), fg: vantagemColor(v, 1) } : null },
+  { key: "crescimento", label: "Crescimento", fmt: v => v != null ? v : "\u2014", color: (v) => v != null ? { bg: crescimentoColor(v, 0.15), fg: crescimentoColor(v, 1) } : null },
+  { key: "oportunidade", label: "Oportunidade", fmt: v => v != null ? v : "\u2014", color: (v) => v != null ? { bg: oportunidadeColor(v, 0.15), fg: oportunidadeColor(v, 1) } : null },
+  { key: "escolaridade", label: "Escolaridade", fmt: v => EDU_SHORT[v] || v || "\u2014" },
+  { key: "saldo", label: "Saldo", fmt: v => formatSaldo(v) },
+];
+
+function initRanking() {
+  if (data.length === 0) return;
+  if (!rankingInited) {
+    rankingInited = true;
+    // Build header
+    const head = document.getElementById("rankingHead");
+    head.innerHTML = RANKING_COLS.map(c =>
+      `<th data-key="${c.key}">${c.label}<span class="sort-arrow"></span></th>`
+    ).join("");
+    head.addEventListener("click", function(e) {
+      const th = e.target.closest("th");
+      if (!th) return;
+      const key = th.dataset.key;
+      if (rankingSortKey === key) rankingSortAsc = !rankingSortAsc;
+      else { rankingSortKey = key; rankingSortAsc = key === "titulo" || key === "codigo"; }
+      rankingPage = 0;
+      renderRanking();
+    });
+    document.getElementById("rankingSearch").addEventListener("input", function() {
+      rankingFilter = this.value.trim();
+      rankingPage = 0;
+      renderRanking();
+    });
+  }
+  renderRanking();
+}
+
+function renderRanking() {
+  let filtered = data;
+  if (rankingFilter.length >= 2) {
+    filtered = data.filter(d => fuzzyMatch(rankingFilter, d.titulo) || fuzzyMatch(rankingFilter, d.codigo));
+  }
+
+  // Sort
+  const sorted = [...filtered].sort((a, b) => {
+    let va = a[rankingSortKey], vb = b[rankingSortKey];
+    if (va == null && vb == null) return 0;
+    if (va == null) return 1;
+    if (vb == null) return -1;
+    if (typeof va === "string") return rankingSortAsc ? va.localeCompare(vb) : vb.localeCompare(va);
+    return rankingSortAsc ? va - vb : vb - va;
+  });
+
+  // Pagination
+  const totalPages = Math.ceil(sorted.length / ROWS_PER_PAGE);
+  rankingPage = Math.min(rankingPage, totalPages - 1);
+  if (rankingPage < 0) rankingPage = 0;
+  const start = rankingPage * ROWS_PER_PAGE;
+  const page = sorted.slice(start, start + ROWS_PER_PAGE);
+
+  // Update header sort indicators
+  document.querySelectorAll("#rankingHead th").forEach(th => {
+    const isActive = th.dataset.key === rankingSortKey;
+    th.classList.toggle("sorted", isActive);
+    th.querySelector(".sort-arrow").textContent = isActive ? (rankingSortAsc ? " \u25B2" : " \u25BC") : "";
+  });
+
+  // Render body
+  const body = document.getElementById("rankingBody");
+  body.innerHTML = page.map(d => {
+    return `<tr>${RANKING_COLS.map(c => {
+      const v = d[c.key];
+      const colorInfo = c.color ? c.color(v) : null;
+      if (colorInfo) {
+        return `<td><span class="score-cell" style="background:${colorInfo.bg};color:${colorInfo.fg}">${c.fmt(v)}</span></td>`;
+      }
+      return `<td>${c.fmt(v)}</td>`;
+    }).join("")}</tr>`;
+  }).join("");
+
+  // Pagination
+  const pag = document.getElementById("rankingPagination");
+  if (totalPages <= 1) { pag.innerHTML = `<span>${sorted.length} ocupa\u00e7\u00f5es</span>`; return; }
+  let pagHtml = `<button ${rankingPage === 0 ? 'disabled' : ''} data-page="${rankingPage - 1}">&laquo; Anterior</button>`;
+  pagHtml += `<span>P\u00e1gina ${rankingPage + 1} de ${totalPages} (${sorted.length} ocup.)</span>`;
+  pagHtml += `<button ${rankingPage >= totalPages - 1 ? 'disabled' : ''} data-page="${rankingPage + 1}">Pr\u00f3xima &raquo;</button>`;
+  pag.innerHTML = pagHtml;
+  pag.querySelectorAll("button").forEach(btn => {
+    btn.addEventListener("click", function() {
+      if (this.disabled) return;
+      rankingPage = parseInt(this.dataset.page);
+      renderRanking();
+      document.getElementById("rankingTable").scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// VIEW 7: PERGUNTAR (Natural Language Query)
+// ══════════════════════════════════════════════════════════════════════════
+let perguntarInited = false;
+
+const PERGUNTAR_CHIPS = [
+  "vagas femininas em risco",
+  "mulheres negras em risco",
+  "melhores oportunidades n\u00edvel m\u00e9dio",
+  "top 10 melhores sal\u00e1rios",
+  "ocupa\u00e7\u00f5es seguras com boa vantagem",
+  "estados com mais risco",
+  "crescimento por setor",
+  "empregos em risco em SP",
+  "quantos empregos est\u00e3o em risco",
+  "sal\u00e1rio acima de 5000"
+];
+
+const UF_ABBR_TO_CODE = {};
+const UF_NAME_TO_CODE = {};
+
+function buildUfMaps() {
+  if (!summaryData || !summaryData.uf_codes) return;
+  const ufCodes = summaryData.uf_codes;
+  const porUf = summaryData.por_uf;
+  for (const [code, abbr] of Object.entries(ufCodes)) {
+    UF_ABBR_TO_CODE[abbr.toLowerCase()] = code;
+    if (porUf[code] && porUf[code].nome) {
+      UF_NAME_TO_CODE[porUf[code].nome.toLowerCase()] = code;
+    }
+  }
+}
+
+function parseQuery(text) {
+  const q = text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  const orig = text.toLowerCase();
+  const intent = {
+    filters: [],
+    sort: null,
+    aggregate: null,
+    aggregateField: null,
+    demographic: null,
+    raceDemographic: null,
+    limit: null,
+    groupBy: null,
+    raw: text
+  };
+
+  // Demographics — gender
+  if (/\b(feminina?s?|mulher(es)?|mae|maes)\b/.test(q)) intent.demographic = "feminino";
+  else if (/\b(masculina?s?|hom(em|ens)|pai|pais)\b/.test(q)) intent.demographic = "masculino";
+
+  // Demographics — race (preserves any gender already matched)
+  if (/\b(pret[oa]s?|negr[oa]s?|afro)\b/.test(q)) intent.raceDemographic = "negra";
+  else if (/\b(branc[oa]s?)\b/.test(q)) intent.raceDemographic = "branca";
+  else if (/\b(pard[oa]s?|mestic[oa]s?)\b/.test(q)) intent.raceDemographic = "parda";
+
+  // Risk / exposure filters
+  if (/\b(em risco|risco alto|exposicao alta|alto risco|mais expostas?|ameacad[oa]s?|vulnera)/i.test(q)) {
+    intent.filters.push({ field: "exposicao", op: ">=", value: 7 });
+  } else if (/\b(segur[oa]s?|risco baixo|protegid[oa]s?|baixo risco|menos risco|pouco risco)\b/.test(q)) {
+    intent.filters.push({ field: "exposicao", op: "<=", value: 3 });
+  }
+
+  // Vantagem (advantage with AI) filters
+  if (/\b(boa vantagem|alta vantagem|vantagem alta|beneficiad[oa]s?|ganham com ia)\b/.test(q)) {
+    intent.filters.push({ field: "vantagem", op: ">=", value: 7 });
+  } else if (/\b(sem vantagem|baixa vantagem|vantagem baixa)\b/.test(q)) {
+    intent.filters.push({ field: "vantagem", op: "<=", value: 3 });
+  }
+
+  // Opportunity filters
+  if (/\b(alta oportunidade|muita oportunidade|boas? oportunidade)\b/.test(q)) {
+    intent.filters.push({ field: "oportunidade", op: ">=", value: 7 });
+  }
+
+  // Salary range filters
+  const salaryAbove = q.match(/\b(?:salario|remuneracao|ganho|renda)\s*(?:acima|maior|mais)\s*(?:de|que)\s*(\d[\d.]*)\b/);
+  const salaryBelow = q.match(/\b(?:salario|remuneracao|ganho|renda)\s*(?:abaixo|menor|menos)\s*(?:de|que)\s*(\d[\d.]*)\b/);
+  const salaryGeneric = q.match(/\b(?:acima|maior|mais)\s*(?:de|que)\s*(?:r\$?\s*)?(\d[\d.]*)\b/);
+  if (salaryAbove) {
+    intent.filters.push({ field: "salario", op: ">=", value: parseFloat(salaryAbove[1].replace(/\./g, "")) });
+  } else if (salaryBelow) {
+    intent.filters.push({ field: "salario", op: "<=", value: parseFloat(salaryBelow[1].replace(/\./g, "")) });
+  } else if (salaryGeneric && !intent.filters.some(f => f.field === "exposicao")) {
+    intent.filters.push({ field: "salario", op: ">=", value: parseFloat(salaryGeneric[1].replace(/\./g, "")) });
+  }
+
+  // Education filters
+  if (/\b(doutorado|doutores?)\b/.test(q)) intent.filters.push({ field: "escolaridade", op: "==", value: "Doutorado" });
+  else if (/\b(mestrado|mestres?)\b/.test(q)) intent.filters.push({ field: "escolaridade", op: "==", value: "Mestrado" });
+  else if (/\b(superior|faculdade|graduacao|universitario|diploma)\b/.test(q)) intent.filters.push({ field: "escolaridade", op: "==", value: "Superior Completo" });
+  else if (/\b(nivel medio|ensino medio|medio completo|segundo grau)\b/.test(q)) intent.filters.push({ field: "escolaridade", op: "==", value: "M\u00e9dio Completo" });
+  else if (/\b(fundamental|primeiro grau)\b/.test(q)) intent.filters.push({ field: "escolaridade", op: "==", value: "6\u00aa a 9\u00aa Fundamental" });
+
+  // UF filter
+  for (const [name, code] of Object.entries(UF_NAME_TO_CODE)) {
+    if (orig.includes(name)) {
+      intent.filters.push({ field: "uf", op: "==", value: code });
+      break;
+    }
+  }
+  if (!intent.filters.some(f => f.field === "uf")) {
+    for (const [abbr, code] of Object.entries(UF_ABBR_TO_CODE)) {
+      const re = new RegExp("\\b" + abbr + "\\b", "i");
+      if (re.test(orig)) {
+        intent.filters.push({ field: "uf", op: "==", value: code });
+        break;
+      }
+    }
+  }
+
+  // Sort — expanded synonyms
+  if (/\b(salario|paga bem|remuneracao|melhores salarios|paga mais|mais pagam|melhor pag[oa])\b/.test(q)) {
+    intent.sort = { field: "salario", direction: "desc" };
+  } else if (/\b(oportunidade|entrada|futuro|pontos de entrada|potencial)\b/.test(q)) {
+    intent.sort = { field: "oportunidade", direction: "desc" };
+  } else if (/\b(vantagem)\b/.test(q) && !intent.filters.some(f => f.field === "vantagem")) {
+    intent.sort = { field: "vantagem", direction: "desc" };
+  } else if (/\b(crescendo|crescimento|contratando|mais contratam|admissoes)\b/.test(q)) {
+    intent.sort = { field: "saldo", direction: "desc" };
+  } else if (/\b(diminuindo|perdendo|declinio|demitindo|encolhendo)\b/.test(q)) {
+    intent.sort = { field: "saldo", direction: "asc" };
+  } else if (/\b(exposicao|mais risco|mais expostas?)\b/.test(q)) {
+    intent.sort = { field: "exposicao", direction: "desc" };
+  }
+
+  // Aggregation
+  if (/\b(quantos?|quantas?|numero|total de|total)\b/.test(q)) {
+    intent.aggregate = "sum";
+    intent.aggregateField = "empregados";
+  }
+
+  // Limit / top / bottom
+  const numMatch = q.match(/\b(top|melhores?|maiores?|piores?|menores?|principais)\s*(\d+)?\b/);
+  if (numMatch) {
+    intent.limit = numMatch[2] ? parseInt(numMatch[2]) : 10;
+    if (/\b(piores?|menores?)\b/.test(q)) {
+      if (!intent.sort) intent.sort = { field: "exposicao", direction: "desc" };
+    } else {
+      if (!intent.sort) intent.sort = { field: "oportunidade", direction: "desc" };
+    }
+  }
+
+  // GroupBy
+  if (/\b(por setor|por grupo|por area|setores)\b/.test(q)) intent.groupBy = "grande_grupo";
+  else if (/\b(por escolaridade|por nivel|por educacao|por formacao)\b/.test(q)) intent.groupBy = "escolaridade";
+  else if (/\b(por estado|por uf|por regiao|estados)\b/.test(q)) intent.groupBy = "uf";
+
+  // Infer aggregate for demographic + risk/filter combinations
+  if ((intent.demographic || intent.raceDemographic) && intent.filters.some(f => f.field === "exposicao") && !intent.aggregate) {
+    intent.aggregate = "sum";
+    intent.aggregateField = "empregados";
+  }
+
+  // Default limit for list results
+  if (!intent.aggregate && !intent.groupBy && !intent.limit) {
+    intent.limit = 20;
+  }
+
+  // Default sort
+  if (!intent.sort && !intent.aggregate && !intent.groupBy) {
+    if (intent.filters.some(f => f.field === "exposicao" && f.op === ">=")) {
+      intent.sort = { field: "empregados", direction: "desc" };
+    } else if (intent.filters.some(f => f.field === "salario")) {
+      intent.sort = { field: "salario", direction: "desc" };
+    } else {
+      intent.sort = { field: "empregados", direction: "desc" };
+    }
+  }
+
+  return intent;
+}
+
+function executeQuery(intent, allData) {
+  let items = allData.filter(d => d.empregados != null && d.empregados > 0);
+
+  // Apply filters (except UF which needs special handling)
+  for (const f of intent.filters) {
+    if (f.field === "uf") continue; // handled separately
+    if (f.field === "escolaridade") {
+      items = items.filter(d => d.escolaridade === f.value);
+    } else {
+      items = items.filter(d => {
+        const v = d[f.field];
+        if (v == null) return false;
+        if (f.op === ">=") return v >= f.value;
+        if (f.op === "<=") return v <= f.value;
+        if (f.op === "==") return v === f.value;
+        return true;
+      });
+    }
+  }
+
+  const ufFilter = intent.filters.find(f => f.field === "uf");
+
+  // Demographic + race queries using summary data
+  if ((intent.demographic || intent.raceDemographic) && intent.aggregate === "sum") {
+    return executeDemographicQuery(intent, items, ufFilter);
+  }
+
+  // GroupBy
+  if (intent.groupBy) {
+    return executeGroupBy(intent, items);
+  }
+
+  // UF filter for occupation list — filter to occupations present in that state
+  if (ufFilter) {
+    items = items.filter(d => d.por_uf && d.por_uf[ufFilter.value]);
+  }
+
+  // Sort
+  if (intent.sort) {
+    const { field, direction } = intent.sort;
+    items.sort((a, b) => {
+      const av = a[field] != null ? a[field] : -Infinity;
+      const bv = b[field] != null ? b[field] : -Infinity;
+      return direction === "desc" ? bv - av : av - bv;
+    });
+  }
+
+  // Aggregate
+  if (intent.aggregate === "sum" && intent.aggregateField) {
+    const total = items.reduce((s, d) => s + (d[intent.aggregateField] || 0), 0);
+    const allTotal = allData.reduce((s, d) => s + (d[intent.aggregateField] || 0), 0);
+    return {
+      type: "aggregate",
+      value: total,
+      pct: allTotal > 0 ? total / allTotal * 100 : 0,
+      count: items.length,
+      label: describeIntent(intent),
+      items: items.slice(0, 10),
+      intent: intent
+    };
+  }
+
+  if (intent.aggregate === "count") {
+    return {
+      type: "aggregate",
+      value: items.length,
+      label: describeIntent(intent),
+      items: items.slice(0, 10),
+      intent: intent
+    };
+  }
+
+  // List result
+  if (intent.limit) items = items.slice(0, intent.limit);
+  return {
+    type: "list",
+    items: items,
+    label: describeIntent(intent),
+    intent: intent
+  };
+}
+
+function executeDemographicQuery(intent, filteredItems, ufFilter) {
+  // Calculate demographic totals from filtered occupations
+  let demTotal = 0;
+  let demCompare = 0;
+  let demLabel = "";
+  let compareLabel = "";
+  const topItems = [];
+
+  if (intent.raceDemographic && !intent.demographic) {
+    // Race query: "vagas pretas em risco"
+    const raceField = "total_" + intent.raceDemographic;
+    for (const d of filteredItems) {
+      if (!d.demographics) continue;
+      const val = d.demographics[raceField] || 0;
+      if (val > 0) {
+        demTotal += val;
+        topItems.push({ ...d, demCount: val });
+      }
+    }
+    demLabel = intent.raceDemographic === "negra" ? "trabalhadores negros" :
+               intent.raceDemographic === "preta" ? "trabalhadores pretos" :
+               intent.raceDemographic === "parda" ? "trabalhadores pardos" :
+               "trabalhadores brancos";
+
+    // Compare with other race
+    const compField = intent.raceDemographic === "branca" ? "total_negra" : "total_branca";
+    compareLabel = intent.raceDemographic === "branca" ? "negros" : "brancos";
+    for (const d of filteredItems) {
+      if (!d.demographics) continue;
+      demCompare += d.demographics[compField] || 0;
+    }
+  } else if (intent.raceDemographic && intent.demographic) {
+    // Combined: "mulheres negras em risco" — approximate via both filters
+    const genderField = "total_" + intent.demographic;
+    const raceField = "total_" + intent.raceDemographic;
+    for (const d of filteredItems) {
+      if (!d.demographics) continue;
+      const genderVal = d.demographics[genderField] || 0;
+      const raceVal = d.demographics[raceField] || 0;
+      const totalDem = (d.demographics.total_feminino || 0) + (d.demographics.total_masculino || 0);
+      if (totalDem > 0 && genderVal > 0 && raceVal > 0) {
+        // Approximate intersection: P(gender) * P(race) * total
+        const approx = Math.round(genderVal / totalDem * raceVal);
+        demTotal += approx;
+        topItems.push({ ...d, demCount: approx });
+      }
+    }
+    const genderLabel = intent.demographic === "feminino" ? "trabalhadoras" : "trabalhadores";
+    const raceLabel = intent.raceDemographic === "negra" ? "negras" : intent.raceDemographic === "preta" ? "pretas" : intent.raceDemographic === "branca" ? "brancas" : "pardas";
+    demLabel = genderLabel + " " + raceLabel;
+  } else {
+    // Gender only
+    const genderField = "total_" + intent.demographic;
+    const compGenderField = intent.demographic === "feminino" ? "total_masculino" : "total_feminino";
+    for (const d of filteredItems) {
+      if (!d.demographics) continue;
+      const val = d.demographics[genderField] || 0;
+      if (val > 0) {
+        demTotal += val;
+        topItems.push({ ...d, demCount: val });
+      }
+      demCompare += d.demographics[compGenderField] || 0;
+    }
+    demLabel = intent.demographic === "feminino" ? "trabalhadoras" : "trabalhadores";
+    compareLabel = intent.demographic === "feminino" ? "homens" : "mulheres";
+  }
+
+  topItems.sort((a, b) => b.demCount - a.demCount);
+
+  // Calculate percentages using summary data
+  const totalWorkers = summaryData.demographics.total_feminino + summaryData.demographics.total_masculino;
+  const demBase = intent.demographic === "feminino" ? summaryData.demographics.total_feminino :
+                  intent.demographic === "masculino" ? summaryData.demographics.total_masculino :
+                  intent.raceDemographic === "negra" ? summaryData.demographics.total_negra :
+                  intent.raceDemographic === "preta" ? summaryData.demographics.total_preta :
+                  intent.raceDemographic === "branca" ? summaryData.demographics.total_branca :
+                  totalWorkers;
+  const pct = demBase > 0 ? demTotal / demBase * 100 : 0;
+
+  const riskLabel = intent.filters.some(f => f.field === "exposicao" && f.op === ">=") ? " em ocupa\u00e7\u00f5es de alto risco" : "";
+
+  return {
+    type: "demographic",
+    value: demTotal,
+    pct: pct,
+    compareValue: demCompare,
+    comparePct: demCompare > 0 && demBase > 0 ? demCompare / (intent.demographic === "feminino" ? summaryData.demographics.total_masculino : intent.demographic === "masculino" ? summaryData.demographics.total_feminino : summaryData.demographics.total_branca) * 100 : 0,
+    compareLabel: compareLabel,
+    label: demLabel + riskLabel,
+    items: topItems.slice(0, 10),
+    intent: intent
+  };
+}
+
+function executeGroupBy(intent, items) {
+  const groups = {};
+  const groupField = intent.groupBy;
+
+  if (groupField === "uf") {
+    // Group by state using por_uf data
+    const ufCodes = summaryData.uf_codes;
+    const porUf = summaryData.por_uf;
+    const rows = Object.entries(porUf).map(([code, s]) => ({
+      label: (s.nome || ufCodes[code] || code),
+      abbr: ufCodes[code] || code,
+      total: s.total_workers,
+      avgExposicao: s.avg_exposicao,
+      avgSalario: s.avg_salary
+    }));
+    if (intent.sort) {
+      const sf = intent.sort.field;
+      const dir = intent.sort.direction === "desc" ? -1 : 1;
+      rows.sort((a, b) => {
+        const av = sf === "exposicao" ? a.avgExposicao : sf === "salario" ? a.avgSalario : a.total;
+        const bv = sf === "exposicao" ? b.avgExposicao : sf === "salario" ? b.avgSalario : b.total;
+        return (bv - av) * dir;
+      });
+    } else {
+      rows.sort((a, b) => b.avgExposicao - a.avgExposicao);
+    }
+    return { type: "grouped", groups: rows, groupLabel: "Estado", label: describeIntent(intent), intent: intent };
+  }
+
+  for (const d of items) {
+    const key = d[groupField] || "Outros";
+    if (!groups[key]) groups[key] = { label: key, total: 0, count: 0, sumExposicao: 0, sumSalario: 0, sumSaldo: 0 };
+    groups[key].total += d.empregados || 0;
+    groups[key].count++;
+    groups[key].sumExposicao += (d.exposicao || 0) * (d.empregados || 0);
+    groups[key].sumSalario += (d.salario || 0) * (d.empregados || 0);
+    groups[key].sumSaldo += d.saldo || 0;
+  }
+
+  let rows = Object.values(groups).map(g => ({
+    ...g,
+    avgExposicao: g.total > 0 ? g.sumExposicao / g.total : 0,
+    avgSalario: g.total > 0 ? g.sumSalario / g.total : 0
+  }));
+
+  if (intent.sort) {
+    const sf = intent.sort.field;
+    const dir = intent.sort.direction === "desc" ? -1 : 1;
+    rows.sort((a, b) => {
+      const av = sf === "saldo" ? a.sumSaldo : sf === "salario" ? a.avgSalario : sf === "exposicao" ? a.avgExposicao : a.total;
+      const bv = sf === "saldo" ? b.sumSaldo : sf === "salario" ? b.avgSalario : sf === "exposicao" ? b.avgExposicao : b.total;
+      return (bv - av) * dir;
+    });
+  } else {
+    rows.sort((a, b) => b.total - a.total);
+  }
+
+  return { type: "grouped", groups: rows, groupLabel: groupField === "grande_grupo" ? "Setor" : "Escolaridade", label: describeIntent(intent), intent: intent };
+}
+
+function describeIntent(intent) {
+  const parts = [];
+  if (intent.demographic) parts.push(intent.demographic === "feminino" ? "femininas" : "masculinas");
+  if (intent.raceDemographic) {
+    const rl = { negra: "negras", preta: "pretas", branca: "brancas", parda: "pardas" };
+    parts.push(rl[intent.raceDemographic] || intent.raceDemographic);
+  }
+  for (const f of intent.filters) {
+    if (f.field === "exposicao" && f.op === ">=") parts.push("em risco (exposi\u00e7\u00e3o \u2265 " + f.value + ")");
+    else if (f.field === "exposicao" && f.op === "<=") parts.push("seguras (exposi\u00e7\u00e3o \u2264 " + f.value + ")");
+    else if (f.field === "vantagem" && f.op === ">=") parts.push("com vantagem IA (\u2265 " + f.value + ")");
+    else if (f.field === "vantagem" && f.op === "<=") parts.push("sem vantagem IA (\u2264 " + f.value + ")");
+    else if (f.field === "oportunidade" && f.op === ">=") parts.push("alta oportunidade (\u2265 " + f.value + ")");
+    else if (f.field === "salario" && f.op === ">=") parts.push("sal\u00e1rio \u2265 R$" + f.value.toLocaleString("pt-BR"));
+    else if (f.field === "salario" && f.op === "<=") parts.push("sal\u00e1rio \u2264 R$" + f.value.toLocaleString("pt-BR"));
+    else if (f.field === "escolaridade") parts.push("escolaridade: " + f.value);
+    else if (f.field === "uf") {
+      const abbr = summaryData.uf_codes[f.value] || f.value;
+      const nome = summaryData.por_uf[f.value]?.nome || abbr;
+      parts.push("em " + nome);
+    }
+  }
+  if (intent.sort) parts.push("ordenado por " + intent.sort.field + " " + (intent.sort.direction === "desc" ? "\u2193" : "\u2191"));
+  if (intent.limit) parts.push("top " + intent.limit);
+  if (intent.groupBy) parts.push("agrupado por " + intent.groupBy);
+  if (intent.aggregate) parts.push("agregado: " + intent.aggregate);
+  return parts.join(" \u00b7 ");
+}
+
+function renderResult(result) {
+  const container = document.getElementById("perguntarResult");
+  if (!result) { container.innerHTML = ""; return; }
+
+  // Empty results
+  if ((result.type === "list" && (!result.items || result.items.length === 0)) ||
+      (result.type === "aggregate" && result.value === 0) ||
+      (result.type === "grouped" && (!result.groups || result.groups.length === 0))) {
+    container.innerHTML = `<div class="card" style="text-align:center;padding:32px 24px">
+      <div style="font-size:18px;font-weight:600;margin-bottom:8px">Nenhum resultado encontrado</div>
+      <div style="font-size:14px;color:var(--fg2)">Tente reformular sua pergunta ou usar termos diferentes.<br>Exemplos: "vagas em risco", "melhores sal\u00e1rios", "crescimento por setor"</div>
+    </div>`;
+    return;
+  }
+
+  let html = "";
+
+  if (result.type === "aggregate") {
+    html += `<div class="card" style="text-align:center;padding:32px 24px;margin-bottom:20px">
+      <div style="font-size:48px;font-weight:800;color:var(--accent);letter-spacing:-0.03em">${result.value.toLocaleString("pt-BR")}</div>
+      <div style="font-size:16px;color:var(--fg2);margin-top:8px">${result.label}</div>`;
+    if (result.pct) {
+      html += `<div style="font-size:14px;color:var(--fg2);margin-top:4px">${formatPct(result.pct)} do total</div>`;
+    }
+    html += `</div>`;
+  }
+
+  if (result.type === "demographic") {
+    html += `<div class="card" style="text-align:center;padding:32px 24px;margin-bottom:20px">
+      <div style="font-size:48px;font-weight:800;color:var(--accent);letter-spacing:-0.03em">${result.value.toLocaleString("pt-BR")}</div>
+      <div style="font-size:16px;color:var(--fg2);margin-top:8px">${result.label}</div>`;
+    if (result.pct) {
+      html += `<div style="font-size:14px;color:var(--fg2);margin-top:4px">${formatPct(result.pct)} do grupo demogr\u00e1fico</div>`;
+    }
+    if (result.compareValue > 0 && result.compareLabel) {
+      html += `<div style="font-size:14px;color:var(--fg2);margin-top:8px">vs ${result.compareValue.toLocaleString("pt-BR")} ${result.compareLabel} (${formatPct(result.comparePct)})</div>`;
+    }
+    html += `</div>`;
+  }
+
+  if (result.type === "grouped") {
+    html += `<div class="card" style="margin-bottom:20px;padding:0;overflow:hidden">
+      <div class="ranking-table-wrap"><table class="ranking-table" style="margin:0">
+      <thead><tr>
+        <th>${result.groupLabel}</th>
+        <th>Trabalhadores</th>
+        <th>Exp. m\u00e9dia</th>
+        <th>Sal\u00e1rio m\u00e9dio</th>
+        ${result.groups[0] && result.groups[0].sumSaldo !== undefined ? '<th>Saldo</th>' : ''}
+      </tr></thead><tbody>`;
+    for (const g of result.groups) {
+      html += `<tr>
+        <td>${g.abbr ? g.abbr + " \u2014 " : ""}${g.label}</td>
+        <td>${formatNumber(g.total)}</td>
+        <td><span style="color:${exposicaoColor(g.avgExposicao, 1)}">${g.avgExposicao.toFixed(1).replace(".", ",")}</span></td>
+        <td>${formatSalario(Math.round(g.avgSalario))}</td>
+        ${g.sumSaldo !== undefined ? '<td>' + formatSaldo(g.sumSaldo) + '</td>' : ''}
+      </tr>`;
+    }
+    html += `</tbody></table></div></div>`;
+  }
+
+  // Show top items table for aggregate/demographic results
+  if ((result.type === "aggregate" || result.type === "demographic") && result.items && result.items.length > 0) {
+    html += `<h3 style="font-size:16px;font-weight:600;margin:16px 0 12px">Top ocupa\u00e7\u00f5es</h3>`;
+    html += renderOccupationTable(result.items, result.type === "demographic");
+  }
+
+  // Show list table
+  if (result.type === "list" && result.items && result.items.length > 0) {
+    html += renderOccupationTable(result.items, false);
+  }
+
+  // "Como foi calculado" expandable
+  html += `<details style="margin-top:20px;color:var(--fg2);font-size:13px">
+    <summary style="cursor:pointer;user-select:none">Como foi calculado</summary>
+    <div style="margin-top:8px;padding:12px;background:var(--bg2);border-radius:0;font-family:monospace;font-size:12px;white-space:pre-wrap">${escapeHtml(JSON.stringify(result.intent, null, 2))}</div>
+  </details>`;
+
+  container.innerHTML = html;
+}
+
+function renderOccupationTable(items, showDemCount) {
+  let html = `<div class="card" style="padding:0;overflow:hidden"><div class="ranking-table-wrap"><table class="ranking-table" style="margin:0">
+    <thead><tr>
+      <th>C\u00f3digo</th>
+      <th>Ocupa\u00e7\u00e3o</th>
+      <th>Exposi\u00e7\u00e3o</th>
+      <th>Oportunidade</th>
+      <th>Sal\u00e1rio</th>
+      <th>${showDemCount ? 'Afetados' : 'Empregados'}</th>
+    </tr></thead><tbody>`;
+  for (const d of items) {
+    html += `<tr>
+      <td>${d.codigo || "\u2014"}</td>
+      <td>${d.titulo || "\u2014"}</td>
+      <td><span class="score-cell" style="background:${exposicaoColor(d.exposicao, 0.2)};color:${exposicaoColor(d.exposicao, 1)}">${d.exposicao != null ? d.exposicao : "\u2014"}</span></td>
+      <td><span class="score-cell" style="background:${oportunidadeColor(d.oportunidade, 0.2)};color:${oportunidadeColor(d.oportunidade, 1)}">${d.oportunidade != null ? d.oportunidade : "\u2014"}</span></td>
+      <td>${formatSalarioFull(d.salario)}</td>
+      <td>${formatNumber(showDemCount ? d.demCount : d.empregados)}</td>
+    </tr>`;
+  }
+  html += `</tbody></table></div></div>`;
+  return html;
+}
+
+function escapeHtml(str) {
+  return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+}
+
+function runPerguntar(query) {
+  if (!query || !query.trim()) return;
+  const input = document.getElementById("perguntarInput");
+  input.value = query;
+  const container = document.getElementById("perguntarResult");
+
+  // Show loading state
+  container.innerHTML = `<div class="card query-loading">
+    <div class="query-loading-bar"></div>
+    <div class="query-loading-text">Analisando os dados...</div>
+    <div class="query-loading-sub">Consultando 626 ocupa\u00e7\u00f5es para responder sua pergunta</div>
+  </div>`;
+
+  // Disable input while loading
+  input.disabled = true;
+  document.getElementById("perguntarBtn").disabled = true;
+
+  fetch("/api/ask", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ question: query.trim() })
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    if (data.error) {
+      container.innerHTML = `<div class="card" style="padding:24px">
+        <div style="color:var(--red);font-weight:600;margin-bottom:8px">Erro</div>
+        <div style="color:var(--fg2);font-size:14px">${escapeHtml(data.error)}</div>
+      </div>`;
+    } else {
+      renderLLMAnswer(data.answer);
+    }
+  })
+  .catch(function(err) {
+    // Fallback to local regex parsing
+    const intent = parseQuery(query);
+    const result = executeQuery(intent, allDataRef);
+    renderResult(result);
+  })
+  .finally(function() {
+    input.disabled = false;
+    document.getElementById("perguntarBtn").disabled = false;
+    input.focus();
+  });
+}
+
+// Keep a reference to data for fallback
+let allDataRef = [];
+
+function renderLLMAnswer(markdown) {
+  const container = document.getElementById("perguntarResult");
+  // Convert markdown to HTML (simple converter)
+  let html = escapeHtml(markdown)
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    .replace(/^### (.+)$/gm, '<h3 style="font-family:Source Serif 4,Georgia,serif;font-size:18px;font-weight:700;margin:20px 0 8px">$1</h3>')
+    .replace(/^## (.+)$/gm, '<h2 style="font-family:Source Serif 4,Georgia,serif;font-size:20px;font-weight:700;margin:24px 0 10px">$1</h2>')
+    .replace(/^- (.+)$/gm, '<li style="margin-bottom:4px">$1</li>')
+    .replace(/(<li.*<\/li>\n?)+/g, function(m) { return '<ul style="list-style:disc;padding-left:20px;margin:8px 0 16px">' + m + '</ul>'; })
+    .replace(/\n\n/g, '</p><p style="margin-bottom:12px;line-height:1.6">')
+    .replace(/\n/g, '<br>');
+  html = '<p style="margin-bottom:12px;line-height:1.6">' + html + '</p>';
+  container.innerHTML = `<div class="card" style="padding:24px 28px">${html}<div style="margin-top:20px;padding-top:14px;border-top:1px solid var(--border);font-size:11px;color:var(--fg2);opacity:0.7">Resposta gerada por intelig\u00eancia artificial com base nos dados do CAGED/CBO. Pode conter imprecis\u00f5es \u2014 verifique os n\u00fameros nas demais abas.</div></div>`;
+}
+
+function initCourseRanking() {
+  const body = document.getElementById('courseRankingBody');
+  const input = document.getElementById('courseRankingSearch');
+  if (!body || !courseData || !courseData.rows) return;
+
+  function render() {
+    const q = (input.value || '').toLowerCase().trim();
+    const rows = courseData.rows
+      .filter(r => !q || [r.curso, r.grau, r.modalidade, r.rede, r.cine_area].join(' ').toLowerCase().includes(q))
+      .slice(0, 200);
+    body.innerHTML = rows.map(r => `
+      <tr>
+        <td><strong>${r.curso}</strong><br><span style="color:var(--fg2);font-size:12px">${r.cine_area || ''}</span></td>
+        <td>${r.grau || '—'}</td>
+        <td>${r.modalidade || '—'}</td>
+        <td>${r.rede || '—'}</td>
+        <td>${(r.concluintes || 0).toLocaleString('pt-BR')}</td>
+        <td style="color:${scoreColor(r.course_exposure_score,10,false)}">${String(r.course_exposure_score ?? '—').replace('.', ',')}</td>
+        <td style="color:${scoreColor(r.course_opportunity_score,10,true)}">${String(r.course_opportunity_score ?? '—').replace('.', ',')}</td>
+        <td>${r.exposure_band || '—'}</td>
+      </tr>
+    `).join('');
+  }
+
+  if (!input.dataset.bound) {
+    input.addEventListener('input', render);
+    input.dataset.bound = '1';
+  }
+  render();
+}
+
+function initPerguntar() {
+  if (perguntarInited) return;
+  perguntarInited = true;
+
+  buildUfMaps();
+
+  const chipsEl = document.getElementById("perguntarChips");
+  chipsEl.innerHTML = PERGUNTAR_CHIPS.map(q =>
+    `<button style="background:var(--bg3);border:1px solid var(--border-chip);border-radius:0;color:var(--fg);padding:6px 14px;font-size:13px;cursor:pointer;transition:background 0.15s" data-query="${escapeHtml(q)}">${q}</button>`
+  ).join("");
+
+  chipsEl.addEventListener("click", function(e) {
+    const btn = e.target.closest("button");
+    if (!btn || !btn.dataset.query) return;
+    runPerguntar(btn.dataset.query);
+  });
+
+  const input = document.getElementById("perguntarInput");
+  const btn = document.getElementById("perguntarBtn");
+
+  btn.addEventListener("click", function() { runPerguntar(input.value); });
+  input.addEventListener("keydown", function(e) {
+    if (e.key === "Enter") runPerguntar(input.value);
+  });
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// LOAD DATA
+// ══════════════════════════════════════════════════════════════════════════
+// ══════════════════════════════════════════════════════════════════════════
+// HERO SEARCH (landing page)
+// ══════════════════════════════════════════════════════════════════════════
+const heroSearch = document.getElementById("heroSearch");
+const heroDropdown = document.getElementById("heroDropdown");
+let heroHighlightIdx = -1;
+
+heroSearch.addEventListener("input", function() {
+  const q = this.value.trim();
+  if (q.length < 2 || data.length === 0) { heroDropdown.classList.remove("open"); return; }
+  const matches = data.filter(d => fuzzyMatch(q, d.titulo) || fuzzyMatch(q, d.codigo)).slice(0, 12);
+  if (matches.length === 0) { heroDropdown.classList.remove("open"); return; }
+  heroDropdown.innerHTML = matches.map((m, i) =>
+    `<div class="search-item" data-idx="${data.indexOf(m)}">${escapeHtml(m.titulo)}<span class="search-code">${escapeHtml(m.codigo)}</span></div>`
+  ).join("");
+  heroDropdown.classList.add("open");
+  heroHighlightIdx = -1;
+});
+
+heroSearch.addEventListener("keydown", function(e) {
+  const items = heroDropdown.querySelectorAll(".search-item");
+  if (!items.length) return;
+  if (e.key === "ArrowDown") { e.preventDefault(); heroHighlightIdx = Math.min(heroHighlightIdx + 1, items.length - 1); items.forEach((it, i) => it.classList.toggle("highlighted", i === heroHighlightIdx)); }
+  else if (e.key === "ArrowUp") { e.preventDefault(); heroHighlightIdx = Math.max(heroHighlightIdx - 1, 0); items.forEach((it, i) => it.classList.toggle("highlighted", i === heroHighlightIdx)); }
+  else if (e.key === "Enter" && heroHighlightIdx >= 0) { e.preventDefault(); items[heroHighlightIdx].click(); }
+  else if (e.key === "Escape") { heroDropdown.classList.remove("open"); }
+});
+
+heroDropdown.addEventListener("click", function(e) {
+  const item = e.target.closest(".search-item");
+  if (!item) return;
+  const idx = parseInt(item.dataset.idx);
+  heroDropdown.classList.remove("open");
+  heroSearch.value = "";
+  // Navigate to painel and select the occupation
+  switchView("painel");
+  window.scrollTo({ top: 0 });
+  selectOccupation(data[idx]);
+});
+
+document.addEventListener("click", function(e) {
+  if (!e.target.closest("#heroSearchBox")) heroDropdown.classList.remove("open");
+});
+
+// ══════════════════════════════════════════════════════════════════════════
+// LANDING PAGE STATS
+// ══════════════════════════════════════════════════════════════════════════
+function updateLandingStats() {
+  if (data.length === 0) return;
+  const totalJobs = data.reduce((s, d) => s + (d.empregados || 0), 0);
+  document.getElementById("heroStatJobs").textContent = (totalJobs / 1e6).toFixed(1).replace(".", ",") + "M";
+
+  // High risk: exposicao >= 7
+  let highRiskJobs = 0;
+  for (const d of data) { if (d.exposicao != null && d.exposicao >= 7 && d.empregados) highRiskJobs += d.empregados; }
+  document.getElementById("heroStatHighRisk").textContent = (highRiskJobs / 1e6).toFixed(1).replace(".", ",") + "M";
+
+  // High opportunity: oportunidade >= 7
+  let highOppJobs = 0;
+  for (const d of data) { if (d.oportunidade != null && d.oportunidade >= 7 && d.empregados) highOppJobs += d.empregados; }
+  document.getElementById("heroStatOpportunity").textContent = (highOppJobs / 1e6).toFixed(1).replace(".", ",") + "M";
+
+  if (window.courseExposureData && window.courseExposureData.rows) {
+    const iesCount = 2561;
+    const courseCount = 2396;
+    document.getElementById("heroStatHigherEd").textContent = `${iesCount.toLocaleString('pt-BR')} / ${courseCount.toLocaleString('pt-BR')}`;
+  }
+
+  // Demographics preview — % of women in high exposure occupations
+  if (summaryData && summaryData.demographics) {
+    const dem = summaryData.demographics;
+    if (dem.pct_high_risk_feminino != null) {
+      document.getElementById("previewDemoStat").textContent = dem.pct_high_risk_feminino.toFixed(1).replace(".", ",") + "%";
+    }
+    if (dem.pct_high_risk_masculino != null) {
+      document.getElementById("previewDemoStat2").textContent = dem.pct_high_risk_masculino.toFixed(1).replace(".", ",") + "%";
+    }
+  }
+
+  renderHigherEdPreview();
+
+  // Draw mini previews
+  drawMiniTreemap();
+  drawMiniScatter();
+}
+
+function renderHigherEdPreview() {
+  const container = document.getElementById("previewHigherEd");
+  if (!container) return;
+  if (!window.courseExposureData || !window.courseExposureData.rows || !window.courseExposureData.rows.length) {
+    container.innerHTML = '<div style="color:var(--fg2);font-size:14px;line-height:1.5">Preview do ensino superior em prepara&ccedil;&atilde;o.</div>';
+    return;
+  }
+  const rows = window.courseExposureData.rows;
+  const featured = [];
+  function pick(name, modalidade) {
+    return rows.find(r => r.curso === name && (!modalidade || r.modalidade === modalidade));
+  }
+  [
+    pick('Análise E Desenvolvimento De Sistemas', 'Educação a Distância'),
+    pick('Ciências Contábeis', 'Educação a Distância'),
+    pick('Direito', 'Presencial'),
+    pick('Pedagogia', 'Educação a Distância'),
+    pick('Enfermagem', 'Presencial')
+  ].filter(Boolean).forEach(x => featured.push(x));
+
+  const bandColor = (band) => {
+    if (band === 'Muito alta') return 'var(--red)';
+    if (band === 'Alta') return 'var(--accent)';
+    if (band === 'Moderada') return '#b59a61';
+    return 'var(--green)';
+  };
+
+  container.innerHTML = `
+    <div style="display:flex;justify-content:space-between;gap:12px;align-items:end;margin-bottom:6px;">
+      <div>
+        <div class="serif" style="font-size:28px;font-weight:700;color:var(--fg)">1,33M</div>
+        <div style="font-size:12px;color:var(--fg2);line-height:1.4">concluintes de ensino superior em 2024<br>na base agregada do INEP</div>
+      </div>
+      <div style="font-size:11px;color:var(--fg2);text-align:right;max-width:160px">Score inicial por curso = mapeamento de trilhas ocupacionais prov&aacute;veis + metodologia do Mapa</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      ${featured.map(r => `
+        <div style="display:grid;grid-template-columns:1fr auto;gap:10px;padding:10px 0;border-top:1px solid var(--border);">
+          <div>
+            <div style="font-weight:600;color:var(--fg);font-size:14px;line-height:1.3">${r.curso}</div>
+            <div style="font-size:12px;color:var(--fg2);margin-top:2px">${(r.concluintes||0).toLocaleString('pt-BR')} concluintes &middot; ${r.modalidade}</div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-size:12px;color:${bandColor(r.exposure_band)};font-weight:700">${r.exposure_band}</div>
+            <div style="font-size:12px;color:var(--fg2)">Exp. ${String(r.course_exposure_score).replace('.', ',')} &middot; Oport. ${String(r.course_opportunity_score).replace('.', ',')}</div>
+          </div>
+        </div>
+      `).join('')}
+    </div>`;
+}
+
+function drawMiniTreemap() {
+  const container = document.getElementById("previewTreemap");
+  if (!container || data.length === 0) return;
+  let cvs = container.querySelector("canvas");
+  if (!cvs) { cvs = document.createElement("canvas"); container.appendChild(cvs); }
+  const w = container.clientWidth || 300;
+  const h = container.clientHeight || 225;
+  const d = window.devicePixelRatio || 1;
+  cvs.width = w * d; cvs.height = h * d;
+  cvs.style.width = w + "px"; cvs.style.height = h + "px";
+  const ctx = cvs.getContext("2d");
+  ctx.setTransform(d, 0, 0, d, 0, 0);
+  ctx.fillStyle = canvasBg();
+  ctx.fillRect(0, 0, w, h);
+  const items = data.filter(x => x.empregados > 0).sort((a, b) => b.empregados - a.empregados).slice(0, 80).map(x => ({ ...x, value: x.empregados }));
+  const rects = squarify(items, 2, 2, w - 4, h - 4);
+  for (const r of rects) {
+    ctx.fillStyle = tileColorCSS(r, 0.5);
+    ctx.fillRect(r.rx + 0.5, r.ry + 0.5, r.rw - 1, r.rh - 1);
+  }
+}
+
+function drawMiniScatter() {
+  const container = document.getElementById("previewScatter");
+  if (!container || data.length === 0) return;
+  let cvs = container.querySelector("canvas");
+  if (!cvs) { cvs = document.createElement("canvas"); container.appendChild(cvs); }
+  const w = container.clientWidth || 300;
+  const h = container.clientHeight || 225;
+  const d = window.devicePixelRatio || 1;
+  cvs.width = w * d; cvs.height = h * d;
+  cvs.style.width = w + "px"; cvs.style.height = h + "px";
+  const ctx = cvs.getContext("2d");
+  ctx.setTransform(d, 0, 0, d, 0, 0);
+  ctx.fillStyle = canvasBg();
+  ctx.fillRect(0, 0, w, h);
+  const pad = 12;
+  let maxEmp = 0;
+  for (const dd of data) { if (dd.empregados > maxEmp) maxEmp = dd.empregados; }
+  for (const dd of data) {
+    if (dd.exposicao == null || dd.oportunidade == null) continue;
+    const px = pad + (dd.exposicao / 10) * (w - pad * 2);
+    const py = pad + (1 - dd.oportunidade / 10) * (h - pad * 2);
+    const r = Math.max(1.5, Math.sqrt((dd.empregados || 1) / maxEmp) * 14);
+    ctx.beginPath();
+    ctx.arc(px, py, r, 0, Math.PI * 2);
+    ctx.fillStyle = exposicaoColor(dd.exposicao, 0.35);
+    ctx.fill();
+  }
+}
+
+Promise.all([
+  fetch("data.json").then(r => r.json()),
+  fetch("summary.json").then(r => r.json()),
+  fetch("data/course_exposure_analysis_2024.json").then(r => r.json()).catch(() => null)
+]).then(([d, s, c]) => {
+  data = d;
+  allDataRef = d;
+  summaryData = s;
+  window.courseExposureData = c;
+  courseData = c;
+  updateStats();
+  drawGradientLegend();
+  updateLandingStats();
+  initHeroRotation();
+  // Trabalho page defaults to treemap unless a valid internal work view is requested.
+  var hash = window.location.hash.replace("#", "");
+  const allowed = new Set(['mapa','scatter','painel','demo','regional','ranking']);
+  if (hash && allowed.has(hash) && document.getElementById("view-" + hash)) {
+    switchView(hash);
+  } else {
+    switchView('mapa');
+  }
+});
+
+function initHeroRotation() {
+  const el = document.getElementById('heroRotatingWord');
+  if (!el) return;
+  const words = ['o trabalho', 'as empresas', 'os estudantes', 'os empregos'];
+  let wordIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  const typingSpeed = 90;
+  const deletingSpeed = 45;
+  const pauseAfterTyping = 1200;
+  const pauseAfterDeleting = 300;
+
+  function tick() {
+    const currentWord = words[wordIndex];
+    if (isDeleting) {
+      el.textContent = currentWord.substring(0, charIndex - 1);
+      charIndex--;
+    } else {
+      el.textContent = currentWord.substring(0, charIndex + 1);
+      charIndex++;
+    }
+    let delay = isDeleting ? deletingSpeed : typingSpeed;
+    if (!isDeleting && charIndex === currentWord.length) {
+      delay = pauseAfterTyping;
+      isDeleting = true;
+    }
+    if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      wordIndex = (wordIndex + 1) % words.length;
+      delay = pauseAfterDeleting;
+    }
+    setTimeout(tick, delay);
+  }
+
+  tick();
+}
+
+window.addEventListener("resize", function() {
+  dpr = window.devicePixelRatio || 1;
+  if (currentView === "mapa") treemapResize();
+  if (currentView === "scatter" && scatterInited) scatterResize();
+  if (currentView === "landing" && data.length) { drawMiniTreemap(); drawMiniScatter(); }
+});
+
+// ══════════════════════════════════════════════════════════════════════════
+// SCROLL-TRIGGERED REVEALS
+// ══════════════════════════════════════════════════════════════════════════
+(function() {
+  var prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var targets = document.querySelectorAll(".fade-up");
+  if (prefersReduced) {
+    targets.forEach(function(el) { el.classList.add("visible"); });
+    return;
+  }
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  targets.forEach(function(el) { observer.observe(el); });
+})();
+</script>
 </body>
 </html>
