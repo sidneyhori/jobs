@@ -1,37 +1,29 @@
-<!DOCTYPE html><html lang="pt-BR" data-theme="light"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Empresas — Mapa da IA</title><link rel="icon" type="image/svg+xml" href="favicon.svg"><style>:root{--bg:#141210;--bg2:#1c1a17;--fg:#e8e4dc;--fg2:#9a9590;--accent:#c49a5c;--border:rgba(255,255,255,.08);--nav-bg:rgba(20,18,16,.92)}[data-theme="light"]{--bg:#f5f2ed;--bg2:#ffffff;--fg:#1a1814;--fg2:#6b6860;--accent:#a07838;--border:rgba(0,0,0,.08);--nav-bg:rgba(245,242,237,.92)}*,*::before,*::after{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif}nav{position:sticky;top:0;background:var(--nav-bg);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);display:flex;gap:4px;padding:0 14px;overflow:auto}nav a{color:var(--fg2);text-decoration:none;padding:14px 12px;white-space:nowrap;font-size:13px}nav a.active{color:var(--fg);border-bottom:2px solid var(--accent)}.wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--accent)}h1,h2{font-family:'Source Serif 4', Georgia, serif;letter-spacing:-.03em}h1{font-size:48px;margin:8px 0 12px}h2{font-size:28px;margin:0 0 10px}p{color:var(--fg2);line-height:1.65}.subnav{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.subnav a{color:var(--fg);text-decoration:none;border:1px solid var(--border);padding:8px 10px;font-size:13px}section{padding:34px 0;border-top:1px solid var(--border)}.card{background:var(--bg2);border:1px solid var(--border);padding:18px}
-    .site-nav { position:sticky; top:0; z-index:100; background:var(--nav-bg); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid var(--border); display:block !important; padding:0 !important; overflow:visible !important; }
-    .site-nav-inner { display:flex; align-items:center; gap:0; padding:0 16px; min-height:52px; width:100%; }
-    .site-nav-brand { display:flex; align-items:center; gap:10px; color:var(--fg); text-decoration:none; padding:12px 0; white-space:nowrap; font-size:13px; font-weight:600; }
-    .site-nav-logo { flex-shrink:0; }
-    .site-nav-links { display:flex; align-items:center; margin-left:14px; overflow:auto; }
-    .site-nav-links a, .site-mobile-menu a { padding:12px 18px; font-size:13px; color:var(--fg2); text-decoration:none; white-space:nowrap; }
-    .site-nav-links a.active, .site-mobile-menu a.active { color:var(--fg); border-bottom:2px solid var(--accent); }
-    .site-theme-toggle, .site-burger { background:none; border:none; color:var(--fg2); cursor:pointer; padding:8px; display:flex; align-items:center; justify-content:center; }
-    .site-theme-toggle { margin-left:auto; }
-    .site-theme-toggle svg, .site-burger svg { width:18px; height:18px; }
-    .site-theme-toggle .icon-moon { display:none; }
-    [data-theme="light"] .site-theme-toggle .icon-sun { display:none; }
-    [data-theme="light"] .site-theme-toggle .icon-moon { display:block; }
-    .site-burger { display:none; }
-    .site-burger .icon-close { display:none; }
-    .site-nav.open .site-burger .icon-menu { display:none; }
-    .site-nav.open .site-burger .icon-close { display:block; }
-    .site-mobile-menu { display:none; flex-direction:column; border-top:1px solid var(--border); padding:10px 0 12px; background:var(--nav-bg); width:100%; }
-    .site-nav.open .site-mobile-menu { display:flex; }
-    .site-mobile-menu a { text-align:center; }
-    @media (max-width: 900px) { .site-nav-links { display:none !important; } .site-burger { display:flex !important; } .site-theme-toggle { margin-left:auto; } }
-    @media (min-width: 901px) { .site-mobile-menu { display:none !important; } }
-
-  </style>  <style>
-    @media (max-width: 900px) {
-      .nav-links { display:none !important; }
-      .nav-burger { display:block !important; }
-      .nav-menu.open { display:flex !important; }
-    }
-    @media (min-width: 901px) {
-      .nav-burger, .nav-menu { display:none !important; }
-      .nav-links { display:flex !important; }
-    }
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Empresas — Mapa da IA</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <style>
+    :root { --bg:#141210; --bg2:#1c1a17; --fg:#e8e4dc; --fg2:#9a9590; --accent:#c49a5c; --border:rgba(255,255,255,.08); --nav-bg:rgba(20,18,16,.92); }
+    [data-theme="light"] { --bg:#f5f2ed; --bg2:#ffffff; --fg:#1a1814; --fg2:#6b6860; --accent:#a07838; --border:rgba(0,0,0,.08); --nav-bg:rgba(245,242,237,.92); }
+    *, *::before, *::after { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:var(--fg); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; }
+    .wrap { max-width:1100px; margin:0 auto; padding:28px 20px 80px; }
+    .eyebrow { font-size:11px; text-transform:uppercase; letter-spacing:.12em; color:var(--accent); }
+    h1,h2 { font-family:'Source Serif 4', Georgia, serif; letter-spacing:-.03em; margin:0; }
+    h1 { font-size:48px; margin:8px 0 12px; max-width:850px; }
+    h2 { font-size:28px; margin-bottom:10px; }
+    p { color:var(--fg2); line-height:1.65; margin:0; }
+    .hero { margin-bottom:26px; }
+    .tabs { display:flex; gap:10px; flex-wrap:wrap; margin:22px 0 26px; }
+    .tab-btn { background:none; border:1px solid var(--border); color:var(--fg2); padding:10px 12px; cursor:pointer; font-size:13px; }
+    .tab-btn.active { color:var(--fg); border-color:var(--accent); background:rgba(196,154,92,.08); }
+    .tab-panel { display:none; }
+    .tab-panel.active { display:block; }
+    .card { background:var(--bg2); border:1px solid var(--border); padding:18px; }
+    @media (max-width: 900px) { h1 { font-size:36px; } }
 
     .site-nav { position:sticky; top:0; z-index:100; background:var(--nav-bg); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid var(--border); display:block !important; padding:0 !important; overflow:visible !important; }
     .site-nav-inner { display:flex; align-items:center; gap:0; padding:0 16px; min-height:52px; width:100%; }
@@ -55,9 +47,10 @@
     .site-mobile-menu a { text-align:center; }
     @media (max-width: 900px) { .site-nav-links { display:none !important; } .site-burger { display:flex !important; } .site-theme-toggle { margin-left:auto; } }
     @media (min-width: 901px) { .site-mobile-menu { display:none !important; } }
-
   </style>
-</head><body><nav class="site-nav" id="siteNav">
+</head>
+<body>
+  <nav class="site-nav" id="siteNav">
     <div class="site-nav-inner">
       <a class="site-nav-brand" href="index.html" aria-label="Voltar ao início">
         <svg class="site-nav-logo" width="22" height="22" viewBox="0 0 22 22" fill="none">
@@ -91,10 +84,106 @@
       <a class="active" href="empresas.html">Empresas</a>
       <a href="insights.html">Insights</a>
     </div>
-  </nav><div class="wrap"><div class="eyebrow">Empresas</div><h1>Como a IA está pressionando as empresas</h1><p>Esta camada vai olhar para exposição empresarial: composição ocupacional, benchmark entre empresas, concentração setorial e impacto sobre a força de trabalho. Ainda está em construção.</p><div class="subnav"><a href="#visao-geral">Visão geral</a><a href="#benchmark">Benchmark</a><a href="#forca-de-trabalho">Força de trabalho</a><a href="#setores">Setores</a><a href="#roadmap">Roadmap</a></div><section id="visao-geral"><h2>Visão geral</h2><div class="card"><p>Empresas será a camada premium do produto: comparação entre empresas e ação interna orientada por índice de exposição.</p></div></section><section id="benchmark"><h2>Benchmark</h2><div class="card"><p>Em breve: comparação entre empresas ou grupos com base na composição de sua força de trabalho.</p></div></section><section id="forca-de-trabalho"><h2>Força de trabalho</h2><div class="card"><p>Em breve: exposição média do quadro, grupos mais pressionados e trilhas de requalificação internas.</p></div></section><section id="setores"><h2>Setores</h2><div class="card"><p>Em breve: benchmark setorial apoiado em bases como RAIS por empregador, CEMPRE, CVM/B3 e similares.</p></div></section><section id="roadmap"><h2>Roadmap</h2><div class="card"><p>Próxima investigação de base: Exame 500, CVM/B3, Receita/CNPJ, CEMPRE e RAIS por empregador.</p></div></section></div><script>
-const savedTheme=localStorage.getItem('theme');
-if(savedTheme==='dark'){document.documentElement.removeAttribute('data-theme');}else{document.documentElement.setAttribute('data-theme','light');}
-document.getElementById('themeToggle')?.addEventListener('click',()=>{const light=document.documentElement.getAttribute('data-theme')==='light';if(light){document.documentElement.removeAttribute('data-theme');localStorage.setItem('theme','dark');}else{document.documentElement.setAttribute('data-theme','light');localStorage.setItem('theme','light');}});
-document.getElementById('burger')?.addEventListener('click',()=>{document.getElementById('siteNav')?.classList.toggle('open');});
-</script></body>
+  </nav>
+
+  <div class="wrap">
+    <div class="hero">
+      <div class="eyebrow">Empresas</div>
+      <h1>Como a IA está pressionando as empresas</h1>
+      <p>Esta camada vai olhar para exposição empresarial: composição ocupacional, benchmark entre empresas, concentração setorial e impacto sobre a força de trabalho. Ainda está em construção.</p>
+    </div>
+
+    <div class="tabs" id="companyTabs">
+      <button class="tab-btn active" data-tab="visao-geral">Visão geral</button>
+      <button class="tab-btn" data-tab="benchmark">Benchmark</button>
+      <button class="tab-btn" data-tab="forca-de-trabalho">Força de trabalho</button>
+      <button class="tab-btn" data-tab="setores">Setores</button>
+      <button class="tab-btn" data-tab="roadmap">Roadmap</button>
+    </div>
+
+    <section class="tab-panel active" id="tab-visao-geral">
+      <h2>Visão geral</h2>
+      <div class="card">
+        <p>Empresas será a camada premium do produto: comparação entre empresas e ação interna orientada por índice de exposição.</p>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-benchmark">
+      <h2>Benchmark</h2>
+      <div class="card">
+        <p>Em breve: comparação entre empresas ou grupos com base na composição de sua força de trabalho.</p>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-forca-de-trabalho">
+      <h2>Força de trabalho</h2>
+      <div class="card">
+        <p>Em breve: exposição média do quadro, grupos mais pressionados e trilhas de requalificação internas.</p>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-setores">
+      <h2>Setores</h2>
+      <div class="card">
+        <p>Em breve: benchmark setorial apoiado em bases como RAIS por empregador, CEMPRE, CVM/B3 e similares.</p>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-roadmap">
+      <h2>Roadmap</h2>
+      <div class="card">
+        <p>Próxima investigação de base: Exame 500, CVM/B3, Receita/CNPJ, CEMPRE e RAIS por empregador.</p>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const tabIds = ['visao-geral', 'benchmark', 'forca-de-trabalho', 'setores', 'roadmap'];
+
+    function setCompanyTab(tab) {
+      const normalized = tabIds.includes(tab) ? tab : 'visao-geral';
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.tab === normalized);
+      });
+      document.querySelectorAll('.tab-panel').forEach(panel => {
+        panel.classList.toggle('active', panel.id === 'tab-' + normalized);
+      });
+      history.replaceState(null, '', '#' + normalized);
+    }
+
+    document.getElementById('companyTabs').addEventListener('click', (event) => {
+      const btn = event.target.closest('.tab-btn');
+      if (!btn) return;
+      setCompanyTab(btn.dataset.tab);
+    });
+
+    window.addEventListener('hashchange', () => {
+      setCompanyTab((location.hash || '').replace('#', ''));
+    });
+
+    const initialTab = (location.hash || '').replace('#', '');
+    if (initialTab) setCompanyTab(initialTab);
+  </script>
+  <script>
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      document.documentElement.removeAttribute('data-theme');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+    document.getElementById('themeToggle')?.addEventListener('click', () => {
+      const light = document.documentElement.getAttribute('data-theme') === 'light';
+      if (light) {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+      }
+    });
+    document.getElementById('burger')?.addEventListener('click', () => {
+      document.getElementById('siteNav')?.classList.toggle('open');
+    });
+  </script>
+</body>
 </html>
