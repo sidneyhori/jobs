@@ -155,9 +155,10 @@
     let ies = null;
 
     function setTab(tab) {
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
-      document.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('active', p.id === 'tab-' + tab));
-      history.replaceState(null, '', '#'+tab);
+      const normalized = tab === 'ranking-cursos' ? 'courses' : tab;
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === normalized));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('active', p.id === 'tab-' + normalized));
+      history.replaceState(null, '', '#'+normalized);
     }
 
     document.getElementById('studentTabs').addEventListener('click', (e) => {
@@ -196,7 +197,12 @@
       renderIES();
       document.getElementById('courseSearch').addEventListener('input', renderCourses);
       const hash=(location.hash||'').replace('#','');
-      if (hash && document.getElementById('tab-'+hash)) setTab(hash);
+      if (hash) setTab(hash);
+    });
+
+    window.addEventListener('hashchange', () => {
+      const hash=(location.hash||'').replace('#','');
+      if (hash) setTab(hash);
     });
   </script>
 <script>const savedTheme=localStorage.getItem('theme');if(savedTheme==='light'){document.documentElement.setAttribute('data-theme','light');}document.getElementById('themeToggle')?.addEventListener('click',()=>{const light=document.documentElement.getAttribute('data-theme')==='light';if(light){document.documentElement.removeAttribute('data-theme');localStorage.setItem('theme','dark');}else{document.documentElement.setAttribute('data-theme','light');localStorage.setItem('theme','light');}});</script></body>
