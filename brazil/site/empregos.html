@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,7 +44,7 @@
     <a href="estudantes.html">Estudantes</a>
     <a href="empresas.html">Empresas</a>
     <a href="insights.html">Insights</a>
-      <button id="themeToggle" style="margin-left:auto;background:none;border:none;color:var(--fg2);padding:12px 10px;cursor:pointer;font-size:13px">Tema</button>
+      <button id="themeToggle" style="margin-left:auto;background:none;border:none;color:var(--fg2);padding:12px 10px;cursor:pointer;font-size:13px">Light / Dark</button>
   </nav>
 
   <div class="wrap">
@@ -116,5 +116,5 @@
       <div>Base dimensional a partir de CAGED e RAIS</div>
     </footer>
   </div>
-<script>const savedTheme=localStorage.getItem('theme');if(savedTheme==='light'){document.documentElement.setAttribute('data-theme','light');}document.getElementById('themeToggle')?.addEventListener('click',()=>{const light=document.documentElement.getAttribute('data-theme')==='light';if(light){document.documentElement.removeAttribute('data-theme');localStorage.setItem('theme','dark');}else{document.documentElement.setAttribute('data-theme','light');localStorage.setItem('theme','light');}});</script></body>
+<script>const savedTheme=localStorage.getItem('theme');if(savedTheme==='dark'){document.documentElement.removeAttribute('data-theme');}else{document.documentElement.setAttribute('data-theme','light');}document.getElementById('themeToggle')?.addEventListener('click',()=>{const light=document.documentElement.getAttribute('data-theme')==='light';if(light){document.documentElement.removeAttribute('data-theme');localStorage.setItem('theme','dark');}else{document.documentElement.setAttribute('data-theme','light');localStorage.setItem('theme','light');}});</script></body>
 </html>
