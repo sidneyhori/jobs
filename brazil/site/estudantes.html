@@ -6,9 +6,10 @@
   <title>Estudantes — Mapa da IA</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <style>
-    :root { --bg:#141210; --bg2:#1c1a17; --bg3:#26231f; --fg:#e8e4dc; --fg2:#9a9590; --accent:#c49a5c; --green:#5a9a5a; --red:#c06a5a; --border:rgba(255,255,255,.08); }
+    :root { --bg:#141210; --bg2:#1c1a17; --bg3:#26231f; --fg:#e8e4dc; --fg2:#9a9590; --accent:#c49a5c; --green:#5a9a5a; --red:#c06a5a; --border:rgba(255,255,255,.08); --nav-bg:rgba(20,18,16,.92); }
+    [data-theme="light"] { --bg:#f5f2ed; --bg2:#ffffff; --bg3:#ebe8e3; --fg:#1a1814; --fg2:#6b6860; --accent:#a07838; --green:#3a7a3a; --red:#b04a3a; --border:rgba(0,0,0,.08); --nav-bg:rgba(245,242,237,.92); }
     body { margin:0; background:var(--bg); color:var(--fg); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; }
-    nav { position:sticky; top:0; z-index:50; background:rgba(20,18,16,.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--border); display:flex; gap:4px; padding:0 14px; overflow:auto; }
+    nav { position:sticky; top:0; z-index:50; background:var(--nav-bg); backdrop-filter:blur(10px); border-bottom:1px solid var(--border); display:flex; gap:4px; padding:0 14px; overflow:auto; }
     nav a { color:var(--fg2); text-decoration:none; padding:14px 12px; white-space:nowrap; font-size:13px; }
     nav a.active { color:var(--fg); border-bottom:2px solid var(--accent); }
     .wrap { max-width:1200px; margin:0 auto; padding:28px 20px 80px; }
@@ -51,6 +52,7 @@
     <a href="empresas.html">Empresas</a>
     <a href="insights.html">Insights</a>
     <a href="metodologia.html">Metodologia</a>
+    <button id="themeToggle" style="margin-left:auto;background:none;border:none;color:var(--fg2);padding:12px 10px;cursor:pointer;font-size:13px">Tema</button>
   </nav>
 
   <div class="wrap">
@@ -197,5 +199,5 @@
       if (hash && document.getElementById('tab-'+hash)) setTab(hash);
     });
   </script>
-</body>
+<script>const savedTheme=localStorage.getItem('theme');if(savedTheme==='light'){document.documentElement.setAttribute('data-theme','light');}document.getElementById('themeToggle')?.addEventListener('click',()=>{const light=document.documentElement.getAttribute('data-theme')==='light';if(light){document.documentElement.removeAttribute('data-theme');localStorage.setItem('theme','dark');}else{document.documentElement.setAttribute('data-theme','light');localStorage.setItem('theme','light');}});</script></body>
 </html>
