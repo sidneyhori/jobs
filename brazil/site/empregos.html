@@ -1,1 +1,119 @@
-<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Empregos — Mapa da IA</title><link rel="icon" type="image/svg+xml" href="favicon.svg"><style>:root{--bg:#141210;--bg2:#1c1a17;--fg:#e8e4dc;--fg2:#9a9590;--accent:#c49a5c;--border:rgba(255,255,255,.08)}body{margin:0;background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif}nav{position:sticky;top:0;background:rgba(20,18,16,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);display:flex;gap:4px;padding:0 14px;overflow:auto}nav a{color:var(--fg2);text-decoration:none;padding:14px 12px;white-space:nowrap;font-size:13px}nav a.active{color:var(--fg);border-bottom:2px solid var(--accent)}.wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--accent)}h1,h2{font-family:'Source Serif 4', Georgia, serif;letter-spacing:-.03em}h1{font-size:48px;margin:8px 0 12px}h2{font-size:28px;margin:0 0 10px}p{color:var(--fg2);line-height:1.65}.subnav{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.subnav a{color:var(--fg);text-decoration:none;border:1px solid var(--border);padding:8px 10px;font-size:13px}section{padding:34px 0;border-top:1px solid var(--border)}.card{background:var(--bg2);border:1px solid var(--border);padding:18px}</style></head><body><nav><a href="index.html">Mapa da IA</a><a href="trabalho.html">Trabalho</a><a class="active" href="empregos.html">Empregos</a><a href="estudantes.html">Estudantes</a><a href="empresas.html">Empresas</a><a href="insights.html">Insights</a><a href="metodologia.html">Metodologia</a></nav><div class="wrap"><div class="eyebrow">Empregos</div><h1>Como a IA está mudando a demanda por vagas</h1><p>Esta camada vai monitorar vagas abertas, skills pedidas, pressão sobre funções de entrada e sinais de reconfiguração da demanda no hiring. Ainda está em construção.</p><div class="subnav"><a href="#visao-geral">Visão geral</a><a href="#vagas">Vagas</a><a href="#skills">Skills</a><a href="#setores">Setores</a><a href="#roadmap">Roadmap</a></div><section id="visao-geral"><h2>Visão geral</h2><div class="card"><p>Empregos não é o mesmo que trabalho. Aqui o foco será a demanda emergente, não o estoque de ocupações existentes.</p></div></section><section id="vagas"><h2>Vagas</h2><div class="card"><p>Em breve: camada de vagas abertas e leitura de mudanças em job descriptions.</p></div></section><section id="skills"><h2>Skills</h2><div class="card"><p>Em breve: monitoramento de habilidades em alta, explícitas ou implícitas nos anúncios.</p></div></section><section id="setores"><h2>Setores</h2><div class="card"><p>Em breve: comparação setorial de demanda, hiring pressure e adoção de IA.</p></div></section><section id="roadmap"><h2>Roadmap</h2><div class="card"><p>Próxima expansão prevista: integração de fontes públicas de vagas e skills para criar a camada Empregos.</p></div></section></div></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Empregos — Mapa da IA</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <style>
+    :root { --bg:#141210; --bg2:#1c1a17; --bg3:#26231f; --fg:#e8e4dc; --fg2:#9a9590; --accent:#c49a5c; --green:#5a9a5a; --red:#c06a5a; --border:rgba(255,255,255,.08); }
+    body { margin:0; background:var(--bg); color:var(--fg); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; }
+    nav { position:sticky; top:0; z-index:50; background:rgba(20,18,16,.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--border); display:flex; gap:4px; padding:0 14px; overflow:auto; }
+    nav a { color:var(--fg2); text-decoration:none; padding:14px 12px; white-space:nowrap; font-size:13px; }
+    nav a.active { color:var(--fg); border-bottom:2px solid var(--accent); }
+    .wrap { max-width:1180px; margin:0 auto; padding:28px 20px 80px; }
+    .eyebrow { font-size:11px; text-transform:uppercase; letter-spacing:.12em; color:var(--accent); }
+    h1,h2,h3 { font-family:'Source Serif 4', Georgia, serif; letter-spacing:-.03em; margin:0; }
+    h1 { font-size:48px; margin:8px 0 12px; max-width:850px; }
+    h2 { font-size:30px; margin-bottom:12px; }
+    h3 { font-size:18px; margin-bottom:8px; }
+    p { color:var(--fg2); line-height:1.65; margin:0; }
+    .hero { margin-bottom:26px; }
+    .grid-4 { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; }
+    .grid-3 { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
+    .grid-2 { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+    .card { background:var(--bg2); border:1px solid var(--border); padding:18px; }
+    .metric { font-size:36px; font-weight:700; letter-spacing:-.03em; }
+    .metric-label { font-size:12px; color:var(--fg2); margin-top:6px; line-height:1.4; }
+    .callout { background:linear-gradient(135deg, rgba(196,154,92,.12), rgba(196,154,92,.03)); border:1px solid rgba(196,154,92,.22); }
+    section { padding:30px 0; border-top:1px solid var(--border); }
+    .pill { display:inline-block; border:1px solid var(--border); color:var(--fg2); padding:4px 8px; font-size:11px; text-transform:uppercase; letter-spacing:.06em; }
+    .cta { display:inline-flex; align-items:center; gap:8px; text-decoration:none; color:var(--fg); border:1px solid var(--border); padding:12px 14px; margin-top:14px; }
+    ul { margin:8px 0 0 18px; color:var(--fg2); }
+    li { margin:6px 0; }
+    footer { border-top:1px solid var(--border); padding-top:20px; margin-top:34px; display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; color:var(--fg2); font-size:13px; }
+    @media (max-width: 900px) { .grid-4,.grid-3,.grid-2 { grid-template-columns:1fr; } h1 { font-size:36px; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Mapa da IA</a>
+    <a href="trabalho.html">Trabalho</a>
+    <a class="active" href="empregos.html">Empregos</a>
+    <a href="estudantes.html">Estudantes</a>
+    <a href="empresas.html">Empresas</a>
+    <a href="insights.html">Insights</a>
+    <a href="metodologia.html">Metodologia</a>
+  </nav>
+
+  <div class="wrap">
+    <div class="hero">
+      <div class="eyebrow">Empregos</div>
+      <h1>Como a IA está mexendo na dinâmica do mercado de trabalho</h1>
+      <p>Esta camada olha para a dimensão de <b>empregos</b> a partir do cruzamento entre <b>CAGED</b> e <b>RAIS</b>. O foco aqui não é só a ocupação existente, mas o mercado em movimento: admissões, saldo, pressão de contratação e sinais de mudança na demanda.</p>
+    </div>
+
+    <div class="grid-4">
+      <div class="card"><div class="metric">19M</div><div class="metric-label">empregos formais na base consolidada</div></div>
+      <div class="card"><div class="metric">626</div><div class="metric-label">ocupações analisadas no recorte atual</div></div>
+      <div class="card"><div class="metric">CAGED</div><div class="metric-label">captura movimentação, admissões e saldo</div></div>
+      <div class="card"><div class="metric">RAIS</div><div class="metric-label">captura estoque, composição e massa formal</div></div>
+    </div>
+
+    <section>
+      <div class="grid-2">
+        <div class="card callout">
+          <h3>O que esta camada mede</h3>
+          <ul>
+            <li>Movimentação do mercado de trabalho.</li>
+            <li>Admissões e saldo como sinais de aquecimento ou retração.</li>
+            <li>Onde a IA tende a pressionar hiring, entrada e reconfiguração de demanda.</li>
+          </ul>
+        </div>
+        <div class="card callout">
+          <h3>Como ela difere de Trabalho</h3>
+          <ul>
+            <li><b>Trabalho</b> olha o estoque ocupacional e a estrutura existente.</li>
+            <li><b>Empregos</b> olha a dinâmica do mercado, seus fluxos e sinais de mudança.</li>
+            <li>As duas camadas se complementam: estrutura + movimento.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Recortes que esta página antecipa</h2>
+      <div class="grid-3">
+        <div class="card">
+          <span class="pill">Hiring pressure</span>
+          <h3 style="margin-top:10px">Quais funções seguem aquecidas</h3>
+          <p>Mesmo antes da camada completa de vagas, esta dimensão prepara o terreno para distinguir funções que continuam contratando daquelas que já dão sinais de compressão.</p>
+        </div>
+        <div class="card">
+          <span class="pill">Movimentação</span>
+          <h3 style="margin-top:10px">Onde o mercado mais se move</h3>
+          <p>CAGED e RAIS juntos ajudam a ver não só quantos empregos existem, mas onde há mais giro, entrada e reposicionamento.</p>
+        </div>
+        <div class="card">
+          <span class="pill">Demanda</span>
+          <h3 style="margin-top:10px">Onde a IA deve bater primeiro</h3>
+          <p>Aqui o foco é demanda emergente: funções que podem mudar antes mesmo de o estoque ocupacional consolidado acusar a transformação inteira.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="card">
+        <h2>Próxima expansão</h2>
+        <p>Quando a camada de vagas for integrada, esta página vai ganhar maior resolução: job descriptions, skills, sinais de entrada, funções emergentes e mudanças explícitas no hiring. Por enquanto, ela serve como uma leitura dimensional do mercado em movimento.</p>
+        <a class="cta" href="insights.html#empregos">Ver insights de empregos →</a>
+      </div>
+    </section>
+
+    <footer>
+      <div>Mapa da IA — camada Empregos</div>
+      <div>Base dimensional a partir de CAGED e RAIS</div>
+    </footer>
+  </div>
+</body>
+</html>
