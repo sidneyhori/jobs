@@ -1330,36 +1330,33 @@ body.on-landing .nav-home { border-bottom-color: var(--accent); }
 
     <div style="margin-top:34px">
       <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--fg2);margin-bottom:14px">Fontes de Informa&ccedil;&atilde;o</div>
-      <div style="max-width:900px;margin:0 auto;display:grid;gap:14px;">
-        <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:stretch;">
-          <div style="background:#fff;border:1px solid var(--border);padding:10px;border-radius:4px;display:flex;align-items:center;justify-content:center;height:108px">
-            <img src="assets/caged.jpg" alt="CAGED" style="max-height:72px;max-width:100%;width:auto;display:block">
-          </div>
-          <div style="background:#fff;border:1px solid var(--border);padding:10px;border-radius:4px;display:flex;align-items:center;justify-content:center;height:108px">
-            <img src="assets/rais.jpg" alt="RAIS" style="max-height:72px;max-width:100%;width:auto;display:block">
-          </div>
-          <div style="background:#fff;border:1px solid var(--border);padding:10px;border-radius:4px;display:flex;align-items:center;justify-content:center;height:108px">
-            <img src="assets/censo-superior.jpg" alt="Censo da Educação Superior" style="max-height:72px;max-width:100%;width:auto;display:block">
-          </div>
-        </div>
-        <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:stretch;">
-          <div style="background:#fff;border:1px solid var(--border);padding:10px;border-radius:4px;display:flex;align-items:center;justify-content:center;height:108px">
-            <img src="assets/cbo.jpg" alt="CBO" style="max-height:72px;max-width:100%;width:auto;display:block">
-          </div>
-          <div style="background:#fff;border:1px solid var(--border);padding:10px;border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;height:108px;position:relative">
-            <div style="position:absolute;top:8px;right:8px;font-size:10px;line-height:1;padding:4px 6px;border-radius:999px;background:#1f6fb2;color:#fff;text-transform:uppercase;letter-spacing:.08em">Em breve</div>
-            <img src="assets/pnad.jpg" alt="PNAD Contínua" style="max-height:72px;max-width:100%;width:auto;display:block">
-          </div>
-          <div style="background:#fff;border:1px solid var(--border);padding:10px;border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;height:108px;position:relative">
-            <div style="position:absolute;top:8px;right:8px;font-size:10px;line-height:1;padding:4px 6px;border-radius:999px;background:#1f6fb2;color:#fff;text-transform:uppercase;letter-spacing:.08em">Em breve</div>
-            <img src="assets/cvm.jpg" alt="CVM" style="max-height:72px;max-width:100%;width:auto;display:block">
-          </div>
-        </div>
-        <div style="display:flex;justify-content:center;">
-          <div style="width:min(286px,100%);background:#0f3f86;border:1px solid var(--border);padding:10px;border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;height:108px;position:relative">
-            <div style="position:absolute;top:8px;right:8px;font-size:10px;line-height:1;padding:4px 6px;border-radius:999px;background:rgba(255,255,255,.18);color:#fff;text-transform:uppercase;letter-spacing:.08em">Em breve</div>
-            <img src="assets/b3.jpg" alt="B3" style="max-height:72px;max-width:100%;width:auto;display:block">
-          </div>
+      <div style="position:relative;overflow:hidden;max-width:1000px;margin:0 auto;mask-image:linear-gradient(to right, transparent, black 10%, black 90%, transparent);-webkit-mask-image:linear-gradient(to right, transparent, black 10%, black 90%, transparent);">
+        <style>
+          @keyframes sourcesMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+          .sources-track { display:flex; width:max-content; gap:14px; animation:sourcesMarquee 30s linear infinite; }
+          .sources-track:hover { animation-play-state: paused; }
+          .source-card { min-width:220px; height:108px; background:#fff; border:1px solid var(--border); border-radius:4px; padding:10px; display:flex; align-items:center; justify-content:center; position:relative; flex-shrink:0; }
+          .source-card img { max-height:72px; max-width:100%; width:auto; display:block; }
+          .source-card.source-b3 { background:#0f3f86; }
+          .source-badge { position:absolute; top:8px; right:8px; font-size:10px; line-height:1; padding:4px 6px; border-radius:999px; background:#1f6fb2; color:#fff; text-transform:uppercase; letter-spacing:.08em; }
+          .source-badge.light { background:rgba(255,255,255,.18); }
+          @media (max-width: 768px) { .sources-track { animation-duration: 38s; } .source-card { min-width:180px; height:96px; } .source-card img { max-height:64px; } }
+        </style>
+        <div class="sources-track">
+          <div class="source-card"><img src="assets/caged.jpg" alt="CAGED"></div>
+          <div class="source-card"><img src="assets/rais.jpg" alt="RAIS"></div>
+          <div class="source-card"><img src="assets/cbo.jpg" alt="CBO"></div>
+          <div class="source-card"><img src="assets/censo-superior.jpg" alt="Censo da Educação Superior"></div>
+          <div class="source-card"><span class="source-badge">Em breve</span><img src="assets/pnad.jpg" alt="PNAD Contínua"></div>
+          <div class="source-card"><span class="source-badge">Em breve</span><img src="assets/cvm.jpg" alt="CVM"></div>
+          <div class="source-card source-b3"><span class="source-badge light">Em breve</span><img src="assets/b3.jpg" alt="B3"></div>
+          <div class="source-card"><img src="assets/caged.jpg" alt="CAGED"></div>
+          <div class="source-card"><img src="assets/rais.jpg" alt="RAIS"></div>
+          <div class="source-card"><img src="assets/cbo.jpg" alt="CBO"></div>
+          <div class="source-card"><img src="assets/censo-superior.jpg" alt="Censo da Educação Superior"></div>
+          <div class="source-card"><span class="source-badge">Em breve</span><img src="assets/pnad.jpg" alt="PNAD Contínua"></div>
+          <div class="source-card"><span class="source-badge">Em breve</span><img src="assets/cvm.jpg" alt="CVM"></div>
+          <div class="source-card source-b3"><span class="source-badge light">Em breve</span><img src="assets/b3.jpg" alt="B3"></div>
         </div>
       </div>
     </div>
