@@ -8,6 +8,7 @@
   <style>
     :root { --bg:#141210; --bg2:#1c1a17; --bg3:#26231f; --fg:#e8e4dc; --fg2:#9a9590; --accent:#c49a5c; --green:#5a9a5a; --red:#c06a5a; --border:rgba(255,255,255,.08); --nav-bg:rgba(20,18,16,.92); }
     [data-theme="light"] { --bg:#f5f2ed; --bg2:#ffffff; --bg3:#ebe8e3; --fg:#1a1814; --fg2:#6b6860; --accent:#a07838; --green:#3a7a3a; --red:#b04a3a; --border:rgba(0,0,0,.08); --nav-bg:rgba(245,242,237,.92); }
+    *, *::before, *::after { box-sizing:border-box; }
     body { margin:0; background:var(--bg); color:var(--fg); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; }
     nav { position:sticky; top:0; z-index:50; background:var(--nav-bg); backdrop-filter:blur(10px); border-bottom:1px solid var(--border); display:flex; gap:4px; padding:0 14px; overflow:auto; }
     nav a { color:var(--fg2); text-decoration:none; padding:14px 12px; white-space:nowrap; font-size:13px; }
@@ -34,7 +35,7 @@
     li { margin:6px 0; }
     footer { border-top:1px solid var(--border); padding-top:20px; margin-top:34px; display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; color:var(--fg2); font-size:13px; }
     @media (max-width: 900px) { .grid-4,.grid-3,.grid-2 { grid-template-columns:1fr; } h1 { font-size:36px; } }
-  
+
     .site-nav { position:sticky; top:0; z-index:100; background:var(--nav-bg); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid var(--border); display:block !important; padding:0 !important; overflow:visible !important; }
     .site-nav-inner { display:flex; align-items:center; gap:0; padding:0 16px; min-height:52px; width:100%; }
     .site-nav-brand { display:flex; align-items:center; gap:10px; color:var(--fg); text-decoration:none; padding:12px 0; white-space:nowrap; font-size:13px; font-weight:600; }
@@ -69,7 +70,7 @@
       .nav-burger, .nav-menu { display:none !important; }
       .nav-links { display:flex !important; }
     }
-  
+
     .site-nav { position:sticky; top:0; z-index:100; background:var(--nav-bg); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid var(--border); display:block !important; padding:0 !important; overflow:visible !important; }
     .site-nav-inner { display:flex; align-items:center; gap:0; padding:0 16px; min-height:52px; width:100%; }
     .site-nav-brand { display:flex; align-items:center; gap:10px; color:var(--fg); text-decoration:none; padding:12px 0; white-space:nowrap; font-size:13px; font-weight:600; }
@@ -192,7 +193,7 @@
       <div class="card">
         <h2>Próxima expansão</h2>
         <p>Quando a camada de vagas for integrada, esta página vai ganhar maior resolução: job descriptions, skills, sinais de entrada, funções emergentes e mudanças explícitas no hiring. Por enquanto, ela serve como uma leitura dimensional do mercado em movimento.</p>
-        <a class="cta" href="insights.html#empregos">Ver insights de empregos →</a>
+        <a class="cta" href="insights.html">Ver insights de empregos →</a>
       </div>
     </section>
 
@@ -207,3 +208,4 @@ if(savedTheme==='dark'){document.documentElement.removeAttribute('data-theme');}
 document.getElementById('themeToggle')?.addEventListener('click',()=>{const light=document.documentElement.getAttribute('data-theme')==='light';if(light){document.documentElement.removeAttribute('data-theme');localStorage.setItem('theme','dark');}else{document.documentElement.setAttribute('data-theme','light');localStorage.setItem('theme','light');}});
 document.getElementById('burger')?.addEventListener('click',()=>{document.getElementById('siteNav')?.classList.toggle('open');});
 </script></body>
+</html>
