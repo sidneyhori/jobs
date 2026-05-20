@@ -1,4 +1,27 @@
-<!DOCTYPE html><html lang="pt-BR" data-theme="light"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Empresas — Mapa da IA</title><link rel="icon" type="image/svg+xml" href="favicon.svg"><style>:root{--bg:#141210;--bg2:#1c1a17;--fg:#e8e4dc;--fg2:#9a9590;--accent:#c49a5c;--border:rgba(255,255,255,.08)}body{margin:0;background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif}nav{position:sticky;top:0;background:rgba(20,18,16,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);display:flex;gap:4px;padding:0 14px;overflow:auto}nav a{color:var(--fg2);text-decoration:none;padding:14px 12px;white-space:nowrap;font-size:13px}nav a.active{color:var(--fg);border-bottom:2px solid var(--accent)}.wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--accent)}h1,h2{font-family:'Source Serif 4', Georgia, serif;letter-spacing:-.03em}h1{font-size:48px;margin:8px 0 12px}h2{font-size:28px;margin:0 0 10px}p{color:var(--fg2);line-height:1.65}.subnav{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.subnav a{color:var(--fg);text-decoration:none;border:1px solid var(--border);padding:8px 10px;font-size:13px}section{padding:34px 0;border-top:1px solid var(--border)}.card{background:var(--bg2);border:1px solid var(--border);padding:18px}</style>  <style>
+<!DOCTYPE html><html lang="pt-BR" data-theme="light"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Empresas — Mapa da IA</title><link rel="icon" type="image/svg+xml" href="favicon.svg"><style>:root{--bg:#141210;--bg2:#1c1a17;--fg:#e8e4dc;--fg2:#9a9590;--accent:#c49a5c;--border:rgba(255,255,255,.08)}body{margin:0;background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif}nav{position:sticky;top:0;background:rgba(20,18,16,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);display:flex;gap:4px;padding:0 14px;overflow:auto}nav a{color:var(--fg2);text-decoration:none;padding:14px 12px;white-space:nowrap;font-size:13px}nav a.active{color:var(--fg);border-bottom:2px solid var(--accent)}.wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--accent)}h1,h2{font-family:'Source Serif 4', Georgia, serif;letter-spacing:-.03em}h1{font-size:48px;margin:8px 0 12px}h2{font-size:28px;margin:0 0 10px}p{color:var(--fg2);line-height:1.65}.subnav{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.subnav a{color:var(--fg);text-decoration:none;border:1px solid var(--border);padding:8px 10px;font-size:13px}section{padding:34px 0;border-top:1px solid var(--border)}.card{background:var(--bg2);border:1px solid var(--border);padding:18px}
+    .site-nav { position:sticky; top:0; z-index:100; background:var(--nav-bg); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid var(--border); }
+    .site-nav-inner { display:flex; align-items:center; gap:0; padding:0 16px; min-height:52px; }
+    .site-nav-brand { display:flex; align-items:center; gap:10px; color:var(--fg); text-decoration:none; padding:12px 0; white-space:nowrap; font-size:13px; font-weight:600; }
+    .site-nav-logo { flex-shrink:0; }
+    .site-nav-links { display:flex; align-items:center; margin-left:14px; overflow:auto; }
+    .site-nav-links a, .site-mobile-menu a { padding:12px 18px; font-size:13px; color:var(--fg2); text-decoration:none; white-space:nowrap; }
+    .site-nav-links a.active, .site-mobile-menu a.active { color:var(--fg); border-bottom:2px solid var(--accent); }
+    .site-theme-toggle, .site-burger { background:none; border:none; color:var(--fg2); cursor:pointer; padding:8px; display:flex; align-items:center; justify-content:center; }
+    .site-theme-toggle { margin-left:auto; }
+    .site-theme-toggle svg, .site-burger svg { width:18px; height:18px; }
+    .site-theme-toggle .icon-moon { display:none; }
+    [data-theme="light"] .site-theme-toggle .icon-sun { display:none; }
+    [data-theme="light"] .site-theme-toggle .icon-moon { display:block; }
+    .site-burger { display:none; }
+    .site-burger .icon-close { display:none; }
+    .site-nav.open .site-burger .icon-menu { display:none; }
+    .site-nav.open .site-burger .icon-close { display:block; }
+    .site-mobile-menu { display:none; flex-direction:column; border-top:1px solid var(--border); padding:8px 0; }
+    .site-nav.open .site-mobile-menu { display:flex; }
+    @media (max-width: 900px) { .site-nav-links { display:none; } .site-burger { display:flex; } }
+    @media (min-width: 901px) { .site-mobile-menu { display:none !important; } }
+
+  </style>  <style>
     @media (max-width: 900px) {
       .nav-links { display:none !important; }
       .nav-burger { display:block !important; }
@@ -8,17 +31,67 @@
       .nav-burger, .nav-menu { display:none !important; }
       .nav-links { display:flex !important; }
     }
+  
+    .site-nav { position:sticky; top:0; z-index:100; background:var(--nav-bg); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid var(--border); }
+    .site-nav-inner { display:flex; align-items:center; gap:0; padding:0 16px; min-height:52px; }
+    .site-nav-brand { display:flex; align-items:center; gap:10px; color:var(--fg); text-decoration:none; padding:12px 0; white-space:nowrap; font-size:13px; font-weight:600; }
+    .site-nav-logo { flex-shrink:0; }
+    .site-nav-links { display:flex; align-items:center; margin-left:14px; overflow:auto; }
+    .site-nav-links a, .site-mobile-menu a { padding:12px 18px; font-size:13px; color:var(--fg2); text-decoration:none; white-space:nowrap; }
+    .site-nav-links a.active, .site-mobile-menu a.active { color:var(--fg); border-bottom:2px solid var(--accent); }
+    .site-theme-toggle, .site-burger { background:none; border:none; color:var(--fg2); cursor:pointer; padding:8px; display:flex; align-items:center; justify-content:center; }
+    .site-theme-toggle { margin-left:auto; }
+    .site-theme-toggle svg, .site-burger svg { width:18px; height:18px; }
+    .site-theme-toggle .icon-moon { display:none; }
+    [data-theme="light"] .site-theme-toggle .icon-sun { display:none; }
+    [data-theme="light"] .site-theme-toggle .icon-moon { display:block; }
+    .site-burger { display:none; }
+    .site-burger .icon-close { display:none; }
+    .site-nav.open .site-burger .icon-menu { display:none; }
+    .site-nav.open .site-burger .icon-close { display:block; }
+    .site-mobile-menu { display:none; flex-direction:column; border-top:1px solid var(--border); padding:8px 0; }
+    .site-nav.open .site-mobile-menu { display:flex; }
+    @media (max-width: 900px) { .site-nav-links { display:none; } .site-burger { display:flex; } }
+    @media (min-width: 901px) { .site-mobile-menu { display:none !important; } }
+
   </style>
-</head><body><nav style="position:sticky;top:0;z-index:50;background:var(--nav-bg);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:0 14px;">
-    <div style="display:flex;align-items:center;gap:4px;min-height:48px;">
-      <a href="index.html" style="color:var(--fg);text-decoration:none;padding:14px 12px;white-space:nowrap;font-size:13px;font-weight:600;">Mapa da IA</a>
-      <div class="nav-links" style="gap:4px;overflow:auto;">
-        <a href="trabalho.html">Trabalho</a><a href="empregos.html">Empregos</a><a href="estudantes.html">Estudantes</a><a class="active" href="empresas.html">Empresas</a><a href="insights.html">Insights</a><a href="metodologia.html">Metodologia</a>
+</head><body><nav class="site-nav" id="siteNav">
+    <div class="site-nav-inner">
+      <a class="site-nav-brand" href="index.html" aria-label="Voltar ao início">
+        <svg class="site-nav-logo" width="22" height="22" viewBox="0 0 22 22" fill="none">
+          <rect x="1" y="1" width="9" height="13" fill="currentColor"/>
+          <rect x="12" y="1" width="9" height="6" fill="currentColor"/>
+          <rect x="12" y="9" width="9" height="5" fill="var(--accent)"/>
+          <rect x="1" y="16" width="20" height="5" fill="currentColor"/>
+        </svg>
+        <span>Mapa da IA</span>
+      </a>
+      <div class="site-nav-links">
+        <a href="trabalho.html">Trabalho</a>
+        <a href="empregos.html">Empregos</a>
+        <a href="estudantes.html">Estudantes</a>
+        <a class="active" href="empresas.html">Empresas</a>
+        <a href="insights.html">Insights</a>
       </div>
-      <button id="themeToggle" style="margin-left:auto;background:none;border:none;color:var(--fg2);padding:12px 10px;cursor:pointer;font-size:13px">Light / Dark</button>
-      <button id="burger" class="nav-burger" style="display:none;background:none;border:none;color:var(--fg2);padding:12px 10px;cursor:pointer;font-size:18px">☰</button>
+      <button class="site-theme-toggle" id="themeToggle" type="button" aria-label="Alternar tema">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button class="site-burger" id="burger" type="button" aria-label="Menu">
+        <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
     </div>
-    <div id="mobileMenu" class="nav-menu" style="display:none;flex-direction:column;padding:8px 0;border-top:1px solid var(--border);">
-      <a href="trabalho.html">Trabalho</a><a href="empregos.html">Empregos</a><a href="estudantes.html">Estudantes</a><a class="active" href="empresas.html">Empresas</a><a href="insights.html">Insights</a><a href="metodologia.html">Metodologia</a>
+    <div class="site-mobile-menu" id="mobileMenu">
+      <a href="trabalho.html">Trabalho</a>
+      <a href="empregos.html">Empregos</a>
+      <a href="estudantes.html">Estudantes</a>
+      <a class="active" href="empresas.html">Empresas</a>
+      <a href="insights.html">Insights</a>
     </div>
-  </nav><div class="wrap"><div class="eyebrow">Empresas</div><h1>Como a IA está pressionando as empresas</h1><p>Esta camada vai olhar para exposição empresarial: composição ocupacional, benchmark entre empresas, concentração setorial e impacto sobre a força de trabalho. Ainda está em construção.</p><div class="subnav"><a href="#visao-geral">Visão geral</a><a href="#benchmark">Benchmark</a><a href="#forca-de-trabalho">Força de trabalho</a><a href="#setores">Setores</a><a href="#roadmap">Roadmap</a></div><section id="visao-geral"><h2>Visão geral</h2><div class="card"><p>Empresas será a camada premium do produto: comparação entre empresas e ação interna orientada por índice de exposição.</p></div></section><section id="benchmark"><h2>Benchmark</h2><div class="card"><p>Em breve: comparação entre empresas ou grupos com base na composição de sua força de trabalho.</p></div></section><section id="forca-de-trabalho"><h2>Força de trabalho</h2><div class="card"><p>Em breve: exposição média do quadro, grupos mais pressionados e trilhas de requalificação internas.</p></div></section><section id="setores"><h2>Setores</h2><div class="card"><p>Em breve: benchmark setorial apoiado em bases como RAIS por empregador, CEMPRE, CVM/B3 e similares.</p></div></section><section id="roadmap"><h2>Roadmap</h2><div class="card"><p>Próxima investigação de base: Exame 500, CVM/B3, Receita/CNPJ, CEMPRE e RAIS por empregador.</p></div></section></div><script>const savedTheme=localStorage.getItem('theme');if(savedTheme==='dark'){document.documentElement.removeAttribute('data-theme');}else{document.documentElement.setAttribute('data-theme','light');}document.getElementById('themeToggle')?.addEventListener('click',()=>{const light=document.documentElement.getAttribute('data-theme')==='light';if(light){document.documentElement.removeAttribute('data-theme');localStorage.setItem('theme','dark');}else{document.documentElement.setAttribute('data-theme','light');localStorage.setItem('theme','light');}});document.getElementById("burger")?.addEventListener("click",()=>{document.getElementById("mobileMenu")?.classList.toggle("open");});</script></body></html>
+  </nav><div class="wrap"><div class="eyebrow">Empresas</div><h1>Como a IA está pressionando as empresas</h1><p>Esta camada vai olhar para exposição empresarial: composição ocupacional, benchmark entre empresas, concentração setorial e impacto sobre a força de trabalho. Ainda está em construção.</p><div class="subnav"><a href="#visao-geral">Visão geral</a><a href="#benchmark">Benchmark</a><a href="#forca-de-trabalho">Força de trabalho</a><a href="#setores">Setores</a><a href="#roadmap">Roadmap</a></div><section id="visao-geral"><h2>Visão geral</h2><div class="card"><p>Empresas será a camada premium do produto: comparação entre empresas e ação interna orientada por índice de exposição.</p></div></section><section id="benchmark"><h2>Benchmark</h2><div class="card"><p>Em breve: comparação entre empresas ou grupos com base na composição de sua força de trabalho.</p></div></section><section id="forca-de-trabalho"><h2>Força de trabalho</h2><div class="card"><p>Em breve: exposição média do quadro, grupos mais pressionados e trilhas de requalificação internas.</p></div></section><section id="setores"><h2>Setores</h2><div class="card"><p>Em breve: benchmark setorial apoiado em bases como RAIS por empregador, CEMPRE, CVM/B3 e similares.</p></div></section><section id="roadmap"><h2>Roadmap</h2><div class="card"><p>Próxima investigação de base: Exame 500, CVM/B3, Receita/CNPJ, CEMPRE e RAIS por empregador.</p></div></section></div><script>
+const savedTheme=localStorage.getItem('theme');
+if(savedTheme==='dark'){document.documentElement.removeAttribute('data-theme');}else{document.documentElement.setAttribute('data-theme','light');}
+document.getElementById('themeToggle')?.addEventListener('click',()=>{const light=document.documentElement.getAttribute('data-theme')==='light';if(light){document.documentElement.removeAttribute('data-theme');localStorage.setItem('theme','dark');}else{document.documentElement.setAttribute('data-theme','light');localStorage.setItem('theme','light');}});
+document.getElementById('burger')?.addEventListener('click',()=>{document.getElementById('siteNav')?.classList.toggle('open');});
+</script></body>
